@@ -4,8 +4,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link href="css/style.css" rel="stylesheet" type="text/css"/>
-	<link type="text/css" href="css/jquery-ui-1.8.11.custom.css" rel="stylesheet" />	
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link type="text/css" href="css/jquery-ui-1.8.11.custom.css" rel="stylesheet">	
 	<script type="text/javascript" src="libs/jquery-1.5.1.min.js"></script>
 	<script type="text/javascript" src="libs/jquery-ui-1.8.11.custom.min.js"></script>
 	<script type="text/javascript" src="libs/jquery.ui.datepicker-es.js"></script>
@@ -17,7 +17,7 @@
 			var translator = new i18n('es');
 			translator.translate();
 			$('#logintext').click(function() {
-				$('#loginform').slideToggle();
+				$('.loginform').slideToggle();
 			});
 			
 			$('#date').datepicker();
@@ -32,27 +32,26 @@
 </head>
 <body>
 <div class="header">
-	<img src="images/cooltext530131064.png" alt="Company Logo" width="276" height="110"/>
+	<img src="images/cooltext530131064.png" alt="Company Logo" width="276" height="110">
 	<h1 id='header' class="i18n"></h1>
 	<div id="localization">
-		<p>Idioma:</p>
 		<select id='locale'>
 			<option value="es" selected="selected">Espa&ntilde;ol</option>
 			<option value="en">English</option>
 		</select>
 	</div>
 	<div id="login">
-		<span id="logintext" class="i18n">Login:</span>
-		<div id="loginform">
+		<span id="logintext" class="i18n"></span>
+		<div class="loginform">
 			<div>
-			<span id='usernametext' class="i18n">Username:</span>
-			<input type="text"/>
+			<span id='usernametext' class="i18n"></span>
+			<input type="text">
 			</div>
 			<div>
-			<span id='passwordtext' class="i18n">Password:</span>
-			<input type="password"/>
+			<span id='passwordtext' class="i18n"></span>
+			<input type="password">
 			</div>
-			<button type="button" id='loginbutton' class='i18n'>Log in</button>
+			<button type="button" id='loginbutton' class='i18n'></button>
 		</div>
 	</div>
 </div>
