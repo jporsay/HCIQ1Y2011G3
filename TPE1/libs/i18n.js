@@ -28,12 +28,21 @@ i18n.prototype.setLang = function(lang) {
 			});
 }
 
-i18n.prototype.translate = function() {
+i18n.prototype.translatePage = function() {
 	var nodes = document.getElementsByClassName('i18n');
 	
 	for (var i = 0; i < nodes.length; ++i) {
-		var key = nodes[i].id;
-		var translated = jQuery.i18n.prop(key);
-		nodes[i].innerHTML = translated;
+		this.translateElement(nodes[i]);
 	}
+	
+	return true;
 }
+
+i18n.prototype.translateElement = function(node) {
+	var key = node.id;
+	var translated = jQuery.i18n.prop(key);
+	node.innerHTML = translated;
+	
+	return true;
+}
+
