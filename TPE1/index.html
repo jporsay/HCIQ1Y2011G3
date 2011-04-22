@@ -17,12 +17,12 @@
 			
 			var translator = new i18n('Index');
 			document.getElementById('locale').value = translator.getLang();
-			translator.translate();
+			translator.translatePage();
 			
 			$(document).keydown(function(e) {
 				if (e.keyCode == 27) {
 					if ($('.loginform').is(':visible') === true) {
-						$('.loginform').slideToggle();
+						$('.loginform').hide();
 					}
 				}
 			});
@@ -34,7 +34,7 @@
 			$('#date').datepicker();
 			$("#locale").change(function() {
 				translator.setLang($(this).val());
-				translator.translate();
+				translator.translatePage();
 			});
 			
 		});
