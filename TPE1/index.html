@@ -27,7 +27,12 @@
 				}
 			});
 			
-			$('#logintext').click(function() {
+			$('.logintext').click(function() {
+				if ($('.loginform').is(':visible') === false) {
+					$('#loginimg').css("background-position", "0 -16px");
+				} else {
+					$('#loginimg').css("background-position", "-64px -16px");
+				}
 				$('.loginform').slideToggle();
 			});
 			
@@ -52,7 +57,10 @@
 		</select>
 	</div>
 	<div id="login">
-		<span id="logintext" class="i18n"></span>
+		<div class="logintext">
+			<span id="logintext" class="i18n"></span>
+			<div id="loginimg"></div>
+		</div>
 		<div class="loginform">
 			<div>
 			<span id='usernametext' class="i18n"></span>

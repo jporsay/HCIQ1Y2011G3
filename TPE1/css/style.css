@@ -43,12 +43,25 @@ body {
 }
 
 .header #login {
-	color: #90A0A0;
+	color: #000000;
 	border: solid 1px #000000;
 	padding: 2px 2px;
+	background: url('../images/patt.png');
 	position: inherit;
 	right: 1em;
 	top: 3em;
+}
+
+.header .logintext {
+	position: relative;
+}
+
+.header .logintext #loginimg {
+	background-image: url('images/ui-icons_ef8c08_256x240.png');
+	background-position: -64px -16px;
+	float: right;
+	width: 16px;
+	height: 16px;
 }
 
 .header .loginform {
