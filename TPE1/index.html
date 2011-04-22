@@ -15,7 +15,7 @@
 		$('document').ready(function() {
 			
 			var translator = new i18n('es');
-			
+			translator.translate();
 			$('#logintext').click(function() {
 				$('#loginform').slideToggle();
 			});
@@ -23,6 +23,7 @@
 			$('#date').datepicker();
 			$("#locale").change(function() {
 				translator.setLang($(this).val());
+				translator.translate();
 			});
 			
 		});
@@ -32,7 +33,7 @@
 <body>
 <div class="header">
 	<img src="images/cooltext530131064.png" alt="Company Logo" width="276" height="110"/>
-	<h1>Carrito e' Compras &dagger;</h1>
+	<h1 id='header' class="i18n"></h1>
 	<div id="localization">
 		<p>Idioma:</p>
 		<select id='locale'>
@@ -41,9 +42,17 @@
 		</select>
 	</div>
 	<div id="login">
-		<span id="logintext">Login:</span>
+		<span id="logintext" class="i18n">Login:</span>
 		<div id="loginform">
-			<p> Test Text</p>
+			<div>
+			<span id='usernametext' class="i18n">Username:</span>
+			<input type="text"/>
+			</div>
+			<div>
+			<span id='passwordtext' class="i18n">Password:</span>
+			<input type="password"/>
+			</div>
+			<button type="button" id='loginbutton' class='i18n'>Log in</button>
 		</div>
 	</div>
 </div>
