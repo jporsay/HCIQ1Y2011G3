@@ -16,6 +16,10 @@
 			
 			var translator = new i18n('es');
 			
+			$('#logintext').click(function() {
+				$('#loginform').slideToggle();
+			});
+			
 			$('#date').datepicker();
 			$("#locale").change(function() {
 				translator.setLang($(this).val());
@@ -27,7 +31,7 @@
 </head>
 <body>
 <div class="header">
-	<img src="images/cooltext530131064.png" alt="Company Logo"/>
+	<img src="images/cooltext530131064.png" alt="Company Logo" width="276" height="110"/>
 	<h1>Carrito e' Compras &dagger;</h1>
 	<div id="localization">
 		<p>Idioma:</p>
@@ -36,9 +40,15 @@
 			<option value="en">English</option>
 		</select>
 	</div>
+	<div id="login">
+		<span id="logintext">Login:</span>
+		<div id="loginform">
+			<p> Test Text</p>
+		</div>
+	</div>
 </div>
 <div class="mainarea">
-	<input type="text" name="date" id="date" />
+	<p>Main Area</p>
 </div>
 
 </body>

@@ -1,12 +1,12 @@
 /*div {
-	border: dotted 1px;
-}*/
+ border: dotted 1px;
+ }*/
 
 body {
-background: #474747 url('../images/bg.png');
-float: left;
-margin: 0;
-padding: 0;
+	background: #474747 url('../images/bg.png');
+	float: left;
+	margin: 0;
+	padding: 0;
 }
 .header {
 	position: absolute;
@@ -15,10 +15,11 @@ padding: 0;
 	color: #222;
 	top: 0;
 	left: 0;
-	border-bottom: #000000 solid 1px;
+	border-bottom: #000000 solid 2px;
 }
 .header h1 {
-	text-shadow: 0px 2px 3px #555;
+	color: #90A0A0;
+	text-shadow: 0px 2px 3px #222222;
 	position: inherit;
 	left: 40%;
 	top: 0;
@@ -26,24 +27,40 @@ padding: 0;
 	font-style: oblique;
 	font-family: Helvetica, Verdana, sans-serif;
 }
-
 .header #localization {
 	position: inherit;
 	width: auto;
 	right: 0.5em;
 	bottom: 0;
 }
-
 .header #localization p {
+	color: #90A0A0;
 	float: left;
 	margin-right: 0.5em;
 }
-
 .header #localization select {
 	margin-top: 1em;
 }
-
 .mainarea {
 	position: absolute;
 	top: 120px;
+}
+
+.header #login {
+	color: #90A0A0;
+	position: inherit;
+	right: 2em;
+	top: 3em;
+}
+
+.header #loginform {
+	color: #000000;
+	position: inherit;
+	right: 0;
+	top: 1.2em;
+	background: #90A0A0;
+	border: 1px #000000 solid;
+	width: 17em;
+	height: 7em;
+	display: none;
 }
