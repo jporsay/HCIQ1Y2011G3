@@ -23,6 +23,12 @@ i18n.prototype.setLang = function(lang) {
 			});
 }
 
-i18n.prototype.translate = function(key) {
-	return 
+i18n.prototype.translate = function() {
+	var nodes = document.getElementsByClassName('i18n');
+	
+	for (var i = 0; i < nodes.length; ++i) {
+		var key = nodes[i].id;
+		var translated = jQuery.i18n.prop(key);
+		nodes[i].innerHTML = translated;
+	}
 }

@@ -56,11 +56,21 @@ body {
 .header #loginform {
 	color: #000000;
 	position: inherit;
+	font-size: small;
 	right: 0;
 	top: 1.2em;
+	margin-left: 10px;
 	background: #90A0A0;
 	border: 1px #000000 solid;
-	width: 17em;
-	height: 7em;
+	width: 270px;
+	height: 150px;
 	display: none;
+}
+
+.header #loginform input {
+	width: 10em;
+}
+
+.header #loginform div {
+	margin: 10px;
 }
