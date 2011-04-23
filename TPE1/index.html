@@ -4,19 +4,27 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link type="text/css" href="css/style.css" rel="stylesheet">
-	<link type="text/css" href="css/jquery-ui-1.8.11.custom.css" rel="stylesheet">
-	<link type="text/css" href="css/Base.css" rel="stylesheet">
-	<link type="text/css" href="css/BreadCrumb.css" rel="stylesheet">
-	<script type="text/javascript" src="libs/cookieManager.js"></script>
+	<script type="text/javascript" src="libs/init.js"></script>
 	<script type="text/javascript" src="libs/jquery-1.5.1.min.js"></script>
-	<script type="text/javascript" src="libs/jquery-ui-1.8.11.custom.min.js"></script>
-	<script type="text/javascript" src="libs/jquery.ui.datepicker-es.js"></script>
-	<script type="text/javascript" src="libs/jquery.i18n.properties-min.js"></script>
-	<script type="text/javascript" src="libs/jquery.easing.1.3.js"></script>
-	<script type="text/javascript" src="libs/jquery.jBreadCrumb.1.1.js"></script>
-	<script type="text/javascript" src="libs/i18n.js"></script>
 	<script type="text/javascript">
+		
+			loadJsFiles([
+				"libs/jquery.easing.1.3.js",
+				"libs/jquery.jBreadCrumb.1.1.js",
+				"libs/cookieManager.js",
+				"libs/jquery-ui-1.8.11.custom.min.js",
+				"libs/jquery.ui.datepicker-es.js",
+				"libs/jquery.i18n.properties-min.js",
+				"libs/i18n.js"
+			]);
+			
+			loadCssFiles([
+				"css/style.css",
+				"css/jquery-ui-1.8.11.custom.css",
+				"css/Base.css",
+				"css/BreadCrumb.css"
+			]);
+			
 		$(function() {
 			
 			$("#breadcrumb").jBreadCrumb();
@@ -69,12 +77,12 @@
 		</div>
 		<div class="loginform">
 			<div>
-			<span id='usernametext' class="i18n"></span>
-			<input type="text">
+				<span id='usernametext' class="i18n"></span>
+				<input type="text">
 			</div>
 			<div>
-			<span id='passwordtext' class="i18n"></span>
-			<input type="password">
+				<span id='passwordtext' class="i18n"></span>
+				<input type="password">
 			</div>
 			<button type="button" id='loginbutton' class='i18n'></button>
 		</div>
@@ -96,20 +104,20 @@
 			</ul>
 		</div>
 	</div>
+	<div class="categories">
+		<h1>Select a Category:</h1>
+		<span class="category health" style="float:left;">Health
+			<img class="category image" src="images/categories/health.jpg" alt="Health"/> 
+		</span>
+		<span class="category technology" style="float:left;">Technology
+			<img class="category image" src="images/categories/technology.jpg" alt="Sports"/> 
+		</span>
+		<span class="category sports" style="float:left;">Sports
+			<img class="category image" src="images/categories/sports.jpg" alt="Sports"/> 
+		</span>
+	</div>
 </div>
 
-<div class="categories">
-	<h1>Select a Category:</h1>
-	<span class="category health" style="float:left;">Health
-		<img class="category image" src="images/categories/health.jpg" alt="Health"/> 
-	</span>
-	<span class="category technology" style="float:left;">Technology
-		<img class="category image" src="images/categories/technology.jpg" alt="Sports"/> 
-	</span>
-	<span class="category sports" style="float:left;">Sports
-		<img class="category image" src="images/categories/sports.jpg" alt="Sports"/> 
-	</span>
-</div>
 
 </body>
 </html>
