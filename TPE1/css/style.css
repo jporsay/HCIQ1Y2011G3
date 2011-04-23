@@ -97,8 +97,7 @@ body {
 }
 
 .categories {
-	position: absolute;
-	top: 22%;
+	position: relative;
 	width: 100%;
 	/*text-align:center;*/
 }
