@@ -41,8 +41,10 @@ i18n.prototype.translatePage = function() {
 i18n.prototype.translateElement = function(node) {
 	var key = node.id;
 	var translated = jQuery.i18n.prop(key);
-	if (node.hasAttribute("placeholder")) {
-		node.setAttribute("placeholder", translated);
+	// not using getAttribute since its buggy.
+	if (node.attributes.placeholder !== undefined) {
+		//not using setAttribute since its broken in IE and in Opera.
+		node.attributes.placeholder.value = translated;
 	} else {
 		node.innerHTML = translated;
 	}
