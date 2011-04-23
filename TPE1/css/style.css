@@ -1,5 +1,5 @@
 body {
-	background: #474747 url('../images/bg.png');
+	background: #f5f5f5;
 	float: left;
 	margin: 0;
 	padding: 0;
@@ -14,7 +14,7 @@ body {
 	border-bottom: #000000 solid 2px;
 }
 .header h1 {
-	color: #90A0A0;
+	color: #8b4513;
 	text-shadow: 0px 2px 3px #222222;
 	position: inherit;
 	left: 40%;
@@ -45,8 +45,8 @@ body {
 .header #login {
 	color: #000000;
 	border: solid 1px #000000;
+	background-color: #90A0A0;
 	padding: 2px 2px;
-	background: url('../images/patt.png');
 	position: inherit;
 	right: 1em;
 	top: 3em;
@@ -57,7 +57,7 @@ body {
 }
 
 .header .logintext #loginimg {
-	background-image: url('images/ui-icons_ef8c08_256x240.png');
+	background-image: url('images/ui-icons_228ef1_256x240.png');
 	background-position: -64px -16px;
 	float: right;
 	width: 16px;
