@@ -2,11 +2,7 @@
 {
 	position: relative;
 	width: 90%;
-}
-
-.categories h1
-{
-	color: #ff0000;
+	text-align:center;
 }
 
 .category 
@@ -18,7 +14,7 @@
 	text-align:center;
 	float:left;
 	display: inline;
-	border: 1px solid #000000;
+	border: 2px solid #aaaaaa;
 }
 
 .image 
