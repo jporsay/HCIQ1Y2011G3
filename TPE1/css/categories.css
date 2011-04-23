@@ -8,14 +8,15 @@
 }
 
 .category {
+	position: relative;
 	color: #ff0000;
-	width: 100px; 
-	height: 110px;
+	/*width: 100px; */
+	height: 210px;
 }
 
 .category.image {
-	height: 100px;
-	width: 100px;
+	height: 200px;
+	width: 200px;
 }
 
 .category {
@@ -23,11 +24,6 @@
 	text-align:center;
 	padding: 5px 45px;
 	float:left;
-}
-
-.image {
-	height: 200px;
-	width: 200px;
 }
 
 .category p {
