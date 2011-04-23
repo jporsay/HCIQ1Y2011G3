@@ -82,30 +82,29 @@ body {
 .categories {
 	position: absolute;
 	top: 20%;
-	width: 100%
+	width: 100%;
+	border: 3px #000000 solid;
+}
+
+.categories h1{
+	color: #ff0000;
 }
 
 .category {
-	color: #ff0000;
-	width: 100px; 
-	height: 110px;
-}
-
-.category.image {
-	height: 100px;
-	width: 100px;
-}
-
-.category.health {
 	position: relative;
+	text-align:center;
+	padding: 5px 40px;
+	float:left;
 }
 
-.category.sports {
-	position: relative;
+.image {
+	height: 200px;
+	width: 200px;
 }
 
-.category.technology {
-	position: relative;
+.category p {
+	color: #ff0f00;
+	font-size: 20;
 }
 
 
