@@ -19,6 +19,7 @@ body {
 	color: #8b4513;
 	text-shadow: 0px 2px 3px #222222;
 	position: inherit;
+	font-size: 4em;
 	left: 40%;
 	top: 0;
 	margin: 40px 0 0 20px;
@@ -46,10 +47,11 @@ body {
 	color: #000000;
 	border: solid 1px #000000;
 	background-color: #90A0A0;
+	font-size: 1.2em;
 	padding: 2px 2px;
 	position: inherit;
 	right: 1em;
-	top: 3em;
+	bottom: 2.5em;
 }
 
 .header .logintext {
@@ -106,8 +108,10 @@ body {
 	border-bottom: #000000 solid 2px;
 }
 
-.mainarea .navbar #breadcrumbholder {
-	width: 50%;
+.mainarea #searchbar {
+	position: relative;
+	top: 3px;
+	float: right;
 }
 
 .categories {
