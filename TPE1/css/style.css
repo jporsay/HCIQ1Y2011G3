@@ -106,5 +106,5 @@ body {
 }
 
 .mainarea .navbar #breadcrumbholder {
-	position: inherit;
+	width: 50%;
 }
