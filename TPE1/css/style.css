@@ -80,7 +80,7 @@ body {
 
 .header .loginform input {
 	width: 10em;
-	position: inherit;
+	position: inherit;	
 	float: right;
 }
 
@@ -107,4 +107,33 @@ body {
 
 .mainarea .navbar #breadcrumbholder {
 	width: 50%;
+}
+
+.categories {
+	position: absolute;
+	top: 20%;
+	width: 100%
+}
+
+.category {
+	color: #ff0000;
+	width: 100px; 
+	height: 110px;
+}
+
+.category.image {
+	height: 100px;
+	width: 100px;
+}
+
+.category.health {
+	position: relative;
+}
+
+.category.sports {
+	position: relative;
+}
+
+.category.technology {
+	position: relative;
 }
