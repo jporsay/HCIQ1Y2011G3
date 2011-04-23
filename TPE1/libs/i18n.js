@@ -41,7 +41,11 @@ i18n.prototype.translatePage = function() {
 i18n.prototype.translateElement = function(node) {
 	var key = node.id;
 	var translated = jQuery.i18n.prop(key);
-	node.innerHTML = translated;
+	if (node.hasAttribute("placeholder")) {
+		node.setAttribute("placeholder", translated);
+	} else {
+		node.innerHTML = translated;
+	}
 	
 	return true;
 }
