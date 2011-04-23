@@ -12,8 +12,8 @@ function loadCategories(element, categories) {
 		
 		var new_cat_image = document.createElement("img");
 		new_cat_image.setAttribute("src", category.img);
-		new_cat_image.setAttribute("alt", new_category);
-		new_cat_image.setAttribute("class", "category image");
+		new_cat_image.setAttribute("alt", category.id);
+		new_cat_image.setAttribute("class", "image");
 		
 		var new_cat_link = document.createElement("p");
 		new_cat_link.setAttribute("id", category.id);

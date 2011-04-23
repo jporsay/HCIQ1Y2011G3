@@ -1,32 +1,32 @@
-.categories {
+.categories 
+{
 	position: relative;
 	width: 100%;
 }
 
-.categories h1{
+.categories h1
+{
 	color: #ff0000;
 }
 
-.category {
+.category 
+{
 	position: relative;
-	color: #ff0000;
-	/*width: 100px; */
-	height: 210px;
+	text-align:center;
+	padding: 0px 70px;
+	float:left;
+	margin: 15px;
+	border:solid 1px #000000;
 }
 
-.category.image {
+.image 
+{
 	height: 200px;
 	width: 200px;
 }
 
-.category {
-	position: relative;
-	text-align:center;
-	padding: 5px 45px;
-	float:left;
-}
-
-.category p {
+.category p 
+{
 	color: #ff0f00;
 	font-size:18pt;
 }
