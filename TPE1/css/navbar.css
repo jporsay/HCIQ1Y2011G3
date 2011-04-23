@@ -19,3 +19,9 @@
 .mainarea .navbar #breadcrumbholder {
 	position: inherit;
 }
+
+.mainarea #searchbar {
+	position: relative;
+	top: 3px;
+	float: right;
+}
