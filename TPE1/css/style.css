@@ -79,11 +79,27 @@ body {
 	margin: 5px 0 0 10px;
 }
 
+.mainarea {
+	position: absolute;
+	top: 120px;
+	width: 100%;
+}
+ 
+.mainarea .navbar {
+	padding: 2px;
+	height: 40px;
+	position: relative;
+	border-bottom: #000000 solid 2px;
+}
+ 
+.mainarea .navbar #breadcrumbholder {
+	position: inherit;
+}
+
 .categories {
 	position: absolute;
-	top: 20%;
+	top: 22%;
 	width: 100%;
-	border: 3px #000000 solid;
 }
 
 .categories h1{
@@ -105,20 +121,4 @@ body {
 .category p {
 	color: #ff0f00;
 	font-size: 20;
-}
-.mainarea {
-	position: absolute;
-	top: 120px;
-	width: 100%;
-}
- 
-.mainarea .navbar {
-	padding: 2px;
-	height: 40px;
-	position: relative;
-	border-bottom: #000000 solid 2px;
-}
- 
-.mainarea .navbar #breadcrumbholder {
-	position: inherit;
 }
