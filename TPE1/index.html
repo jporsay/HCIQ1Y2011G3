@@ -15,7 +15,8 @@
 				"libs/jquery-ui-1.8.11.custom.min.js",
 				"libs/jquery.ui.datepicker-es.js",
 				"libs/jquery.i18n.properties-min.js",
-				"libs/i18n.js"
+				"libs/i18n.js",
+				"libs/categoriesManager.js"
 			]);
 			
 			loadCssFiles([
@@ -29,6 +30,16 @@
 			]);
 			
 		$(function() {
+			
+			//Load categories
+			var categories = [
+				{id: "sports", img: "images/sports.png"},
+				{id: "health", img: "images/health.png"},
+				{id: "technology", img: "images/technology.png"}
+			];
+			loadCategories('categorycontainer', categories);
+			
+			//Finished loading categories
 			
 			$("#breadcrumb").jBreadCrumb();
 			
@@ -110,6 +121,7 @@
 			</ul>
 		</div>
 		<div id="searchbar">
+			<!-- stop complaining about the placeholder property!! XD -->
 			<input id="searchtext" class="i18n" placeholder="">
 			<button class="ui-widget">Go</button>
 		</div>
@@ -117,21 +129,24 @@
 	
 	<div class="categories">
 		<h1 id="categoryLabel" class="i18n">Categories:</h1>
-		<div class="category">
-			<img class="category image" src="images/categories/health.jpg" alt="Health"/> 
-			<p id="health" class="i18n">Health</p>
-		</div>
-		<div class="category">
-			<img class="category image" src="images/categories/technology.jpg" alt="Technology"/> 
-			<p>Technology</p>
-		</div>
-		<div class="category">
-			<img class="category image" src="images/categories/sports.jpg" alt="Sports"/> 
-			<p>Sports</p>
-		</div>
+		<div id="categorycontainer">
+			<!--All of these categories should go since they will be loaded with loadCategories. -->
+			<!-- <div class="category">
+				<img class="category image" src="images/categories/health.jpg" alt="Health"/> 
+				<p id="health" class="i18n">Health</p>
+			</div>
 			<div class="category">
-			<img class="category image" src="images/categories/lifestyle.jpg" alt="Lifestyle"/> 
-			<p>Lifestyle</p>
+				<img class="category image" src="images/categories/technology.jpg" alt="Technology"/> 
+				<p>Technology</p>
+			</div>
+			<div class="category">
+				<img class="category image" src="images/categories/sports.jpg" alt="Sports"/> 
+				<p>Sports</p>
+			</div>
+				<div class="category">
+				<img class="category image" src="images/categories/lifestyle.jpg" alt="Lifestyle"/> 
+				<p>Lifestyle</p>
+			</div> -->
 		</div>
 	</div>
 	
