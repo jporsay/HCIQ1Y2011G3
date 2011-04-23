@@ -1,10 +1,9 @@
 body {
-	background: #f5f5f5;
+	background: #474747 url('../images/bg.png');
 	float: left;
 	margin: 0;
 	padding: 0;
 }
-
 .header {
 	position: absolute;
 	width: 100%;
@@ -14,9 +13,8 @@ body {
 	left: 0;
 	border-bottom: #000000 solid 2px;
 }
-
 .header h1 {
-	color: #8b4513;
+	color: #90A0A0;
 	text-shadow: 0px 2px 3px #222222;
 	position: inherit;
 	left: 40%;
@@ -25,43 +23,32 @@ body {
 	font-style: oblique;
 	font-family: Helvetica, Verdana, sans-serif;
 }
-
 .header #localization {
 	position: inherit;
 	width: auto;
 	right: 1em;
 	bottom: 5px;
 }
-
 .header #localization p {
 	color: #90A0A0;
 	float: left;
 	margin-right: 0.5em;
 }
-
 .header #localization select {
 	margin-top: 1em;
 }
+.mainarea {
+	position: absolute;
+	top: 120px;
+}
+
 .header #login {
-	color: #000000;
+	color: #90A0A0;
 	border: solid 1px #000000;
-	background-color: #90A0A0;
 	padding: 2px 2px;
 	position: inherit;
 	right: 1em;
 	top: 3em;
-}
-
-.header .logintext {
-	position: relative;
-}
-
-.header .logintext #loginimg {
-	background-image: url('images/ui-icons_228ef1_256x240.png');
-	background-position: -64px -16px;
-	float: right;
-	width: 16px;
-	height: 16px;
 }
 
 .header .loginform {
@@ -81,7 +68,7 @@ body {
 
 .header .loginform input {
 	width: 10em;
-	position: inherit;	
+	position: inherit;
 	float: right;
 }
 
@@ -125,15 +112,41 @@ body {
 	height: 100px;
 	width: 100px;
 }
-
-.category.health {
+ 
+.mainarea .navbar {
+	padding: 2px;
+	height: 40px;
 	position: relative;
+	border-bottom: #000000 solid 2px;
+}
+ 
+.mainarea .navbar #breadcrumbholder {
+	position: inherit;
 }
 
-.category.sports {
+.categories {
 	position: relative;
+	width: 100%;
+	/*text-align:center;*/
 }
 
-.category.technology {
+.categories h1{
+	color: #ff0000;
+}
+
+.category {
 	position: relative;
+	text-align:center;
+	padding: 5px 45px;
+	float:left;
+}
+
+.image {
+	height: 200px;
+	width: 200px;
+}
+
+.category p {
+	color: #ff0f00;
+	font-size:18pt;
 }
