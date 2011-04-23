@@ -1,7 +1,7 @@
 .categories 
 {
 	position: relative;
-	width: 100%;
+	width: 90%;
 }
 
 .categories h1
@@ -12,11 +12,13 @@
 .category 
 {
 	position: relative;
+	width: 220px;
+	height: 250px;
+	margin: 80px;
 	text-align:center;
-	padding: 0px 70px;
 	float:left;
-	margin: 15px;
-	border:solid 1px #000000;
+	display: inline;
+	border: 1px solid #000000;
 }
 
 .image 
