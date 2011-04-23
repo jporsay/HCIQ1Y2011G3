@@ -67,7 +67,7 @@ body {
 
 .header .loginform input {
 	width: 10em;
-	position: inherit;	
+	position: inherit;
 	float: right;
 }
 
@@ -106,5 +106,19 @@ body {
 	color: #ff0f00;
 	font-size: 20;
 }
-
-
+.mainarea {
+	position: absolute;
+	top: 120px;
+	width: 100%;
+}
+ 
+.mainarea .navbar {
+	padding: 2px;
+	height: 40px;
+	position: relative;
+	border-bottom: #000000 solid 2px;
+}
+ 
+.mainarea .navbar #breadcrumbholder {
+	position: inherit;
+}
