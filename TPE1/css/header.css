@@ -73,3 +73,11 @@
 .header .loginform button {
 	margin: 5px 0 0 10px;
 }
+
+.header .logintext #loginimg {
+	background-image: url('images/ui-icons_228ef1_256x240.png');
+	background-position: -64px -16px;
+	float: right;
+	width: 16px;
+	height: 16px;
+}
