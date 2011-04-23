@@ -16,6 +16,7 @@
 	<script type="text/javascript" src="libs/jquery.easing.1.3.js"></script>
 	<script type="text/javascript" src="libs/jquery.jBreadCrumb.1.1.js"></script>
 	<script type="text/javascript" src="libs/i18n.js"></script>
+	<script type="text/javascript" src="libs/categoriesManager.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			
@@ -69,17 +70,18 @@
 		</div>
 		<div class="loginform">
 			<div>
-			<span id='usernametext' class="i18n"></span>
-			<input type="text">
+				<span id='usernametext' class="i18n"></span>
+				<input type="text">
 			</div>
 			<div>
-			<span id='passwordtext' class="i18n"></span>
-			<input type="password">
+				<span id='passwordtext' class="i18n"></span>
+				<input type="password">
 			</div>
 			<button type="button" id='loginbutton' class='i18n'></button>
 		</div>
 	</div>
 </div>
+	
 <div class="mainarea">
 	<div class="navbar">
 		<div id="breadcrumbholder" class="breadCrumbHolder breadCrumb module">
@@ -99,10 +101,10 @@
 </div>
 
 <div class="categories">
-	<h1>Categories:</h1>
+	<h1 id="categoryLabel" class="i18n">Categories:</h1>
 	<div class="category">
 		<img class="category image" src="images/categories/health.jpg" alt="Health"/> 
-		<p>Health</p>
+		<p id="health" class="i18n">Health</p>
 	</div>
 	<div class="category">
 		<img class="category image" src="images/categories/technology.jpg" alt="Technology"/> 

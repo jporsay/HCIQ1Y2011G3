@@ -100,6 +100,7 @@ body {
 	position: absolute;
 	top: 22%;
 	width: 100%;
+	/*text-align:center;*/
 }
 
 .categories h1{
@@ -109,7 +110,7 @@ body {
 .category {
 	position: relative;
 	text-align:center;
-	padding: 5px 40px;
+	padding: 5px 45px;
 	float:left;
 }
 
@@ -120,5 +121,5 @@ body {
 
 .category p {
 	color: #ff0f00;
-	font-size: 20;
+	font-size:18pt;
 }
