@@ -4,6 +4,7 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
 .header {
 	position: absolute;
 	width: 100%;
@@ -13,6 +14,7 @@ body {
 	left: 0;
 	border-bottom: #000000 solid 2px;
 }
+
 .header h1 {
 	color: #8b4513;
 	text-shadow: 0px 2px 3px #222222;
@@ -23,25 +25,23 @@ body {
 	font-style: oblique;
 	font-family: Helvetica, Verdana, sans-serif;
 }
+
 .header #localization {
 	position: inherit;
 	width: auto;
 	right: 1em;
 	bottom: 5px;
 }
+
 .header #localization p {
 	color: #90A0A0;
 	float: left;
 	margin-right: 0.5em;
 }
+
 .header #localization select {
 	margin-top: 1em;
 }
-.mainarea {
-	position: absolute;
-	top: 120px;
-}
-
 .header #login {
 	color: #000000;
 	border: solid 1px #000000;
@@ -90,4 +90,21 @@ body {
 
 .header .loginform button {
 	margin: 5px 0 0 10px;
+}
+
+.mainarea {
+	position: absolute;
+	top: 120px;
+	width: 100%;
+}
+
+.mainarea .navbar {
+	padding: 2px;
+	height: 40px;
+	position: relative;
+	border-bottom: #000000 solid 2px;
+}
+
+.mainarea .navbar #breadcrumbholder {
+	position: inherit;
 }
