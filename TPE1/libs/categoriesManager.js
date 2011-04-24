@@ -13,15 +13,19 @@ function loadCategories(element, categories) {
 		var new_cat_image = document.createElement("img");
 		new_cat_image.setAttribute("src", category.img);
 		new_cat_image.setAttribute("alt", category.id);
-		new_cat_image.setAttribute("class", "image");
 		
-		var new_cat_link = document.createElement("a");
-		new_cat_link.setAttribute("id", category.id);
-		new_cat_link.setAttribute("class", "i18n");
-		new_cat_link.setAttribute("href", "#");
+		var new_cat_desc = document.createElement("div");
+		new_cat_desc.setAttribute("class", "catdescription");
+		
+		var link = document.createElement("a");
+		link.setAttribute("id", category.id);
+		link.setAttribute("class", "i18n");
+		link.setAttribute("href","#");
+		
+		new_cat_desc.appendChild(link);
 		
 		new_category.appendChild(new_cat_image);
-		new_category.appendChild(new_cat_link);
+		new_category.appendChild(new_cat_desc);
 		elDOM.appendChild(new_category);
 	}
 }
