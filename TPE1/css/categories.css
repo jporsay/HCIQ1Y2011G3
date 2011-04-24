@@ -4,11 +4,6 @@
 	width: 90%;
 }
 
-.categories h1
-{
-	color: #ff0000;
-}
-
 .category 
 {
 	position: relative;
@@ -27,8 +22,9 @@
 	width: 200px;
 }
 
-.category p 
+.category a
 {
-	color: #ff0f00;
+	text-decoration: underline;
 	font-size:18pt;
+	line-height: 45px;
 }

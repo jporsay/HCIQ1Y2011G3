@@ -15,9 +15,10 @@ function loadCategories(element, categories) {
 		new_cat_image.setAttribute("alt", category.id);
 		new_cat_image.setAttribute("class", "image");
 		
-		var new_cat_link = document.createElement("p");
+		var new_cat_link = document.createElement("a");
 		new_cat_link.setAttribute("id", category.id);
 		new_cat_link.setAttribute("class", "i18n");
+		new_cat_link.setAttribute("href", "#");
 		
 		new_category.appendChild(new_cat_image);
 		new_category.appendChild(new_cat_link);
