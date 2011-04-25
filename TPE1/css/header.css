@@ -1,0 +1,75 @@
+.header {
+	position: absolute;
+	width: 100%;
+	height: 110px;
+	color: #222;
+	top: 0;
+	left: 0;
+	border-bottom: #000000 solid 2px;
+}
+.header h1 {
+	color: #90A0A0;
+	text-shadow: 0px 2px 3px #222222;
+	position: inherit;
+	left: 40%;
+	top: 0;
+	margin: 40px 0 0 20px;
+	font-style: oblique;
+	font-family: Helvetica, Verdana, sans-serif;
+}
+.header #localization {
+	position: inherit;
+	width: auto;
+	right: 1em;
+	bottom: 5px;
+}
+.header #localization p {
+	color: #90A0A0;
+	float: left;
+	margin-right: 0.5em;
+}
+.header #localization select {
+	margin-top: 1em;
+}
+.mainarea {
+	position: absolute;
+	top: 120px;
+}
+
+.header #login {
+	color: #90A0A0;
+	border: solid 1px #000000;
+	padding: 2px 2px;
+	position: inherit;
+	right: 1em;
+	top: 3em;
+}
+
+.header .loginform {
+	z-index: 1000;
+	color: #000000;
+	position: inherit;
+	font-size: small;
+	right: 0;
+	top: 23px;
+	margin-left: 10px;
+	background: #90A0A0;
+	border: 1px #000000 solid;
+	width: 270px;
+	height: 150px;
+	display: none;
+}
+
+.header .loginform input {
+	width: 10em;
+	position: inherit;
+	float: right;
+}
+
+.header .loginform div {
+	margin: 15px;
+}
+
+.header .loginform button {
+	margin: 5px 0 0 10px;
+}

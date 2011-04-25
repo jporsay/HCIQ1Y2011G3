@@ -1,0 +1,12 @@
+body {
+	background: #474747 url('../images/bg.png');
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+.mainarea {
+	position: absolute;
+	top: 120px;
+	width: 100%;
+}

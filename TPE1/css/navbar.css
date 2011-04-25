@@ -1,0 +1,27 @@
+.mainarea .navbar {
+	padding: 2px;
+	height: 40px;
+	position: relative;
+	border-bottom: #000000 solid 2px;
+}
+
+.mainarea .navbar #breadcrumbholder {
+	width: 50%;
+}
+
+.mainarea .navbar {
+	padding: 2px;
+	height: 40px;
+	position: relative;
+	border-bottom: #000000 solid 2px;
+}
+ 
+.mainarea .navbar #breadcrumbholder {
+	position: inherit;
+}
+
+.mainarea #searchbar {
+	position: relative;
+	top: 3px;
+	float: right;
+}
