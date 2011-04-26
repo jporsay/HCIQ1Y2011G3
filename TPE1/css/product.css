@@ -1,0 +1,51 @@
+/*classes:
+product
+	|-title
+	|-img
+	|-description
+	|-price
+	|-information
+	|-reviews
+*/
+
+row { position: relative; width: 650px; vertical-align: center; }
+.left { width: 325px; height: 235px; float: left; }
+.right { width: 325px; height: 235px; float: left; } 
+
+.product
+{
+	position: relative;
+	left: 10px;
+}
+.product.title
+{
+	font-size: 16pt;
+	top: 0px;
+}
+.product img
+{
+	float: left;
+	width: 300px;
+	height: 250px;
+	top: 250px;
+	left: 100px;
+}
+.product .description
+{	
+	float:right;
+}
+.product .price
+{
+	float:right;
+/*	top: 350px;
+	left: 350px;*/
+}
+.product .information
+{
+	top: 400px;
+	left: 100px;
+}
+
+.product .reviews
+{
+}
