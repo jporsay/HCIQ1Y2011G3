@@ -16,7 +16,8 @@
 	color: #90A0A0;
 	text-shadow: 0px 2px 3px #222222;
 	position: inherit;
-	left: 40%;
+	text-align: center;
+	width: 100%;
 	top: 0;
 	margin: 40px 0 0 20px;
 	font-style: oblique;
