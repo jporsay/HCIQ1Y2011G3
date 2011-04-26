@@ -1,22 +1,11 @@
 .mainarea .navbar {
 	padding: 2px;
 	height: 40px;
+	top: -8px;
 	position: relative;
 	border-bottom: #000000 solid 2px;
-	
 	background-image:url('images/navbg.jpg');
 	background-repeat:repeat-x;
-}
-
-.mainarea .navbar #breadcrumbholder {
-	width: 40%;
-}
-
-.mainarea .navbar {
-	padding: 2px;
-	height: 40px;
-	position: relative;
-	border-bottom: #000000 solid 2px;
 }
  
 .mainarea .navbar #breadcrumbholder {
@@ -25,7 +14,7 @@
 
 .mainarea #searchbar {
 	position: relative;
-	top: 3px;
+	top: 7px;
 	float: right;
 }
 
