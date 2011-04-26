@@ -6,6 +6,11 @@
 	top: 0;
 	left: 0;
 	border-bottom: #000000 solid 2px;
+	
+	background-image:url('images/headerbg.jpg');
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-color:#111111;
 }
 .header h1 {
 	color: #90A0A0;
@@ -37,8 +42,9 @@
 }
 
 .header #login {
-	color: #90A0A0;
-	border: solid 1px #000000;
+	color: #ffffff;
+	font-size: 15px;
+	border: solid 1px #3333cc;
 	padding: 2px 2px;
 	position: inherit;
 	right: 1em;

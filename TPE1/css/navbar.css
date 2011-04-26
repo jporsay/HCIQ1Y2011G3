@@ -3,10 +3,13 @@
 	height: 40px;
 	position: relative;
 	border-bottom: #000000 solid 2px;
+	
+	background-image:url('images/navbg.jpg');
+	background-repeat:repeat-x;
 }
 
 .mainarea .navbar #breadcrumbholder {
-	width: 50%;
+	width: 40%;
 }
 
 .mainarea .navbar {
