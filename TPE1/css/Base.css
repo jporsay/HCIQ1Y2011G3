@@ -109,6 +109,7 @@ em
 
 p
 {
+	color:#ffffff; 
 	font-size: 1em;
 	margin:2px 0 15px 0;
 	line-height:1.3em;
@@ -188,10 +189,9 @@ sup
 
 #container 
 {
-
-margin:0 auto 10px;
-text-align:left;
-width:1000px;
+	margin:0 auto 10px;
+	text-align:left;
+	width:1000px;
 }
 .breadCrumbHolder
 {
@@ -223,6 +223,11 @@ pre
 {
 	font-size:0.83333em;
 	color:#888;
+}
+
+label
+{
+	color: #ffffff;
 }
 
 
