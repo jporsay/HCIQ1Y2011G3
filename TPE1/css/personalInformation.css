@@ -1,0 +1,53 @@
+.accountsettings
+{
+	height: 400px;
+}
+
+.firstname
+{
+	position: absolute;
+	top:150px;
+	left: 100px;
+	display: inline;
+}
+
+.lastname
+{
+	position: absolute;
+	top:150px;
+	left: 400px;
+	display: inline;
+}
+
+.email
+{
+	position: absolute;
+	top:250px;
+	left: 100px;
+	display: inline;
+}
+
+.telephone
+{
+	position: absolute;
+	top:250px;
+	left: 400px;
+	display: inline;
+}
+
+.areacodeInput
+{
+	width: 50px;
+}
+.cancelButton
+{
+	position: absolute;
+	top: 350px;
+	left:100px;
+}
+.confirmButton
+{
+	position: absolute;
+	top: 350px;
+	left: 400px;
+}
