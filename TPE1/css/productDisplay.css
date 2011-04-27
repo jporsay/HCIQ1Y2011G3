@@ -7,50 +7,36 @@ product
 	|-information
 	|-reviews
 */
+
 .product
 {
-	position: relative;
-	left: 20px;
+	margin: 15px;
 }
 .product.title
 {
-	position: inherit;
-	font-size: 16pt;
-	top: 0px;
 }
 .product img
 {
-	position: inherit;
-	float: left;
+ 	position: relative;
+ 	float: left;
+ 	margin: 5px;
 	width: 300px;
 	height: 250px;
-	top: 30px;
-	left: 50px;
+	border: #000000 solid 1px;
 }
 .product .description
-{	
-	position: inherit;
-	top: 30px;
-	left: 150px;
+{
+	float: none;
+	width: 30em;
 }
 .product .price
 {
-	position: inherit;
-	top: 200px;
-	left: -570px;
 }
-.product .information
+.product .information p
 {
-	position: inherit;
-	float: left;
-	left: 50px;
-	top: 100px;
-	width: 90%;
+	width: 30em;
 }
 
 .product .reviews
 {
-	position: inherit;
-	float: left;
-	top: 300px;
 }
