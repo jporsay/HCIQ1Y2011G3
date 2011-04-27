@@ -6,7 +6,7 @@
 	top: 0;
 	left: 0;
 	border-bottom: #000000 solid 2px;
-	
+	float: right;
 	background-image:url('images/headerbg.jpg');
 	background-repeat:no-repeat;
 	background-position:center center;
@@ -15,10 +15,10 @@
 .header h1 {
 	color: #90A0A0;
 	text-shadow: 0px 2px 3px #222222;
-	position: inherit;
-	left: 40%;
+	position: absolute;
 	top: 0;
-	margin: 40px 0 0 20px;
+	text-align: center;
+	width: 100%;
 	font-style: oblique;
 	font-family: Helvetica, Verdana, sans-serif;
 }
@@ -36,10 +36,7 @@
 .header #localization select {
 	margin-top: 1em;
 }
-.mainarea {
-	position: absolute;
-	top: 120px;
-}
+
 
 .header #login {
 	color: #ffffff;
