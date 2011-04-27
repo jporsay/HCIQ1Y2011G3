@@ -5,8 +5,9 @@
 	color: #222;
 	top: 0;
 	left: 0;
+	overflow: auto;
 	border-bottom: #000000 solid 2px;
-	
+	float: right;
 	background-image:url('images/headerbg.jpg');
 	background-repeat:no-repeat;
 	background-position:center center;
@@ -15,11 +16,10 @@
 .header h1 {
 	color: #90A0A0;
 	text-shadow: 0px 2px 3px #222222;
-	position: inherit;
+	position: absolute;
+	top: 0;
 	text-align: center;
 	width: 100%;
-	top: 0;
-	margin-top: 40px;
 	font-style: oblique;
 	font-family: Helvetica, Verdana, sans-serif;
 }

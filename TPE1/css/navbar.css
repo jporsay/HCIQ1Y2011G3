@@ -1,9 +1,10 @@
 .mainarea .navbar {
 	padding: 2px;
-	height: 40px;
+	height: 44px;
 	top: -8px;
 	position: relative;
 	border-bottom: #000000 solid 2px;
+	overflow: auto;
 	background-image:url('images/navbg.jpg');
 	background-repeat:repeat-x;
 }
@@ -14,10 +15,10 @@
 
 .mainarea #searchbar {
 	position: relative;
-	top: 7px;
+	top: 10px;
 	float: right;
 }
 
 .breadCrumbPosition {
-	top: 3px;
+	top: 10px;
 }

@@ -1,10 +1,12 @@
 body {
 	margin: 0;
 	padding: 0;
+	height: 100%;
 }
 
 .mainarea {
-	position: absolute;
-	top: 120px;
+	overflow: auto;
+	position: relative;
+	top: 110px;
 	width: 100%;
 }

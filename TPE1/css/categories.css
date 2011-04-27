@@ -1,6 +1,7 @@
 .categories
 {
 	position: relative;
+	overflow: auto;
 	width: 100%;
 }
 
