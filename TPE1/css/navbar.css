@@ -1,7 +1,7 @@
-.mainarea .navbar {
+ .navbar {
 	padding: 2px;
 	height: 44px;
-	top: -8px;
+	top: 2px;
 	position: relative;
 	border-bottom: #000000 solid 2px;
 	overflow: auto;
@@ -9,11 +9,11 @@
 	background-repeat:repeat-x;
 }
  
-.mainarea .navbar #breadcrumbholder {
+ .navbar #breadcrumbholder {
 	position: inherit;
 }
 
-.mainarea #searchbar {
+ #searchbar {
 	position: relative;
 	top: 10px;
 	float: right;
@@ -22,3 +22,15 @@
 .breadCrumbPosition {
 	top: 10px;
 }
+
+.header .logintext {
+	float:right;
+}
+
+/*.header .logintext #loginimg {
+	position: relative;
+	background-image: url('images/ui-icons_228ef1_256x240.png');
+	background-position: -64px -16px;
+	width: 16px;
+	height: 16px;
+}*/
