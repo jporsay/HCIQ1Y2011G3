@@ -2,9 +2,7 @@
 function loadCategories(element, categories) {
 	//element is the ID of the category container.
 	//categories is an array of maps holding information of each category.
-	//function should be something like this... too sleepy to debug...
-	var elDOM = document.getElementById(element);
-	
+	var elDOM = document.getElementById(element);	
 	for (var i = 0; i < categories.length; ++i) {
 		var category = categories[i];
 		var new_category = document.createElement("div");
@@ -21,7 +19,6 @@ function loadCategories(element, categories) {
 		link.setAttribute("id", category.id);
 		link.setAttribute("class", "i18n");
 		link.setAttribute("href","#");
-		
 		new_cat_desc.appendChild(link);
 		
 		new_category.appendChild(new_cat_image);
