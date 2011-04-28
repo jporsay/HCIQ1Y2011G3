@@ -5,7 +5,6 @@ body {
 }
 
 .mainarea {
-	overflow: auto;
 	position: relative;
 	top: 160px;
 	width: 100%;
