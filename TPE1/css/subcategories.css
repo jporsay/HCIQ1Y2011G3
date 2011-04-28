@@ -1,0 +1,35 @@
+.subcategoriescontainer {
+	height: 600px;
+}
+
+.subcategory {
+	position: relative;
+	height: 200px;
+	width: 200px;
+	border: 4px double #ffff00;
+	float: left;
+	text-align: center;
+	margin: 50px;
+	margin-bottom: 10px;
+	background-color: #a2a2a2;
+}
+
+.subcategorytitle {
+	font-size: 22px;
+	color: #000000;
+}
+
+.subcategory a {
+	display: block;
+	font-size: 15px;
+	width: inherit;
+	color: #ffffff;
+}
+
+.subsubcategoriescontainer {
+	position: relative;
+	text-align: left;
+	height: auto;
+	width: inherit;
+	top: 10px;
+}
