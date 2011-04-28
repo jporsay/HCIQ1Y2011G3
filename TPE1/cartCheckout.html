@@ -21,16 +21,16 @@
 			loadCssFiles([
 				"css/style.css",
 				"css/navbar.css",
-				"css/categories.css",
 				"css/header.css",
 				"css/jquery-ui-1.8.11.custom.css",
 				"css/Base.css",
 				"css/BreadCrumb.css",
-				"css/personalInformation.css",
+				"css/checkout.css",
 				"css/footer.css"
 			]);
 			
 		$(function() {
+			
 			$("#breadcrumb").jBreadCrumb();
 			
 			var translator = new i18n('Index');
@@ -77,8 +77,8 @@
 	</div>
 	<div id="login">
 		<div class="logintext">
-			<span id="logintext" class="i18n"></span>
 			<div id="loginimg"></div>
+			<span id="logintext" class="i18n"></span>
 		</div>
 		<div class="loginform">
 			<div>
@@ -97,6 +97,7 @@
 			<ul id="breadcrumb">
 				<li><a href="#">Home</a></li>
 				<li><a href="#">Settings</a></li>
+				<li><a href="#">Checkout</a></li>
 			</ul>
 		</div>
 		<div id="searchbar">
@@ -107,35 +108,29 @@
 </div>
 	
 <div class="mainarea">
-	<div class='accountsettings'>
-		<h1>Account Settings:</h1>
-		<h2>Personal Information:</h2>
-
-		<div class='firstname'>
+	<div class="inputfieldscontainer">
+		<h1>Cart Checkout</h1>
+		<h2>Please enter the required information in order to complete your quest</h2>
+		<div class='firstnameinput'>
 			<label for="firstname">First Name:</label><br/>
 			<input type="text" name="firstname" />
 		</div>
-		<div class='lastname'>
-			<label for="lastname">Last Name:</label><br/>
-			<input type="text" name="lastname" />
-		</div> 
-
-		<div class='email'>
-			<label for="email">Email Address:</label><br/>
-			<input type="text" name="email" />
-		</div> 
-		<div class='telephone'>
-			<label for='areacode'>Telephone:</label><br/>
-			<input class='areacodeinput' type="text" name="areacode" />
-			<input class='phonenumberinput' type="text" name="phonenumber" />
+		<div class='lastnameinput'>
+			<label for="firstname">Last Name:</label><br/>
+			<input type="text" name="firstname" />
+		</div>
+		<div class='addressinput'>
+			<label for="firstname">Address:</label><br/>
+			<input type="text" name="firstname" />
 		</div>
 		<button class='cancelButton'>Cancel</button>;
-		<button class='confirmButton'>Confirm</button>;
+		<button class='nextButton'>Next ></button>;
 	</div>
-	<div class ="footer">
-		<a id="usLabel" class="i18n" href="#"/></a> | <a id="contactLabel" class="i18n" href="#"></a>
-	</div>
+<div class ="footer">
+	<a id="usLabel" class="i18n" href="#"></a> | <a id="contactLabel" class="i18n" href="#"></a>
 </div>
+</div>
+
 
 </body>
 </html>
