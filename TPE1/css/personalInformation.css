@@ -1,52 +1,45 @@
-.accountsettings
-{
+.accountsettings {
 	height: 400px;
 }
-.firstname
-{
+
+.firstname {
 	position: absolute;
 	top:150px;
 	left: 100px;
 	display: inline;
 }
-.lastname
-{
+
+.lastname {
 	position: absolute;
 	top:150px;
 	left: 400px;
 	display: inline;
 }
-.email
-{
+.email {
 	position: absolute;
 	top:250px;
 	left: 100px;
 	display: inline;
 }
 
-.telephone
-{
+.telephone {
 	position: absolute;
 	top:250px;
 	left: 400px;
 	display: inline;
 }
-.areacodeinput
-{
+.areacodeinput {
 	width: 50px;
 }
-.phonenumberinput
-{
+.phonenumberinput {
 	width: 140px;
 }
-.cancelButton
-{
+.cancelButton {
 	position: absolute;
 	top: 350px;
 	left:100px;
 }
-.confirmButton
-{
+.confirmButton {
 	position: absolute;
 	top: 350px;
 	left: 400px;
