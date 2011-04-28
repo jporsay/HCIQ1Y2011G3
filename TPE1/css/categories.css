@@ -7,16 +7,14 @@
 
 .category
 {
-	margin-bottom: 50px;
+	margin: 40px;
 	margin-top: 20px;
-	margin-right: 50px;
-	margin-left: 50px;
-	border: 1px solid #A0ACC0;
-	height: auto;
+	border: 4px double #ffff00;
 	float: left;
 	text-align: center;
 	width: 220px;
 	height: 250px;
+	background-color: #a2a2a2;
 }
 
 .category img
@@ -27,11 +25,14 @@
 	width: 200px;
 	height: 190px;
 }
-
 .catdescription
 {
-	font-weight: normal;
-	margin: 0 3px 3px 3px;
+	margin: 5px;
+}
+
+.catdescription a
+{
+	color: #ffffff;
 	font-size:18pt;
-	text-decoration: underline;
+	font-weight: normal;
 }
