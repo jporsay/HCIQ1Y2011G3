@@ -1,0 +1,37 @@
+.inputfieldscontainer {
+	position: relative;
+	height: 400px;
+}
+
+.firstnameinput {
+	position: relative;	
+	top: 30px;
+	left: 30px;
+	width: auto;
+}
+
+.lastnameinput {
+	position: relative;	
+	top: 50px;
+	left: 30px;
+	width: auto;
+}
+
+.addressinput {
+	position: relative;	
+	top: 70px;
+	left: 30px;
+	width: auto;
+}
+
+.cancelButton {
+	position: relative;
+	top: 130px;
+	left: 30px;
+}
+
+.nextButton {
+	position: relative;
+	top: 130px;
+	left: 100px;
+}

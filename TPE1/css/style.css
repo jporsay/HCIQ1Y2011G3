@@ -1,12 +1,11 @@
 body {
-	background: #474747 url('../images/bg.png');
-	float: left;
 	margin: 0;
 	padding: 0;
+	height: 100%;
 }
 
 .mainarea {
-	position: absolute;
-	top: 120px;
+	position: relative;
+	top: 160px;
 	width: 100%;
 }

@@ -35,7 +35,7 @@ html, body
 	font-style: normal;
 	font-variant: normal;
 	font-weight: normal;
-	background:#f3f3f3;
+	background-color:#444444;
 }
 
 html > body
@@ -47,38 +47,35 @@ html > body
 
 h1
 {
-	font-weight: bold;
-	color: #007ac3;
-	font-size: 2em;
-	line-height: 1em;
-	margin: 1.25em 0 .75em 0;
+	font-size:3.4em;
+	padding-top:20px;
+	color:#ffffff;
+	letter-spacing:3px;
+	font-weight:normal;
 }
 
-h2
+h2 
 {
-	color: #1371aa;
-	font-weight: bold;
-	font-size: 1.6666em;
-	line-height: 1em;
-	margin: 1.25em 0 .75em 0;
+	color:#5580B4;
+	background-color:#343434;
+	display:inline;
+	padding:0 5px;
+	margin:5px 0;
 }
 
-h3
+h3 
 {
-	color: #1371aa;
-	font-size: 1.41667em;
-	line-height: 1em;
-	font-weight: bold;
-	margin: 1.25em 0 .75em 0;
+	font-size:1.3em;
+	font-weight:normal;
+	color:#5580B4;
 }
 
-h4
+h4 
 {
-	color: #000;
-	font-size: 1.1667em;
-	line-height: 1em;
-	font-weight: bold;
-	margin: 1.25em 0 .5em 0;
+	background-color:#333333;
+	border-bottom:1px solid #222222;
+	padding:5px;
+	color:#202020;
 }
 
 h5
@@ -112,9 +109,11 @@ em
 
 p
 {
+	color:#ffffff; 
 	font-size: 1em;
-	line-height: 1.75em;
-	margin: .25em 0 1.5em;
+	margin:2px 0 15px 0;
+	line-height:1.3em;
+	color: #ffffff
 }
 td, td a, th, th a, span
 {
@@ -191,10 +190,9 @@ sup
 
 #container 
 {
-
-margin:0 auto 10px;
-text-align:left;
-width:1000px;
+	margin:0 auto 10px;
+	text-align:left;
+	width:1000px;
 }
 .breadCrumbHolder
 {
@@ -226,6 +224,11 @@ pre
 {
 	font-size:0.83333em;
 	color:#888;
+}
+
+label
+{
+	color: #ffffff;
 }
 
 

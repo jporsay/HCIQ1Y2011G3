@@ -1,0 +1,43 @@
+.productContainer {
+	height: 1000px;
+	margin: 15px;
+}
+.productContainer .title {
+	position: absolute;
+	font-size: x-large;
+	top: 40px;
+	left: 60px;
+}
+.productContainer img {
+ 	position: absolute;
+ 	top: 100px;
+ 	left: 50px;
+	width: 330px;
+	height: 270px;
+	border: #000000 solid 1px;
+}
+.productContainer .description {
+	left: 400px;
+	top: 100px;
+	font-size: larger;
+	position: absolute;
+	width: 30em;
+}
+.productContainer .price {
+	position: absolute;
+	left: 400px;
+	top: 250px;
+	font-size: large;
+	float: right;
+}
+
+.productContainer .price p {
+	display: inline;
+	position: absolute;
+}
+
+.productContainer .extrainformation {
+	position: absolute;
+	top: 390px;
+	left: 50px;
+}
