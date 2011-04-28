@@ -1,10 +1,9 @@
 .items {
 	position: relative;
-	overflow: auto;
 }
 
 .item {
-	margin-top: 20px;
+		margin-top: 20px;
 		width: 800px;
 		height: 165px;
 		border-bottom: #222222 solid 1px;
@@ -56,16 +55,17 @@
 
 .item #status {
 	position: relative;
+	font-weight: bold;
 }
 
 .addtocart {
-	color: #116611;
+	color: #11ee11;
 	font-weight: bold;
 	font-size: medium;
 }
 
 .removefromcart {
-	color: #AA1111;
+	color: #ee1111;
 	font-weight: bold;
 	font-size: medium;
 }
