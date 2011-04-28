@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script type="text/javascript" src="libs/init.js"></script>
+	<script type="text/javascript" src="libs/jquery-1.5.1.min.js"></script>
+	<script type="text/javascript">
+		
+			loadJsFiles([
+				"libs/jquery.easing.1.3.js",
+				"libs/jquery.jBreadCrumb.1.1.js",
+				"libs/cookieManager.js",
+				"libs/jquery-ui-1.8.11.custom.min.js",
+				"libs/jquery.ui.datepicker-es.js",
+				"libs/jquery.i18n.properties-min.js",
+				"libs/i18n.js"
+			]);
+			
+			loadCssFiles([
+				"css/style.css",
+				"css/navbar.css",
+				"css/header.css",
+				"css/jquery-ui-1.8.11.custom.css",
+				"css/Base.css",
+				"css/BreadCrumb.css",
+				"css/footer.css",
+				"css/browse.css"
+			]);
+			
+		$(function() {
+			
+			$("#breadcrumb").jBreadCrumb();
+			
+			var translator = new i18n('Index');
+			document.getElementById('locale').value = translator.getLang();
+			translator.translatePage();
+			
+			$(document).keydown(function(e) {
+				if (e.keyCode == 27) {
+					if ($('.loginform').is(':visible') === true) {
+						$('.loginform').hide();
+					}
+				}
+			});
+			
+			$('.logintext').click(function() {
+				if ($('.loginform').is(':visible') === false) {
+					$('#loginimg').css("background-position", "0 -16px");
+				} else {
+					$('#loginimg').css("background-position", "-64px -16px");
+				}
+				$('.loginform').slideToggle();
+			});
+			
+			$('#date').datepicker();
+			$("#locale").change(function() {
+				translator.setLang($(this).val());
+				translator.translatePage();
+			});
+			
+		});
+	</script>
+	
+	<title>Carritus Co.</title>
+</head>
+<body>
+<div class="header">
+	<img src="images/cooltext530131064.png" alt="Company Logo" width="276" height="110">
+	<h1 id='header'>Happy Business</h1>
+	<div id="localization">
+		<select id='locale'>
+			<option value="es" selected="selected" class="ui-widget">Espa&ntilde;ol</option>
+			<option value="en">English</option>
+		</select>
+	</div>
+	<div id="login">
+		<div class="logintext">
+			<div id="loginimg"></div>
+			<span id="logintext" class="i18n"></span>
+		</div>
+		<div class="loginform">
+			<div>
+				<span id='usernametext' class="i18n"></span>
+				<input type="text">
+			</div>
+			<div>
+				<span id='passwordtext' class="i18n"></span>
+				<input type="password">
+			</div>
+			<button type="button" id='loginbutton' class='i18n'></button>
+		</div>
+	</div>
+	<div class="navbar">
+		<div id="breadcrumbholder" class="breadCrumbHolder breadCrumbPosition breadCrumb module">
+			<ul id="breadcrumb">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Test</a></li>
+				<li><a href="#">Test2</a></li>
+			</ul>
+		</div>
+		<div id="searchbar">
+			<!-- stop complaining about the placeholder property!!-->
+			<input id="searchtext" class="i18n" placeholder="">
+			<button class="ui-widget">Go</button>
+		</div>
+	</div>
+</div>
+	
+<div class="mainarea">
+	<div class="items">
+		<!-- Item 1 -->
+		<div class="item">
+			<a id="itemlink" href="#">Zenith Riva</a>
+			<img id="miniimage" src="images/products/zenith_riva.jpg" alt="zenith riva" />
+			<p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis ante leo. Duis tincidunt ultrices neque ac hendrerit. Mauris lacinia metus in enim cursus molestie. Quisque luctus blandit massa eget consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et.</p>
+			<div class="extraiteminfo">
+				<p id="price">$500,00</p>
+				<p id="sold">Sold: <span id="ammountsold">5</span></p>
+				<p id="status">New Item</p>
+				<a id="incart" class="removefromcart" href="#">&clubs; remove from cart</a>
+			</div>
+		</div>
+		<!-- Item 2-->
+		<div class="item">
+			<a id="itemlink" href="#">Zenith Riva</a>
+			<img id="miniimage" src="images/products/zenith_riva.jpg" alt="zenith riva" />
+			<p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis ante leo. Duis tincidunt ultrices neque ac hendrerit. Mauris lacinia metus in enim cursus molestie. Quisque luctus blandit massa eget consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et.</p>
+			<div class="extraiteminfo">
+				<p id="price">$500,00</p>
+				<p id="sold">Sold: <span id="ammountsold">5</span></p>
+				<p id="status">New Item</p>
+				<a id="incart" class="addtocart" href="#">&clubs; add to cart</a>
+			</div>
+		</div>
+		<!-- Item 3 -->
+		<div class="item">
+			<a id="itemlink" href="#">Zenith Riva</a>
+			<img id="miniimage" src="images/products/zenith_riva.jpg" alt="zenith riva" />
+			<p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis ante leo. Duis tincidunt ultrices neque ac hendrerit. Mauris lacinia metus in enim cursus molestie. Quisque luctus blandit massa eget consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et.</p>
+			<div class="extraiteminfo">
+				<p id="price">$500,00</p>
+				<p id="sold">Sold: <span id="ammountsold">5</span></p>
+				<p id="status">New Item</p>
+				<a id="incart" class="addtocart" href="#">&clubs; add to cart</a>
+			</div>
+		</div>
+		<!-- Item 4 -->
+		<div class="item">
+			<a id="itemlink" href="#">Zenith Riva</a>
+			<img id="miniimage" src="images/products/zenith_riva.jpg" alt="zenith riva" />
+			<p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis ante leo. Duis tincidunt ultrices neque ac hendrerit. Mauris lacinia metus in enim cursus molestie. Quisque luctus blandit massa eget consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et.</p>
+			<div class="extraiteminfo">
+				<p id="price">$500,00</p>
+				<p id="sold">Sold: <span id="ammountsold">5</span></p>
+				<p id="status">New Item</p>
+				<a id="incart" class="addtocart" href="#">&clubs; add to cart</a>
+			</div>
+		</div>
+		
+		<!-- Item 5 -->
+		<div class="item">
+			<a id="itemlink" href="#">Zenith Riva</a>
+			<img id="miniimage" src="images/products/zenith_riva.jpg" alt="zenith riva" />
+			<p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis ante leo. Duis tincidunt ultrices neque ac hendrerit. Mauris lacinia metus in enim cursus molestie. Quisque luctus blandit massa eget consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et.</p>
+			<div class="extraiteminfo">
+				<p id="price">$500,00</p>
+				<p id="sold">Sold: <span id="ammountsold">5</span></p>
+				<p id="status">New Item</p>
+				<a id="incart" class="addtocart" href="#">&clubs; add to cart</a>
+			</div>
+		</div>
+	</div>
+<div class ="footer">
+	<a id="usLabel" class="i18n" href="#"></a> | <a id="contactLabel" class="i18n" href="#"></a>
+</div>
+</div>
+
+
+</body>
+</html>
