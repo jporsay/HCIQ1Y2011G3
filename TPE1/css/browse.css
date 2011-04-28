@@ -1,0 +1,71 @@
+.items {
+	position: relative;
+	overflow: auto;
+}
+
+.item {
+	margin-top: 20px;
+		width: 800px;
+		height: 165px;
+		border-bottom: #222222 solid 1px;
+}
+
+.item #itemlink {
+	position: relative;
+	background-color:#333333;
+	font-size: larger;
+	width: 400px;
+	top:  -90px;
+	border-bottom:1px solid #222222;
+	padding:5px;
+	color: #B8B8B8;
+}
+
+.item #description {
+	position: relative;
+	font-size: 1.1em;
+	top: -60px;
+	left: 130px;
+	width: 35em;
+}
+
+.item #miniimage {
+	position: relative;
+	top: 40px;
+	left: -75px;
+	width: 110px;
+	height: 110px;
+}
+
+.extraiteminfo {
+	position: relative;
+	width: 160px;
+	left: 650px;
+	top: -160px;
+}
+
+.item #price {
+	position: relative;
+	font-weight: bold;
+	font-size: medium;
+}
+
+.item #sold {
+	position: relative;
+}
+
+.item #status {
+	position: relative;
+}
+
+.addtocart {
+	color: #116611;
+	font-weight: bold;
+	font-size: medium;
+}
+
+.removefromcart {
+	color: #AA1111;
+	font-weight: bold;
+	font-size: medium;
+}
