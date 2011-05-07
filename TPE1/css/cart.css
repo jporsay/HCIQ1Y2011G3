@@ -1,7 +1,6 @@
 .cart {
-	/*position: absolute;*/
+	height: 800px;
 	float: right;
-	height: 600px;
 	width: 24%;
 	left: 75.9%;
 	display: block;
@@ -55,16 +54,17 @@
 }
 
 .selector {
-	position: relative;
-	display: inline;
 	float: right;
+	width: auto;
 }
 
 .selector span {
 	display: table-cell;
+	width: 40px;
 	font-size: 15px;
 	color: #000000;
 	border: 1px solid #000000;
+	text-align: center;
 }
 
 .selector .arrows {
@@ -80,4 +80,32 @@
 	margin-top: 2px;
 	margin-left: 2px;
 	margin-right: 5px;
+}
+
+.cartFooter {
+	height: 30px; 
+	width: 100%;
+	top: 500px;
+	text-align: center;
+	border-top: 3px groove #555555;
+	padding-top: 5px;
+}
+
+.cartFooter .label {
+	font: bold 16px Arial;
+	float: left;
+	width: 30%;
+}
+
+.cartFooter #price {
+	font: bold 16px Arial;
+	float: left;
+	width: auto;
+}
+
+.cartFooter a {
+	float: right;
+	width: 30%;
+	text-align: left;
+	font-size: 17px;
 }
