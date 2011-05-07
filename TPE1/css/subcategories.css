@@ -1,9 +1,8 @@
 .subcategoriescontainer {
-	height: 600px;
+	height: 800px;
 }
 
 .subcategory {
-	position: relative;
 	height: 200px;
 	width: 200px;
 	border: 4px double #ffff00;
@@ -11,7 +10,7 @@
 	text-align: center;
 	margin: 50px;
 	margin-bottom: 10px;
-	background-color: #a2a2a2;
+	background-color: #aaaaaa;
 }
 
 .subcategorytitle {
@@ -23,10 +22,9 @@
 	display: block;
 	font-size: 15px;
 	width: inherit;
-	color: #ffffff;
 }
 
-.subsubcategoriescontainer {
+.subcategorieslinks {
 	position: relative;
 	text-align: left;
 	height: auto;
