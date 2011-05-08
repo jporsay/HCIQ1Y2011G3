@@ -8,10 +8,12 @@ function Cart()
 	}
 }
 
-function CartItem(info, href, quantity) {
-	this.quantity = quantity;
-	this.info = info;
+function CartItem(name, href, id, price) {
+	this.quantity = '1';
+	this.name = name;
 	this.href = href;
+	this.id = id;
+	this.price = price;
 }
 
 Cart.prototype.addItems = function(items) {
@@ -20,11 +22,95 @@ Cart.prototype.addItems = function(items) {
 }
 
 Cart.prototype.update = function() {
-	var cart_item_list = document.getElementById('cartIetmsList').getElementsByTagName('ul')[0];
+	var cart_item_list = document.getElementById('cartItemsList');
 	for (var i=0; i < this.items.length; i++) {
 		addToCart(this.items[i], cart_item_list);
 	}
 }
+
+/*example:
+<li>
+	<input type="image" name='image' src='images/cart/x3.jpg'></input>
+	<a href='#'>Bicicleta 1</a>
+	<div class='selector'>
+		...
+	</div>
+</li>
+*/
+function addToCart(cartItem, list) {
+	var item = document.createElement("li");
+	var item_remover = document.createElement("input");
+		item_remover.setAttribute("type", 'image');
+		item_remover.setAttribute("name", 'image');
+		item_remover.setAttribute("src", 'images/cart/x3.jpg');
+	
+	var item_information = document.createElement("div");
+		item_information.setAttribute('class', 'itemInformation');
+	var item_link = document.createElement("a");
+		item_link.setAttribute("href", cartItem.href);
+		item_link.innerHTML = cartItem.name;
+	var item_priceInfo = createItemPriceDiv(cartItem);
+	var item_selector = createSelector((cartItem.quantity));
+	
+	item.appendChild(item_remover);
+	item_information.appendChild(item_link);
+	item_information.appendChild(item_priceInfo);
+	item.appendChild(item_information);
+	item.appendChild(item_selector);
+	list.appendChild(item);
+}
+
+function createItemPriceDiv(cartItem) {
+	var information_price = document.createElement('div');
+		information_price.setAttribute('class','cartItemPrice');
+	var information_price_currency = document.createElement('span');
+		information_price_currency.setAttribute('class', 'currency');
+		information_price_currency.innerHTML = '$';
+	var information_price_number = document.createElement('span');
+		information_price_number.setAttribute('class', 'number');
+		information_price_number.innerHTML = cartItem.price;
+		
+	information_price.appendChild(information_price_currency);
+	information_price.appendChild(information_price_number);
+	return information_price;
+}
+
+/*example:
+<div class='selector'>
+	<span>569</span>
+	<div class='arrows'>
+		<input type='image' name='image' src='images/cart/upArrow.jpg'></input>
+		<input type='image' name='image' src='images/cart/downArrow.jpg'></input>
+	</div>
+</div>
+*/
+function createSelector(inititalQuantity) {
+	var selector = document.createElement("div");
+		selector.setAttribute('class','selector');
+		
+	var selector_text = document.createElement("span");
+		selector_text.innerHTML = inititalQuantity;
+		
+	var selector_arrows = document.createElement("div");
+		selector_arrows.setAttribute('class','arrows');
+		
+	var selector_arrowUp = document.createElement("input");
+		selector_arrowUp.setAttribute('type','image');
+		selector_arrowUp.setAttribute('name','image');
+		selector_arrowUp.setAttribute('src','images/cart/upArrow.jpg');
+	var selector_arrowDown = document.createElement("input");
+		selector_arrowDown.setAttribute('type','image');
+		selector_arrowDown.setAttribute('name','image');
+		selector_arrowDown.setAttribute('src','images/cart/downArrow.jpg');
+		
+	selector_arrows.appendChild(selector_arrowUp);
+	selector_arrows.appendChild(selector_arrowDown);
+	
+	selector.appendChild(selector_text);
+	selector.appendChild(selector_arrows);
+	return selector;
+}
+
 /*example
 <div class='cart'>
 	<div class='cartTitle'>
@@ -84,8 +170,8 @@ function createCartTitle() {
 function createCartList() {
 	var cart_list_container = document.createElement('div');
 		cart_list_container.setAttribute('class', 'cartItems');
-		cart_list_container.setAttribute('id', 'cartItemsList');
 	var cart_list = document.createElement('ul');
+		cart_list.setAttribute('id', 'cartItemsList');
 	
 	cart_list_container.appendChild(cart_list);
 	return cart_list_container;
@@ -107,7 +193,6 @@ function createCartFooter() {
 		foter_label.innerHTML = 'Total:'
 	var foter_currency_label = document.createElement('span');
 		foter_currency_label.setAttribute('class', 'currency');
-		foter_currency_label.setAttribute('class', 'currency');
 	var foter_number_label = document.createElement('span');
 		foter_number_label.setAttribute('id', 'cartTotalPrice');
 	var footer_checkout = document.createElement('a');
@@ -120,67 +205,3 @@ function createCartFooter() {
 	footer.appendChild(footer_checkout);
 	return footer;
 }
-
-
-/*example:
-<li>
-	<input type="image" name='image' src='images/cart/x3.jpg'></input>
-	<a href='#'>Bicicleta 1</a>
-	<div class='selector'>
-		...
-	</div>
-</li>
-*/
-function addToCart(itemData, list) {
-	var item = document.createElement("li");
-	var item_remove = document.createElement("input");
-		item_remove.setAttribute("type", 'image');
-		item_remove.setAttribute("name", 'image');
-		item_remove.setAttribute("src", 'images/cart/x3.jpg');
-	var item_link = document.createElement("a");
-		item_link.setAttribute("href", itemData.ref);
-		item_link.innerHTML = itemData.text;
-	var item_selector = createSelector(itemData.quantity);
-	
-	item.appendChild(item_remove);
-	item.appendChild(item_link);
-	item.appendChild(item_selector);
-	list.appendChild(item);
-}
-
-/*example:
-<div class='selector'>
-	<span>569</span>
-	<div class='arrows'>
-		<input type='image' name='image' src='images/cart/upArrow.jpg'></input>
-		<input type='image' name='image' src='images/cart/downArrow.jpg'></input>
-	</div>
-</div>
-*/
-function createSelector(inititalQuantity) {
-	var selector = document.createElement("div");
-		selector.setAttribute('class','selector');
-		
-	var selector_text = document.createElement("span");
-		selector_text.innerHTML = inititalQuantity;
-		
-	var selector_arrows = document.createElement("div");
-		selector_arrows.setAttribute('class','arrows');
-		
-	var selector_arrowUp = document.createElement("input");
-		selector_arrowUp.setAttribute('type','image');
-		selector_arrowUp.setAttribute('name','image');
-		selector_arrowUp.setAttribute('src','images/cart/upArrow.jpg');
-	var selector_arrowDown = document.createElement("input");
-		selector_arrowDown.setAttribute('type','image');
-		selector_arrowDown.setAttribute('name','image');
-		selector_arrowDown.setAttribute('src','images/cart/downArrow.jpg');
-		
-	selector_arrows.appendChild(selector_arrowUp);
-	selector_arrows.appendChild(selector_arrowDown);
-	
-	selector.appendChild(selector_text);
-	selector.appendChild(selector_arrows);
-	return selector;
-}
-
