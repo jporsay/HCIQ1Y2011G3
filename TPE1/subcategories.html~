@@ -118,7 +118,7 @@
 		</div>
 		<div class="mainarea">
 
-			<div class='cart' id='cart'>
+			<div class='cart'>
 <!--				<div class='cartTitle'>
 					<div class='verticalSpacer'></div>
 					<input type="image" name="image" src="images/cart/rightArrow.jpg"></input>
