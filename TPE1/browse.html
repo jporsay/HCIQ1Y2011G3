@@ -9,24 +9,26 @@
 	<script type="text/javascript">
 		
 			loadJsFiles([
-				"libs/jquery.easing.1.3.js",
-				"libs/jquery.jBreadCrumb.1.1.js",
-				"libs/cookieManager.js",
-				"libs/jquery-ui-1.8.11.custom.min.js",
-				"libs/jquery.ui.datepicker-es.js",
-				"libs/jquery.i18n.properties-min.js",
-				"libs/i18n.js"
+				"libs/jquery.easing.1.3",
+				"libs/jquery.jBreadCrumb.1.1",
+				"libs/cookieManager",
+				"libs/jquery-ui-1.8.11.custom.min",
+				"libs/jquery.ui.datepicker-es",
+				"libs/jquery.i18n.properties-min",
+				"libs/i18n",
+				"libs/ServerManager",
+				"libs/itemManager"
 			]);
 			
 			loadCssFiles([
-				"css/style.css",
-				"css/navbar.css",
-				"css/header.css",
-				"css/jquery-ui-1.8.11.custom.css",
-				"css/Base.css",
-				"css/BreadCrumb.css",
-				"css/footer.css",
-				"css/browse.css"
+				"css/style",
+				"css/navbar",
+				"css/header",
+				"css/jquery-ui-1.8.11.custom",
+				"css/Base",
+				"css/BreadCrumb",
+				"css/footer",
+				"css/browse"
 			]);
 			
 		$(function() {
@@ -59,6 +61,7 @@
 				translator.setLang($(this).val());
 				translator.translatePage();
 			});
+			getItems(1, 7, 2);
 			
 		});
 	</script>
@@ -101,7 +104,6 @@
 			</ul>
 		</div>
 		<div id="searchbar">
-			<!-- stop complaining about the placeholder property!!-->
 			<input id="searchtext" class="i18n" placeholder="">
 			<button class="ui-widget">Go</button>
 		</div>
@@ -110,67 +112,7 @@
 	
 <div class="mainarea">
 	<div class="items">
-		<!-- Item 1 -->
-		<div class="item">
-			<a id="itemlink" href="#">Zenith Riva</a>
-			<img id="miniimage" src="images/products/zenith_riva.jpg" alt="zenith riva" />
-			<p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis ante leo. Duis tincidunt ultrices neque ac hendrerit. Mauris lacinia metus in enim cursus molestie. Quisque luctus blandit massa eget consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et.</p>
-			<div class="extraiteminfo">
-				<p id="price">$500,00</p>
-				<p id="sold">Sold: <span id="ammountsold">5</span></p>
-				<p id="status">New Item</p>
-				<a id="incart" class="removefromcart" href="#">&clubs; remove from cart</a>
-			</div>
-		</div>
-		<!-- Item 2-->
-		<div class="item">
-			<a id="itemlink" href="#">Zenith Riva</a>
-			<img id="miniimage" src="images/products/zenith_riva.jpg" alt="zenith riva" />
-			<p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis ante leo. Duis tincidunt ultrices neque ac hendrerit. Mauris lacinia metus in enim cursus molestie. Quisque luctus blandit massa eget consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et.</p>
-			<div class="extraiteminfo">
-				<p id="price">$500,00</p>
-				<p id="sold">Sold: <span id="ammountsold">5</span></p>
-				<p id="status">New Item</p>
-				<a id="incart" class="addtocart" href="#">&clubs; add to cart</a>
-			</div>
-		</div>
-		<!-- Item 3 -->
-		<div class="item">
-			<a id="itemlink" href="#">Zenith Riva</a>
-			<img id="miniimage" src="images/products/zenith_riva.jpg" alt="zenith riva" />
-			<p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis ante leo. Duis tincidunt ultrices neque ac hendrerit. Mauris lacinia metus in enim cursus molestie. Quisque luctus blandit massa eget consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et.</p>
-			<div class="extraiteminfo">
-				<p id="price">$500,00</p>
-				<p id="sold">Sold: <span id="ammountsold">5</span></p>
-				<p id="status">New Item</p>
-				<a id="incart" class="addtocart" href="#">&clubs; add to cart</a>
-			</div>
-		</div>
-		<!-- Item 4 -->
-		<div class="item">
-			<a id="itemlink" href="#">Zenith Riva</a>
-			<img id="miniimage" src="images/products/zenith_riva.jpg" alt="zenith riva" />
-			<p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis ante leo. Duis tincidunt ultrices neque ac hendrerit. Mauris lacinia metus in enim cursus molestie. Quisque luctus blandit massa eget consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et.</p>
-			<div class="extraiteminfo">
-				<p id="price">$500,00</p>
-				<p id="sold">Sold: <span id="ammountsold">5</span></p>
-				<p id="status">New Item</p>
-				<a id="incart" class="addtocart" href="#">&clubs; add to cart</a>
-			</div>
-		</div>
 		
-		<!-- Item 5 -->
-		<div class="item">
-			<a id="itemlink" href="#">Zenith Riva</a>
-			<img id="miniimage" src="images/products/zenith_riva.jpg" alt="zenith riva" />
-			<p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis ante leo. Duis tincidunt ultrices neque ac hendrerit. Mauris lacinia metus in enim cursus molestie. Quisque luctus blandit massa eget consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et.</p>
-			<div class="extraiteminfo">
-				<p id="price">$500,00</p>
-				<p id="sold">Sold: <span id="ammountsold">5</span></p>
-				<p id="status">New Item</p>
-				<a id="incart" class="addtocart" href="#">&clubs; add to cart</a>
-			</div>
-		</div>
 	</div>
 <div class ="footer">
 	<a id="usLabel" class="i18n" href="#"></a> | <a id="contactLabel" class="i18n" href="#"></a>
