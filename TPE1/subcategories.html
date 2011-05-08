@@ -68,9 +68,9 @@
 					new CartItem('Bicicle 3', "#", '3', '240.99'),
 				];
 				cart = Cart.getInstance();
-				cart.load();
-				cart.addItems(items);
-				cart.update();
+				//cart.load();
+				//cart.addItems(items);
+				//cart.update();
 				//Finish loading items
 			});
 		</script>
@@ -119,7 +119,95 @@
 		</div>
 		<div class="mainarea">
 
-			<div class='cart' id='cart'></div>
+			<div id="cart" class="cart">
+				<div class="cartTitle">
+					<div class="verticalSpacer"></div>
+					<input type="image" name="image" src="images/cart/rightArrow.jpg">
+					<span>Cart Items:</span>
+				</div>
+				<div class="cartItems">
+					<table id="cartItemsList">
+						<colgroup>
+							<col class="first">
+							<col class="second">
+							<col class="third">
+							<col class="fourth">
+						</colgroup>
+						<tbody>
+							<tr class="row">
+								<td>
+									<input class="itemRemover" type="image" name='image' src='images/cart/x3.jpg'></input>
+								</td>
+								<td>
+									<a href='#'>dsadasdssa</a>
+								</td>
+								<td>
+									<span class='currency'>$</span>
+									<span class='number'>560.60</span>
+								</td>
+								<td>
+									<div class='selector'>
+										<span>569</span>
+										<div class='arrows'>
+											<input type='image' name='image' src='images/cart/upArrow.jpg'></input>
+											<input type='image' name='image' src='images/cart/downArrow.jpg'></input>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr class="row">
+								<td>
+									<input class="itemRemover" type="image" name='image' src='images/cart/x3.jpg'></input>
+								</td>
+								<td>
+									<a href='#'>Bdsa</a>
+								</td>
+								<td>
+									<span class='currency'>$</span>
+									<span class='number'>560.60</span>
+								</td>
+								<td>
+									<div class='selector'>
+										<span>569</span>
+										<div class='arrows'>
+											<input type='image' name='image' src='images/cart/upArrow.jpg'></input>
+											<input type='image' name='image' src='images/cart/downArrow.jpg'></input>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr class="row">
+								<td>
+									<input class="itemRemover" type="image" name='image' src='images/cart/x3.jpg'></input>
+								</td>
+								<td>
+									<a href='#'>ddsads</a>
+								</td>
+								<td>
+									<span class='currency'>$</span>
+									<span class='number'>560.60</span>
+								</td>
+								<td>
+									<div class='selector'>
+										<span>569</span>
+										<div class='arrows'>
+											<input type='image' name='image' src='images/cart/upArrow.jpg'></input>
+											<input type='image' name='image' src='images/cart/downArrow.jpg'></input>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="cartFooter">
+					<span class="label">Total:</span>
+					<span class="currency"></span>
+					<span id="cartTotalPrice"></span>
+					<a href="#">checkout!</a>
+				</div>
+			</div>
+
 			<div class='subcategoriescontainer'>
 				<div class='subcategory'>
 					<span class='subcategorytitle'>Action Sports</span><br/>

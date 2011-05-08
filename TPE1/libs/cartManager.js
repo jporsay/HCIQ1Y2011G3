@@ -60,6 +60,12 @@ function addToCart(cartItem, list) {
 	list.appendChild(item);
 }
 
+/*example:
+<div class='cartItemPrice'>
+	<span class='currency'>$</span>
+	<span class='number'>560.60</span>
+</div>
+*/
 function createItemPriceDiv(cartItem) {
 	var information_price = document.createElement('div');
 		information_price.setAttribute('class','cartItemPrice');
