@@ -42,3 +42,17 @@ function loadIfExists(element) {
 		$("head").append(element);
 	}	
 }
+
+
+//http://www.netlobo.com/url_query_string_javascript.html
+function urlParam(name) {
+	var name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+	var regexS = "[\\?&]" + name + "=([^&#]*)";
+	var regex = new RegExp(regexS);
+	var results = regex.exec(window.location.href);
+
+	if (results == null) {
+		return "";
+	}
+	return results[1];
+}
