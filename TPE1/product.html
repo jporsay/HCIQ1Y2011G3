@@ -15,7 +15,9 @@
 				"libs/jquery-ui-1.8.11.custom.min",
 				"libs/jquery.ui.datepicker-es",
 				"libs/jquery.i18n.properties-min",
-				"libs/i18n"
+				"libs/i18n",
+				"libs/ServerManager",
+				"libs/itemManager"
 			]);
 			
 			loadCssFiles([
@@ -30,13 +32,15 @@
 				"css/tabs"
 			]);
 			
-		$(function() {
+		$(document).ready(function() {
 			
 			$("#breadcrumb").jBreadCrumb();
 			
 			var translator = new i18n('Index');
 			document.getElementById('locale').value = translator.getLang();
 			translator.translatePage();
+			//var pId = urlParam('id');
+			//displayItem(pId);
 			
 			$(document).keydown(function(e) {
 				if (e.keyCode == 27) {
@@ -54,28 +58,11 @@
 				}
 				$('.loginform').slideToggle();
 			});
-			
-			$('#date').datepicker();
+			displayItem(urlParam('id'));
 			$("#locale").change(function() {
 				translator.setLang($(this).val());
 				translator.translatePage();
 			});
-			
-			$(".tab_content").hide();
-			$("ul.tabs li:first").addClass("active").show();
-			$(".tab_content:first").show();
-		
-			$("ul.tabs li").click(function()
-		       {
-				$("ul.tabs li").removeClass("active");
-				$(this).addClass("active");
-				$(".tab_content").hide();
-		
-				var activeTab = $(this).find("a").attr("href");
-				$(activeTab).fadeIn();
-				return false;
-			});
-			
 		});
 	</script>
 	
@@ -125,33 +112,7 @@
 </div>
 	
 <div class="mainarea">
-	<div class ="productContainer">
-		<div class="product title"><h2>Zenith Riva</h2></div>
-		<img src="images/products/zenith_riva.jpg" alt="Product Image" />
-		<div class="product description">
-			<h3>Description:</h3>
-				<p>Par de ruedas Spectro Pro Rimes (aros con doble pared de aluminio) con mazas y piñones Shimano 600 (las mazas y los piñones son de ruta).</p>
-		</div>
-		<div class="product price">
-			<h3>Price:</h3>
-			<p>$1600</p>
-		</div>
-		<div class="product extrainformation">
-			<ul class="tabs">
-			    <li><a href="#tab1">Information</a></li>
-			    <li><a href="#tab2">Reviews</a></li>
-			</ul>
-			
-			<div class="tab_container">
-			    <div id="tab1" class="tab_content">
-			        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis pharetra elit a ultrices. Nulla accumsan odio quis purus aliquet consequat. Vestibulum nec enim vitae justo consequat tincidunt. Duis id justo lorem, non commodo leo. Donec luctus velit et turpis commodo eget vulputate odio aliquet. Aliquam et lacus ante, vitae ultrices elit. Fusce ac nunc eget ante fermentum consectetur. Aenean tempor ante quis sapien mollis eu feugiat nunc pharetra. Aenean urna justo, hendrerit sed facilisis at, pharetra id eros. Vestibulum id sem nisi. Cras mollis placerat urna, luctus tincidunt nisi scelerisque ut. Mauris vel enim id quam dictum semper eget in tortor. Sed pharetra, urna nec feugiat varius, leo eros condimentum nisl, ut luctus lacus massa ut turpis. Nunc nisl nibh, vulputate ornare eleifend id, faucibus id tellus. </p>
-			    </div>
-			    <div id="tab2" class="tab_content">
-			       <p>Vestibulum tincidunt erat at sem sagittis non elementum turpis luctus. Mauris vel lacus est. Vivamus eu leo arcu, tincidunt eleifend erat. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed quis congue nunc. Duis et lobortis sapien. Praesent pretium orci vel arcu suscipit mollis pharetra vel lectus. Fusce non urna eu arcu lobortis congue vitae volutpat eros. Donec pharetra libero ut tortor tincidunt quis adipiscing mi ultrices. Mauris pretium iaculis molestie. </p>
-				</div>
-			</div>
- 
-		</div>
+	<div class="productContainer">
 	</div>
 	<div class ="footer">
 		<a id="usLabel" class="i18n" href="#"></a> | <a id="contactLabel" class="i18n" href="#"></a>
