@@ -97,7 +97,7 @@
 	width: 30%;
 }
 
-.cartFooter #price {
+.cartFooter #cartTotalPrice {
 	font: bold 16px Arial;
 	float: left;
 	width: auto;

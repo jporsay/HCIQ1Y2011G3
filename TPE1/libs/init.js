@@ -8,7 +8,7 @@ function loadCssFiles(cssFiles) {
 		var fileref = document.createElement("link");
 		fileref.setAttribute("rel", "stylesheet");
 		fileref.setAttribute("type", "text/css");
-		fileref.setAttribute("href", cssFiles[i]);
+		fileref.setAttribute("href", cssFiles[i] + '.css');
 		
 		loadIfExists(fileref);
 	}
@@ -26,7 +26,7 @@ function loadJsFiles(files) {
 	while (j < files.length) {
 		var fileref = document.createElement("script");
 		fileref.setAttribute("type", "text/javascript");
-		fileref.setAttribute("src", files[j]);
+		fileref.setAttribute("src", files[j] + '.js');
 		loadIfExists(fileref);
 		j++;
 	}
