@@ -6,6 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<script type="text/javascript" src="libs/init.js"></script>
 		<script type="text/javascript" src="libs/jquery-1.5.1.min.js"></script>
+		<script type="text/javascript" src="libs/cartManager.js"></script>
 		<script type="text/javascript">
 			
 				loadJsFiles([
@@ -59,7 +60,17 @@
 					translator.setLang($(this).val());
 					translator.translatePage();
 				});
-				
+
+				//Load some items to the cart
+				var items = [
+					{text: "Bicicle 1", ref: "#", quantity: "1"},
+					{text: "Bicicle 2", ref: "#", quantity: "2"},
+					{text: "Bicicle 3", ref: "#", quantity: "5"},
+					{text: "Bicicle 4", ref: "#", quantity: "98"}
+				];
+				cart = Cart.getInstance();
+				cart.load();
+				//Finish loading items
 			});
 		</script>
 		
@@ -106,55 +117,24 @@
 			</div>
 		</div>
 		<div class="mainarea">
-			<div class='cart'>
-				<div class='cartTitle'>
-					<div class='verticalSpacer'><!-- For vertical align!--></div>
+
+			<div class='cart' id='cart'>
+<!--				<div class='cartTitle'>
+					<div class='verticalSpacer'></div>
 					<input type="image" name="image" src="images/cart/rightArrow.jpg"></input>
 					<span>Cart Items:</span>
 				</div>
-				<div class='cartItems'>
+				<div class='cartItems' id='cartIetmsList'>
 					<ul>
-						<li>
-							<input type="image" name='image' src='images/cart/x3.jpg'></input>
-							<a href='#'>Bicicleta 1</a>
-							<div class='selector'>
-								<span>569</span>
-								<div class='arrows'>
-									<input type='image' name='image' src='images/cart/upArrow.jpg'></input>
-									<input type='image' name='image' src='images/cart/downArrow.jpg'></input>
-								</div>
-							</div>
-						</li>
-						<li>
-							<input type="image" name="image" src="images/cart/x3.jpg"></input>
-							<a href="#">Bicicleta 2</a>
-							<div class='selector'>
-								<span>1</span>
-								<div class='arrows'>
-									<input type='image' name='image' src='images/cart/upArrow.jpg'></input>
-									<input type='image' name='image' src='images/cart/downArrow.jpg'></input>
-								</div>
-							</div>
-						</li>
-						<li>
-							<input type="image" name="image" src="images/cart/x3.jpg"></input>
-							<a href="#">Bicicleta 3</a>
-						</li>
-						<li>
-							<input type="image" name="image" src="images/cart/x3.jpg"></input>
-							<a href="#">Bicicleta 4</a>
-						</li>
-						<li>
-							<input type="image" name="image" src="images/cart/x3.jpg"></input>
-							<a href="http://www.youtube.com/watch?v=ThH6cuB9SqI">Huevito Kirchner</a>
-						</li>
 					</ul>
 				</div>
 				<div class='cartFooter'>
 					<span class="label">Total:</span><span id="price">$759.55</span>
 					<a href="#">checkout!<a>
 				</div>
+-->
 			</div>
+
 		
 			<div class='subcategoriescontainer'>
 				<div class='subcategory'>
