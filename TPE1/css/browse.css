@@ -9,7 +9,7 @@
 		border-bottom: #222222 solid 1px;
 }
 
-.item #itemlink {
+.item .itemLink {
 	position: relative;
 	background-color:#333333;
 	font-size: larger;
@@ -20,7 +20,7 @@
 	color: #B8B8B8;
 }
 
-.item #description {
+.item .description {
 	position: relative;
 	font-size: 1.1em;
 	top: -60px;
@@ -28,7 +28,8 @@
 	width: 35em;
 }
 
-.item #miniimage {
+.item .miniImage {
+	display:inline;
 	position: relative;
 	top: 40px;
 	left: -75px;
@@ -36,24 +37,24 @@
 	height: 110px;
 }
 
-.extraiteminfo {
+.extraItemInfo {
 	position: relative;
 	width: 160px;
 	left: 650px;
 	top: -160px;
 }
 
-.item #price {
+.item .price {
 	position: relative;
 	font-weight: bold;
 	font-size: medium;
 }
 
-.item #sold {
+.item .rank {
 	position: relative;
 }
 
-.item #status {
+.item .status {
 	position: relative;
 	font-weight: bold;
 }
