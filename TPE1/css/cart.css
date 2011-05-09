@@ -40,7 +40,7 @@ table {
 	border-collapse: collapse;
 }
 
-.cartItemsList td {
+#cartItemsTable td {
 	border-bottom: 1px dashed #333;
 	padding: 2px 5px;
 	white-space:nowrap;
@@ -67,17 +67,8 @@ table {
 	width: inherit;
 }
 
-/*Cantidad de items*/
-.cartItems input {
-	float: left;
-	height: 15px;
-	width: 15px;
-	margin-left: 5px;
-	margin-right: 10px;
-	border: 1px solid #000000;
-}
-
 /* Selector de cantidad */
+
 .selector {
 	float: right;
 	width: auto;
@@ -107,6 +98,15 @@ table {
 	margin-right: 5px;
 }
 
+.cartItems input {
+	float: left;
+	height: 15px;
+	width: 15px;
+	margin-left: 5px;
+	margin-right: 10px;
+	border: 1px solid #000000;
+}
+
 /*PARTE INFERIOR*/
 
 .cartFooter {
@@ -125,6 +125,12 @@ table {
 }
 
 .cartFooter #cartTotalPrice {
+	font: bold 16px Arial;
+	float: left;
+	width: auto;
+}
+
+.cartFooter #cartTotalPriceCurrency {
 	font: bold 16px Arial;
 	float: left;
 	width: auto;

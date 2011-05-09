@@ -1,6 +1,5 @@
 var cart = new Cart();
-function Cart() 
-{
+function Cart() {
 	var instance = this;
 	Cart.getInstance = function()
 	{
@@ -9,7 +8,7 @@ function Cart()
 }
 
 function CartItem(name, href, id, price) {
-	this.quantity = '1';
+	this.quantity = 1;
 	this.name = name;
 	this.href = href;
 	this.id = id;
@@ -21,79 +20,179 @@ Cart.prototype.addItems = function(items) {
 	return;
 }
 
-Cart.prototype.update = function() {
-	var cart_item_list = document.getElementById('cartItemsList');
+/** Cambia el tipo de moneda del carrito por el indicado en el parametro.
+Para ver los cambios, la funcion update() debe ser llamada*/
+Cart.prototype.setCurrency = function(currency, conversion) {
+	this.currency = currency;
 	for (var i=0; i < this.items.length; i++) {
-		addToCart(this.items[i], cart_item_list);
+		this.items[i].price *= conversion;
 	}
 }
 
-/*example:
-<li>
-	<input type="image" name='image' src='images/cart/x3.jpg'></input>
-	<a href='#'>Bicicleta 1</a>
-	<div class='selector'>
-		...
-	</div>
-</li>
+/** Incrementa en 1 la cantidad de items del carrito cuyo id es el mismo que el del parametro.
+	El cambio se vera reflejado una vez llamada la funcion update().
 */
-function addToCart(cartItem, list) {
-	var item = document.createElement("li");
-	var item_remover = document.createElement("input");
-		item_remover.setAttribute("type", 'image');
-		item_remover.setAttribute("name", 'image');
-		item_remover.setAttribute("src", 'images/cart/x3.jpg');
+Cart.prototype.incrementItemQuantity = function(id) {
+	for (var i=0; i < this.items.length; i++) {
+		if (this.items[i].id == id) {
+			this.items[i].quantity++;
+		}
+	}
+}
+
+/** Decrementa en 1 la cantidad de items del carrito cuyo id es el mismo que el del parametro 
+si es que este es mayor a 1. (De lo contraro se lo remueve?).
+	El cambio se vera reflejado una vez llamada la funcion update().
+*/
+Cart.prototype.decrementItemQuantity = function(id) {
+	for (var i=0; i < this.items.length; i++) {
+		if (this.items[i].id == id && this.items[i].id > 1) {
+			this.items[i].quantity--;
+		}
+	}
+}
+
+/**Elimina la primera aparicion del item con id igual al del parametro (no imprta que valor posea en el selector).
+Para ver los cambios, la funcion update() debe ser llamda.*/
+Cart.prototype.removeItem = function(id) {
+	var index = -1;
+	for(var i=0; i < this.items.length; i++) {
+		if (this.items[i].id == id) {
+			index = i;
+		}
+	}
 	
-	var item_information = document.createElement("div");
-		item_information.setAttribute('class', 'itemInformation');
-	var item_link = document.createElement("a");
-		item_link.setAttribute("href", cartItem.href);
-		item_link.innerHTML = cartItem.name;
-	var item_priceInfo = createItemPriceDiv(cartItem);
-	var item_selector = createSelector((cartItem.quantity));
+	if (index != -1) {
+		//var cart_table = document.getElementById('cartItemsTable');
+		//var toRemove = cart_table.childNodes[index];
+		//cart_table.removeChild(toRemove);
+		this.items.splice(index, 1);
+		//this.update();
+	}
+}
+
+/** Agrega en el HTML los items guardados en el carrito. Estos son agregados a la tabla con id='cartItemsTable'.*/
+Cart.prototype.update = function() {
+	var cart_table = document.getElementById('cartItemsTable');
+	this.cleanHTML();
+
+	var totalPrice = 0
+	for (var i=0; i < this.items.length; i++) {
+		addToCart(this.items[i], this.currency, cart_table);
+		totalPrice += this.items[i].price * this.items[i].quantity;
+	}
+	var totalPriceLabel = document.getElementById('cartTotalPrice');
+	totalPriceLabel.innerHTML = totalPrice;
+	var totalPriceCurrencyLabel = document.getElementById('cartTotalPriceCurrency');
+	totalPriceCurrencyLabel.innerHTML = this.currency;
+}
+
+/** Limpia todo el HTML del carrito . NO elimina ningun item.*/
+Cart.prototype.cleanHTML = function() {
+	var cart_table = document.getElementById('cartItemsTable');
+	while(cart_table.hasChildNodes()) {
+		cart_table.removeChild(cart_table.lastChild);
+	}
+}
+
+/** Crea un item con los datos entregados en cartItem y los coloca en la tabla*/
+/*example:
+<tr>
+	<td class="removerCol">...</td>
+	<td class="informationCol">...</td>
+	<td class="priceCol">...</td>
+	<td class="selectorCol">...</td>
+</tr>
+*/
+function addToCart(cartItem, currency, table) {
+	var item = document.createElement("tr");
+	var removerCol = createItemRemoverColumn();
+	var informationCol = createItemInformationColumn(cartItem.name);
+	var priceCol = createItemPriceColumn(cartItem.price, currency);
+	var selectorCol = createSelector(cartItem.quantity);
 	
-	item.appendChild(item_remover);
-	item_information.appendChild(item_link);
-	item_information.appendChild(item_priceInfo);
-	item.appendChild(item_information);
-	item.appendChild(item_selector);
-	list.appendChild(item);
+	item.appendChild(removerCol);
+	item.appendChild(informationCol);
+	item.appendChild(priceCol);
+	item.appendChild(selectorCol);
+	table.appendChild(item);
 }
 
 /*example:
-<div class='cartItemPrice'>
+<td class="removerCol">
+	<input class="itemRemover" type="image" name='image' src='images/cart/x3.jpg'></input>
+</td>
+*/
+function createItemRemoverColumn() {
+	var remover = document.createElement('td');
+		remover.setAttribute('class', 'removerCol');
+	var remover_input = document.createElement('input');
+		remover_input.setAttribute('class', 'itemRemover');
+		remover_input.setAttribute('type', 'image');
+		remover_input.setAttribute('name', 'image');
+		remover_input.setAttribute('src', 'images/cart/x3.jpg');
+	remover.appendChild(remover_input);
+	return remover;
+}
+
+/*example
+<td class="informationCol">
+	<div class='crop'>
+		<a href='#'>THIS IS A REALLY LOOOOOONG TEXT</a>
+	</div>
+</td>
+*/
+function createItemInformationColumn(text) {
+	var info = document.createElement('td');
+		info.setAttribute('class', 'informationCol');
+	var info_lenthLimiter = document.createElement('div');
+		info_lenthLimiter.setAttribute('class', 'crop');
+	var info_link = document.createElement('a');
+		info_link.setAttribute('href', '#');
+		info_link.innerHTML = text;
+	
+	info_lenthLimiter.appendChild(info_link);
+	info.appendChild(info_lenthLimiter);
+	return info;
+}
+
+/*example:
+<td class="priceCol">
 	<span class='currency'>$</span>
 	<span class='number'>560.60</span>
-</div>
+</td>
 */
-function createItemPriceDiv(cartItem) {
-	var information_price = document.createElement('div');
-		information_price.setAttribute('class','cartItemPrice');
-	var information_price_currency = document.createElement('span');
-		information_price_currency.setAttribute('class', 'currency');
-		information_price_currency.innerHTML = '$';
-	var information_price_number = document.createElement('span');
-		information_price_number.setAttribute('class', 'number');
-		information_price_number.innerHTML = cartItem.price;
+function createItemPriceColumn(price, currency) {
+	var priceCol = document.createElement('td');
+		priceCol.setAttribute('class','priceCol');
+	var price_currency = document.createElement('span');
+		price_currency.setAttribute('class', 'currency');
+		price_currency.innerHTML = currency;
+	var price_number = document.createElement('span');
+		price_number.setAttribute('class', 'number');
+		price_number.innerHTML = price;
 		
-	information_price.appendChild(information_price_currency);
-	information_price.appendChild(information_price_number);
-	return information_price;
+	priceCol.appendChild(price_currency);
+	priceCol.appendChild(price_number);
+	return priceCol;
 }
 
 /*example:
-<div class='selector'>
-	<span>569</span>
-	<div class='arrows'>
-		<input type='image' name='image' src='images/cart/upArrow.jpg'></input>
-		<input type='image' name='image' src='images/cart/downArrow.jpg'></input>
+<td class="selectorCol">
+	<div class='selector'>
+		<span>569</span>
+		<div class='arrows'>
+			<input type='image' name='image' src='images/cart/upArrow.jpg'></input>
+			<input type='image' name='image' src='images/cart/downArrow.jpg'></input>
+		</div>
 	</div>
-</div>
+</td>
 */
 function createSelector(inititalQuantity) {
-	var selector = document.createElement("div");
-		selector.setAttribute('class','selector');
-		
+	var selectorCol = document.createElement("td");
+		selectorCol.setAttribute('class','selectorCol');
+	var selector_container = document.createElement("div");
+		selector_container.setAttribute('class','selector');
 	var selector_text = document.createElement("span");
 		selector_text.innerHTML = inititalQuantity;
 		
@@ -112,32 +211,29 @@ function createSelector(inititalQuantity) {
 	selector_arrows.appendChild(selector_arrowUp);
 	selector_arrows.appendChild(selector_arrowDown);
 	
-	selector.appendChild(selector_text);
-	selector.appendChild(selector_arrows);
-	return selector;
+	selector_container.appendChild(selector_text);
+	selector_container.appendChild(selector_arrows);
+	selectorCol.appendChild(selector_container);
+	return selectorCol;
 }
 
+/** Inizializa un carrito vacio en el HTML en el div con id='cart'. Crea el Titulo y el Pie del carrito.*/
 /*example
 <div class='cart'>
-	<div class='cartTitle'>
-		  ...
-	</div>
-	<div class='cartItems' id='cartIetmsList'>
-		...
-	</div>
-	<div class='cartFooter'>
-		...
-	</div>
+	<div class='cartTitle'>...</div>
+	<div class='cartItems'>...</div>
+	<div class='cartFooter'>...</div>
 </div>
 */
 Cart.prototype.load = function() {
+	this.currency = '$';
 	var cart = document.getElementById('cart');
 	var cart_title = createCartTitle();
-	var cart_items_container = createCartList();
+	var cart_items = createCartItems();
 	var cart_footer = createCartFooter();
 	
 	cart.appendChild(cart_title);
-	cart.appendChild(cart_items_container);
+	cart.appendChild(cart_items);
 	cart.appendChild(cart_footer);
 }
 
@@ -168,25 +264,24 @@ function createCartTitle() {
 
 /*example:
 <div class='cartItems' id='cartIetmsList'>
-	<ul>
-		<!--Dinamically loaded with js-->
-	</ul>
+	<table id="cartItemsTable"> ... </table>
 </div>
 */
-function createCartList() {
-	var cart_list_container = document.createElement('div');
-		cart_list_container.setAttribute('class', 'cartItems');
-	var cart_list = document.createElement('ul');
-		cart_list.setAttribute('id', 'cartItemsList');
+function createCartItems() {
+	var cart_table_container = document.createElement('div');
+		cart_table_container.setAttribute('class', 'cartItems');
+		cart_table_container.setAttribute('id', 'cartIetmsList');
+	var cart_table = document.createElement('table');
+		cart_table.setAttribute('id', 'cartItemsTable');
 	
-	cart_list_container.appendChild(cart_list);
-	return cart_list_container;
+	cart_table_container.appendChild(cart_table);
+	return cart_table_container;
 }
 
 /*example:
 <div class='cartFooter'>
 	<span class="label">Total:</span>
-	<span class="currency">$</span>
+	<span id="cartTotalPriceCurrency">$</span>
 	<span id="cartTotalPrice">759.55</span>
 	<a href="#">checkout!<a>
 </div>
@@ -198,7 +293,7 @@ function createCartFooter() {
 		foter_label.setAttribute('class', 'label');
 		foter_label.innerHTML = 'Total:'
 	var foter_currency_label = document.createElement('span');
-		foter_currency_label.setAttribute('class', 'currency');
+		foter_currency_label.setAttribute('id', 'cartTotalPriceCurrency');
 	var foter_number_label = document.createElement('span');
 		foter_number_label.setAttribute('id', 'cartTotalPrice');
 	var footer_checkout = document.createElement('a');
@@ -210,4 +305,8 @@ function createCartFooter() {
 	footer.appendChild(foter_number_label);
 	footer.appendChild(footer_checkout);
 	return footer;
+}
+
+function setOnClickAction(item, arrowUp, itemId) {
+	
 }
