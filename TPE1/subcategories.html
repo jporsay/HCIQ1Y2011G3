@@ -63,13 +63,14 @@
 
 				//Load some items to the cart
 				var items = [
-					{text: "Bicicle 1", ref: "#", quantity: "1"},
-					{text: "Bicicle 2", ref: "#", quantity: "2"},
-					{text: "Bicicle 3", ref: "#", quantity: "5"},
-					{text: "Bicicle 4", ref: "#", quantity: "98"}
+					new CartItem('Bicicle 2', "#", '200', 539.55),
+					new CartItem('Bicicle aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1', "#", '1', 100),
+					new CartItem('Bicicle 3', "#", '3', 240.99)
 				];
 				cart = Cart.getInstance();
 				cart.load();
+				cart.addItems(items);
+				cart.update();
 				//Finish loading items
 			});
 		</script>
@@ -118,24 +119,7 @@
 		</div>
 		<div class="mainarea">
 
-			<div class='cart' id='cart'>
-<!--				<div class='cartTitle'>
-					<div class='verticalSpacer'></div>
-					<input type="image" name="image" src="images/cart/rightArrow.jpg"></input>
-					<span>Cart Items:</span>
-				</div>
-				<div class='cartItems' id='cartIetmsList'>
-					<ul>
-					</ul>
-				</div>
-				<div class='cartFooter'>
-					<span class="label">Total:</span><span id="price">$759.55</span>
-					<a href="#">checkout!<a>
-				</div>
--->
-			</div>
-
-		
+			<div id="cart" class="cart"></div>
 			<div class='subcategoriescontainer'>
 				<div class='subcategory'>
 					<span class='subcategorytitle'>Action Sports</span><br/>
