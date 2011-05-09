@@ -63,15 +63,13 @@
 
 				//Load some items to the cart
 				var items = [
-					new CartItem('Bicicle aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1', "#", '1', 100),
 					new CartItem('Bicicle 2', "#", '200', 539.55),
+					new CartItem('Bicicle aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1', "#", '1', 100),
 					new CartItem('Bicicle 3', "#", '3', 240.99)
 				];
 				cart = Cart.getInstance();
 				cart.load();
 				cart.addItems(items);
-				cart.update();
-				cart.setCurrency('u$d', 2);
 				cart.update();
 				//Finish loading items
 			});

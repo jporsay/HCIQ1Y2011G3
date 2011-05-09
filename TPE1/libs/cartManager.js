@@ -46,7 +46,7 @@ si es que este es mayor a 1. (De lo contraro se lo remueve?).
 */
 Cart.prototype.decrementItemQuantity = function(id) {
 	for (var i=0; i < this.items.length; i++) {
-		if (this.items[i].id == id && this.items[i].id > 1) {
+		if (this.items[i].id == id && this.items[i].quantity > 1) {
 			this.items[i].quantity--;
 		}
 	}
@@ -82,7 +82,7 @@ Cart.prototype.update = function() {
 		totalPrice += this.items[i].price * this.items[i].quantity;
 	}
 	var totalPriceLabel = document.getElementById('cartTotalPrice');
-	totalPriceLabel.innerHTML = totalPrice;
+	totalPriceLabel.innerHTML = Math.round(totalPrice*100)/100;
 	var totalPriceCurrencyLabel = document.getElementById('cartTotalPriceCurrency');
 	totalPriceCurrencyLabel.innerHTML = this.currency;
 }
@@ -106,10 +106,10 @@ Cart.prototype.cleanHTML = function() {
 */
 function addToCart(cartItem, currency, table) {
 	var item = document.createElement("tr");
-	var removerCol = createItemRemoverColumn();
-	var informationCol = createItemInformationColumn(cartItem.name);
-	var priceCol = createItemPriceColumn(cartItem.price, currency);
-	var selectorCol = createSelector(cartItem.quantity);
+	var removerCol = createItemRemoverColumn(cartItem);
+	var informationCol = createItemInformationColumn(cartItem);
+	var priceCol = createItemPriceColumn(cartItem, currency);
+	var selectorCol = createSelector(cartItem);
 	
 	item.appendChild(removerCol);
 	item.appendChild(informationCol);
@@ -123,7 +123,7 @@ function addToCart(cartItem, currency, table) {
 	<input class="itemRemover" type="image" name='image' src='images/cart/x3.jpg'></input>
 </td>
 */
-function createItemRemoverColumn() {
+function createItemRemoverColumn(item) {
 	var remover = document.createElement('td');
 		remover.setAttribute('class', 'removerCol');
 	var remover_input = document.createElement('input');
@@ -131,6 +131,7 @@ function createItemRemoverColumn() {
 		remover_input.setAttribute('type', 'image');
 		remover_input.setAttribute('name', 'image');
 		remover_input.setAttribute('src', 'images/cart/x3.jpg');
+		remover_input.setAttribute('onClick', getActionForRemover(item.id));
 	remover.appendChild(remover_input);
 	return remover;
 }
@@ -142,14 +143,14 @@ function createItemRemoverColumn() {
 	</div>
 </td>
 */
-function createItemInformationColumn(text) {
+function createItemInformationColumn(item) {
 	var info = document.createElement('td');
 		info.setAttribute('class', 'informationCol');
 	var info_lenthLimiter = document.createElement('div');
 		info_lenthLimiter.setAttribute('class', 'crop');
 	var info_link = document.createElement('a');
 		info_link.setAttribute('href', '#');
-		info_link.innerHTML = text;
+		info_link.innerHTML = item.name;
 	
 	info_lenthLimiter.appendChild(info_link);
 	info.appendChild(info_lenthLimiter);
@@ -162,7 +163,7 @@ function createItemInformationColumn(text) {
 	<span class='number'>560.60</span>
 </td>
 */
-function createItemPriceColumn(price, currency) {
+function createItemPriceColumn(item, currency) {
 	var priceCol = document.createElement('td');
 		priceCol.setAttribute('class','priceCol');
 	var price_currency = document.createElement('span');
@@ -170,7 +171,7 @@ function createItemPriceColumn(price, currency) {
 		price_currency.innerHTML = currency;
 	var price_number = document.createElement('span');
 		price_number.setAttribute('class', 'number');
-		price_number.innerHTML = price;
+		price_number.innerHTML = item.price;
 		
 	priceCol.appendChild(price_currency);
 	priceCol.appendChild(price_number);
@@ -188,13 +189,13 @@ function createItemPriceColumn(price, currency) {
 	</div>
 </td>
 */
-function createSelector(inititalQuantity) {
+function createSelector(item) {
 	var selectorCol = document.createElement("td");
 		selectorCol.setAttribute('class','selectorCol');
 	var selector_container = document.createElement("div");
 		selector_container.setAttribute('class','selector');
 	var selector_text = document.createElement("span");
-		selector_text.innerHTML = inititalQuantity;
+		selector_text.innerHTML = item.quantity;
 		
 	var selector_arrows = document.createElement("div");
 		selector_arrows.setAttribute('class','arrows');
@@ -203,10 +204,12 @@ function createSelector(inititalQuantity) {
 		selector_arrowUp.setAttribute('type','image');
 		selector_arrowUp.setAttribute('name','image');
 		selector_arrowUp.setAttribute('src','images/cart/upArrow.jpg');
+		selector_arrowUp.setAttribute('onClick', getActionForSelectoUpArrow(item.id));
 	var selector_arrowDown = document.createElement("input");
 		selector_arrowDown.setAttribute('type','image');
 		selector_arrowDown.setAttribute('name','image');
 		selector_arrowDown.setAttribute('src','images/cart/downArrow.jpg');
+		selector_arrowDown.setAttribute('onClick', getActionForSelectoDownArrow(item.id));
 		
 	selector_arrows.appendChild(selector_arrowUp);
 	selector_arrows.appendChild(selector_arrowDown);
@@ -307,6 +310,18 @@ function createCartFooter() {
 	return footer;
 }
 
-function setOnClickAction(item, arrowUp, itemId) {
-	
+/*javascript actions for the cart buttons*/
+
+function getActionForRemover(itemId) {
+	return 'Cart.getInstance().removeItem(' + itemId + '); Cart.getInstance().update();';
 }
+
+function getActionForSelectoUpArrow(itemId) {
+	return 'Cart.getInstance().incrementItemQuantity(' + itemId + '); Cart.getInstance().update();';
+}
+
+function getActionForSelectoDownArrow(itemId) {
+	return 'Cart.getInstance().decrementItemQuantity(' + itemId + '); Cart.getInstance().update();';
+}
+
+

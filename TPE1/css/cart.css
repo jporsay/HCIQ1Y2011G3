@@ -134,6 +134,7 @@ table {
 	font: bold 16px Arial;
 	float: left;
 	width: auto;
+	margin-right: 5px;
 }
 
 .cartFooter a {
