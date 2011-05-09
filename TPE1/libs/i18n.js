@@ -1,7 +1,3 @@
-/**
- * @author Juan Pablo Orsay
- */
-
 function i18n(page) {
 	var lang = getCookie('hblanguage');
 	this.page = page;
