@@ -15,6 +15,7 @@
 					"jquery-ui-1.8.11.custom.min",
 					"jquery.ui.datepicker-es",
 					"jquery.i18n.properties-min",
+					"cartManager",
 					"i18n"
 				]);
 				
@@ -26,6 +27,7 @@
 					"Base",
 					"BreadCrumb",
 					"checkout",
+					"cartItemsTable",
 					"footer"
 				]);
 				
@@ -108,8 +110,11 @@
 		</div>
 		
 		<div class="mainarea">
-			<div class='shoppingCart'>
+			<div id='shoppingCart'>
 				<!--Falta implementar un poco mas los metodos del carrito para continuar esta seccion-->
+				<script type="text/javascript">
+					Cart.getInstance().toTable('shoppingCart');
+				</script>
 			</div>
 			<div class="fieldsCheckout">
 				<h1>Cart Checkout</h1>

@@ -16,8 +16,11 @@ function CartItem(name, href, id, price) {
 }
 
 Cart.prototype.addItems = function(items) {
-	this.items = items;
-	return;
+	if (this.items == undefined){
+		this.items = items;
+	} else {
+		this.items = this.items.concat(items);
+	}
 }
 
 /** Cambia el tipo de moneda del carrito por el indicado en el parametro.
@@ -303,12 +306,40 @@ function createCartFooter() {
 		footer_checkout.setAttribute('type', 'image');
 		footer_checkout.setAttribute('class', 'checkoutBtn');
 		footer_checkout.setAttribute('src', 'images/cart/checkout.png');
+		footer_checkout.setAttribute('onClick', getActionForCheckoutButton());
 		
 	footer.appendChild(foter_label);
 	footer.appendChild(foter_currency_label);
 	footer.appendChild(foter_number_label);
 	footer.appendChild(footer_checkout);
 	return footer;
+}
+
+Cart.prototype.toTable = function(elementId) {
+	var element = document.getElementById(elementId);
+	var table = createCartTable();
+	element.appendChild(table);
+}
+
+function createCartTable() {
+	var table = document.createElement('table');
+		table.setAttribute('class', 'cartItemsTable');
+	var tableRow = document.createElement('tr');
+	
+	var product = document.createElement('td');
+		product.innerHTML = 'Product';
+	var quantity = document.createElement('td');
+		quantity.innerHTML = 'Quantity';
+	var price = document.createElement('td');
+		price.innerHTML = 'Price (p.u.)';
+	var total = document.createElement('td');
+		total.innerHTML = 'Total';
+	tableRow.appendChild(product);
+	tableRow.appendChild(quantity);
+	tableRow.appendChild(price);
+	tableRow.appendChild(total);
+	table.appendChild(tableRow);
+	return table;
 }
 
 /*javascript actions for the cart buttons*/
@@ -325,4 +356,9 @@ function getActionForSelectoDownArrow(itemId) {
 	return 'Cart.getInstance().decrementItemQuantity(' + itemId + '); Cart.getInstance().update();';
 }
 
+function getActionForCheckoutButton() {
+	return 'window.open("./checkout.html");';
+}
+
+/*--------------------------------------*/
 
