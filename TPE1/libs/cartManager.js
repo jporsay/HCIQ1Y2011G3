@@ -286,7 +286,7 @@ function createCartItems() {
 	<span class="label">Total:</span>
 	<span id="cartTotalPriceCurrency">$</span>
 	<span id="cartTotalPrice">759.55</span>
-	<a href="#">checkout!<a>
+	<input type="image" class="checkoutBtn" src="images/cart/checkout.png"></input>
 </div>
 */
 function createCartFooter() {
@@ -299,9 +299,10 @@ function createCartFooter() {
 		foter_currency_label.setAttribute('id', 'cartTotalPriceCurrency');
 	var foter_number_label = document.createElement('span');
 		foter_number_label.setAttribute('id', 'cartTotalPrice');
-	var footer_checkout = document.createElement('a');
-		footer_checkout.setAttribute('href', '#');
-		footer_checkout.innerHTML = 'checkout!';
+	var footer_checkout = document.createElement('input');
+		footer_checkout.setAttribute('type', 'image');
+		footer_checkout.setAttribute('class', 'checkoutBtn');
+		footer_checkout.setAttribute('src', 'images/cart/checkout.png');
 		
 	footer.appendChild(foter_label);
 	footer.appendChild(foter_currency_label);
