@@ -287,7 +287,6 @@ function createCartItems() {
 		cart_table_container.setAttribute('id', 'cartIetmsList');
 	var cart_table = document.createElement('table');
 		cart_table.setAttribute('id', 'cartItemsTable');
-	
 	cart_table_container.appendChild(cart_table);
 	return cart_table_container;
 }
@@ -384,9 +383,8 @@ function appendElementToTable(table, items, currency) {
 		totalLabelCol.innerHTML = 'Total Price: ';
 		totalLabelCol.setAttribute('id', 'totalPriceRow');
 	var totalValueCol = document.createElement('td');
-		totalValueCol.innerHTML = currency + ' ' + totalPrice;
+		totalValueCol.innerHTML = currency + ' ' + Math.round(totalPrice*100)/100;
 		totalValueCol.setAttribute('id', 'totalPriceRow');
-	
 	totalPriceRow.appendChild(emptyCols);
 	totalPriceRow.appendChild(totalLabelCol);
 	totalPriceRow.appendChild(totalValueCol);
