@@ -1,38 +1,68 @@
-.categories
-{
+.mainArea {
 	position: relative;
-	overflow: auto;
+	height: 500px;
+}
+
+.hotItems {
+	position: absolute;
+	width: 400px;
+	height: 300px; 
+	left: 500px;
+	top: 50px;
+	border: 1px solid #ffffff;
+}
+
+#categoryNav {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	float: left;
+	font-size: 90%;
+	width: 200px;
+}
+
+#categoryNav h2 {
+	color: #CC6600;
+	margin: 0;
+	padding: 0 0 2px;
+}
+
+#categoryNavContainer {
+	border: 1px solid #D0EAF8;
+	padding: 4px 4px 0;
+}
+
+#refinements {
+	overflow: hidden;
 	width: 100%;
 }
 
-.category
-{
-	margin: 40px;
-	margin-top: 20px;
-	border: 4px double #ffff00;
-	float: left;
-	text-align: center;
-	width: 220px;
-	height: 250px;
-	background-color: #a2a2a2;
+#categoryNav ul {
+	border-bottom: 0 none;
+	margin-bottom: 0;
+	padding-bottom: 0;
 }
 
-.category img
-{
-	display: inline;
-	margin: 5px;
-	border: 1px solid #A0ACC0;
-	width: 200px;
-	height: 190px;
-}
-.catdescription
-{
-	margin: 5px;
+#categoryNav li {
+	padding-bottom: 4px;
+	text-indent: -10px;
 }
 
-.catdescription a
-{
-	color: #ffffff;
-	font-size:18pt;
-	font-weight: normal;
+#categoryNav li a {
+	background: #333 no-repeat right top;
+	font: bold 13px "Lucida Grande", "Trebuchet MS", Verdana;
+	display: block;
+	color: white;
+	width: auto;
+	padding: 5px 0;
+	text-indent: 8px;
+	text-decoration: none;
+	border-bottom: 1px solid black;
 }
+
+#categoryNav li a:hover {
+	background-color: black;
+	color: white;
+	border-bottom: 1px solid black;
+}
+
