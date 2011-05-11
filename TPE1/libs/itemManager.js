@@ -60,7 +60,6 @@ function createListItem(product, jar) {
 }
 
 function displayItem(id) {
-	var catalog = new ServerManager('Catalog');
 	catalog.get(
 		{
 			method: 'GetProduct',
@@ -75,7 +74,7 @@ function processItem(data) {
 	var temp2 = null;
 	if ($(data).find('response').attr('status') === 'fail') {
 		alert('Invalid item id');
-		return;
+		window.location = 'index.html';
 	}
 	var product = $(data).find('product');
 	var category = product.find('category_id').text();
