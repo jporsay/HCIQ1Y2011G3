@@ -1,32 +1,40 @@
+var catalog = new ServerManager('Catalog');
 
-function loadCategories(element, categories) {
-	//element is the ID of the category container.
-	//categories is an array of maps holding information of each category.
-	var elDOM = document.getElementById(element);	
-	for (var i = 0; i < categories.length; ++i) {
-		var category = categories[i];
-		var new_category = document.createElement("div");
-		new_category.setAttribute("class", "category")
-		
-		var new_cat_image = document.createElement("img");
-		new_cat_image.setAttribute("src", category.img);
-		new_cat_image.setAttribute("alt", category.id);
-		
-		var new_cat_desc = document.createElement("div");
-		new_cat_desc.setAttribute("class", "catdescription");
-		
-		var link = document.createElement("a");
-		link.setAttribute("id", category.id);
-		link.setAttribute("class", "i18n");
-		link.setAttribute("href","#");
-		new_cat_desc.appendChild(link);
-		
-		new_category.appendChild(new_cat_image);
-		new_category.appendChild(new_cat_desc);
-		elDOM.appendChild(new_category);
-	}
+function loadCategories(langId) {
+	catalog.get(
+		{
+			method: 'GetCategoryList',
+			language_id: langId
+		},
+		processCategories
+	);
 }
 
-function createCategory(c_name, c_imagesrc) {
-	return {name: c_name, img: c_imagesrc};
+function processCategories(data) {
+	$('#catList').empty();
+	$(data).find('category').each(
+		function() {
+			var category = $(this);
+			showCategory(category.attr('id'), category.find('name').text(), document.getElementById('catList'));
+		}
+	);
+}
+function showCategory(id, name, elDOM) {
+	//element is the ID of the category container.
+	//categories is an array of maps holding information of each category.
+	var temp = null;
+	var temp2 = null;	
+	var new_category = document.createElement('li');
+	temp = document.createElement('a');
+	temp.setAttribute("href","browse.html?catId=" + id);
+	temp2 = document.createElement('span');
+	temp2.innerHTML = name;
+	temp.appendChild(temp2);
+	new_category.appendChild(temp);
+	elDOM.appendChild(new_category);
+	
+	temp = document.createElement('ul');
+	getSubCategoriesS(id, $('#locale :selected').attr('id'), temp);
+	
+	elDOM.appendChild(temp);
 }

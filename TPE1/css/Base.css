@@ -35,7 +35,7 @@ html, body
 	font-style: normal;
 	font-variant: normal;
 	font-weight: normal;
-	background-color:#444444;
+	background-color:#DDDAF7;
 }
 
 html > body
@@ -47,9 +47,9 @@ html > body
 
 h1
 {
-	font-size:3.4em;
+	font-size:3.5em;
 	padding-top:20px;
-	color:#ffffff;
+	color:#000000;
 	letter-spacing:3px;
 	font-weight:normal;
 }
@@ -57,10 +57,10 @@ h1
 h2 
 {
 	color:#5580B4;
-	background-color:#343434;
 	display:inline;
 	padding:0 5px;
 	margin:5px 0;
+	text-decoration:underline;
 }
 
 h3 
@@ -117,7 +117,7 @@ p
 }
 td, td a, th, th a, span
 {
-	line-height: 1.3333em;
+	line-height: 1.4em;
 }
 
 blockquote

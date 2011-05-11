@@ -4,9 +4,12 @@
 	width: 24%;
 	left: 75.9%;
 	display: block;
-	border: 1px solid #00aa44;
 	background-color: #ffffff;
+	margin-top: 2px;
+	border: 2px solid #000000;
 }
+
+/*PARTE SUPERIOR*/
 
 .cartTitle {
 	text-align: right;
@@ -32,26 +35,40 @@
     display: block;
 }
 
-.cartItems ul {
-	color: #aa0000;
-	list-style-type: none;	/*Sin iconos*/
-	padding-left:5px;		/*Sobreescribe el tab default de la lista*/
+/*TABLA DE ITEMS*/
+table {
+	table-layout: fixed;
+	border-collapse: collapse;
 }
 
-.cartItems li {
-	height: 25px;
-	width: 100%;
-	margin-bottom: 4px;
+#cartItemsTable td {
+	border-bottom: 1px dashed #333;
+	padding: 2px 5px;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
-.cartItems input {
-	float: left;
-	height: 15px;
-	width: 15px;
-	margin-left: 5px;
-	margin-right: 10px;
-	border: 1px solid #000000;
+.removerCol {
+	width: 1%;
 }
+
+.informationCol {
+	width: 100px;
+}
+
+.priceCol {
+	width: 1%;
+}
+
+.selectorCol {
+	width: 1%;
+}
+
+.crop {
+	width: inherit;
+}
+
+/* Selector de cantidad */
 
 .selector {
 	float: right;
@@ -73,7 +90,7 @@
 	height: 100%;
 }
 
-.arrows input {
+.selector .arrows input {
 	float: right;
 	height: 5px;
 	width: 10px;
@@ -81,6 +98,17 @@
 	margin-left: 2px;
 	margin-right: 5px;
 }
+
+.cartItems input {
+	float: left;
+	height: 15px;
+	width: 15px;
+	margin-left: 5px;
+	margin-right: 10px;
+	border: 1px solid #000000;
+}
+
+/*PARTE INFERIOR*/
 
 .cartFooter {
 	height: 30px; 
@@ -97,10 +125,17 @@
 	width: 30%;
 }
 
-.cartFooter #price {
+.cartFooter #cartTotalPrice {
 	font: bold 16px Arial;
 	float: left;
 	width: auto;
+}
+
+.cartFooter #cartTotalPriceCurrency {
+	font: bold 16px Arial;
+	float: left;
+	width: auto;
+	margin-right: 5px;
 }
 
 .cartFooter a {
@@ -109,3 +144,4 @@
 	text-align: left;
 	font-size: 17px;
 }
+
