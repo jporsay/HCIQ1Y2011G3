@@ -10,7 +10,6 @@ function validate(args) {
 	}
 	
 	var value = element.val();
-	alert(args.e + ', ' + value.length);
 	if (value.length < minLength || value.length > maxLength) {
 		createErrorContainer(element, errorm);
 		return;
