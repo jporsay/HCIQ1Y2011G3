@@ -71,7 +71,6 @@ function createMiniImgDiv(product) {
 		imgDiv.setAttribute('class', 'miniImage');
 	
 	var img = document.createElement('img');
-		alert(product.find('image_url').text());
 		img.setAttribute('src', product.find('image_url').text());
 		img.setAttribute('alt', product.find('name').text());
 		
