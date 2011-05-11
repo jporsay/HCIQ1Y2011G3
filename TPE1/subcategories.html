@@ -14,7 +14,7 @@
 		<script type="text/javascript" src="libs/i18n.js"></script>
 		<script type="text/javascript" src="libs/cartManager.js"></script>
 		<script type="text/javascript">
-			
+			/*
 				loadJsFiles([
 					"jquery.easing.1.3",
 					"jquery.jBreadCrumb.1.1",
@@ -24,7 +24,7 @@
 					"jquery.i18n.properties-min",
 					"i18n"
 				]);
-				
+			*/	
 				loadCssFiles([
 					"style",
 					"navbar",
@@ -39,11 +39,11 @@
 				
 			$(function() {
 				$("#breadcrumb").jBreadCrumb();
-				
+			/*	
 				var translator = new i18n('Index');
 				document.getElementById('locale').value = translator.getLang();
 				translator.translatePage();
-				
+			*/	
 				$(document).keydown(function(e) {
 					if (e.keyCode == 27) {
 						if ($('.loginform').is(':visible') === true) {
@@ -60,13 +60,12 @@
 					}
 					$('.loginform').slideToggle();
 				});
-				
-				$('#date').datepicker();
+			/*	
 				$("#locale").change(function() {
 					translator.setLang($(this).val());
 					translator.translatePage();
 				});
-
+			*/
 				//Load some items to the cart
 				var items = [
 					new CartItem('Bicicle 2', "#", '200', 539.55),
