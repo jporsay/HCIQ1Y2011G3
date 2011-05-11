@@ -6,6 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<script type="text/javascript" src="libs/init.js"></script>
 		<script type="text/javascript" src="libs/jquery-1.5.1.min.js"></script>
+		<script type="text/javascript" src="libs/cartManager.js"></script>
 		<script type="text/javascript">
 			
 				loadJsFiles([
@@ -60,6 +61,16 @@
 					translator.translatePage();
 				});
 				
+				var items = [
+					new CartItem('Bicicle 2', "#", '200', 539.55),
+					new CartItem('Bicicle 1', "#", '1', 100),
+					new CartItem('Bicicle 3', "#", '3', 240.99)
+				];
+				cart = Cart.getInstance();
+				cart.load();
+				cart.addItems(items);
+				cart.incrementItemQuantity('1');
+				cart.printToTable('checkoutTable');
 			});
 		</script>
 		
@@ -108,11 +119,10 @@
 		</div>
 		
 		<div class="mainarea">
-			<div class='shoppingCart'>
-				<!--Falta implementar un poco mas los metodos del carrito para continuar esta seccion-->
-			</div>
 			<div class="fieldsCheckout">
 				<h1>Cart Checkout</h1>
+				<h2>Your final order:</h2>
+				<div id='checkoutTable'></div>
 				<h2>Please enter the required information in order to complete your order</h2>
 				<div class='billingInformation'>
 					<fieldset>

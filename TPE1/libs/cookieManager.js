@@ -9,8 +9,7 @@ function setCookie(name, cookie_value, expiration_days) {
 	document.cookie = name + "=" + value;
 }
 
-function getCookie(name)
-{
+function getCookie(name) {
 	var cookies = document.cookie.split(";");
 	var c_name, c_val;
 	for (var i = 0; i < cookies.length; i++)
