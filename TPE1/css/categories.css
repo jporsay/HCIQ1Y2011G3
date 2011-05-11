@@ -10,6 +10,7 @@
 	left: 500px;
 	top: 50px;
 	border: 1px solid #ffffff;
+	background: #bb4411;
 }
 
 #categoryNav {
@@ -19,12 +20,15 @@
 	float: left;
 	font-size: 90%;
 	width: 200px;
+	border: 1px #000000 solid;
 }
 
 #categoryNav h2 {
-	color: #CC6600;
+	/*color: #CC6600;*/
+	color: #000000;
 	margin: 0;
 	padding: 0 0 2px;
+	margin-left: 30px;
 }
 
 #categoryNavContainer {
@@ -41,6 +45,7 @@
 	border-bottom: 0 none;
 	margin-bottom: 0;
 	padding-bottom: 0;
+	list-style-type: none;
 }
 
 #categoryNav li {
