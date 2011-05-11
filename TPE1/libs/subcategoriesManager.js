@@ -1,6 +1,7 @@
 var catalog = new ServerManager('Catalog');
-
-function getSubCategories(categoryId, langId) {
+var holder = null;
+function getSubCategories(categoryId, langId, container) {
+	holder = container;
 	catalog.get(
 		{
 			method: 'GetSubcategoryList',
@@ -11,27 +12,39 @@ function getSubCategories(categoryId, langId) {
 	);
 }
 
+function getSubCategoriesS(categoryId, langId, container) {
+	holder = container;
+	catalog.getS(
+		{
+			method: 'GetSubcategoryList',
+			language_id: langId,
+			category_id: categoryId,
+		},
+		processSubcategories
+	);
+}
+
 function processSubcategories(data) {
-	$('.subcategoriescontainer').empty();
 	$(data).find('subcategory').each(
 		function() {
 			createSubCategory(
 				$(this).attr('id'),
 				$(this).find('category_id').text(),
 				$(this).find('name').text(),
-				document.getElementsByClassName('subcategoriescontainer')[0]
+				holder
 			);
 		}
 	)
 }
-
+//<li><a href=""><span>Humor</span></a></li>
 function createSubCategory(subCatId, catId, subCatName, container) {
 	var temp = null;
-	
-	temp = document.createElement('div');
-	temp.setAttribute('class', 'subcategory');
-	temp.innerHTML = '<a href=\'browse.html?subCatId=' + subCatId + '&catId=' + catId + '\' class=\'subcategorytitle\'>' + subCatName + '</a><br/>';
-	
+	var temp2 = null;
+	temp = document.createElement('li');
+	temp2 = document.createElement('a');
+	temp2.setAttribute('href', 'browse.html?subCatId=' + subCatId + '&catId=' + catId);
+	temp2.innerHTML = subCatName;
+	temp.appendChild(temp2);
 	container.appendChild(temp);
 	
 }

@@ -1,9 +1,13 @@
 var catalog = new ServerManager('Catalog');
 
 function getItems(categoryId, subcategoryId, langId) {
+	var method = 'GetProductListBySubcategory';
+	if (subcategoryId == "") {
+		method = 'GetProductListByCategory';
+	}
 	catalog.get(
 		{
-			method: 'GetProductListBySubcategory',
+			method: method,
 			language_id: langId,
 			category_id: categoryId,
 			subcategory_id: subcategoryId
