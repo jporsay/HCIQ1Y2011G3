@@ -57,9 +57,12 @@
 				getItems(urlParam('catId'), urlParam('subCatId'), $('#locale :selected').attr('id'));
 				translator.translatePage();
 			});
-			
-			getItems(urlParam('catId'), urlParam('subCatId'), $('#locale :selected').attr('id'));
-			translator.translatePage();
+			if(urlParam('searchText')) {
+				searchItems(urlParam('searchText'));
+			} else if (urlParam('catId')) {
+				getItems(urlParam('catId'), urlParam('subCatId'), $('#locale :selected').attr('id'));
+				translator.translatePage();
+			}
 		});
 	</script>
 	
