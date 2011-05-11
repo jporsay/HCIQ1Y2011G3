@@ -1,0 +1,49 @@
+.fieldsRegistration {
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
+	width: 650px;
+	
+	color: #ffffff;
+}
+
+.fieldsRegistration  fieldset {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.fieldsRegistration .fieldRow {
+	position: relative;
+	height: 2.5em;
+	left: 10px;
+}
+
+.fieldsRegistration .fieldRow input {
+	position: absolute;
+	left: 17%;
+	width: 350px;
+}
+
+.fieldsRegistration #cancelButton {
+	width: 90px;
+	height: 40px;
+}
+
+.fieldsRegistration #registerButton {
+	width: 90px;
+	margin-right: 20px;
+	height: 40px;
+}
+
+.error {
+	background-color: #EF2827;
+}
+
+.errorText {
+	position: relative;
+	left: 430px;
+}
+
+form {
+	margin: 20px;
+}
