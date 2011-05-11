@@ -236,9 +236,7 @@ function createSelector(item) {
 */
 Cart.prototype.load = function() {
 	this.cleanHTML('cart');
-	
 	this.currency = '$';
-	this.isLoaded = 1;
 	var cart = document.getElementById('cart');
 		cart.setAttribute('class', 'cart');
 	if(cart == null) {
@@ -314,8 +312,8 @@ function createCartFooter() {
 		foter_number_label.setAttribute('id', 'cartTotalPrice');
 	var footer_checkout = document.createElement('a');
 		footer_checkout.setAttribute('onClick', getActionForCheckoutButton());
+		footer_checkout.setAttribute('href', './checkout.html');
 		footer_checkout.innerHTML = 'Proceed to checkout!';
-		
 	footer.appendChild(foter_label);
 	footer.appendChild(foter_currency_label);
 	footer.appendChild(foter_number_label);

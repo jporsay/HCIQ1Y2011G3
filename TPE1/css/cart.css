@@ -4,8 +4,9 @@
 	width: 24%;
 	left: 75.9%;
 	display: block;
-	border: 1px solid #00aa44;
 	background-color: #ffffff;
+	margin-top: 2px;
+	border: 2px solid #000000;
 }
 
 /*PARTE SUPERIOR*/
@@ -36,15 +37,15 @@
 
 /*TABLA DE ITEMS*/
 table {
-	table-layout:fixed;
+	table-layout: fixed;
 	border-collapse: collapse;
 }
 
 #cartItemsTable td {
 	border-bottom: 1px dashed #333;
 	padding: 2px 5px;
-	white-space:nowrap;
-	overflow:hidden;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .removerCol {
@@ -137,16 +138,10 @@ table {
 	margin-right: 5px;
 }
 
-.cartFooter .checkoutBtn {
-	margin: 10px;
-	width: 190px;
-	height: 60px;
-}
-
-/*.cartFooter a {
-	//Esto esta comentado ya que acabo de cambiar el cartFooter checkout link y por ahora esta experimental.
+.cartFooter a {
 	float: right;
 	width: 30%;
 	text-align: left;
 	font-size: 17px;
-}*/
+}
+

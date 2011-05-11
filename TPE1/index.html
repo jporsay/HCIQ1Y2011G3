@@ -55,8 +55,17 @@
 				translator.translatePage();
 			});
 			
+			var items = [
+				new CartItem('Bicicle 2', "#", '200', 539.55),
+				new CartItem('Bicicle 1', "#", '1', 100),
+				new CartItem('Bicicle 3', "#", '3', 240.99)
+			];
 			cart = Cart.getInstance();
 			cart.load();
+			cart.addItems(items);
+			cart.update();
+			
+			
 			loadCategories($('#locale :selected').attr('id'));
 			translator.translatePage();
 		});
@@ -111,7 +120,7 @@
 <div class="mainArea">
 	
 	<div id="categoryNav">
-		<!--<div id="leftNavContainer">
+		<div id="leftNavContainer">
 			<div id="refinements">
 				<h2>Categorias</h2>
 				<ul>
@@ -133,7 +142,7 @@
 					</li>
 				</ul>
 		    </div>
-		</div>-->
+		</div>
 	</div>
 	<div class="hotItems">
 		<h1> Hot Items: </h1>
