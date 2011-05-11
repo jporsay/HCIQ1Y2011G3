@@ -25,6 +25,17 @@ function processItems(data) {
 		}
 	);
 }
+
+function searchItems(searchText) {
+	catalog.get(
+		{
+			method: 'GetProductListByName',
+			criteria: searchText
+		},
+		processItems
+	);
+}
+
 /*
 <div id="55" class="item">
 	<div class="itemLink">
