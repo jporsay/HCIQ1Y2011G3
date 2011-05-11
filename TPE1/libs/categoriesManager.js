@@ -1,28 +1,28 @@
 var catalog = new ServerManager('Catalog');
 
-function loadCategories() {
+function loadCategories(langId) {
 	catalog.get(
 		{
 			method: 'GetCategoryList',
-			language_id: 1,
+			language_id: langId
 		},
 		processCategories
 	);
 }
 
 function processCategories(data) {
+	$('#categorycontainer').empty();
 	$(data).find('category').each(
 		function() {
 			var category = $(this);
-			showCategory(category.attr('id'), category.find('name').text());
+			showCategory(category.attr('id'), category.find('name').text(), document.getElementById('categorycontainer'));
 		}
 	);
 }
 
-function showCategory(id, name) {
+function showCategory(id, name, elDOM) {
 	//element is the ID of the category container.
 	//categories is an array of maps holding information of each category.
-	var elDOM = document.getElementById('categorycontainer');	
 	var new_category = document.createElement("div");
 	new_category.setAttribute('id', id);
 	new_category.setAttribute("class", "category");
@@ -36,7 +36,6 @@ function showCategory(id, name) {
 	
 	var link = document.createElement("a");
 	link.setAttribute("id", id);
-	//link.setAttribute("class", "i18n");
 	link.innerHTML = name;
 	link.setAttribute("href","subcategories.html?catId=" + id);
 	new_cat_desc.appendChild(link);

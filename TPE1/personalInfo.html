@@ -41,7 +41,6 @@
 			
 			var translator = new i18n('Index');
 			document.getElementById('locale').value = translator.getLang();
-			translator.translatePage();
 			
 			$(document).keydown(function(e) {
 				if (e.keyCode == 27) {
@@ -60,12 +59,12 @@
 				$('.loginform').slideToggle();
 			});
 			
-			$('#date').datepicker();
 			$("#locale").change(function() {
 				translator.setLang($(this).val());
 				translator.translatePage();
 			});
 			
+			translator.translatePage();
 		});
 	</script>
 	

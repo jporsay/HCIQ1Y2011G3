@@ -1,10 +1,10 @@
 var catalog = new ServerManager('Catalog');
 
-function getSubCategories(categoryId) {
+function getSubCategories(categoryId, langId) {
 	catalog.get(
 		{
 			method: 'GetSubcategoryList',
-			language_id: 1,
+			language_id: langId,
 			category_id: categoryId,
 		},
 		processSubcategories
@@ -12,6 +12,7 @@ function getSubCategories(categoryId) {
 }
 
 function processSubcategories(data) {
+	$('.subcategoriescontainer').empty();
 	$(data).find('subcategory').each(
 		function() {
 			createSubCategory(

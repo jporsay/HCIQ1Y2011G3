@@ -14,6 +14,7 @@ function getItems(categoryId, subcategoryId, langId) {
 
 
 function processItems(data) {
+	$('.items').empty();
 	$(data).find('product').each(
 		function() {
 			createListItem($(this), document.getElementsByClassName('items')[0]);

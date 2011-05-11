@@ -48,15 +48,13 @@
 			];
 			loadCategories('categorycontainer', categories);
 			*/
-			loadCategories();
 			//Finished loading categories
 			
 			$("#breadcrumb").jBreadCrumb();
-		/*	
+		
 			var translator = new i18n('Index');
 			document.getElementById('locale').value = translator.getLang();
-			translator.translatePage();
-		*/	
+		
 			$(document).keydown(function(e) {
 				if (e.keyCode == 27) {
 					if ($('.loginform').is(':visible') === true) {
@@ -76,8 +74,12 @@
 			
 			$("#locale").change(function() {
 				translator.setLang($(this).val());
+				loadCategories($('#locale :selected').attr('id'));
 				translator.translatePage();
 			});
+			
+			loadCategories($('#locale :selected').attr('id'));
+			translator.translatePage();
 		});
 	</script>
 	

@@ -41,11 +41,10 @@
 				
 			$(function() {
 				$("#breadcrumb").jBreadCrumb();
-			/*	
+				
 				var translator = new i18n('Index');
 				document.getElementById('locale').value = translator.getLang();
-				translator.translatePage();
-			*/
+			
 				$(document).keydown(function(e) {
 					if (e.keyCode == 27) {
 						if ($('.loginform').is(':visible') === true) {
@@ -62,12 +61,13 @@
 					}
 					$('.loginform').slideToggle();
 				});
-			/*	
+				
 				$("#locale").change(function() {
 					translator.setLang($(this).val());
+					getSubCategories(urlParam('catId'), $('#locale :selected').attr('id'));
 					translator.translatePage();
 				});
-			*/
+			
 				//Load some items to the cart
 				var items = [
 					new CartItem('Bicicle 2', "#", '200', 539.55),
@@ -80,7 +80,8 @@
 				cart.addItems(items);
 				cart.update();
 				
-				getSubCategories(urlParam('catId'));
+				getSubCategories(urlParam('catId'), $('#locale :selected').attr('id'));
+				translator.translatePage();
 				
 				//Finish loading items
 			});

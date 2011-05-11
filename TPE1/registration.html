@@ -39,11 +39,10 @@
 			$(function() {
 				
 				$("#breadcrumb").jBreadCrumb();
-			/*	
+				
 				var translator = new i18n('Index');
 				document.getElementById('locale').value = translator.getLang();
-				translator.translatePage();
-			*/	
+				
 				$(document).keydown(function(e) {
 					if (e.keyCode == 27) {
 						if ($('.loginform').is(':visible') === true) {
@@ -60,12 +59,8 @@
 					}
 					$('.loginform').slideToggle();
 				});
-			/*	
-				$("#locale").change(function() {
-					translator.setLang($(this).val());
-					translator.translatePage();
-				});
-			*/
+				
+			
 				$('form').submit(function(e) {
 					e.preventDefault();
 					var validations = [
@@ -117,6 +112,13 @@
 						validate(validations[i]);
 					}
 				});
+				
+				$("#locale").change(function() {
+					translator.setLang($(this).val());
+					translator.translatePage();
+				});
+				
+				translator.translatePage();
 			});
 		</script>
 		

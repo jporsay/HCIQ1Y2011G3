@@ -46,7 +46,6 @@
 			
 			var translator = new i18n('Index');
 			document.getElementById('locale').value = translator.getLang();
-			translator.translatePage();
 			
 			$(document).keydown(function(e) {
 				if (e.keyCode == 27) {
@@ -65,13 +64,14 @@
 				$('.loginform').slideToggle();
 			});
 			
-			$('#date').datepicker();
 			$("#locale").change(function() {
 				translator.setLang($(this).val());
+				getItems(urlParam('catId'), urlParam('subCatId'), $('#locale :selected').attr('id'));
 				translator.translatePage();
 			});
-			getItems(urlParam('catId'), urlParam('subCatId'), 2);
 			
+			getItems(urlParam('catId'), urlParam('subCatId'), $('#locale :selected').attr('id'));
+			translator.translatePage();
 		});
 	</script>
 	

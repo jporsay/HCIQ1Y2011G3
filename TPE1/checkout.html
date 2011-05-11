@@ -44,7 +44,6 @@
 				
 				var translator = new i18n('Index');
 				document.getElementById('locale').value = translator.getLang();
-				translator.translatePage();
 				
 				$(document).keydown(function(e) {
 					if (e.keyCode == 27) {
@@ -63,14 +62,15 @@
 					$('.loginform').slideToggle();
 				});
 				
-				$('#date').datepicker();
 				$("#locale").change(function() {
 					translator.setLang($(this).val());
 					translator.translatePage();
 				});
+				
 				cart = Cart.getInstance();
 				cart.loadState();
 				cart.printToTable('checkoutTable');
+				translator.translatePage();
 			});
 		</script>
 		
