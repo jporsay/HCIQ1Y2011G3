@@ -43,11 +43,11 @@ function createListItem(product, jar) {
 	var container = document.createElement('div');
 		container.setAttribute('id', product.attr('id'));
 		container.setAttribute('class', 'item');
-	temp = createItemLinkDiv(product); 
+		temp = createItemLinkDiv(product); 
 		container.appendChild(temp);
-	temp = createMiniImgDiv(product);
+		temp = createMiniImgDiv(product);
 		container.appendChild(temp);	
-	temp = createExtraIteminfo(product);
+		temp = createExtraIteminfo(product);
 		container.appendChild(temp);
 		
 	jar.appendChild(container);
@@ -70,9 +70,10 @@ function createMiniImgDiv(product) {
 	var imgDiv = document.createElement('div');
 		imgDiv.setAttribute('class', 'miniImage');
 	
-	var img = document.createElement('div');
+	var img = document.createElement('img');
+		alert(product.find('image_url').text());
 		img.setAttribute('src', product.find('image_url').text());
-		img.setAttribute('alt', product.find('name'),text());
+		img.setAttribute('alt', product.find('name').text());
 		
 	imgDiv.appendChild(img);
 	return imgDiv;
