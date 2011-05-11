@@ -5,30 +5,27 @@
 .productContainer .title {
 	position: absolute;
 	font-size: x-large;
-	top: 40px;
-	left: 60px;
+	top: 20px;
+	left: 20px;
 }
 .productContainer img {
  	position: absolute;
- 	top: 100px;
- 	left: 50px;
-	width: 330px;
-	height: 270px;
+ 	top: 80px;
+ 	left: 40px;
+	width: 240px;
+	height: 240px;
 	border: #000000 solid 1px;
-}
-.productContainer .description {
-	left: 400px;
-	top: 100px;
-	font-size: larger;
-	position: absolute;
-	width: 30em;
 }
 .productContainer .price {
 	position: absolute;
-	left: 400px;
-	top: 250px;
+	left: 330px;
+	top: 60px;
 	font-size: large;
 	float: right;
+}
+
+.inlineElement {
+	display: inline;
 }
 
 .productContainer .price p {
@@ -40,4 +37,47 @@
 	position: absolute;
 	top: 390px;
 	left: 50px;
+}
+
+.productContainer .productDescription {
+	position: absolute;
+	top: 400px;
+	left: 25px;
+}
+
+.productContainer .productDescription h2{
+	font-size: x-large;
+	margin-bottom: 40px;
+}
+
+.addtocart {
+	color: #11ee11;
+	font-weight: bold;
+	font-size: medium;
+}
+
+.removefromcart {
+	color: #ee1111;
+	font-weight: bold;
+	font-size: medium;
+}
+
+
+.cartToggle {
+	position: absolute;
+	left: 310px;
+	top: 270px;
+	
+}
+
+.addToCart {
+	color: #11ee11;
+	font-weight: bold;
+	font-size: medium;
+}
+
+.removeFromCart {
+	color: #ee1111;
+	font-weight: bold;
+	font-size: medium;
 }
