@@ -11,6 +11,8 @@
 	<script type="text/javascript" src="libs/cookieManager.js"></script>
 	<script type="text/javascript" src="libs/jquery-ui-1.8.11.custom.min.js"></script>
 	<script type="text/javascript" src="libs/jquery.i18n.properties-min.js"></script>
+	<script type="text/javascript" src="libs/ServerManager.js"></script>
+	<script type="text/javascript" src="libs/itemManager.js"></script>
 	<script type="text/javascript" src="libs/i18n.js"></script>
 	<script type="text/javascript">
 		
@@ -41,13 +43,13 @@
 		$(document).ready(function() {
 			
 			$("#breadcrumb").jBreadCrumb();
-			
+		/*
 			var translator = new i18n('Index');
 			document.getElementById('locale').value = translator.getLang();
 			translator.translatePage();
 			//var pId = urlParam('id');
 			//displayItem(pId);
-			
+		*/
 			$(document).keydown(function(e) {
 				if (e.keyCode == 27) {
 					if ($('.loginform').is(':visible') === true) {
@@ -65,10 +67,12 @@
 				$('.loginform').slideToggle();
 			});
 			displayItem(urlParam('id'));
+		/*
 			$("#locale").change(function() {
 				translator.setLang($(this).val());
 				translator.translatePage();
 			});
+		*/
 		});
 	</script>
 	
