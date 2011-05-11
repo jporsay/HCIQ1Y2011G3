@@ -21,10 +21,10 @@
 	font-size: 90%;
 	width: 200px;
 	border: 1px #000000 solid;
+	background: #4B544B;
 }
 
 #categoryNav h2 {
-	/*color: #CC6600;*/
 	color: #000000;
 	margin: 0;
 	padding: 0 0 2px;
