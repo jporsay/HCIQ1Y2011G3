@@ -75,4 +75,18 @@
 
 .header .loginform button {
 	margin: 5px 0 0 10px;
+	width: 100px;
+}
+
+.header .loginform #createaccount {
+	float: right;
+	margin: 7px 40px 0 0;
+}
+
+.header .loginform #forgotdata {
+	position: absolute;
+	top: 115px;
+	left: 0;
+	text-align: center;
+	width: 270px;
 }

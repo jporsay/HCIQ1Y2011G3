@@ -100,18 +100,20 @@
 	<div id="login">
 		<div class="logintext">
 			<div id="loginimg"></div>
-			<span id="logintext" class="i18n"></span>
+			<span id="logintext" class="">Login</span>
 		</div>
 		<div class="loginform">
 			<div>
-				<span id='usernametext' class="i18n"></span>
+				<span id='usernametext' class="">Username:</span>
 				<input type="text">
 			</div>
 			<div>
-				<span id='passwordtext' class="i18n"></span>
+				<span id='passwordtext' class="">Password</span>
 				<input type="password">
 			</div>
-			<button type="button" id='loginbutton' class='i18n'></button>
+			<button type="button" id='loginbutton' class=''>Login</button>
+			<a href="registration.html" id="createaccount">Create account</a>
+			<a href="recoverInfo.html" id="forgotdata">Forgot username or password?</a>
 		</div>
 	</div>
 	<div class="navbar">
@@ -123,8 +125,7 @@
 			</ul>
 		</div>
 		<div id="searchbar">
-			<!-- stop complaining about the placeholder property!!-->
-			<input id="searchtext" class="i18n" placeholder="">
+			<input id="searchtext" class="i18n" value="Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
 			<button class="ui-widget">Go</button>
 		</div>
 	</div>
