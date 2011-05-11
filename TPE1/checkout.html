@@ -136,56 +136,58 @@
 				<div id='checkoutTable'></div>
 				
 				<h2>Please enter the required information in order to complete your order</h2>
-				<div class='billingInformation'>
-					<fieldset>
-						<legend>Billing Information</legend>
-						<div class='fieldRow'>
-							<span>First Name:</span>
-							<input type='text'></input>
-						</div>
-						<div class='fieldRow'>
-							<span>Last Name:</span>
-							<input type='text'></input>
-						</div>
-						<div class='fieldRow'>
-							<span>Address:</span>
-							<input type='text'></input>
-						</div>
-						<div class='fieldRow'>
-							<span>City:</span>
-							<input type='text'></input>
-						</div>							
-						<div class='fieldRow'>
-							<span>State/Province:</span>
-							<input type='text'></input>
-						</div>
-						<div class='fieldRow'>
-							<span>Zip/Postal Code:</span>
-							<input type='text'></input>
-						</div>
-					</fieldset>
+				<form>
+					<div class='billingInformation'>
+						<fieldset>
+							<legend>Billing Information</legend>
+							<div class='fieldRow'>
+								<span>First Name:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Last Name:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Address:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>City:</span>
+								<input type='text'></input>
+							</div>							
+							<div class='fieldRow'>
+								<span>State/Province:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Zip/Postal Code:</span>
+								<input type='text'></input>
+							</div>
+						</fieldset>
+					</div>
+					<div class='paymentInformation'>
+						<fieldset>
+							<legend>Payment Information</legend>
+							<input class='cardImges' type='Image' src='./images/checkout/cards.jpg'></input>
+							<div class='fieldRow'>
+								<span>Card Number:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Expiration Date:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Card Code:</span>
+								<input type='text'></input>
+							</div>
+						</fieldset>
+					</div>
+					<input class='cancelButton' type="button" value='Cancel'></input>
+					<input class='nextButton' type="button" value='Next >'> </input>
 				</div>
-				<div class='paymentInformation'>
-					<fieldset>
-						<legend>Payment Information</legend>
-						<input class='cardImges' type='Image' src='./images/checkout/cards.jpg'></input>
-						<div class='fieldRow'>
-							<span>Card Number:</span>
-							<input type='text'></input>
-						</div>
-						<div class='fieldRow'>
-							<span>Expiration Date:</span>
-							<input type='text'></input>
-						</div>
-						<div class='fieldRow'>
-							<span>Card Code:</span>
-							<input type='text'></input>
-						</div>
-					</fieldset>
-				</div>
-				<input class='cancelButton' type="button" value='Cancel'></input>
-				<input class='nextButton' type="button" value='Next >'> </input>
-			</div>
+			</form>
 			<div class ="footer">
 				<a id="usLabel" class="i18n" href="#"></a> | <a id="contactLabel" class="i18n" href="#"></a>
 			</div>
