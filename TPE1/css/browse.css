@@ -1,72 +1,72 @@
 .items {
-	position: relative;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
+	width: 800px;
 }
 
 .item {
+		position: relative;
 		margin-top: 20px;
-		width: 800px;
+		width: 700px;
 		height: 165px;
 		border-bottom: #222222 solid 1px;
 }
 
 .item .itemLink {
-	position: relative;
+	position: absolute;
 	background-color:#333333;
 	font-size: larger;
-	width: 400px;
-	top:  -90px;
+	width: 250px;
 	border-bottom:1px solid #222222;
 	padding:5px;
 	color: #B8B8B8;
 }
 
-.item .description {
-	position: relative;
-	font-size: 1.1em;
-	top: -60px;
-	left: 130px;
-	width: 35em;
+.item .miniImage {
+	position: absolute;
+	top: 50px;
+	left: 20px;
 }
 
-.item .miniImage {
-	display:inline;
-	position: relative;
-	top: 40px;
-	left: -75px;
+.item img {
 	width: 110px;
 	height: 110px;
 }
 
-.extraItemInfo {
-	position: relative;
+.item .extraItemInfo {
+	position: absolute;
 	width: 160px;
-	left: 650px;
-	top: -160px;
+	top: 60px;
+	left: 450px;
 }
 
 .item .price {
-	position: relative;
 	font-weight: bold;
 	font-size: medium;
 }
 
-.item .rank {
-	position: relative;
+.item .cartDiv {
+	position: absolute;
+	width: 150px;
+	font-size: 14px;
 }
 
-.item .status {
-	position: relative;
-	font-weight: bold;
+.item .cartDiv img {
+	display: inline;
+	width: 20px;
+	height: 20px;
 }
 
-.addtocart {
+.addToCart {
 	color: #11ee11;
 	font-weight: bold;
 	font-size: medium;
 }
 
-.removefromcart {
+.removeFromCart {
 	color: #ee1111;
 	font-weight: bold;
 	font-size: medium;
 }
+

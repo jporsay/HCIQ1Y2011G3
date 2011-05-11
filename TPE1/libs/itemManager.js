@@ -20,43 +20,78 @@ function processItems(data) {
 		}
 	);
 }
-
+/*
+<div id="55" class="item">
+	<div class="itemLink">
+		<a href="product.html?id=55">2001: A Space Odyssey</a>
+	</div>
+	<div class="miniImage">
+		<img src="http://eiffel.itba.edu.ar/hci/service/images/020.jpg" alt="[object Object]">
+	</div>
+	<div class="extraItemInfo">
+		<p class="rank">Rank: 67</p>
+		<p class="price">10.49</p>
+		<div class='cartDiv'>
+			<img src="./images/cart/cartItem.png">
+			<span class='addToCart'>Add To Cart</span>
+		</div>
+	</div>
+</div>
+*/
 function createListItem(product, jar) {
 	var temp = null;
 	var container = document.createElement('div');
-	container.id = product.attr('id');
-	container.setAttribute('class', 'item');
-	
-	temp = document.createElement('a');
-	temp.innerHTML = product.find('name').text();
-	temp.setAttribute('class', 'itemLink');
-	temp.href = 'product.html?id=' + product.attr('id');
-	container.appendChild(temp);
-
-	temp = document.createElement('img');
-	temp.setAttribute('class', 'miniImage');
-	temp.src = product.find('image_url').text();
-	temp.alt = product.find('name');
-	container.appendChild(temp);
-	
-	var extraInfo = document.createElement('div');
-	extraInfo.setAttribute('class', 'extraItemInfo');
-	
-	temp = document.createElement('p');
-	temp.setAttribute('class', 'price');
-	temp.innerHTML = product.find('price').text();
-	extraInfo.appendChild(temp);
-	
-	temp = document.createElement('p');
-	temp.setAttribute('class', 'rank');
-	temp.innerHTML = 'Rank: ' + product.find('sales_rank').text();
-	extraInfo.appendChild(temp);
-	
-	container.appendChild(extraInfo);
-	
+		container.setAttribute('id', product.attr('id'));
+		container.setAttribute('class', 'item');
+	temp = createItemLinkDiv(product); 
+		container.appendChild(temp);
+	temp = createMiniImgDiv(product);
+		container.appendChild(temp);	
+	temp = createExtraIteminfo(product);
+		container.appendChild(temp);
+		
 	jar.appendChild(container);
-	
 	return jar;
+}
+
+function createItemLinkDiv(product) {
+	var linkDiv = document.createElement('div');
+		linkDiv.setAttribute('class', 'itemLink');
+	
+	var link = document.createElement('a');
+		link.innerHTML = product.find('name').text();
+		link.setAttribute('href', 'product.html?id=' + product.attr('id'));
+		
+	linkDiv.appendChild(link);
+	return linkDiv;
+}
+
+function createMiniImgDiv(product) {
+	var imgDiv = document.createElement('div');
+		imgDiv.setAttribute('class', 'miniImage');
+	
+	var img = document.createElement('div');
+		img.setAttribute('src', product.find('image_url').text());
+		img.setAttribute('alt', product.find('name'),text());
+		
+	imgDiv.appendChild(img);
+	return imgDiv;
+}
+
+function createExtraIteminfo(product) {
+	var extraInfoDiv = document.createElement('div');
+		extraInfoDiv.setAttribute('class', 'extraItemInfo');
+	
+	var rank = document.createElement('p');
+		rank.setAttribute('class', 'rank');
+		rank.innerHTML = product.find('price').text();
+	var price = document.createElement('p');
+		price.setAttribute('class', 'price');
+		price.innerHTML = Cart.getInstance().currency + ' ' + product.find('price').text();
+	
+	extraInfoDiv.appendChild(rank);
+	extraInfoDiv.appendChild(price);
+	return extraInfoDiv;
 }
 
 function displayItem(id) {
