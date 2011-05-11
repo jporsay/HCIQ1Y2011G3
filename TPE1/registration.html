@@ -11,8 +11,10 @@
 		<script type="text/javascript" src="./libs/cookieManager.js"></script>
 		<script type="text/javascript" src="./libs/jquery-ui-1.8.11.custom.min.js"></script>
 		<script type="text/javascript" src="./libs/jquery.i18n.properties-min.js"></script>
+		<script type="text/javascript" src="./libs/ServerManager.js"></script>
 		<script type="text/javascript" src="./libs/i18n.js"></script>
 		<script type="text/javascript" src="./libs/validator.js"></script>
+		<script type="text/javascript" src="./libs/userManager.js"></script>
 		<script type="text/javascript">
 			/*
 				loadJsFiles([
@@ -61,7 +63,7 @@
 				});
 				
 			
-				$('form').submit(function(e) {
+				$('#registrationInformation').submit(function(e) {
 					e.preventDefault();
 					var validations = [
 						{
@@ -111,6 +113,10 @@
 					for (var i = 0; i < validations.length; i++) {
 						validate(validations[i]);
 					}
+					if (!document.getElementsByClassName('error').length) {
+						createUser($('form input'));
+					}
+					return false;
 				});
 				
 				$("#locale").change(function() {
@@ -175,7 +181,7 @@
 			<div class="fieldsRegistration">
 				<h1>Registration</h1>
 				<h2>Please enter the required information (all fields are required)</h2>
-				<form id='registrationInformation' action='index.html'>
+				<form id='registrationInformation' action='#'>
 					<div class='fieldRow'>
 						<span>Username:</span>
 						<input id='username' type='text'></input>
