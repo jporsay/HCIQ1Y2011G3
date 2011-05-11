@@ -12,6 +12,8 @@
 		<script type="text/javascript" src="libs/jquery-ui-1.8.11.custom.min.js"></script>
 		<script type="text/javascript" src="libs/jquery.i18n.properties-min.js"></script>
 		<script type="text/javascript" src="libs/i18n.js"></script>
+		<script type="text/javascript" src="libs/ServerManager.js"></script>
+		<script type="text/javascript" src="libs/subcategoriesManager.js"></script>
 		<script type="text/javascript" src="libs/cartManager.js"></script>
 		<script type="text/javascript">
 			/*
@@ -78,6 +80,8 @@
 				cart.addItems(items);
 				cart.update();
 				
+				getSubCategories(urlParam('catId'));
+				
 				//Finish loading items
 			});
 		</script>
@@ -130,18 +134,6 @@
 
 			<div id="cart" class="cart"></div>
 			<div class='subcategoriescontainer'>
-				<div class='subcategory'>
-					<span class='subcategorytitle'>Action Sports</span><br/>
-				</div>
-				<div class='subcategory'>
-					<span class='subcategorytitle'>Bikes & Scooters</span><br/>
-				</div>
-				<div class='subcategory'>
-					<span class='subcategorytitle'>Golf</span><br/>
-				</div>
-				<div class='subcategory'>
-					<span class='subcategorytitle'>Equestrian</span><br/>
-				</div>
 			</div>
 			
 			<div class="footer">
