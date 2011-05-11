@@ -75,6 +75,7 @@
 				];
 				cart = Cart.getInstance();
 				cart.load();
+				window.cart = cart;
 				cart.addItems(items);
 				cart.update();
 				//Finish loading items

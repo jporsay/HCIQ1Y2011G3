@@ -68,16 +68,8 @@
 					translator.setLang($(this).val());
 					translator.translatePage();
 				});
-				
-				var items = [
-					new CartItem('Bicicle 2', "#", '200', 539.55),
-					new CartItem('Bicicle 1', "#", '1', 100),
-					new CartItem('Bicicle 3', "#", '3', 240.99)
-				];
 				cart = Cart.getInstance();
-				cart.load();
-				cart.addItems(items);
-				cart.incrementItemQuantity('1');
+				cart.loadState();
 				cart.printToTable('checkoutTable');
 			});
 		</script>
