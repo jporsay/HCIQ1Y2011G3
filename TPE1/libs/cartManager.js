@@ -80,7 +80,7 @@ Cart.prototype.removeItem = function(id) {
 /** Agrega en el HTML los items guardados en el carrito. Estos son agregados a la tabla con id='cartItemsTable'.*/
 Cart.prototype.update = function() {
 	var cart_table = document.getElementById('cartItemsTable');
-	this.cleanHTML();
+	this.cleanHTML('cartItemsTable');
 
 	var totalPrice = 0
 	for (var i=0; i < this.items.length; i++) {
@@ -94,8 +94,8 @@ Cart.prototype.update = function() {
 }
 
 /** Limpia todo el HTML del carrito . NO elimina ningun item.*/
-Cart.prototype.cleanHTML = function() {
-	var cart_table = document.getElementById('cartItemsTable');
+Cart.prototype.cleanHTML = function(elementID) {
+	var cart_table = document.getElementById(elementID);
 	while(cart_table.hasChildNodes()) {
 		cart_table.removeChild(cart_table.lastChild);
 	}
@@ -235,8 +235,12 @@ function createSelector(item) {
 </div>
 */
 Cart.prototype.load = function() {
+	this.cleanHTML('cart');
+	
 	this.currency = '$';
+	this.isLoaded = 1;
 	var cart = document.getElementById('cart');
+		cart.setAttribute('class', 'cart');
 	if(cart == null) {
 		return;
 	}
