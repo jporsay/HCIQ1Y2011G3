@@ -14,7 +14,7 @@
 		<script type="text/javascript" src="libs/i18n.js"></script>
 		<script type="text/javascript" src="libs/cartManager.js"></script>
 		<script type="text/javascript">
-			
+			/*
 				loadJsFiles([
 					"jquery.easing.1.3",
 					"jquery.jBreadCrumb.1.1",
@@ -22,9 +22,10 @@
 					"jquery-ui-1.8.11.custom.min",
 					"jquery.ui.datepicker-es",
 					"jquery.i18n.properties-min",
+					"cartManager",
 					"i18n"
 				]);
-				
+			*/	
 				loadCssFiles([
 					"style",
 					"navbar",
@@ -32,12 +33,13 @@
 					"jquery-ui-1.8.11.custom",
 					"Base",
 					"BreadCrumb",
-					"subcategories",
-					"cart",
+					"checkout",
+					"cartItemsTable",
 					"footer"
 				]);
 				
 			$(function() {
+				
 				$("#breadcrumb").jBreadCrumb();
 				
 				var translator = new i18n('Index');
@@ -66,19 +68,9 @@
 					translator.setLang($(this).val());
 					translator.translatePage();
 				});
-
-				//Load some items to the cart
-				var items = [
-					new CartItem('Bicicle 2', "#", '200', 539.55),
-					new CartItem('Bicicle 1', "#", '1', 100),
-					new CartItem('Bicicle 3', "#", '3', 240.99)
-				];
 				cart = Cart.getInstance();
-				cart.load();
-				window.cart = cart;
-				cart.addItems(items);
-				cart.update();
-				//Finish loading items
+				cart.loadState();
+				cart.printToTable('checkoutTable');
 			});
 		</script>
 		
@@ -117,7 +109,8 @@
 				<div id="breadcrumbholder" class="breadCrumbHolder breadCrumbPosition breadCrumb module">
 					<ul id="breadcrumb">
 						<li><a href="#">Home</a></li>
-						<li><a href="#">Sport</a></li>
+						<li><a href="#">Settings</a></li>
+						<li><a href="#">Checkout</a></li>
 					</ul>
 				</div>
 				<div id="searchbar">
@@ -126,84 +119,69 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="mainarea">
-
-			<div id="cart" class="cart"></div>
-			<div class='subcategoriescontainer'>
-				<div class='subcategory'>
-					<span class='subcategorytitle'>Action Sports</span><br/>
-					<div class='subcategorieslinks'>
-						<ul>
-							<li><a href='#' class='subsubcategory'>Protection</a></li>
-							<li><a href='#' class='subsubcategory'>Some other sub sub category</a></li>
-							<li><a href='#' class='subsubcategory'>An other one!</a></li>
-						</ul>
-					</div>			
+			<div class="fieldsCheckout">
+				<h1>Cart Checkout</h1>
+				
+				<h2>Your final order:</h2>
+				<div id='checkoutTable'></div>
+				
+				<h2>Please enter the required information in order to complete your order</h2>
+				<form>
+					<div class='billingInformation'>
+						<fieldset>
+							<legend>Billing Information</legend>
+							<div class='fieldRow'>
+								<span>First Name:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Last Name:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Address:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>City:</span>
+								<input type='text'></input>
+							</div>							
+							<div class='fieldRow'>
+								<span>State/Province:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Zip/Postal Code:</span>
+								<input type='text'></input>
+							</div>
+						</fieldset>
+					</div>
+					<div class='paymentInformation'>
+						<fieldset>
+							<legend>Payment Information</legend>
+							<input class='cardImges' type='Image' src='./images/checkout/cards.jpg'></input>
+							<div class='fieldRow'>
+								<span>Card Number:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Expiration Date:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Card Code:</span>
+								<input type='text'></input>
+							</div>
+						</fieldset>
+					</div>
+					<input class='cancelButton' type="button" value='Cancel'></input>
+					<input class='nextButton' type="button" value='Next >'> </input>
 				</div>
-				<div class='subcategory'>
-					<span class='subcategorytitle'>Bikes & Scooters</span><br/>
-					<div class='subcategorieslinks'>
-						<ul>
-							<li><a href='#' class='subsubcategory'>Protection</a></li>
-							<li><a href='#' class='subsubcategory'>Some other sub sub category</a></li>
-							<li><a href='#' class='subsubcategory'>An other one!</a></li>
-						</ul>
-					</div>			
-				</div>
-				<div class='subcategory'>
-					<span class='subcategorytitle'>Golf</span><br/>
-					<div class='subcategorieslinks'>
-						<ul>
-							<li><a href='#' class='subsubcategory'>Protection</a></li>
-							<li><a href='#' class='subsubcategory'>Some other sub sub category</a></li>
-							<li><a href='#' class='subsubcategory'>An other one!</a></li>
-						</ul>
-					</div>			
-				</div>
-				<div class='subcategory'>
-					<span class='subcategorytitle'>Equestrian</span><br/>
-					<div class='subcategorieslinks'>
-						<ul>
-							<li><a href='#' class='subsubcategory'>Protection</a></li>
-							<li><a href='#' class='subsubcategory'>Some other sub sub category</a></li>
-							<li><a href='#' class='subsubcategory'>An other one!</a></li>
-						</ul>
-					</div>			
-				</div>
-				<div class='subcategory'>
-					<span class='subcategorytitle'>Excersice & Fitness</span><br/>
-					<div class='subcategorieslinks'>
-						<ul>
-							<li><a href='#' class='subsubcategory'>Protection</a></li>
-							<li><a href='#' class='subsubcategory'>Some other sub sub category</a></li>
-							<li><a href='#' class='subsubcategory'>An other one!</a></li>
-						</ul>
-					</div>			
-				</div>
-				<div class='subcategory'>
-					<span class='subcategorytitle'>Cycling</span><br/>
-					<div class='subcategorieslinks'>
-						<ul>
-							<li><a href='#' class='subsubcategory'>Protection</a></li>
-							<li><a href='#' class='subsubcategory'>Some other sub sub category</a></li>
-							<li><a href='#' class='subsubcategory'>An other one!</a></li>
-						</ul>
-					</div>			
-				</div>
-				<div class='subcategory'>
-					<span class='subcategorytitle'>Others</span><br/>
-					<div class='subcategorieslinks'>
-						<ul>
-							<li><a href='#' class='subsubcategory'>Protection</a></li>
-							<li><a href='#' class='subsubcategory'>Some other sub sub category</a></li>
-							<li><a href='#' class='subsubcategory'>An other one!</a></li>
-						</ul>
-					</div>			
-				</div>
-			</div>
-			
-			<div class="footer">
-				<a id="usLabel" class="i18n" href="#"/></a> | <a id="contactLabel" class="i18n" href="#"></a>
+			</form>
+			<div class ="footer">
+				<a id="usLabel" class="i18n" href="#"></a> | <a id="contactLabel" class="i18n" href="#"></a>
 			</div>
 		</div>
 	</body>

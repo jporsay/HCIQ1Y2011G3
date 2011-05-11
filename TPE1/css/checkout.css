@@ -1,37 +1,82 @@
-.inputfieldscontainer {
+.fieldsCheckout {
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
+	width: 650px;
+	
+	color: #ffffff;
+}
+
+.fieldsCheckout  fieldset {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.fieldsCheckout .fieldRow {
 	position: relative;
-	height: 400px;
+	height: 2.5em;
+	left: 10px;
 }
 
-.firstnameinput {
-	position: relative;	
-	top: 30px;
-	left: 30px;
-	width: auto;
+.fieldsCheckout .fieldRow input {
+	position: absolute;
+	left: 17%;
+	width: 350px;
 }
 
-.lastnameinput {
-	position: relative;	
-	top: 50px;
-	left: 30px;
-	width: auto;
+.fieldsCheckout .cardImges {
+	width: 300px;
+	height: 50px;
+	margin: 10px;
+	margin-bottom: 20px;
 }
 
-.addressinput {
-	position: relative;	
-	top: 70px;
-	left: 30px;
-	width: auto;
+.fieldsCheckout .cancelButton {
+	width: 90px;
+	height: 40px;
 }
 
-.cancelButton {
-	position: relative;
-	top: 130px;
-	left: 30px;
+.fieldsCheckout .nextButton {
+	width: 90px;
+	height: 40px;
+	float: right;
 }
 
-.nextButton {
-	position: relative;
-	top: 130px;
-	left: 100px;
+#cart-table {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 45px;
+	text-align: center;
+	border-collapse: collapse;
+	width: 600px;
 }
+
+#cart-table th {
+	font-size: 13px;
+	font-weight: normal;
+	padding: 8px;
+	background: #b9c9fe;
+	border-top: 4px solid #aabcfe;
+	border-bottom: 1px solid #fff;
+	color: #003399;
+}
+
+#cart-table td {
+	padding: 8px;
+	background: #e8edff; 
+	border-bottom: 1px solid #fff;
+	color: #669;
+	border-top: 1px solid transparent;
+}
+
+#cart-table #totalPriceRow {
+	font-size: 15px;
+	color: #000;
+	border-top: 1px solid transparent #ffffff;
+}
+
+#cart-table tr:hover td {
+	background: #d0dafd;
+	color: #339;
+}
+

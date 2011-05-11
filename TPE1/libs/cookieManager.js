@@ -1,7 +1,3 @@
-/**
- * @author Juan Pablo Orsay
- */
-
 function setCookie(name, cookie_value, expiration_days) {
 	var expiration_date = new Date();
 	expiration_date.setDate(expiration_date.getDate() + expiration_days);
@@ -9,8 +5,7 @@ function setCookie(name, cookie_value, expiration_days) {
 	document.cookie = name + "=" + value;
 }
 
-function getCookie(name)
-{
+function getCookie(name) {
 	var cookies = document.cookie.split(";");
 	var c_name, c_val;
 	for (var i = 0; i < cookies.length; i++)

@@ -1,8 +1,7 @@
-var cart = new Cart();
+cart = new Cart();
 function Cart() {
 	var instance = this;
-	Cart.getInstance = function()
-	{
+	Cart.getInstance = function() {
 		return instance;
 	}
 }
@@ -15,9 +14,20 @@ function CartItem(name, href, id, price) {
 	this.price = price;
 }
 
+CartItem.prototype.toString = function() {
+	return this.quantity + ', '  + this.name + ', '  + this.href + ', ' + this.id + ', '  + this.price;
+}
+
+Cart.prototype.toString = function() {
+	return this.items + ', '  + this.currency;
+}
+
 Cart.prototype.addItems = function(items) {
-	this.items = items;
-	return;
+	if (this.items == undefined){
+		this.items = items;
+	} else {
+		this.items = this.items.concat(items);
+	}
 }
 
 /** Cambia el tipo de moneda del carrito por el indicado en el parametro.
@@ -63,11 +73,7 @@ Cart.prototype.removeItem = function(id) {
 	}
 	
 	if (index != -1) {
-		//var cart_table = document.getElementById('cartItemsTable');
-		//var toRemove = cart_table.childNodes[index];
-		//cart_table.removeChild(toRemove);
 		this.items.splice(index, 1);
-		//this.update();
 	}
 }
 
@@ -231,6 +237,9 @@ function createSelector(item) {
 Cart.prototype.load = function() {
 	this.currency = '$';
 	var cart = document.getElementById('cart');
+	if(cart == null) {
+		return;
+	}
 	var cart_title = createCartTitle();
 	var cart_items = createCartItems();
 	var cart_footer = createCartFooter();
@@ -286,7 +295,7 @@ function createCartItems() {
 	<span class="label">Total:</span>
 	<span id="cartTotalPriceCurrency">$</span>
 	<span id="cartTotalPrice">759.55</span>
-	<a href="#">checkout!<a>
+	<input type="image" class="checkoutBtn" src="images/cart/checkout.png"></input>
 </div>
 */
 function createCartFooter() {
@@ -300,14 +309,132 @@ function createCartFooter() {
 	var foter_number_label = document.createElement('span');
 		foter_number_label.setAttribute('id', 'cartTotalPrice');
 	var footer_checkout = document.createElement('a');
-		footer_checkout.setAttribute('href', '#');
-		footer_checkout.innerHTML = 'checkout!';
+		footer_checkout.setAttribute('onClick', getActionForCheckoutButton());
+		footer_checkout.innerHTML = 'Proceed to checkout!';
 		
 	footer.appendChild(foter_label);
 	footer.appendChild(foter_currency_label);
 	footer.appendChild(foter_number_label);
 	footer.appendChild(footer_checkout);
 	return footer;
+}
+
+Cart.prototype.printToTable = function(elementId) {
+	var element = document.getElementById(elementId);
+	var table = createCartTable();
+	var tbody = document.createElement('tbody');
+	appendElementToTable(tbody, this.items, this.currency);
+	table.appendChild(tbody);
+	element.appendChild(table);
+}
+
+function createCartTable() {
+	var table = document.createElement('table');
+		table.setAttribute('id', 'cart-table');
+	var thread = document.createElement('thead');
+	var headerRow = document.createElement('tr');
+	
+	var product = document.createElement('th');
+		product.setAttribute('scope', 'col');
+		product.innerHTML = 'Product';
+	var quantity = document.createElement('th');
+		quantity.setAttribute('scope', 'col');
+		quantity.innerHTML = 'Quantity';
+	var price = document.createElement('th');
+		price.setAttribute('scope', 'col');
+		price.innerHTML = 'Price';
+	var total = document.createElement('th');
+		total.setAttribute('scope', 'col');
+		total.innerHTML = 'Subtotal Price';
+	headerRow.appendChild(product);
+	headerRow.appendChild(quantity);
+	headerRow.appendChild(price);
+	headerRow.appendChild(total);
+	thread.appendChild(headerRow)
+	table.appendChild(thread);
+	return table;
+}
+
+function appendElementToTable(table, items, currency) {
+	var totalPrice = 0;
+	for(var i=0; i < items.length; i++) {
+		var item = items[i];
+		totalPrice += (item.quantity * item.price);
+		var row = document.createElement('tr');
+		var product = document.createElement('td');
+			product.innerHTML = item.name;
+		var quantity = document.createElement('td');
+			quantity.innerHTML = item.quantity;
+		var price = document.createElement('td');
+			price.innerHTML = currency + ' ' + item.price;
+		var subtotal = document.createElement('td');
+			subtotal.innerHTML = currency + ' ' + (item.quantity * item.price);
+		row.appendChild(product);
+		row.appendChild(quantity);
+		row.appendChild(price);
+		row.appendChild(subtotal);
+		table.appendChild(row);
+	}
+	var totalPriceRow = document.createElement('tr');
+	var emptyCols = document.createElement('td');
+		emptyCols.setAttribute('colspan', '2');
+	var totalLabelCol = document.createElement('td');
+		totalLabelCol.innerHTML = 'Total Price: ';
+		totalLabelCol.setAttribute('id', 'totalPriceRow');
+	var totalValueCol = document.createElement('td');
+		totalValueCol.innerHTML = currency + ' ' + totalPrice;
+		totalValueCol.setAttribute('id', 'totalPriceRow');
+	
+	totalPriceRow.appendChild(emptyCols);
+	totalPriceRow.appendChild(totalLabelCol);
+	totalPriceRow.appendChild(totalValueCol);
+	table.appendChild(totalPriceRow);
+}
+
+Cart.prototype.saveState = function() {
+	var value = '{';
+	for(var i=0; i < this.items.length; i++) {
+		value +=  toJSonFormat(this.items[i]) + ',';
+	}
+	value += 'currency:' + this.currency;
+	value += '}';
+	setCookie('cartItems', value, 1);
+}
+
+function toJSonFormat(item) {
+	var jSon = '[';
+	jSon += item.quantity + ',';
+	jSon += item.name + ',';
+	jSon += item.href + ',';
+	jSon += item.id + ',';
+	jSon += item.price;
+	jSon += ']';
+	return jSon;
+}
+
+Cart.prototype.loadState = function() {
+	var objects = getCookie('cartItems');
+	var index = 0;
+	var start, end;
+	this.items = [];
+	do{
+		if(objects[i] == '[') {
+			var end = objects.indexOf(']', i);
+			this.addItems(parseItem(objects, i + 1, end));
+		}
+		i++;
+	}while(i < objects.length);
+	start = objects.lastIndexOf(':');
+	end = objects.lastIndexOf('}');
+	this.currency = objects.substring(start + 1, end);
+}
+
+function parseItem(objects, start, end) {
+	substr = objects.substring(start, end);
+	values = substr.split(',');
+	var item = new CartItem(values[1], values[2], values[3], values[4]);
+	item.quantity = values[0];
+	return item;
 }
 
 /*javascript actions for the cart buttons*/
@@ -324,4 +451,9 @@ function getActionForSelectoDownArrow(itemId) {
 	return 'Cart.getInstance().decrementItemQuantity(' + itemId + '); Cart.getInstance().update();';
 }
 
+function getActionForCheckoutButton() {
+	return 'window.open("./checkout.html");Cart.getInstance().saveState()';
+}
+
+/*--------------------------------------*/
 

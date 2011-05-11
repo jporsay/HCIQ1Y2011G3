@@ -137,9 +137,16 @@ table {
 	margin-right: 5px;
 }
 
-.cartFooter a {
+.cartFooter .checkoutBtn {
+	margin: 10px;
+	width: 190px;
+	height: 60px;
+}
+
+/*.cartFooter a {
+	//Esto esta comentado ya que acabo de cambiar el cartFooter checkout link y por ahora esta experimental.
 	float: right;
 	width: 30%;
 	text-align: left;
 	font-size: 17px;
-}
+}*/

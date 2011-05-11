@@ -6,8 +6,16 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script type="text/javascript" src="libs/init.js"></script>
 	<script type="text/javascript" src="libs/jquery-1.5.1.min.js"></script>
+	<script type="text/javascript" src="libs/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="libs/jquery.jBreadCrumb.1.1.js"></script>
+	<script type="text/javascript" src="libs/cookieManager.js"></script>
+	<script type="text/javascript" src="libs/jquery-ui-1.8.11.custom.min.js"></script>
+	<script type="text/javascript" src="libs/jquery.i18n.properties-min.js"></script>
+	<script type="text/javascript" src="libs/i18n.js"></script>
+	<script type="text/javascript" src="libs/ServerManager.js"></script>
+	<script type="text/javascript" src="libs/itemManager.js"></script>
 	<script type="text/javascript">
-		
+		/*
 			loadJsFiles([
 				"jquery.easing.1.3",
 				"jquery.jBreadCrumb.1.1",
@@ -19,7 +27,7 @@
 				"ServerManager",
 				"itemManager"
 			]);
-			
+		*/	
 			loadCssFiles([
 				"style",
 				"navbar",
@@ -69,55 +77,56 @@
 	<title>Carritus Co.</title>
 </head>
 <body>
-<div class="header">
-	<img src="images/cooltext530131064.png" alt="Company Logo" width="276" height="110">
-	<h1 id='header'>Happy Business</h1>
-	<div id="localization">
-		<select id='locale'>
-			<option value="es" selected="selected" class="ui-widget">Espa&ntilde;ol</option>
-			<option value="en">English</option>
-		</select>
-	</div>
-	<div id="login">
-		<div class="logintext">
-			<div id="loginimg"></div>
-			<span id="logintext" class="i18n"></span>
+	<div class="header">
+		<img src="images/cooltext530131064.png" alt="Company Logo" width="276" height="110">
+		<h1 id='header'>Happy Business</h1>
+		<div id="localization">
+			<select id='locale'>
+				<option value="es" selected="selected" class="ui-widget">Espa&ntilde;ol</option>
+				<option value="en">English</option>
+			</select>
 		</div>
-		<div class="loginform">
-			<div>
-				<span id='usernametext' class="i18n"></span>
-				<input type="text">
+		<div id="login">
+			<div class="logintext">
+				<div id="loginimg"></div>
+				<span id="logintext" class="">Login</span>
 			</div>
-			<div>
-				<span id='passwordtext' class="i18n"></span>
-				<input type="password">
+			<div class="loginform">
+				<div>
+					<span id='usernametext' class="">Username:</span>
+					<input type="text">
+				</div>
+				<div>
+					<span id='passwordtext' class="">Password</span>
+					<input type="password">
+				</div>
+				<button type="button" id='loginbutton' class=''>Login</button>
+				<a href="registration.html" id="createaccount">Create account</a>
+				<a href="recoverInfo.html" id="forgotdata">Forgot username or password?</a>
 			</div>
-			<button type="button" id='loginbutton' class='i18n'></button>
+		</div>
+		<div class="navbar">
+			<div id="breadcrumbholder" class="breadCrumbHolder breadCrumbPosition breadCrumb module">
+				<ul id="breadcrumb">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Test</a></li>
+					<li><a href="#">Test2</a></li>
+				</ul>
+			</div>
+			<div id="searchbar">
+				<input id="searchtext" class="i18n" value="Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+				<button class="ui-widget">Go</button>
+			</div>
 		</div>
 	</div>
-	<div class="navbar">
-		<div id="breadcrumbholder" class="breadCrumbHolder breadCrumbPosition breadCrumb module">
-			<ul id="breadcrumb">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Test</a></li>
-				<li><a href="#">Test2</a></li>
-			</ul>
-		</div>
-		<div id="searchbar">
-			<input id="searchtext" class="i18n" placeholder="">
-			<button class="ui-widget">Go</button>
-		</div>
-	</div>
-</div>
 	
-<div class="mainarea">
-	<div class="items">
-		
+	<div class="mainarea">
+		<div class="items">
+		</div>
+		<div class ="footer">
+			<a id="usLabel" class="i18n" href="#"></a> | <a id="contactLabel" class="i18n" href="#"></a>
+		</div>
 	</div>
-<div class ="footer">
-	<a id="usLabel" class="i18n" href="#"></a> | <a id="contactLabel" class="i18n" href="#"></a>
-</div>
-</div>
 
 
 </body>
