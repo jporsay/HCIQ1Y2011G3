@@ -70,3 +70,10 @@
 	font-size: medium;
 }
 
+.productTitle {
+	border-bottom: 1px solid #000000;
+	margin-bottom: 10px;
+	width: 700px;
+	padding-bottom: 10px;
+}
+

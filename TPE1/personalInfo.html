@@ -64,6 +64,18 @@
 				translator.translatePage();
 			});
 			
+			$('#searchbutton').click(function() {
+				if ($('#searchtext').val() != '') {
+					window.location = 'browse.html?searchText=' + $('#searchtext').val();
+				}
+			});
+			
+			$('#searchtext').keydown(function(e) {
+				if (e.keyCode === 13) {
+					$('#searchbutton').click();
+				}
+			});
+			
 			translator.translatePage();
 		});
 	</script>
@@ -108,7 +120,7 @@
 		</div>
 		<div id="searchbar">
 			<input id="searchtext" class="i18n" value="Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
-			<button class="ui-widget">Go</button>
+			<button id="searchbutton" class="ui-widget">Go</button>
 		</div>
 	</div>
 </div>

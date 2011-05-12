@@ -13,6 +13,9 @@
 	<script type="text/javascript" src="libs/jquery.i18n.properties-min.js"></script>
 	<script type="text/javascript" src="libs/ServerManager.js"></script>
 	<script type="text/javascript" src="libs/itemManager.js"></script>
+	<script type="text/javascript" src="libs/categoriesManager.js"></script>
+	<script type="text/javascript" src="libs/subcategoriesManager.js"></script>
+	<script type="text/javascript" src="libs/cartManager.js"></script>
 	<script type="text/javascript" src="libs/i18n.js"></script>
 	<script type="text/javascript">
 		
@@ -34,8 +37,10 @@
 				"header",
 				"jquery-ui-1.8.11.custom",
 				"Base",
+				"categories",
 				"BreadCrumb",
 				"footer",
+				"cart",
 				"productDisplay",
 				"tabs"
 			]);
@@ -69,7 +74,31 @@
 				translator.translatePage();
 			});
 			
+			$('#searchbutton').click(function() {
+				if ($('#searchtext').val() != '') {
+					window.location = 'browse.html?searchText=' + $('#searchtext').val();
+				}
+			});
+			
+			$('#searchtext').keydown(function(e) {
+				if (e.keyCode === 13) {
+					$('#searchbutton').click();
+				}
+			});
+			
+			cart = Cart.getInstance();
+			cart.load();
+			cart.loadState();
+			cart.update();
+			
+			$('input').click(function() {
+				var newItem = new CartItem($('.title h2').value(), 'product.html?id=', urlParam('id'));
+				cart.addItems([newItem]);
+				cart.update();
+			});
+			
 			displayItem(urlParam('id'));
+			loadCategories($('#locale :selected').attr('id'));
 			translator.translatePage();
 		
 		});
@@ -114,16 +143,23 @@
 		</div>
 		<div id="searchbar">
 			<input id="searchtext" class="i18n" value="Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
-			<button class="ui-widget">Go</button>
+			<button id="searchbutton" class="ui-widget">Go</button>
 		</div>
 	</div>
 </div>
 	
 <div class="mainarea">
+	<div id="cart" class="cart"></div>
 	<div class="productContainer">
 	</div>
-	<div class ="footer">
-		<a id="usLabel" class="i18n" href="#"></a> | <a id="contactLabel" class="i18n" href="#"></a>
+	<div id="categoryNav">
+		<div id="leftNavContainer">
+			<div id="refinements">
+				<h2>Categorias</h2>
+				<ul id='catList'>
+				</ul>
+		    </div>
+		</div>
 	</div>
 </div>
 

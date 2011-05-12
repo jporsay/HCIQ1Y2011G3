@@ -19,9 +19,15 @@ function getItems(categoryId, subcategoryId, langId) {
 
 function processItems(data) {
 	$('.items').empty();
+	var container = document.getElementsByClassName('items')[0];
+	var temp = document.createElement('h1');
+	temp.innerHTML = 'Products:';
+	temp.setAttribute('class', 'productTitle');
+	container.appendChild(temp);
+	
 	$(data).find('product').each(
 		function() {
-			createListItem($(this), document.getElementsByClassName('items')[0]);
+			createListItem($(this), container);
 		}
 	);
 }
@@ -163,6 +169,11 @@ function processItem(data) {
 	temp.innerHTML = 'Add to cart';
 	temp.id = 'cartToggle';
 	container.appendChild(temp);
+	temp = document.createElement('input');
+	temp.setAttribute('type', 'image');
+	temp.setAttribute('id', 'toggleFromCartInput');
+	temp.setAttribute('src', './images/cart/cartItem.png');
+	container.appendChild(temp);
 	
 	if (category == '1') {
 		buildDvdView(container, product);
@@ -203,7 +214,7 @@ function genericViewBuilder(container, product, fields) {
 	var temp2 = null;
 	
 	temp = document.createElement('div');
-	temp.setAttribute('class', 'productDescription');
+	temp.setAttribute('class', 'description');
 	temp2 = document.createElement('h2');
 	temp2.innerHTML = "Product description";
 	temp.appendChild(temp2);
@@ -212,14 +223,14 @@ function genericViewBuilder(container, product, fields) {
 	
 	
 	for (var i = 0; i < fields.length; ++i) {
+		//field holder
 		temp = document.createElement('div');
 		temp.setAttribute('class', fields[i].cssClass);
+		//field title
 		temp2 = document.createElement('h3');
 		temp2.innerHTML = fields[i].text;
-		temp2.setAttribute('class', 'inlineElement');
 		temp.appendChild(temp2);
 		temp2 = document.createElement('p');
-		temp2.setAttribute('class', 'inlineElement');
 		temp2.id = fields[i].key;
 		temp2.innerHTML = product.find(fields[i].key).text();
 		temp.appendChild(temp2);
