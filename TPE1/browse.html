@@ -13,6 +13,8 @@
 	<script type="text/javascript" src="libs/jquery.i18n.properties-min.js"></script>
 	<script type="text/javascript" src="libs/i18n.js"></script>
 	<script type="text/javascript" src="libs/ServerManager.js"></script>
+	<script type="text/javascript" src="libs/categoriesManager.js"></script>
+	<script type="text/javascript" src="libs/subcategoriesManager.js"></script>
 	<script type="text/javascript" src="libs/itemManager.js"></script>
 	<script type="text/javascript" src="libs/cartManager.js"></script>
 	<script type="text/javascript">
@@ -20,11 +22,13 @@
 		loadCssFiles([
 			"style",
 			"navbar",
+			"categories",
 			"header",
 			"jquery-ui-1.8.11.custom",
 			"Base",
 			"BreadCrumb",
 			"footer",
+			"cart",
 			"browse"
 		]);
 			
@@ -61,8 +65,26 @@
 				searchItems(urlParam('searchText'));
 			} else if (urlParam('catId')) {
 				getItems(urlParam('catId'), urlParam('subCatId'), $('#locale :selected').attr('id'));
-				translator.translatePage();
 			}
+			$('#searchbutton').click(function() {
+				if ($('#searchtext').val() != '') {
+					window.location = 'browse.html?searchText=' + $('#searchtext').val();
+				}
+			});
+			
+			$('#searchtext').keydown(function(e) {
+				if (e.keyCode === 13) {
+					$('#searchbutton').click();
+				}
+			});
+			
+			cart = Cart.getInstance();
+			cart.load();
+			cart.loadState();
+			cart.update();
+			loadCategories($('#locale :selected').attr('id'));
+			translator.translatePage();
+			
 		});
 	</script>
 	
@@ -113,28 +135,20 @@
 	</div>
 	
 	<div class="mainarea">
-		<div class='items'>
-		<!--
-			<div id="55" class="item">
-				<div class="itemLink">
-					<a href="product.html?id=55">2001: A Space Odyssey</a>
-				</div>
-				<div class="miniImage">
-					<img src="http://eiffel.itba.edu.ar/hci/service/images/020.jpg" alt="[object Object]">
-				</div>
-				<div class="extraItemInfo">
-					<p class="rank">Rank: 67</p>
-					<p class="price">10.49</p>
-					<div class='cartDiv'>
-						<img src="./images/cart/cartItem.png">
-						<span class='addToCart'>Add To Cart</span>
-					</div>
-				</div>
+		<div id="cart" class="cart"></div>
+		<div id="categoryNav">
+			<div id="leftNavContainer">
+				<div id="refinements">
+					<h2>Categorias</h2>
+					<ul id='catList'>
+					</ul>
+			    </div>
 			</div>
-		-->
 		</div>
-		<div class ="footer">
-			<a id="usLabel" class="i18n" href="#"></a> | <a id="contactLabel" class="i18n" href="#"></a>
+		<div class='itemscontainer'>
+			<h2>Products:</h2>
+			<div class='items'>
+			</div>
 		</div>
 	</div>
 
