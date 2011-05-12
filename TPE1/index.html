@@ -78,6 +78,10 @@
 				}
 			});
 			
+			$('a').click(function() {
+				Cart.getInstance().saveState();
+			});
+			
 			loadCategories($('#locale :selected').attr('id'));
 			translator.translatePage();
 		});

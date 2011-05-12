@@ -1,6 +1,6 @@
 .cart {
-	height: 800px;
-	float: right;
+	height: 90%;
+	position:absolute;
 	width: 24%;
 	left: 75.9%;
 	display: block;

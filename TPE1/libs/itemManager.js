@@ -103,7 +103,8 @@ function createExtraIteminfo(product) {
 		rank.innerHTML = product.find('price').text();
 	var price = document.createElement('p');
 		price.setAttribute('class', 'price');
-		price.innerHTML = Cart.getInstance().currency + ' ' + product.find('price').text();
+		//price.innerHTML = Cart.getInstance().currency + ' ' + product.find('price').text();
+		price.innerHTML = '$' + product.find('price').text();
 	
 	extraInfoDiv.appendChild(rank);
 	extraInfoDiv.appendChild(price);

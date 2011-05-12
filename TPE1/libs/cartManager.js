@@ -310,7 +310,6 @@ function createCartFooter() {
 	var foter_number_label = document.createElement('span');
 		foter_number_label.setAttribute('id', 'cartTotalPrice');
 	var footer_checkout = document.createElement('a');
-		footer_checkout.setAttribute('onClick', getActionForCheckoutButton());
 		footer_checkout.setAttribute('href', './checkout.html');
 		footer_checkout.innerHTML = 'Proceed to checkout!';
 	footer.appendChild(foter_label);
@@ -450,10 +449,5 @@ function getActionForSelectoUpArrow(itemId) {
 function getActionForSelectoDownArrow(itemId) {
 	return 'Cart.getInstance().decrementItemQuantity(' + itemId + '); Cart.getInstance().update();';
 }
-
-function getActionForCheckoutButton() {
-	return 'window.open("./checkout.html");Cart.getInstance().saveState()';
-}
-
 /*--------------------------------------*/
 
