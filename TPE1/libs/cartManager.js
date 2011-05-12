@@ -420,7 +420,7 @@ Cart.prototype.loadState = function() {
 	do {
 		if(objects[i] == '[') {
 			var end = objects.indexOf(']', i);
-			this.addItems(parseItem(objects, i + 1, end));
+			this.addItems([ parseItem(objects, i + 1, end)]);
 		}
 		i++;
 	} while(i < objects.length);
