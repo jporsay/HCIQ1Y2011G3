@@ -23,7 +23,7 @@ Cart.prototype.toString = function() {
 }
 
 Cart.prototype.addItems = function(items) {
-	if (this.items == undefined){
+	if (typeof this.items  == "undefined") {
 		this.items = items;
 	} else {
 		this.items = this.items.concat(items);
@@ -413,6 +413,9 @@ function toJSonFormat(item) {
 
 Cart.prototype.loadState = function() {
 	var objects = getCookie('cartItems');
+	if (typeof objects  == "undefined") {
+		return;
+	}
 	var index = 0;
 	var start, end;
 	this.items = [];
