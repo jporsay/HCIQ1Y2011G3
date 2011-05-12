@@ -437,6 +437,10 @@ function parseItem(objects, start, end) {
 	return item;
 }
 
+Cart.prototype.removeAllItems = function() {
+	this.items = [];
+}
+
 /*javascript actions for the cart buttons*/
 
 function getActionForRemover(itemId) {

@@ -1,83 +1,97 @@
 .productContainer {
-	height: 1000px;
-	margin: 15px;
+	position: relative;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
+	width: 650px;
+	height: 600px;
+	border: 2px solid #000000;
+	text-align: center;
 }
+
 .productContainer .title {
 	position: absolute;
+	top: 15px;
+	left: 25%;
+	width: 50%;
 	font-size: x-large;
-	top: 20px;
-	left: 20px;
 }
+
 .productContainer img {
  	position: absolute;
- 	top: 80px;
  	left: 40px;
+ 	top: 90px;
 	width: 240px;
 	height: 240px;
 	border: #000000 solid 1px;
 }
+
 .productContainer .price {
 	position: absolute;
-	left: 330px;
-	top: 60px;
+	width: 200px;
+	height: 50px;
+	left: 60%;
+	top: 30%;
 	font-size: large;
-	float: right;
 }
 
-.inlineElement {
+.productContainer h3 {
 	display: inline;
 }
 
-.productContainer .price p {
+.productContainer h2 {
+	margin-bottom: 40px;
+}
+.productContainer p {
 	display: inline;
+}
+	
+.productContainer .description {
 	position: absolute;
+	text-align: left;
+	width: 60%;
+	left: 10%;
+	top: 60%;
 }
 
-.productContainer .extrainformation {
+.productContainer .cartToggle {
+	position: absolute;
+	top: 50%;
+	left: 75%;
+	font-weight: bold;
+	font-size: medium;
+}
+
+.productContainer input {
+	position: absolute;
+	top: 50%;
+	left: 70%;
+	width: 25px;
+	height: 25px;
+}
+
+.productContainer .addToCart {
+	color: #11ee11;
+}
+
+.productContainer .removeFromCart {
+	color: #ee1111;
+}
+
+/*.productContainer .extrainformation {
 	position: absolute;
 	top: 390px;
 	left: 50px;
 }
 
-.productContainer .productDescription {
-	position: absolute;
-	top: 400px;
-	left: 25px;
-}
-
 .productContainer .productDescription h2{
-	font-size: x-large;
-	margin-bottom: 40px;
-}
 
-.addtocart {
-	color: #11ee11;
-	font-weight: bold;
-	font-size: medium;
 }
-
-.removefromcart {
-	color: #ee1111;
-	font-weight: bold;
-	font-size: medium;
-}
-
 
 .cartToggle {
 	position: absolute;
 	left: 310px;
 	top: 270px;
-	
 }
+*/
 
-.addToCart {
-	color: #11ee11;
-	font-weight: bold;
-	font-size: medium;
-}
-
-.removeFromCart {
-	color: #ee1111;
-	font-weight: bold;
-	font-size: medium;
-}
