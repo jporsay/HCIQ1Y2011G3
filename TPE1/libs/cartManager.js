@@ -21,10 +21,20 @@ Cart.prototype.toString = function() {
 	return this.items + ', '  + this.currency;
 }
 Cart.prototype.addItems = function(items) {
-	if (this.items == undefined) {
+	if (typeof this.items  == "undefined") {
 		this.items = items;
 	} else {
-		this.items = this.items.concat(items);
+		for(var i=0; i < items.length; i++) {
+			var isContained = false;
+			for(var j=0; j < this.items.length && !isContained; j++) {
+				if (this.items[j].id == items[i].id ) {
+					isContained = true;
+				}
+			}
+			if (!isContained) {
+				this.items = this.items.concat([items[i]]);
+			}
+		}
 	}
 }
 /** Cambia el tipo de moneda del carrito por el indicado en el parametro.
@@ -401,6 +411,9 @@ function toJSonFormat(item) {
 
 Cart.prototype.loadState = function() {
 	var objects = getCookie('cartItems');
+	if (typeof objects  == "undefined") {
+		return;
+	}
 	var index = 0;
 	var start, end;
 	this.items = [];
