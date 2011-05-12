@@ -26,7 +26,17 @@ Cart.prototype.addItems = function(items) {
 	if (typeof this.items  == "undefined") {
 		this.items = items;
 	} else {
-		this.items = this.items.concat(items);
+		for(var i=0; i < items.length; i++) {
+			var isContained = false;
+			for(var j=0; j < this.items.length && !isContained; j++) {
+				if (this.items[j].id == items[i].id ) {
+					isContained = true;
+				}
+			}
+			if (!isContained) {
+				this.items = this.items.concat([items[i]]);
+			}
+		}
 	}
 }
 
