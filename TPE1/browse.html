@@ -78,10 +78,15 @@
 				}
 			});
 			
-			cart = Cart.getInstance();
-			cart.load();
-			cart.loadState();
-			cart.update();
+			if (!loadCartFromCookie()) {
+				alert('cookie not found!');
+			}
+			cartInstance.update();
+			
+			$('a').click(function() {
+				cartInstance.saveState();
+			});
+			
 			loadCategories($('#locale :selected').attr('id'));
 			translator.translatePage();
 			
@@ -142,7 +147,7 @@
 					<h2>Categorias</h2>
 					<ul id='catList'>
 					</ul>
-			    </div>
+			 	</div>
 			</div>
 		</div>
 		<div class='items'>

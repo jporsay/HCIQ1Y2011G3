@@ -68,9 +68,10 @@
 					}
 				});
 				
-				cart = Cart.getInstance();
-				cart.loadState();
-				cart.printToTable('checkoutTable');
+				if (!loadCartFromCookie()) {
+					alert('cookie not found!');
+				}
+				cartInstance.printToTable('checkoutTable');	
 				translator.translatePage();
 			});
 		</script>

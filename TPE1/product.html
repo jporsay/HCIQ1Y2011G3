@@ -19,18 +19,6 @@
 	<script type="text/javascript" src="libs/i18n.js"></script>
 	<script type="text/javascript">
 		
-		/*
-			loadJsFiles([
-				"jquery.easing.1.3",
-				"jquery.jBreadCrumb.1.1",
-				"cookieManager",
-				"jquery-ui-1.8.11.custom.min",
-				"jquery.i18n.properties-min",
-				"i18n",
-				"ServerManager",
-				"itemManager"
-			]);
-		*/
 			loadCssFiles([
 				"style",
 				"navbar",
@@ -86,15 +74,19 @@
 				}
 			});
 			
-			cart = Cart.getInstance();
-			cart.load();
-			cart.loadState();
-			cart.update();
+			if (!loadCartFromCookie()) {
+				alert('cookie not found!');
+			}
+			cartInstance.update();
+			
+			$('a').click(function() {
+				cartInstance.saveState();
+			});
 			
 			$('input').click(function() {
 				var newItem = new CartItem($('.title h2').value(), 'product.html?id=', urlParam('id'));
-				cart.addItems([newItem]);
-				cart.update();
+				cartInstance.addItems([newItem]);
+				cartInstance.update();
 			});
 			
 			displayItem(urlParam('id'));
