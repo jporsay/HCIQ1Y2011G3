@@ -1,9 +1,30 @@
-cart = new Cart();
+//DEFINES:
+var CART_ID = 'cart';
+var CART_COOKIE = 'cartItems';
+var CART_EXPORT_TABLE_ID = '';
+
+var cartInstance;
+function initCartInstance() {
+	//THIS SHOULD ONLY BE CALLED ONCE THE PAGE IS LOADED.
+	cartInstance = new Cart();
+}
+
+
 function Cart() {
-	var instance = this;
-	Cart.getInstance = function() {
-		return instance;
+	this.currency = '$';
+	cleanHTML(CART_ID);
+	var cartDOM = document.getElementById(CART_ID);
+	if (!cartDOM) {
+		return;
 	}
+	cartDOM.setAttribute('class', 'cart');	//Cambiar esto!
+	var cart_title = createCartTitle();
+	var cart_itemsHolder = createCartItemsHolder();
+	var cart_footer = createCartFooter();
+
+	cartDOM.appendChild(cart_title);
+	cartDOM.appendChild(cart_itemsHolder);
+	cartDOM.appendChild(cart_footer);
 }
 
 function CartItem(name, id, price) {
@@ -11,32 +32,36 @@ function CartItem(name, id, price) {
 	this.name = name;
 	this.href = 'product.html?id=' + id;
 	this.id = id;
-	this.price = price;
+	this.price = roundDigits(price);
 }
 
 CartItem.prototype.toString = function() {
-	return this.quantity + ', '  + this.name + ', '  + this.href + ', ' + this.id + ', '  + this.price;
+	return this.quantity + ', ' + this.name + ', ' + this.href + ', ' + this.id + ', ' + this.price;
 }
+
 Cart.prototype.toString = function() {
-	return this.items + ', '  + this.currency;
+	return this.items + ', ' + this.currency;
 }
-Cart.prototype.addItems = function(items) {
-	if (typeof this.items  == "undefined") {
-		this.items = items;
-	} else {
-		for(var i=0; i < items.length; i++) {
-			var isContained = false;
-			for(var j=0; j < this.items.length && !isContained; j++) {
-				if (this.items[j].id == items[i].id ) {
-					isContained = true;
-				}
+
+Cart.prototype.addItems = function(newItems) {
+	if (!this.items) {
+		this.items = newItems;
+		return;
+	} 
+		
+	for(var i = 0; i < newItems.length; i++) {
+		var isContained = false;
+		for(var j = 0; j < this.items.length && !isContained; j++) {
+			if (this.items[j].id == newItems[i].id ) {
+				isContained = true;
 			}
-			if (!isContained) {
-				this.items = this.items.concat([items[i]]);
-			}
+		}
+		if (!isContained) {
+			this.items = this.items.concat([newItems[i]]);
 		}
 	}
 }
+
 /** Cambia el tipo de moneda del carrito por el indicado en el parametro.
  Para ver los cambios, la funcion update() debe ser llamada*/
 Cart.prototype.setCurrency = function(currency, conversion) {
@@ -45,6 +70,7 @@ Cart.prototype.setCurrency = function(currency, conversion) {
 		this.items[i].price *= conversion;
 	}
 }
+
 /** Incrementa en 1 la cantidad de items del carrito cuyo id es el mismo que el del parametro.
  El cambio se vera reflejado una vez llamada la funcion update().
  */
@@ -66,6 +92,7 @@ Cart.prototype.decrementItemQuantity = function(id) {
 		}
 	}
 }
+
 /**Elimina la primera aparicion del item con id igual al del parametro (no imprta que valor posea en el selector).
  Para ver los cambios, la funcion update() debe ser llamda.*/
 Cart.prototype.removeItem = function(id) {
@@ -80,10 +107,11 @@ Cart.prototype.removeItem = function(id) {
 		this.items.splice(index, 1);
 	}
 }
+
 /** Agrega en el HTML los items guardados en el carrito. Estos son agregados a la tabla con id='cartItemsTable'.*/
 Cart.prototype.update = function() {
 	var cart_table = document.getElementById('cartItemsTable');
-	this.cleanHTML('cartItemsTable');
+	cleanHTML('cartItemsTable');
 
 	var totalPrice = 0
 	for (var i=0; i < this.items.length; i++) {
@@ -91,17 +119,22 @@ Cart.prototype.update = function() {
 		totalPrice += this.items[i].price * this.items[i].quantity;
 	}
 	var totalPriceLabel = document.getElementById('cartTotalPrice');
-	totalPriceLabel.innerHTML = Math.round(totalPrice*100)/100;
+	totalPriceLabel.innerHTML = roundDigits(totalPrice);
 	var totalPriceCurrencyLabel = document.getElementById('cartTotalPriceCurrency');
 	totalPriceCurrencyLabel.innerHTML = this.currency;
 }
+
 /** Limpia todo el HTML del carrito . NO elimina ningun item.*/
-Cart.prototype.cleanHTML = function(elementID) {
-	var cart_table = document.getElementById(elementID);
-	while(cart_table.hasChildNodes()) {
-		cart_table.removeChild(cart_table.lastChild);
+function cleanHTML (elementID) {
+	var elemntDOM = document.getElementById(elementID);
+	if (!elemntDOM) {
+		return;
+	}
+	while(elemntDOM.hasChildNodes()) {
+		elemntDOM.removeChild(elemntDOM.lastChild);
 	}
 }
+
 /** Crea un item con los datos entregados en cartItem y los coloca en la tabla*/
 /*example:
  <tr>
@@ -227,6 +260,8 @@ function createSelector(item) {
 	return selectorCol;
 }
 
+/* THIS CAN BE SAFELY DELETED!
+
 /** Inizializa un carrito vacio en el HTML en el div con id='cart'. Crea el Titulo y el Pie del carrito.*/
 /*example
  <div class='cart'>
@@ -234,7 +269,7 @@ function createSelector(item) {
  <div class='cartItems'>...</div>
  <div class='cartFooter'>...</div>
  </div>
- */
+ * /
 Cart.prototype.load = function() {
 	this.cleanHTML('cart');
 	this.currency = '$';
@@ -251,6 +286,8 @@ Cart.prototype.load = function() {
 	cart.appendChild(cart_items);
 	cart.appendChild(cart_footer);
 }
+*/
+
 /*example:
  <div class='cartTitle'>
  <div class='verticalSpacer'><!-- For vertical align!--></div>
@@ -258,6 +295,7 @@ Cart.prototype.load = function() {
  <span>Cart Items:</span>
  </div>
  */
+ 
 function createCartTitle() {
 	var cartTitle = document.createElement('div');
 	cartTitle.setAttribute('class', 'cartTitle');
@@ -281,7 +319,7 @@ function createCartTitle() {
  <table id="cartItemsTable"> ... </table>
  </div>
  */
-function createCartItems() {
+function createCartItemsHolder() {
 	var cart_table_container = document.createElement('div');
 	cart_table_container.setAttribute('class', 'cartItems');
 	cart_table_container.setAttribute('id', 'cartIetmsList');
@@ -381,7 +419,7 @@ function appendElementToTable(table, items, currency) {
 	totalLabelCol.innerHTML = 'Total Price: ';
 	totalLabelCol.setAttribute('id', 'totalPriceRow');
 	var totalValueCol = document.createElement('td');
-	totalValueCol.innerHTML = currency + ' ' + Math.round(totalPrice*100)/100;
+	totalValueCol.innerHTML = currency + ' ' + roundDigits(totalPrice);
 	totalValueCol.setAttribute('id', 'totalPriceRow');
 	totalPriceRow.appendChild(emptyCols);
 	totalPriceRow.appendChild(totalLabelCol);
@@ -392,12 +430,14 @@ function appendElementToTable(table, items, currency) {
 Cart.prototype.saveState = function() {
 	var value = '{';
 	for(var i=0; i < this.items.length; i++) {
-		value +=  toJSonFormat(this.items[i]) + ',';
+		value += toJSonFormat(this.items[i]) + ',';
 	}
 	value += 'currency:' + this.currency;
 	value += '}';
-	setCookie('cartItems', value, 1);
+	setCookie(CART_COOKIE, value, 1);
+	alert('cart session was saved!');
 }
+
 function toJSonFormat(item) {
 	var jSon = '[';
 	jSon += item.quantity + ',';
@@ -409,27 +449,33 @@ function toJSonFormat(item) {
 	return jSon;
 }
 
-Cart.prototype.loadState = function() {
-	var objects = getCookie('cartItems');
-	if (typeof objects  == "undefined") {
-		return;
+
+function loadCartFromCookie() {
+	var cookie = getCookie(CART_COOKIE);
+	if (!cartInstance) {
+		initCartInstance();
+	}
+	if (!cookie) {
+		return false;
 	}
 	var index = 0;
 	var start, end;
-	this.items = [];
+	cartInstance.items = [];
 	do {
-		if(objects[i] == '[') {
-			var end = objects.indexOf(']', i);
-			this.addItems([ parseItem(objects, i + 1, end)]);
+		if(cookie[i] == '[') {
+			var end = cookie.indexOf(']', i);
+			cartInstance.addItems([ parseItem(cookie, i + 1, end)]);
 		}
 		i++;
-	} while(i < objects.length);
-	start = objects.lastIndexOf(':');
-	end = objects.lastIndexOf('}');
-	this.currency = objects.substring(start + 1, end);
+	} while(i < cookie.length);
+	start = cookie.lastIndexOf(':');
+	end = cookie.lastIndexOf('}');
+	cartInstance.currency = cookie.substring(start + 1, end);
+	return true;
 }
-function parseItem(objects, start, end) {
-	substr = objects.substring(start, end);
+
+function parseItem(string, start, end) {
+	substr = string.substring(start, end);
 	values = substr.split(',');
 	var item = new CartItem(values[1], values[3], values[4]);
 	item.quantity = values[0];
@@ -439,18 +485,23 @@ function parseItem(objects, start, end) {
 Cart.prototype.removeAllItems = function() {
 	this.items = [];
 }
+
+function roundDigits(number) {
+	return Math.round(number*100)/100;
+}
+
 /*javascript actions for the cart buttons*/
 
 function getActionForRemover(itemId) {
-	return 'Cart.getInstance().removeItem(' + itemId + '); Cart.getInstance().update();';
+	return 'cartInstance.removeItem(' + itemId + '); cartInstance.update();';
 }
 
 function getActionForSelectoUpArrow(itemId) {
-	return 'Cart.getInstance().incrementItemQuantity(' + itemId + '); Cart.getInstance().update();';
+	return 'cartInstance.incrementItemQuantity(' + itemId + '); cartInstance.update();';
 }
 
 function getActionForSelectoDownArrow(itemId) {
-	return 'Cart.getInstance().decrementItemQuantity(' + itemId + '); Cart.getInstance().update();';
+	return 'cartInstance.decrementItemQuantity(' + itemId + '); cartInstance.update();';
 }
 
 /*--------------------------------------*/
