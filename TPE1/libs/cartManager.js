@@ -435,7 +435,6 @@ Cart.prototype.saveState = function() {
 	value += 'currency:' + this.currency;
 	value += '}';
 	setCookie(CART_COOKIE, value, 1);
-	alert('cart session was saved!');
 }
 
 function toJSonFormat(item) {
