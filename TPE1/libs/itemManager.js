@@ -145,6 +145,8 @@ function processItem(data) {
 	temp.innerHTML = product.find('name').text();
 	temp2.appendChild(temp);
 	container.appendChild(temp2);
+	temp2 = document.getElementById('last')
+	temp2.innerHTML = product.find('name').text();
 
 	//Image
 	temp = document.createElement('img');
@@ -174,6 +176,9 @@ function processItem(data) {
 	temp.setAttribute('id', 'toggleFromCartInput');
 	temp.setAttribute('src', './images/cart/cartItem.png');
 	container.appendChild(temp);
+	
+	temp2 = document.getElementById('browsebc');
+	temp2.setAttribute('href', 'browse.html?catId=' + product.find('category_id').text() + "&subCatId=" + product.find('subcategory_id').text());
 	
 	if (category == '1') {
 		buildDvdView(container, product);
