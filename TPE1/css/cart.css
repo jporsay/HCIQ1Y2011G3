@@ -1,4 +1,4 @@
-.cart {
+#cart {
 	height: 90%;
 	position:absolute;
 	width: 24%;
@@ -11,7 +11,7 @@
 
 /*PARTE SUPERIOR*/
 
-.cartTitle {
+#cart .cartTitle {
 	text-align: right;
 	color: #000000;
 	font-size: 20px;
@@ -21,13 +21,13 @@
 	border-bottom: 2px solid #000000;
 }
 
-.cartTitle input {
+#cart .cartTitle input {
 	float: left;
 	height: 30px;
 	width: 30px;
 }
 
-.cartTitle .verticalSpacer {
+#cart .cartTitle .verticalSpacer {
 	height: 10px; 
 	width: 0;
     visibility: hidden;
@@ -36,46 +36,46 @@
 }
 
 /*TABLA DE ITEMS*/
-table {
+#cart table {
 	table-layout: fixed;
 	border-collapse: collapse;
 }
 
-#cartItemsTable td {
+#cart #cartItemsTable td {
 	border-bottom: 1px dashed #333;
 	padding: 2px 5px;
 	white-space: nowrap;
 	overflow: hidden;
 }
 
-.removerCol {
+#cart .removerCol {
 	width: 1%;
 }
 
-.informationCol {
+#cart .informationCol {
 	width: 100px;
 }
 
-.priceCol {
+#cart .priceCol {
 	width: 1%;
 }
 
-.selectorCol {
+#cart .selectorCol {
 	width: 1%;
 }
 
-.crop {
+#cart .crop {
 	width: inherit;
 }
 
 /* Selector de cantidad */
 
-.selector {
+#cart .selector {
 	float: right;
 	width: auto;
 }
 
-.selector span {
+#cart .selector span {
 	display: table-cell;
 	width: 40px;
 	font-size: 15px;
@@ -84,13 +84,13 @@ table {
 	text-align: center;
 }
 
-.selector .arrows {
+#cart .selector .arrows {
 	display: table-cell;
 	width: 10px;
 	height: 100%;
 }
 
-.selector .arrows input {
+#cart .selector .arrows input {
 	float: right;
 	height: 5px;
 	width: 10px;
@@ -99,7 +99,7 @@ table {
 	margin-right: 5px;
 }
 
-.cartItems input {
+#cart .cartItems input {
 	float: left;
 	height: 15px;
 	width: 15px;
@@ -110,7 +110,7 @@ table {
 
 /*PARTE INFERIOR*/
 
-.cartFooter {
+#cart .cartFooter {
 	height: 30px; 
 	width: 100%;
 	top: 500px;
@@ -119,26 +119,26 @@ table {
 	padding-top: 5px;
 }
 
-.cartFooter .label {
+#cart .cartFooter .label {
 	font: bold 16px Arial;
 	float: left;
 	width: 30%;
 }
 
-.cartFooter #cartTotalPrice {
+#cart .cartFooter #cartTotalPrice {
 	font: bold 16px Arial;
 	float: left;
 	width: auto;
 }
 
-.cartFooter #cartTotalPriceCurrency {
+#cart .cartFooter #cartTotalPriceCurrency {
 	font: bold 16px Arial;
 	float: left;
 	width: auto;
 	margin-right: 5px;
 }
 
-.cartFooter a {
+#cart .cartFooter a {
 	float: right;
 	width: 30%;
 	text-align: left;

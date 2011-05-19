@@ -1,7 +1,6 @@
 //DEFINES:
 var CART_ID = 'cart';
 var CART_COOKIE = 'cartItems';
-var CART_EXPORT_TABLE_ID = '';
 
 var cartInstance;
 function initCartInstance() {
@@ -17,7 +16,6 @@ function Cart() {
 	if (!cartDOM) {
 		return;
 	}
-	cartDOM.setAttribute('class', 'cart');	//Cambiar esto!
 	var cart_title = createCartTitle();
 	var cart_itemsHolder = createCartItemsHolder();
 	var cart_footer = createCartFooter();
@@ -260,34 +258,6 @@ function createSelector(item) {
 	return selectorCol;
 }
 
-/* THIS CAN BE SAFELY DELETED!
-
-/** Inizializa un carrito vacio en el HTML en el div con id='cart'. Crea el Titulo y el Pie del carrito.*/
-/*example
- <div class='cart'>
- <div class='cartTitle'>...</div>
- <div class='cartItems'>...</div>
- <div class='cartFooter'>...</div>
- </div>
- * /
-Cart.prototype.load = function() {
-	this.cleanHTML('cart');
-	this.currency = '$';
-	var cart = document.getElementById('cart');
-	cart.setAttribute('class', 'cart');
-	if(cart == null) {
-		return;
-	}
-	var cart_title = createCartTitle();
-	var cart_items = createCartItems();
-	var cart_footer = createCartFooter();
-
-	cart.appendChild(cart_title);
-	cart.appendChild(cart_items);
-	cart.appendChild(cart_footer);
-}
-*/
-
 /*example:
  <div class='cartTitle'>
  <div class='verticalSpacer'><!-- For vertical align!--></div>
@@ -365,6 +335,7 @@ Cart.prototype.printToTable = function(elementId) {
 	table.appendChild(tbody);
 	element.appendChild(table);
 }
+
 function createCartTable() {
 	var table = document.createElement('table');
 	table.setAttribute('id', 'cart-table');
