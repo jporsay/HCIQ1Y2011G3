@@ -1,17 +1,17 @@
-#cart {
-	height: 90%;
+.cartHolder {
 	position:absolute;
+	left: 76%;
 	width: 24%;
-	left: 75.9%;
+}
+
+#cart {
 	display: block;
 	background-color: #ffffff;
 	margin-top: 2px;
 	border: 2px solid #000000;
 }
 
-/*PARTE SUPERIOR*/
-
-#cart .cartTitle {
+#cart .title {
 	text-align: right;
 	color: #000000;
 	font-size: 20px;
@@ -21,52 +21,100 @@
 	border-bottom: 2px solid #000000;
 }
 
-#cart .cartTitle input {
+#cart .title input {
 	float: left;
 	height: 30px;
 	width: 30px;
 }
 
-#cart .cartTitle .verticalSpacer {
+#cart .title .verticalSpacer {
 	height: 10px; 
 	width: 0;
-    visibility: hidden;
-    vertical-align: middle;
-    display: block;
+	visibility: hidden;
+	vertical-align: middle;
+	display: block;
 }
 
-/*TABLA DE ITEMS*/
-#cart table {
-	table-layout: fixed;
-	border-collapse: collapse;
+#cart .cartItems {
+	margin: 0 3px;
+	min-height: 350px;
+	/*overflow: auto;*/
 }
 
-#cart #cartItemsTable td {
-	border-bottom: 1px dashed #333;
-	padding: 2px 5px;
-	white-space: nowrap;
-	overflow: hidden;
+#cart .cartItems .itemContainer {
+	position: relative;
+	display: block;
+	overflow: visible;
+	margin: 5px;
 }
 
-#cart .removerCol {
-	width: 1%;
+#cart .cartItems .itemInfo {
+	float: left;
+	height: 60px;
+	width: 100%;
 }
 
-#cart .informationCol {
-	width: 100px;
+#cart .cartItems .itemInfo .image {
+	float: left;
+	margin: 6px 5px 0 3px;
 }
 
-#cart .priceCol {
-	width: 1%;
+#cart .cartItems .itemInfo .image img {
+	height: 50px;
+	width: 50px;
+	border: 0 none;
+	display: inline;
 }
 
-#cart .selectorCol {
-	width: 1%;
+#cart .cartItems .itemInfo .desc {
+	float: left;
+	height: 45px;
+	margin: 4px 0 0;
+	width: 70%;
 }
 
-#cart .crop {
-	width: inherit;
+#cart .cartItems .itemInfo .desc .name {
+	font-weight: bold;
+	font-size: 15px;
 }
+
+#cart .cartItems .itemInfo .desc .info {
+	display: block;
+}
+
+#cart .cartItems .itemInfo .desc .price {
+	color: #ff0000;
+	font-weight: bold;
+}
+
+#cart .cartItems .itemInfo .desc .quantity {
+	font-size: 13px;
+}
+
+#cart .cartItems .itemInfo .desc input {
+	display: inline;
+	height: 10px;
+	width: 10px;
+	margin: 1px;
+	float: none;
+	border: none;
+}
+
+#cart .cartItems .itemRemover {
+	position: absolute;
+	top: 20px;
+	left: 90%;
+	background: url("../images/cart/x3small.png") no-repeat scroll left top;
+	cursor: pointer;
+	height: 20px;
+	width: 20px;
+	float: right;
+}
+
+#cart .clr {
+	clear: both;
+}
+
 
 /* Selector de cantidad */
 
@@ -108,27 +156,25 @@
 	border: 1px solid #000000;
 }
 
+
 /*PARTE INFERIOR*/
 
 #cart .cartFooter {
-	height: 30px; 
-	width: 100%;
-	top: 500px;
+	background-color: inherit;
+	position: absolute;
+	top: 100%;
+	height: 40px; 
+	width: 98.9%;
+	left: 0px;
 	text-align: center;
-	border-top: 3px groove #555555;
-	padding-top: 5px;
+	border: inherit;
+	padding-top: 10px;
 }
 
 #cart .cartFooter .label {
-	font: bold 16px Arial;
+	font: bold 17px Arial;
 	float: left;
 	width: 30%;
-}
-
-#cart .cartFooter #cartTotalPrice {
-	font: bold 16px Arial;
-	float: left;
-	width: auto;
 }
 
 #cart .cartFooter #cartTotalPriceCurrency {
@@ -136,12 +182,22 @@
 	float: left;
 	width: auto;
 	margin-right: 5px;
+	color: #009900;
+}
+
+#cart .cartFooter #cartTotalPrice {
+	font: bold 16px Arial;
+	color: #009900;
+	float: left;
+	width: auto;
 }
 
 #cart .cartFooter a {
-	float: right;
-	width: 30%;
+	position: absolute;
+	top: 2px;
+	left: 69%;
 	text-align: left;
-	font-size: 17px;
+	font-size: 15px;
+	font-weight: bold;
 }
 
