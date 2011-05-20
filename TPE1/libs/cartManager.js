@@ -156,7 +156,7 @@ function addToCart(item, currency, itemsList) {
 	var item_info = createItemInfo(item, currency);
 	var item_remover = document.createElement("div");
 		item_remover.setAttribute('class', 'itemRemover');
-		
+		item_remover.setAttribute('onClick', getActionForRemover(item.id));
 	itemCont.appendChild(item_info);
 	itemCont.appendChild(item_remover);
 	itemsList.appendChild(itemCont);
@@ -168,7 +168,7 @@ function createItemInfo(item, currency) {
 		
 	var item_image = createItemImage(item);
 
-	var item_desc = createItemDescription(item, this.currency);
+	var item_desc = createItemDescription(item, currency);
 	
 	item_info.appendChild(item_image);
 	item_info.appendChild(item_desc);
@@ -205,16 +205,18 @@ function createItemDescription(item, currency) {
 	var item_name = document.createElement('span');
 		item_name.setAttribute('class', 'name');
 		item_name.innerHTML = item.name;
-	var item_info = document.createElement('span');
+		
+	/*var item_info = document.createElement('span');
 		item_info.setAttribute('class', 'info');
-		item_info.innerHTML = 'this has to be deleted';
+		item_info.innerHTML = 'this will be deleted';*/
+
 	var item_price = document.createElement('span');
 		item_price.setAttribute('class', 'price');
 		item_price.innerHTML = currency + ' ' + item.price;
 	var item_quantity = createItemQuantity(item);
 
 	item_desc.appendChild(item_name);
-	item_desc.appendChild(item_info);
+	//item_desc.appendChild(item_info);
 	item_desc.appendChild(item_price);
 	item_desc.appendChild(item_quantity);
 	return item_desc;
@@ -237,10 +239,13 @@ function createItemQuantity(item) {
 		item_increment.setAttribute('type', 'Image');
 		item_increment.setAttribute('class', 'increment');
 		item_increment.setAttribute('src', './images/cart/upArrow.jpg');
+		item_increment.setAttribute('onClick', getActionForSelectorUpArrow(item.id));
 	var item_decrement = document.createElement('input');
 		item_decrement.setAttribute('type', 'Image');
 		item_decrement.setAttribute('class', 'increment');
 		item_decrement.setAttribute('src', './images/cart/downArrow.jpg');
+		item_decrement.setAttribute('onClick', getActionForSelectorDownArrow(item.id));
+			
 	item_quantitySel.appendChild(item_quantity);
 	item_quantitySel.appendChild(item_decrement);
 	item_quantitySel.appendChild(item_increment);
@@ -457,11 +462,11 @@ function getActionForRemover(itemId) {
 	return 'cartInstance.removeItem(' + itemId + '); cartInstance.update();';
 }
 
-function getActionForSelectoUpArrow(itemId) {
+function getActionForSelectorUpArrow(itemId) {
 	return 'cartInstance.incrementItemQuantity(' + itemId + '); cartInstance.update();';
 }
 
-function getActionForSelectoDownArrow(itemId) {
+function getActionForSelectorDownArrow(itemId) {
 	return 'cartInstance.decrementItemQuantity(' + itemId + '); cartInstance.update();';
 }
 

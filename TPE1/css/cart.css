@@ -47,6 +47,8 @@
 	display: block;
 	overflow: visible;
 	margin: 5px;
+	width: 100%;
+	height: 70px;
 }
 
 #cart .cartItems .itemInfo {
@@ -77,15 +79,14 @@
 #cart .cartItems .itemInfo .desc .name {
 	font-weight: bold;
 	font-size: 15px;
-}
-
-#cart .cartItems .itemInfo .desc .info {
 	display: block;
+	margin-bottom: 3px;
 }
 
 #cart .cartItems .itemInfo .desc .price {
 	color: #ff0000;
 	font-weight: bold;
+	font-size: 15px;
 }
 
 #cart .cartItems .itemInfo .desc .quantity {
@@ -96,9 +97,8 @@
 	display: inline;
 	height: 10px;
 	width: 10px;
-	margin: 1px;
-	float: none;
-	border: none;
+	margin: 1px;	
+	margin-left: 5px;
 }
 
 #cart .cartItems .itemRemover {
@@ -109,22 +109,12 @@
 	cursor: pointer;
 	height: 20px;
 	width: 20px;
-	float: right;
-}
-
-#cart .quantitySelector {
-	position: relative;
-	
 }
 
 #cart .cartItems .quantitySelector {
 	position: absolute;
 	display: inline;
-	left: 60%;
-}
-
-#cart .clr {
-	clear: both;
+	left: 50%;
 }
 
 #cart .cartFooter {
