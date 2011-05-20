@@ -166,8 +166,8 @@
 	border: 2px solid #000000;
 	right: 0%;
 	width: 4.7%;
-	height: 100%;
 	min-width: 60px;
+	min-height: 400px;
 }
 
 #hiddenCart .imageCont {
