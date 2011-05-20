@@ -1,8 +1,11 @@
 //DEFINES:
+var CART_HOLDER = 'cartHolder'
 var CART_ID = 'cart';
 var CART_COOKIE = 'cartItems';
+var CART_ITEMS_LIST = 'cartItemsList';
 
 var cartInstance;
+
 function initCartInstance() {
 	//THIS SHOULD ONLY BE CALLED ONCE THE PAGE IS LOADED.
 	cartInstance = new Cart();
@@ -10,27 +13,31 @@ function initCartInstance() {
 
 
 function Cart() {
-	this.currency = '$';
-	cleanHTML(CART_ID);
-	var cartDOM = document.getElementById(CART_ID);
-	if (!cartDOM) {
+	var cartHolder = document.getElementsByClassName(CART_HOLDER)[0];
+	if (!cartHolder) {
 		return;
 	}
+	cleanHTML(CART_HOLDER);
+	this.currency = '$';
+	var cart = document.createElement('div');
+		cart.setAttribute('id', CART_ID);	
 	var cart_title = createCartTitle();
 	var cart_itemsHolder = createCartItemsHolder();
 	var cart_footer = createCartFooter();
 
-	cartDOM.appendChild(cart_title);
-	cartDOM.appendChild(cart_itemsHolder);
-	cartDOM.appendChild(cart_footer);
+	cart.appendChild(cart_title);
+	cart.appendChild(cart_itemsHolder);
+	cart.appendChild(cart_footer);
+	cartHolder.appendChild(cart);
 }
 
-function CartItem(name, id, price) {
+function CartItem(name, id, price, imgSrc) {
 	this.quantity = 1;
 	this.name = name;
 	this.href = 'product.html?id=' + id;
 	this.id = id;
 	this.price = roundDigits(price);
+	this.imgSrc = imgSrc;
 }
 
 CartItem.prototype.toString = function() {
@@ -45,7 +52,7 @@ Cart.prototype.addItems = function(newItems) {
 	if (!this.items) {
 		this.items = newItems;
 		return;
-	} 
+	}
 		
 	for(var i = 0; i < newItems.length; i++) {
 		var isContained = false;
@@ -100,7 +107,6 @@ Cart.prototype.removeItem = function(id) {
 			index = i;
 		}
 	}
-
 	if (index != -1) {
 		this.items.splice(index, 1);
 	}
@@ -108,12 +114,12 @@ Cart.prototype.removeItem = function(id) {
 
 /** Agrega en el HTML los items guardados en el carrito. Estos son agregados a la tabla con id='cartItemsTable'.*/
 Cart.prototype.update = function() {
-	var cart_table = document.getElementById('cartItemsTable');
-	cleanHTML('cartItemsTable');
-
-	var totalPrice = 0
+	cleanHTML(CART_ITEMS_LIST);
+	
+	var cart_items = document.getElementById(CART_ITEMS_LIST);
+	var totalPrice = 0;
 	for (var i=0; i < this.items.length; i++) {
-		addToCart(this.items[i], this.currency, cart_table);
+		addToCart(this.items[i], this.currency, cart_items);
 		totalPrice += this.items[i].price * this.items[i].quantity;
 	}
 	var totalPriceLabel = document.getElementById('cartTotalPrice');
@@ -122,7 +128,7 @@ Cart.prototype.update = function() {
 	totalPriceCurrencyLabel.innerHTML = this.currency;
 }
 
-/** Limpia todo el HTML del carrito . NO elimina ningun item.*/
+/** Limpia el HTML del elemnto con id = elementoID.*/
 function cleanHTML (elementID) {
 	var elemntDOM = document.getElementById(elementID);
 	if (!elemntDOM) {
@@ -135,127 +141,110 @@ function cleanHTML (elementID) {
 
 /** Crea un item con los datos entregados en cartItem y los coloca en la tabla*/
 /*example:
- <tr>
- <td class="removerCol">...</td>
- <td class="informationCol">...</td>
- <td class="priceCol">...</td>
- <td class="selectorCol">...</td>
- </tr>
+<div class="itemContainer">
+	<div class="itemInfo">
+		<div class="image">... </div>
+		<div class="desc">...</div>
+	</div>
+	<div class="itemRemover"></div>
+</div>
  */
-function addToCart(cartItem, currency, table) {
-	var item = document.createElement("tr");
-	var removerCol = createItemRemoverColumn(cartItem);
-	var informationCol = createItemInformationColumn(cartItem);
-	var priceCol = createItemPriceColumn(cartItem, currency);
-	var selectorCol = createSelector(cartItem);
-
-	item.appendChild(removerCol);
-	item.appendChild(informationCol);
-	item.appendChild(priceCol);
-	item.appendChild(selectorCol);
-	table.appendChild(item);
+function addToCart(item, currency, itemsList) {
+	var itemCont = document.createElement("div");
+		itemCont.setAttribute('class', 'itemContainer');
+	
+	var item_info = createItemInfo(item, currency);
+	var item_remover = document.createElement("div");
+		item_remover.setAttribute('class', 'itemRemover');
+		
+	itemCont.appendChild(item_info);
+	itemCont.appendChild(item_remover);
+	itemsList.appendChild(itemCont);
 }
 
-/*example:
- <td class="removerCol">
- <input class="itemRemover" type="image" name='image' src='images/cart/x3.jpg'></input>
- </td>
- */
-function createItemRemoverColumn(item) {
-	var remover = document.createElement('td');
-	remover.setAttribute('class', 'removerCol');
-	var remover_input = document.createElement('input');
-	remover_input.setAttribute('class', 'itemRemover');
-	remover_input.setAttribute('type', 'image');
-	remover_input.setAttribute('name', 'image');
-	remover_input.setAttribute('src', 'images/cart/x3.jpg');
-	remover_input.setAttribute('onClick', getActionForRemover(item.id));
-	remover.appendChild(remover_input);
-	return remover;
+function createItemInfo(item, currency) {
+	var item_info = document.createElement("div");
+		item_info.setAttribute('class', 'itemInfo');
+		
+	var item_image = createItemImage(item);
+
+	var item_desc = createItemDescription(item, this.currency);
+	
+	item_info.appendChild(item_image);
+	item_info.appendChild(item_desc);
+	return item_info;
 }
 
 /*example
- <td class="informationCol">
- <div class='crop'>
- <a href='#'>THIS IS A REALLY LOOOOOONG TEXT</a>
- </div>
- </td>
- */
-function createItemInformationColumn(item) {
-	var info = document.createElement('td');
-	info.setAttribute('class', 'informationCol');
-	var info_lenthLimiter = document.createElement('div');
-	info_lenthLimiter.setAttribute('class', 'crop');
-	var info_link = document.createElement('a');
-	info_link.setAttribute('href', '#');
-	info_link.innerHTML = item.name;
+<div class="image">
+	<img alt="IMG" src=""></img>
+/div>
+*/
+function createItemImage(item) {
+	var imageCont = document.createElement('div');
+		imageCont.setAttribute('class', 'image');
+	var image = document.createElement('img');
+		image.setAttribute('alt', item.name);
+		image.setAttribute('src', item.imgSrc);
+	
+	imageCont.appendChild(image);
+	return imageCont;
+}
 
-	info_lenthLimiter.appendChild(info_link);
-	info.appendChild(info_lenthLimiter);
-	return info;
+/*example
+<div class="desc">
+	<span class="name">Taylor Dayne</span>
+	<span class="info">Satisfied</span>
+	<span class="price">$ 26.56</span>
+	<div class="quantitySelector"> ... </div>
+</div>
+ */
+function createItemDescription(item, currency) {
+	var item_desc = document.createElement('div');
+		item_desc.setAttribute('class', 'desc');
+	var item_name = document.createElement('span');
+		item_name.setAttribute('class', 'name');
+		item_name.innerHTML = item.name;
+	var item_info = document.createElement('span');
+		item_info.setAttribute('class', 'info');
+		item_info.innerHTML = 'this has to be deleted';
+	var item_price = document.createElement('span');
+		item_price.setAttribute('class', 'price');
+		item_price.innerHTML = currency + ' ' + item.price;
+	var item_quantity = createItemQuantity(item);
+
+	item_desc.appendChild(item_name);
+	item_desc.appendChild(item_info);
+	item_desc.appendChild(item_price);
+	item_desc.appendChild(item_quantity);
+	return item_desc;
 }
 
 /*example:
- <td class="priceCol">
- <span class='currency'>$</span>
- <span class='number'>560.60</span>
- </td>
+	<div class="quantitySelector">
+		<span class="quantity">Quantity: 1</span>
+		<input type="Image" class="decrement" src="./images/cart/downArrow.jpg"></input>
+		<input type="Image" class="increment" src="./images/cart/upArrow.jpg"></input>
+	</div>
  */
-function createItemPriceColumn(item, currency) {
-	var priceCol = document.createElement('td');
-	priceCol.setAttribute('class','priceCol');
-	var price_currency = document.createElement('span');
-	price_currency.setAttribute('class', 'currency');
-	price_currency.innerHTML = currency;
-	var price_number = document.createElement('span');
-	price_number.setAttribute('class', 'number');
-	price_number.innerHTML = item.price;
-
-	priceCol.appendChild(price_currency);
-	priceCol.appendChild(price_number);
-	return priceCol;
-}
-
-/*example:
- <td class="selectorCol">
- <div class='selector'>
- <span>569</span>
- <div class='arrows'>
- <input type='image' name='image' src='images/cart/upArrow.jpg'></input>
- <input type='image' name='image' src='images/cart/downArrow.jpg'></input>
- </div>
- </div>
- </td>
- */
-function createSelector(item) {
-	var selectorCol = document.createElement("td");
-	selectorCol.setAttribute('class','selectorCol');
-	var selector_container = document.createElement("div");
-	selector_container.setAttribute('class','selector');
-	var selector_text = document.createElement("span");
-	selector_text.innerHTML = item.quantity;
-
-	var selector_arrows = document.createElement("div");
-	selector_arrows.setAttribute('class','arrows');
-
-	var selector_arrowUp = document.createElement("input");
-	selector_arrowUp.setAttribute('type','image');
-	selector_arrowUp.setAttribute('name','image');
-	selector_arrowUp.setAttribute('src','images/cart/upArrow.jpg');
-	selector_arrowUp.setAttribute('onClick', getActionForSelectoUpArrow(item.id));
-	var selector_arrowDown = document.createElement("input");
-	selector_arrowDown.setAttribute('type','image');
-	selector_arrowDown.setAttribute('name','image');
-	selector_arrowDown.setAttribute('src','images/cart/downArrow.jpg');
-	selector_arrowDown.setAttribute('onClick', getActionForSelectoDownArrow(item.id));
-
-	selector_arrows.appendChild(selector_arrowUp);
-	selector_arrows.appendChild(selector_arrowDown);
-
-	selector_container.appendChild(selector_text);
-	selector_container.appendChild(selector_arrows);
-	selectorCol.appendChild(selector_container);
-	return selectorCol;
+function createItemQuantity(item) {
+	var item_quantitySel = document.createElement('div');
+		item_quantitySel.setAttribute('class','quantitySelector');
+	var item_quantity = document.createElement('span');
+		item_quantity.setAttribute('class','quantity');
+		item_quantity.innerHTML = 'Quantity: ' + item.quantity		
+	var item_increment = document.createElement('input');
+		item_increment.setAttribute('type', 'Image');
+		item_increment.setAttribute('class', 'increment');
+		item_increment.setAttribute('src', './images/cart/upArrow.jpg');
+	var item_decrement = document.createElement('input');
+		item_decrement.setAttribute('type', 'Image');
+		item_decrement.setAttribute('class', 'increment');
+		item_decrement.setAttribute('src', './images/cart/downArrow.jpg');
+	item_quantitySel.appendChild(item_quantity);
+	item_quantitySel.appendChild(item_decrement);
+	item_quantitySel.appendChild(item_increment);
+	return item_quantitySel;
 }
 
 /*example:
@@ -268,7 +257,7 @@ function createSelector(item) {
  
 function createCartTitle() {
 	var cartTitle = document.createElement('div');
-	cartTitle.setAttribute('class', 'cartTitle');
+	cartTitle.setAttribute('class', 'title');
 	var spacer = document.createElement('div');
 	spacer.setAttribute('class', 'verticalSpacer');
 	var cart_toogler = document.createElement('input');
@@ -285,18 +274,20 @@ function createCartTitle() {
 }
 
 /*example:
- <div class='cartItems' id='cartIetmsList'>
- <table id="cartItemsTable"> ... </table>
- </div>
+<div class="cartItems" id="cartIetmsList">
+	<div class="itemContainer">
+		...
+	</div>
+	div class="itemContainer">
+		...
+	</div>
+</div>
  */
 function createCartItemsHolder() {
-	var cart_table_container = document.createElement('div');
-	cart_table_container.setAttribute('class', 'cartItems');
-	cart_table_container.setAttribute('id', 'cartIetmsList');
-	var cart_table = document.createElement('table');
-	cart_table.setAttribute('id', 'cartItemsTable');
-	cart_table_container.appendChild(cart_table);
-	return cart_table_container;
+	var cart_items = document.createElement('div');
+	cart_items.setAttribute('class', 'cartItems');
+	cart_items.setAttribute('id', CART_ITEMS_LIST);
+	return cart_items;
 }
 
 /*example:
@@ -336,33 +327,9 @@ Cart.prototype.printToTable = function(elementId) {
 	element.appendChild(table);
 }
 
-function createCartTable() {
-	var table = document.createElement('table');
-	table.setAttribute('id', 'cart-table');
-	var thread = document.createElement('thead');
-	var headerRow = document.createElement('tr');
+/*
 
-	var product = document.createElement('th');
-	product.setAttribute('scope', 'col');
-	product.innerHTML = 'Product';
-	var quantity = document.createElement('th');
-	quantity.setAttribute('scope', 'col');
-	quantity.innerHTML = 'Quantity';
-	var price = document.createElement('th');
-	price.setAttribute('scope', 'col');
-	price.innerHTML = 'Price';
-	var total = document.createElement('th');
-	total.setAttribute('scope', 'col');
-	total.innerHTML = 'Subtotal Price';
-	headerRow.appendChild(product);
-	headerRow.appendChild(quantity);
-	headerRow.appendChild(price);
-	headerRow.appendChild(total);
-	thread.appendChild(headerRow)
-	table.appendChild(thread);
-	return table;
-}
-
+*/
 function appendElementToTable(table, items, currency) {
 	var totalPrice = 0;
 	for(var i=0; i < items.length; i++) {
@@ -406,7 +373,6 @@ Cart.prototype.saveState = function() {
 	value += 'currency:' + this.currency;
 	value += '}';
 	setCookie(CART_COOKIE, value, 1);
-	alert('cart session was saved!');
 }
 
 function toJSonFormat(item) {
