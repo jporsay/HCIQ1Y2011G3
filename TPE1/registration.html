@@ -83,10 +83,10 @@
 						},
 						{
 							e: '#birthDate',
-							re: /^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$/,
+							re: /^(19|20)\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/,
 							min: 1,
 							max: 11,
-							errorm: "Date format: mm dd yyy"
+							errorm: "Date format: yyyy-mm-dd"
 						}
 					];
 					$('form input').each(function() {
@@ -135,8 +135,6 @@
 			<h1 id='header'>Happy Business</h1>
 			<div id="localization">
 				<select id='locale'>
-					<option value="es" selected="selected" class="ui-widget">Espa&ntilde;ol</option>
-					<option value="en">English</option>
 				</select>
 			</div>
 			<div id="login">
@@ -161,7 +159,7 @@
 			<div class="navbar">
 				<div id="breadcrumbholder" class="breadCrumbHolder breadCrumbPosition breadCrumb module">
 					<ul id="breadcrumb">
-						<li><a href="#">Home</a></li>
+						<li><a href="index.html">Home</a></li>
 						<li><a href="#">Settings</a></li>
 						<li><a href="#">Checkout</a></li>
 					</ul>
