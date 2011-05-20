@@ -327,9 +327,33 @@ Cart.prototype.printToTable = function(elementId) {
 	element.appendChild(table);
 }
 
-/*
+function createCartTable() {
+	var table = document.createElement('table');
+	table.setAttribute('id', 'cart-table');
+	var thread = document.createElement('thead');
+	var headerRow = document.createElement('tr');
 
-*/
+	var product = document.createElement('th');
+	product.setAttribute('scope', 'col');
+	product.innerHTML = 'Product';
+	var quantity = document.createElement('th');
+	quantity.setAttribute('scope', 'col');
+	quantity.innerHTML = 'Quantity';
+	var price = document.createElement('th');
+	price.setAttribute('scope', 'col');
+	price.innerHTML = 'Price';
+	var total = document.createElement('th');
+	total.setAttribute('scope', 'col');
+	total.innerHTML = 'Subtotal Price';
+	headerRow.appendChild(product);
+	headerRow.appendChild(quantity);
+	headerRow.appendChild(price);
+	headerRow.appendChild(total);
+	thread.appendChild(headerRow)
+	table.appendChild(thread);
+	return table;
+}
+
 function appendElementToTable(table, items, currency) {
 	var totalPrice = 0;
 	for(var i=0; i < items.length; i++) {
