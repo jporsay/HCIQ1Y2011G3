@@ -442,7 +442,8 @@ function toJSonFormat(item) {
 	jSon += item.name + ',';
 	jSon += item.href + ',';
 	jSon += item.id + ',';
-	jSon += item.price;
+	jSon += item.price + ',';
+	jSon += item.imgSrc;
 	jSon += ']';
 	return jSon;
 }
@@ -475,7 +476,7 @@ function loadCartFromCookie() {
 function parseItem(string, start, end) {
 	substr = string.substring(start, end);
 	values = substr.split(',');
-	var item = new CartItem(values[1], values[3], values[4]);
+	var item = new CartItem(values[1], values[3], values[4], values[5]);
 	item.quantity = values[0];
 	return item;
 }
