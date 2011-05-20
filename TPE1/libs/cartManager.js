@@ -1,6 +1,7 @@
 //DEFINES:
 var CART_HOLDER = 'cartHolder'
 var CART_ID = 'cart';
+var CART_ID_HIDDEN = 'hiddenCart';
 var CART_COOKIE = 'cartItems';
 var CART_ITEMS_LIST = 'cartItemsList';
 
@@ -24,11 +25,15 @@ function Cart() {
 	var cart_title = createCartTitle();
 	var cart_itemsHolder = createCartItemsHolder();
 	var cart_footer = createCartFooter();
-
+	
 	cart.appendChild(cart_title);
 	cart.appendChild(cart_itemsHolder);
 	cart.appendChild(cart_footer);
 	cartHolder.appendChild(cart);
+	
+	var cart_hidden = createCartHidden();
+	cartHolder.appendChild(cart_hidden);
+	this.setHidden(false);
 }
 
 function CartItem(name, id, price, imgSrc) {
@@ -128,6 +133,17 @@ Cart.prototype.update = function() {
 	totalPriceCurrencyLabel.innerHTML = this.currency;
 }
 
+/** Ocutlta/muestra el carrito*/
+Cart.prototype.setHidden = function(hide) {
+	if(hide) {
+		document.getElementById(CART_ID).style.visibility = "hidden";
+		document.getElementById(CART_ID_HIDDEN).style.visibility = "visible";
+	} else {
+		document.getElementById(CART_ID).style.visibility = "visible";
+		document.getElementById(CART_ID_HIDDEN).style.visibility = "hidden";
+	}
+}
+
 /** Limpia el HTML del elemnto con id = elementoID.*/
 function cleanHTML (elementID) {
 	var elemntDOM = document.getElementById(elementID);
@@ -205,18 +221,11 @@ function createItemDescription(item, currency) {
 	var item_name = document.createElement('span');
 		item_name.setAttribute('class', 'name');
 		item_name.innerHTML = item.name;
-		
-	/*var item_info = document.createElement('span');
-		item_info.setAttribute('class', 'info');
-		item_info.innerHTML = 'this will be deleted';*/
-
 	var item_price = document.createElement('span');
 		item_price.setAttribute('class', 'price');
 		item_price.innerHTML = currency + ' ' + item.price;
 	var item_quantity = createItemQuantity(item);
-
 	item_desc.appendChild(item_name);
-	//item_desc.appendChild(item_info);
 	item_desc.appendChild(item_price);
 	item_desc.appendChild(item_quantity);
 	return item_desc;
@@ -269,6 +278,7 @@ function createCartTitle() {
 	cart_toogler.setAttribute('type', 'image');
 	cart_toogler.setAttribute('name', 'image');
 	cart_toogler.setAttribute('src', 'images/cart/rightArrow.jpg');
+	cart_toogler.setAttribute('onClick', getActionForToogler(true)); 
 	var cart_span = document.createElement('span');
 	cart_span.innerHTML = 'Cart Items:';
 
@@ -321,6 +331,28 @@ function createCartFooter() {
 	footer.appendChild(foter_number_label);
 	footer.appendChild(footer_checkout);
 	return footer;
+}
+
+/*example:
+<div id='hiddenCart'>
+	<div class='imageCont'>
+		<input type='Image' src='' alt=''></input>
+	</div>
+</div>
+*/
+function createCartHidden() {
+	var cart_hidden = document.createElement('div');
+		cart_hidden.setAttribute('id', CART_ID_HIDDEN);
+	var cart_toogle = document.createElement('div');
+		cart_toogle.setAttribute('class', 'imageCont');
+	var cart_input = document.createElement('input');
+		cart_input.setAttribute('type', 'Image');
+		cart_input.setAttribute('src', './images/cart/leftArrow.jpg');
+		cart_input.setAttribute('alt', 'Toogler');
+		cart_input.setAttribute('onClick', getActionForToogler(false));
+	cart_toogle.appendChild(cart_input);
+	cart_hidden.appendChild(cart_toogle);
+	return cart_hidden;
 }
 
 Cart.prototype.printToTable = function(elementId) {
@@ -457,6 +489,10 @@ function roundDigits(number) {
 }
 
 /*javascript actions for the cart buttons*/
+
+function getActionForToogler(hide) {
+	return 'cartInstance.setHidden(' + hide + ')';
+}
 
 function getActionForRemover(itemId) {
 	return 'cartInstance.removeItem(' + itemId + '); cartInstance.update();';
