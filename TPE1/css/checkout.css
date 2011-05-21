@@ -1,9 +1,15 @@
 .fieldsCheckout {
+	position: relative;
 	margin-top: 20px;
 	margin-right: auto;
 	margin-left: auto;
 	width: 650px;
 	color: #000000;
+}
+
+fieldset legend {
+	font-size: 14px;
+	font-weight: bold;
 }
 
 .fieldsCheckout  fieldset {
@@ -17,6 +23,10 @@
 	left: 10px;
 }
 
+.fieldsCheckout .fieldRow span {
+	font-size: 13px;
+}
+
 .fieldsCheckout .fieldRow input {
 	position: absolute;
 	left: 17%;
@@ -28,6 +38,15 @@
 	height: 50px;
 	margin: 10px;
 	margin-bottom: 20px;
+}
+
+.fieldsCheckout .footNote {
+	position: absolute;
+	font-weight: bold;
+	font-size: 13px;
+	display: block; 
+	right: 0;
+	bottom: 50px;
 }
 
 .fieldsCheckout .cancelButton {
@@ -73,9 +92,11 @@
 	color: #000;
 	border-top: 1px solid transparent #ffffff;
 }
+
 /*
 #cart-table tr:hover td {
 	background: #d0dafd;
 	color: #339;
 }*/
+
 
