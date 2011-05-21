@@ -46,7 +46,7 @@ function CartItem(name, id, price, imgSrc) {
 }
 
 CartItem.prototype.toString = function() {
-	return this.quantity + ', ' + this.name + ', ' + this.href + ', ' + this.id + ', ' + this.price;
+	return this.quantity + ', ' + this.name + ', ' + this.href + ', ' + this.id + ', ' + this.price + ', ' + this.imgSrc;
 }
 
 Cart.prototype.toString = function() {
