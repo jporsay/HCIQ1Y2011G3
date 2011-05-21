@@ -54,9 +54,11 @@
 			
 			$("#locale").change(function() {
 				translator.setLang($(this).val());
+				loadCategories($('#locale :selected').attr('id'));
 				getItems(urlParam('catId'), urlParam('subCatId'), $('#locale :selected').attr('id'));
 				translator.translatePage();
 			});
+			
 			if(urlParam('searchText')) {
 				searchItems(urlParam('searchText'));
 			} else if (urlParam('catId')) {
@@ -98,8 +100,6 @@
 		<h1 id='header'>Happy Business</h1>
 		<div id="localization">
 			<select id='locale'>
-				<option value="es" selected="selected" class="ui-widget">Espa&ntilde;ol</option>
-				<option value="en">English</option>
 			</select>
 		</div>
 		<div id="login">

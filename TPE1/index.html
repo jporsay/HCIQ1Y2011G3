@@ -21,6 +21,7 @@
 	<script type="text/javascript" src="libs/categoriesManager.js"></script>
 	<script type="text/javascript" src="libs/subcategoriesManager.js"></script>
 	<script type="text/javascript" src="libs/cartManager.js"></script>
+	<script type="text/javascript" src="libs/login.js"></script>
 	<script type="text/javascript">
 		$(function() {
 
@@ -36,13 +37,7 @@
 					}
 				}
 			});
-
 			$('.logintext').click(function() {
-				if ($('.loginform').is(':visible') === false) {
-					$('#loginimg').css("background-position", "0 -16px");
-				} else {
-					$('#loginimg').css("background-position", "-64px -16px");
-				}
 				$('.loginform').slideToggle();
 			});
 			
@@ -73,6 +68,12 @@
 			});
 			
 			loadCategories($('#locale :selected').attr('id'));
+			loadUserSesion();
+
+			$('#loginbutton').click(function() {
+				logIn($('#usernameInput').val(), $('#passwordInput').val());
+			})
+
 			translator.translatePage();
 		});
 	</script>
@@ -85,8 +86,6 @@
 	<h1 id="header">Happy Business</h1>
 	<div id="localization">
 		<select id="locale">
-			<option value="es" selected="selected" class="ui-widget">Español</option>
-			<option value="en">English</option>
 		</select>
 	</div>
 	<div id="login">
@@ -94,17 +93,6 @@
 			<span id="logintext" class="">Login</span>
 		</div>
 		<div class="loginform">
-			<div>
-				<span id="usernametext" class="">Username:</span>
-				<input type="text">
-			</div>
-			<div>
-				<span id="passwordtext" class="">Password</span>
-				<input type="password">
-			</div>
-			<button type="button" id="loginbutton" class="">Login</button>
-			<a href="registration.html" id="createaccount">Create account</a>
-			<a href="recoverInfo.html" id="forgotdata">Forgot username or password?</a>
 		</div>
 	</div>
 	<div class="navbar">
