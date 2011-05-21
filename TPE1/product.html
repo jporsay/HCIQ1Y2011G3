@@ -4,6 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="css/productDisplayPage.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="css/header.css">
@@ -13,7 +14,6 @@
 	<link rel="stylesheet" type="text/css" href="css/BreadCrumb.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link rel="stylesheet" type="text/css" href="css/cart.css">
-	<link rel="stylesheet" type="text/css" href="css/productDisplay.css">
 	<link rel="stylesheet" type="text/css" href="css/tabs.css">
 	
 	<script type="text/javascript" src="libs/init.js"></script>
@@ -94,63 +94,66 @@
 	
 	<title>Carritus Co.</title>
 </head>
-<body>
-<div class="header">
-	<img src="images/cooltext530131064.png" alt="Company Logo" width="276" height="110">
-	<h1 id='header'>Happy Business</h1>
-	<div id="localization">
-		<select id='locale'>
-		</select>
-	</div>
-	<div id="login">
-		<div class="logintext">
-			<div id="loginimg"></div>
-			<span id="logintext" class="">Login</span>
+	<body>
+	<div class="header">
+		<img src="images/cooltext530131064.png" alt="Company Logo" width="276" height="110">
+		<h1 id='header'>Happy Business</h1>
+		<div id="localization">
+			<select id='locale'>
+			</select>
 		</div>
-		<div class="loginform">
-			<div>
-				<span id='usernametext' class="">Username:</span>
-				<input type="text">
+		<div id="login">
+			<div class="logintext">
+				<div id="loginimg"></div>
+				<span id="logintext" class="">Login</span>
 			</div>
-			<div>
-				<span id='passwordtext' class="">Password</span>
-				<input type="password">
+			<div class="loginform">
+				<div>
+					<span id='usernametext' class="">Username:</span>
+					<input type="text">
+				</div>
+				<div>
+					<span id='passwordtext' class="">Password</span>
+					<input type="password">
+				</div>
+				<button type="button" id='loginbutton' class=''>Login</button>
+				<a href="registration.html" id="createaccount">Create account</a>
+				<a href="recoverInfo.html" id="forgotdata">Forgot username or password?</a>
 			</div>
-			<button type="button" id='loginbutton' class=''>Login</button>
-			<a href="registration.html" id="createaccount">Create account</a>
-			<a href="recoverInfo.html" id="forgotdata">Forgot username or password?</a>
 		</div>
-	</div>
-	<div class="navbar">
-		<div id="breadcrumbholder" class="breadCrumbHolder breadCrumbPosition breadCrumb module">
-			<ul id="breadcrumb">
-				<li><a id="first" href="index.html">Home</a></li>
-				<li><a id="browsebc" href="">Browse</a></li>
-				<li id="last"></li>
-			</ul>
-		</div>
-		<div id="searchbar">
-			<input id="searchtext" class="i18n" value="Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
-			<button id="searchbutton" class="ui-widget">Go</button>
-		</div>
-	</div>
-</div>
-	
-<div class="mainarea">
-	<div class="cartHolder"></div>
-	<div class="productContainer">
-	</div>
-	<div id="categoryNav">
-		<div id="leftNavContainer">
-			<div id="refinements">
-				<h2>Categorias</h2>
-				<ul id='catList'>
+		<div class="navbar">
+			<div id="breadcrumbholder" class="breadCrumbHolder breadCrumbPosition breadCrumb module">
+				<ul id="breadcrumb">
+					<li><a id="first" href="index.html">Home</a></li>
+					<li><a id="browsebc" href="">Browse</a></li>
+					<li id="last"></li>
 				</ul>
-		    </div>
+			</div>
+			<div id="searchbar">
+				<input id="searchtext" class="i18n" value="Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+				<button id="searchbutton" class="ui-widget">Go</button>
+			</div>
 		</div>
 	</div>
-</div>
+	
+	<div id="mainArea">
+		<div id="leftArea">
+			<div class="productContainer"></div>
+			<div id="categoryNav">
+				<div id="leftNavContainer">
+					<div id="refinements">
+						<h2>Categorias</h2>
+						<ul id='catList'>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="rightArea">
+			<div class="cartHolder"></div>
+		</div>
+	</div>
 
 
-</body>
+	</body>
 </html>

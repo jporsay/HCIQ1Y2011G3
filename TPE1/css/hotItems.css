@@ -1,0 +1,51 @@
+#hotItems {
+	position: absolute;
+	left: 30%;
+	width: 600px;
+	height: 630px;
+}
+
+#hotItems h1 {
+	float: left;
+	width: 100%;
+}
+
+#hotItems .itemsContainer {
+	position: relative;
+	border: 1px solid #ffffff;
+	overflow: hidden;
+}
+
+#hotItems .hotItem {
+	position: relative;
+	float: left;
+	width: 250px;
+	height: 300px; 
+	border: 1px solid #ffffff;
+	overflow: hidden;
+	text-align: center;
+	margin: 10px;
+	left: 30px;
+	background-color: #000000;
+}
+
+
+#hotItems .hotItem img {
+	display: block;
+	width: 100%;
+	height: 250px;
+}
+
+#hotItems .hotItem .name {
+	display: block;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#hotItems .hotItem .price {
+	display: block;
+	color: #aa0000;
+	font-weight: bold;
+	font-size: 17px;
+}
+

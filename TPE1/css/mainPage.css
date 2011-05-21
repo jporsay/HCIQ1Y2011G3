@@ -1,0 +1,11 @@
+#mainArea {
+	height: 800px;
+}
+
+#leftArea {
+	width: 75%;
+}
+
+#rightArea {
+	width: 25%;
+}

@@ -1,5 +1,8 @@
-<html><head>
+<html>
+<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="css/mainPage.css">
+	<link rel="stylesheet" type="text/css" href="css/hotItems.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="css/categories.css">
@@ -8,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="css/Base.css">
 	<link rel="stylesheet" type="text/css" href="css/BreadCrumb.css">
 	<link rel="stylesheet" type="text/css" href="css/cart.css">
+	<link rel="stylesheet" type="text/css" href="css/hotItems.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<script type="text/javascript" src="libs/init.js"></script>
 	<script type="text/javascript" src="libs/jquery-1.5.1.min.js"></script>
@@ -80,67 +84,88 @@
 	<title>Carritus Co.</title>
 </head>
 <body>
-<div class="header">
-	<img src="images/cooltext530131064.png" alt="Company Logo" width="276" height="110">
-	<h1 id="header">Happy Business</h1>
-	<div id="localization">
-		<select id="locale">
-			<option value="es" selected="selected" class="ui-widget">Español</option>
-			<option value="en">English</option>
-		</select>
-	</div>
-	<div id="login">
-		<div class="logintext">
-			<span id="logintext" class="">Login</span>
+	<div class="header">
+		<img src="images/cooltext530131064.png" alt="Company Logo" width="276" height="110">
+		<h1 id="header">Happy Business</h1>
+		<div id="localization">
+			<select id="locale">
+				<option value="es" selected="selected" class="ui-widget">Español</option>
+				<option value="en">English</option>
+			</select>
 		</div>
-		<div class="loginform">
-			<div>
-				<span id="usernametext" class="">Username:</span>
-				<input type="text">
+		<div id="login">
+			<div class="logintext">
+				<span id="logintext" class="">Login</span>
 			</div>
-			<div>
-				<span id="passwordtext" class="">Password</span>
-				<input type="password">
+			<div class="loginform">
+				<div>
+					<span id="usernametext" class="">Username:</span>
+					<input type="text">
+				</div>
+				<div>
+					<span id="passwordtext" class="">Password</span>
+					<input type="password">
+				</div>
+				<button type="button" id="loginbutton" class="">Login</button>
+				<a href="registration.html" id="createaccount">Create account</a>
+				<a href="recoverInfo.html" id="forgotdata">Forgot username or password?</a>
 			</div>
-			<button type="button" id="loginbutton" class="">Login</button>
-			<a href="registration.html" id="createaccount">Create account</a>
-			<a href="recoverInfo.html" id="forgotdata">Forgot username or password?</a>
 		</div>
-	</div>
-	<div class="navbar">
-		<div id="breadcrumbholder" class="breadCrumbHolder breadCrumbPosition breadCrumb module">
-			<ul id="breadcrumb">
-				<li class="last"><a href="index.html">Home</a></li>
-			</ul>
-		</div>
-		<div id="searchbar">
-			<input id="searchtext" class="i18n" value="Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
-			<button id="searchbutton" class="ui-widget">Go</button>
-		</div>
-	</div>
-</div>
-	
-<div class="mainArea">
-	
-	<div id="categoryNav">
-		<div id="leftNavContainer">
-			<div id="refinements">
-				<h2>Categorias</h2>
-				<ul id='catList'>
+		<div class="navbar">
+			<div id="breadcrumbholder" class="breadCrumbHolder breadCrumbPosition breadCrumb module">
+				<ul id="breadcrumb">
+					<li class="last"><a href="index.html">Home</a></li>
 				</ul>
-		    </div>
+			</div>
+			<div id="searchbar">
+				<input id="searchtext" class="i18n" value="Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+				<button id="searchbutton" class="ui-widget">Go</button>
+			</div>
 		</div>
 	</div>
 	
-	<div class="hotItems">
-		<h1>Hot Items:(soon!)</h1>
+	<div id="mainArea">
+		<div id="leftArea">
+			<div id="categoryNav">
+				<div id="leftNavContainer">
+					<div id="refinements">
+						<h2>Categorias</h2>
+						<ul id='catList'></ul>
+					</div>
+				</div>
+			</div>
+			<div id="hotItems">
+				<h1>Today's hot items:</h1>
+				<div class="itemsContainer">
+					<div class="hotItem">
+						<img src="./images/image1.jpg"></img>
+						<a class="name" href="#">Compra esto loca!</a>
+						<span class="price">$ 50</span> 
+					</div>
+					<div class="hotItem">
+						<img src="./images/image2.jpg"></img>
+						<a class="name" href="#">Y esto tambien!!</a>
+						<span class="price">$ 50</span> 
+					</div>
+					<div class="hotItem">
+						<img src="./images/image3.jpg"></img>
+						<a class="name" href="#">No te olvides de mi!</a>
+						<span class="price">$ 50</span> 
+					</div>
+					<div class="hotItem">
+						<img src="./images/image4.jpg"></img>
+						<a class="name" href="#">No te olvides de mi!</a>
+						<span class="price">$ 50</span> 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="rightArea">
+			<div class="cartHolder"></div>
+		</div>
+		<!--<div class="footer">
+			<a id="usLabel" class="i18n" href="#"></a> | <a id="contactLabel" class="i18n" href="#"></a>
+		</div>-->
 	</div>
-	
-	<div class="cartHolder"></div>
-		
-	<!--<div class="footer">
-		<a id="usLabel" class="i18n" href="#"></a> | <a id="contactLabel" class="i18n" href="#"></a>
-	</div>-->
-</div>
 </body>
 </html>

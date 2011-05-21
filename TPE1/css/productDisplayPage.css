@@ -1,9 +1,22 @@
+#mainArea {
+	height: 700px;
+}
+
+#leftArea {
+	width: 75%;
+}
+
+#rightArea {
+	width: 25%;
+}
+
 .productContainer {
-	position: relative;
+	position: absolute;
 	margin-top: 20px;
 	margin-right: auto;
 	margin-left: auto;
-	width: 650px;
+	width: 750px;
+	right: 2%;
 	height: 600px;
 	border: 2px solid #000000;
 	text-align: center;

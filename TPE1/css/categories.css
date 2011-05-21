@@ -1,18 +1,3 @@
-.mainArea {
-	position: relative;
-	height: 500px;
-}
-
-.hotItems {
-	position: absolute;
-	width: 400px;
-	height: 300px; 
-	left: 40%;
-	top: 20%;
-	border: 1px solid #ffffff;
-	background: #bb4411;
-}
-
 #categoryNav {
 	position: absolute;
 	left: 10px;
