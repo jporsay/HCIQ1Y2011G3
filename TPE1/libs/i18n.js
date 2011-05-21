@@ -42,12 +42,12 @@ i18n.prototype.getLang = function() {
 }
 
 i18n.prototype.getLangId = function() {
-	alert($('locale').attr('id'));
 	return $('locale').attr('id');
 }
 
 i18n.prototype.setLang = function(lang) {
 	this.lang = lang;
+	$.cookie('hblanguage', null);
 	$.cookie('hblanguage', this.lang, {path: '/'});
 	jQuery.i18n.properties({
 				name: this.page,
