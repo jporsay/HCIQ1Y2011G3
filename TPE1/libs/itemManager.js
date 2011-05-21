@@ -127,9 +127,22 @@ function displayItem(id) {
 	);
 }
 
-function toggleFromCart(element) {
-	$(element).toggleClass('removeFromCart');
+function removeFromCart(calledFromCart) {
+	$('#cartToggle').html('Add to cart');
+	$('#cartToggle').removeClass('removeFromCart');
+}
+
+function _addToCart() {
+	$('#cartToggle').html('Remove from cart');
 	cartInstance.addItem(new CartItem(prod['name'], prod['id'], prod['price'], prod['img']));
+}
+function toggleFromCart(element) {
+	$('#cartToggle').toggleClass('removeFromCart');
+	if ($('#cartToggle').is('.removeFromCart')) {
+		_addToCart();
+	} else {
+		cartInstance.removeItem(prod['id']);
+	}
 	cartInstance.update();
 }
 

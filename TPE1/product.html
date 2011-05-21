@@ -71,22 +71,18 @@
 				}
 			});
 			
-			if (!loadCartFromCookie()) {
-				alert('cookie not found!');
-			}
+			loadCartFromCookie()
 			cartInstance.update();
 			
 			// Hack to bubble click event from <a> which were loaded with ajax
-			$('.mainArea').click(function(e) {
+			$('.mainarea').click(function(e) {
 				if ($(e.target).is('a')) {
 					cartInstance.saveState();
 				}
 			});
 			
-			$('input').click(function() {
-				var newItem = new CartItem($('.title h2').value(), 'product.html?id=', urlParam('id'));
-				cartInstance.addItems([newItem]);
-				cartInstance.update();
+			$('#toggleFromCartInput').click(function() {
+				toggleFromCart(this);
 			});
 			
 			displayItem(urlParam('id'));

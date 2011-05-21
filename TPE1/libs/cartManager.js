@@ -117,6 +117,10 @@ Cart.prototype.removeItem = function(id) {
 		}
 	}
 	if (index != -1) {
+		var urlId = urlParam('id');
+		if (urlId == id) {
+			removeFromCart(true);
+		}
 		this.items.splice(index, 1);
 	}
 }
@@ -224,8 +228,9 @@ function createItemImage(item) {
 function createItemDescription(item, currency) {
 	var item_desc = document.createElement('div');
 		item_desc.setAttribute('class', 'desc');
-	var item_name = document.createElement('span');
+	var item_name = document.createElement('a');
 		item_name.setAttribute('class', 'name');
+		item_name.setAttribute('href', 'product.html?id=' + item.id);
 		item_name.innerHTML = item.name;
 	var item_price = document.createElement('span');
 		item_price.setAttribute('class', 'price');
