@@ -1,5 +1,5 @@
 var catalog = new ServerManager('Catalog');
-
+var prod = [];
 function getItems(categoryId, subcategoryId, langId) {
 	var method = 'GetProductListBySubcategory';
 	if (subcategoryId == "") {
@@ -127,6 +127,12 @@ function displayItem(id) {
 	);
 }
 
+function toggleFromCart(element) {
+	$(element).toggleClass('removeFromCart');
+	cartInstance.addItem(new CartItem(prod['name'], prod['id'], prod['price'], prod['img']));
+	cartInstance.update();
+}
+
 function processItem(data) {
 	var temp = null;
 	var temp2 = null;
@@ -135,6 +141,7 @@ function processItem(data) {
 		window.location = 'index.html';
 	}
 	var product = $(data).find('product');
+	prod['id'] = product.attr('id');
 	var category = product.find('category_id').text();
 	var container = document.getElementsByClassName('productContainer')[0];
 	
@@ -147,12 +154,14 @@ function processItem(data) {
 	container.appendChild(temp2);
 	temp2 = document.getElementById('last')
 	temp2.innerHTML = product.find('name').text();
+	prod['name'] = product.find('name').text();
 
 	//Image
 	temp = document.createElement('img');
 	temp.src = product.find('image_url').text();
 	temp.alt = product.find('name').text();
 	container.appendChild(temp);
+	prod['img'] = product.find('image_url').text();
 
 	//Price
 	temp = document.createElement('div');
@@ -165,10 +174,12 @@ function processItem(data) {
 	temp2.innerHTML = product.find('price').text();
 	temp.appendChild(temp2);
 	container.appendChild(temp);
+	prod['price'] = product.find('price').text();
 	
 	temp = document.createElement('a');
-	temp.setAttribute('class', 'product addToCart cartToggle')
+	temp.setAttribute('class', 'product cartToggle')
 	temp.innerHTML = 'Add to cart';
+	temp.setAttribute('onClick', "toggleFromCart(this)");
 	temp.id = 'cartToggle';
 	container.appendChild(temp);
 	temp = document.createElement('input');
