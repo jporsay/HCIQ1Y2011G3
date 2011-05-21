@@ -53,6 +53,10 @@ Cart.prototype.toString = function() {
 	return this.items + ', ' + this.currency;
 }
 
+Cart.prototype.addItem = function(newItem) {
+	cartInstance.addItems([newItem]);
+}
+
 Cart.prototype.addItems = function(newItems) {
 	if (!this.items) {
 		this.items = newItems;
@@ -113,6 +117,10 @@ Cart.prototype.removeItem = function(id) {
 		}
 	}
 	if (index != -1) {
+		var urlId = urlParam('id');
+		if (urlId == id) {
+			removeFromCart(true);
+		}
 		this.items.splice(index, 1);
 	}
 }
@@ -220,8 +228,9 @@ function createItemImage(item) {
 function createItemDescription(item, currency) {
 	var item_desc = document.createElement('div');
 		item_desc.setAttribute('class', 'desc');
-	var item_name = document.createElement('span');
+	var item_name = document.createElement('a');
 		item_name.setAttribute('class', 'name');
+		item_name.setAttribute('href', 'product.html?id=' + item.id);
 		item_name.innerHTML = item.name;
 	var item_price = document.createElement('span');
 		item_price.setAttribute('class', 'price');
@@ -399,7 +408,7 @@ function appendElementToTable(table, items, currency) {
 		totalPrice += (item.quantity * item.price);
 		var row = document.createElement('tr');
 		var product = document.createElement('td');
-		product.innerHTML = item.name;
+		product.innerHTML = '<a href=\'product.html?id=' + item.id +'\'>' + item.name + '</a>';
 		var quantity = document.createElement('td');
 		quantity.innerHTML = item.quantity;
 		var price = document.createElement('td');
@@ -434,7 +443,8 @@ Cart.prototype.saveState = function() {
 	}
 	value += 'currency:' + this.currency;
 	value += '}';
-	setCookie(CART_COOKIE, value, 1);
+	$.cookie(CART_COOKIE, null);
+	$.cookie(CART_COOKIE, value, {path: '/'});
 }
 
 function toJSonFormat(item) {
@@ -451,7 +461,7 @@ function toJSonFormat(item) {
 
 
 function loadCartFromCookie() {
-	var cookie = getCookie(CART_COOKIE);
+	var cookie = $.cookie(CART_COOKIE);
 	if (!cartInstance) {
 		initCartInstance();
 	}

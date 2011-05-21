@@ -90,3 +90,7 @@
 	text-align: center;
 	width: 270px;
 }
+
+.header .logintext {
+	cursor: pointer;
+}

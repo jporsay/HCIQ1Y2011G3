@@ -56,8 +56,9 @@
 .productContainer .cartToggle {
 	position: absolute;
 	z-index: 1000;
-	top: 50%;
+	top: 52.5%;
 	left: 75%;
+	color: #11ee11;
 	font-weight: bold;
 	font-size: medium;
 }
@@ -70,12 +71,13 @@
 	height: 25px;
 }
 
-.productContainer .addToCart {
-	color: #11ee11;
-}
-
 .productContainer .removeFromCart {
 	color: #ee1111;
+}
+
+.productContainer a {
+	display: inline;
+	cursor: pointer;
 }
 
 /*.productContainer .extrainformation {
