@@ -53,6 +53,10 @@ Cart.prototype.toString = function() {
 	return this.items + ', ' + this.currency;
 }
 
+Cart.prototype.addItem = function(newItem) {
+	cartInstance.addItems([newItem]);
+}
+
 Cart.prototype.addItems = function(newItems) {
 	if (!this.items) {
 		this.items = newItems;
@@ -435,6 +439,7 @@ Cart.prototype.saveState = function() {
 	}
 	value += 'currency:' + this.currency;
 	value += '}';
+	$.cookie(CART_COOKIE, null);
 	$.cookie(CART_COOKIE, value, {path: '/'});
 }
 
