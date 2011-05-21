@@ -36,7 +36,7 @@
 					}
 				}
 			});
-			
+
 			$('.logintext').click(function() {
 				if ($('.loginform').is(':visible') === false) {
 					$('#loginimg').css("background-position", "0 -16px");
@@ -51,14 +51,7 @@
 				loadCategories($('#locale :selected').attr('id'));
 				translator.translatePage();
 			});
-			
-			var items = [
-				new CartItem('Bicicle 2', '200', 539.55, '#'),
-				new CartItem('Bicicle 1', '1', 100, '#'),
-				new CartItem('Bicicle 3', '3', 240.99, '#')
-			];
-			initCartInstance();
-			cartInstance.addItems(items);
+			loadCartFromCookie();
 			cartInstance.update();
 			
 			$('#searchbutton').click(function() {
@@ -98,7 +91,6 @@
 	</div>
 	<div id="login">
 		<div class="logintext">
-			<div id="loginimg"></div>
 			<span id="logintext" class="">Login</span>
 		</div>
 		<div class="loginform">
