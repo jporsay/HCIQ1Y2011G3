@@ -64,9 +64,7 @@
 					}
 				});
 				
-				if (!loadCartFromCookie()) {
-					alert('cookie not found!');
-				}
+				loadCartFromCookie()
 				cartInstance.printToTable('checkoutTable');	
 				translator.translatePage();
 			});
