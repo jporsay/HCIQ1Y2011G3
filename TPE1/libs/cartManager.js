@@ -404,7 +404,7 @@ function appendElementToTable(table, items, currency) {
 		totalPrice += (item.quantity * item.price);
 		var row = document.createElement('tr');
 		var product = document.createElement('td');
-		product.innerHTML = item.name;
+		product.innerHTML = '<a href=\'product.html?id=' + item.id +'\'>' + item.name + '</a>';
 		var quantity = document.createElement('td');
 		quantity.innerHTML = item.quantity;
 		var price = document.createElement('td');
