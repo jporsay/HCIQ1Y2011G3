@@ -4,6 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="css/browsePage.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="css/categories.css">
@@ -13,7 +14,6 @@
 	<link rel="stylesheet" type="text/css" href="css/BreadCrumb.css">
 	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link rel="stylesheet" type="text/css" href="css/cart.css">
-	<link rel="stylesheet" type="text/css" href="css/browse.css">
 	<script type="text/javascript" src="libs/init.js"></script>
 	<script type="text/javascript" src="libs/jquery-1.5.1.min.js"></script>
 	<script type="text/javascript" src="libs/jquery.easing.1.3.js"></script>
@@ -135,19 +135,22 @@
 		</div>
 	</div>
 	
-	<div class="mainarea">
-		<div class="cartHolder"></div>
-		
-		<div id="categoryNav">
-			<div id="leftNavContainer">
-				<div id="refinements">
-					<h2>Categorias</h2>
-					<ul id='catList'>
-					</ul>
-			 	</div>
+	<div id="mainArea">
+		<div id="leftArea">
+			<div id="categoryNav">
+				<div id="leftNavContainer">
+					<div id="refinements">
+						<h2>Categorias</h2>
+						<ul id='catList'>
+						</ul>
+				 	</div>
+				</div>
+			</div>
+			<div class='items'>
 			</div>
 		</div>
-		<div class='items'>
+		<div id="rightArea">
+			<div class="cartHolder"></div>
 		</div>
 	</div>
 

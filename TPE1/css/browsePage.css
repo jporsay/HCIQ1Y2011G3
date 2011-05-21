@@ -1,16 +1,30 @@
+#mainArea {
+	height: 800px;
+}
+
+#leftArea {
+	width: 75%;
+}
+
+#rightArea {
+	width: 25%;
+}
+
 .items {
+	position: absolute;
 	margin-top: 20px;
 	margin-right: auto;
 	margin-left: auto;
-	width: 800px;
+	width: 750px;
+	right: 2%;
 }
 
 .item {
-		position: relative;
-		margin-top: 20px;
-		width: 700px;
-		height: 165px;
-		border-bottom: #222222 solid 1px;
+	position: relative;
+	margin-top: 20px;
+	width: 700px;
+	height: 165px;
+	border-bottom: #222222 solid 1px;
 }
 
 .item .itemLink {
