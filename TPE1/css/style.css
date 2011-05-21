@@ -4,8 +4,20 @@ body {
 	height: 100%;
 }
 
-.mainarea {
-	position: relative;
+#mainArea {
+ 	position: relative;
+ 	display: block;
 	top: 160px;
 	width: 100%;
 }
+
+#leftArea {
+	position: relative;
+	float: left;
+}
+
+#rightArea {
+	position: relative;
+	float: right;
+}
+
