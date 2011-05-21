@@ -146,11 +146,11 @@ Cart.prototype.update = function() {
 /** Ocutlta/muestra el carrito*/
 Cart.prototype.setHidden = function(hide) {
 	if(hide) {
-		document.getElementById(CART_ID).style.visibility = "hidden";
-		document.getElementById(CART_ID_HIDDEN).style.visibility = "visible";
+		document.getElementById(CART_ID).style.display = "none";
+		document.getElementById(CART_ID_HIDDEN).style.display = "";
 	} else {
-		document.getElementById(CART_ID).style.visibility = "visible";
-		document.getElementById(CART_ID_HIDDEN).style.visibility = "hidden";
+		document.getElementById(CART_ID).style.display = "";
+		document.getElementById(CART_ID_HIDDEN).style.display = "none";
 	}
 }
 
