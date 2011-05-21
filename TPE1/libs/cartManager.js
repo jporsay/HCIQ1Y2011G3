@@ -258,8 +258,8 @@ function createItemQuantity(item) {
 		item_decrement.setAttribute('onClick', getActionForSelectorDownArrow(item.id));
 			
 	item_quantitySel.appendChild(item_quantity);
-	item_quantitySel.appendChild(item_decrement);
 	item_quantitySel.appendChild(item_increment);
+	item_quantitySel.appendChild(item_decrement);
 	return item_quantitySel;
 }
 
@@ -269,8 +269,7 @@ function createItemQuantity(item) {
  <input type="image" name="image" src="images/cart/rightArrow.jpg"></input>
  <span>Cart Items:</span>
  </div>
- */
- 
+*/
 function createCartTitle() {
 	var cartTitle = document.createElement('div');
 	cartTitle.setAttribute('class', 'title');
