@@ -1,37 +1,27 @@
 var catalog = new ServerManager('Catalog');
-var holder = null;
 function getSubCategories(categoryId, langId, container) {
-	holder = container;
+	container.innerHTML = "<img src='images/ajax-loader.gif'>";
 	catalog.get(
 		{
 			method: 'GetSubcategoryList',
 			language_id: langId,
 			category_id: categoryId,
 		},
-		processSubcategories
+		function(data) {
+			processSubcategories(data, container);
+		}
 	);
 }
 
-function getSubCategoriesS(categoryId, langId, container) {
-	holder = container;
-	catalog.getS(
-		{
-			method: 'GetSubcategoryList',
-			language_id: langId,
-			category_id: categoryId,
-		},
-		processSubcategories
-	);
-}
-
-function processSubcategories(data) {
+function processSubcategories(data, container) {
+	container.innerHTML = null;
 	$(data).find('subcategory').each(
 		function() {
 			createSubCategory(
 				$(this).attr('id'),
 				$(this).find('category_id').text(),
 				$(this).find('name').text(),
-				holder
+				container
 			);
 		}
 	)
