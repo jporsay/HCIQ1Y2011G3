@@ -64,16 +64,22 @@ Cart.prototype.addItems = function(newItems) {
 	}
 		
 	for(var i = 0; i < newItems.length; i++) {
-		var isContained = false;
-		for(var j = 0; j < this.items.length && !isContained; j++) {
-			if (this.items[j].id == newItems[i].id ) {
-				isContained = true;
-			}
-		}
+		var isContained = this.inCart(newItems[i].id);
 		if (!isContained) {
 			this.items = this.items.concat([newItems[i]]);
 		}
 	}
+}
+
+Cart.prototype.inCart = function(id) {
+	if (this.items) {
+		for (var i = 0; i < this.items.length; i++) {
+			if (this.items[i].id == id) {
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
 /** Cambia el tipo de moneda del carrito por el indicado en el parametro.
@@ -494,18 +500,6 @@ function parseItem(string, start, end) {
 
 Cart.prototype.removeAllItems = function() {
 	this.items = [];
-}
-
-Cart.prototype.contains = function(cartItem) {
-	if (!this.items) {
-		return false;
-	}
-	
-	for (var i=0; i < this.items.length; i++) {
-		if (this.items[i].id == cartItem.id) {
-			return true;
-		}
-	}
 }
 
 function roundDigits(number) {

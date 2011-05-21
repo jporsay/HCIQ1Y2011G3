@@ -209,6 +209,10 @@ function processItem(data) {
 	} else {
 		buildBookView(container, product);
 	}
+	if (cartInstance.inCart(urlParam('id'))) {
+		toggleFromCart();
+	}
+	
 }
 
 function buildDvdView(container, product) {

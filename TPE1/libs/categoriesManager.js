@@ -36,7 +36,7 @@ function showCategory(id, name, elDOM) {
 	elDOM.appendChild(new_category);
 	
 	temp = document.createElement('ul');
-	getSubCategoriesS(id, $('#locale :selected').attr('id'), temp);
+	getSubCategories(id, $('#locale :selected').attr('id'), temp);
 	
 	elDOM.appendChild(temp);
 }
