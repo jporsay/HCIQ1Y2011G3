@@ -119,8 +119,10 @@ Cart.prototype.removeItem = function(id) {
 
 /** Agrega en el HTML los items guardados en el carrito. Estos son agregados a la tabla con id='cartItemsTable'.*/
 Cart.prototype.update = function() {
+	if (!this.items) {
+		this.items = [];
+	}
 	cleanHTML(CART_ITEMS_LIST);
-	
 	var cart_items = document.getElementById(CART_ITEMS_LIST);
 	var totalPrice = 0;
 	for (var i=0; i < this.items.length; i++) {
