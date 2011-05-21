@@ -435,7 +435,7 @@ Cart.prototype.saveState = function() {
 	}
 	value += 'currency:' + this.currency;
 	value += '}';
-	setCookie(CART_COOKIE, value, 1);
+	$.cookie(CART_COOKIE, value, {path: '/'});
 }
 
 function toJSonFormat(item) {
@@ -452,7 +452,7 @@ function toJSonFormat(item) {
 
 
 function loadCartFromCookie() {
-	var cookie = getCookie(CART_COOKIE);
+	var cookie = $.cookie(CART_COOKIE);
 	if (!cartInstance) {
 		initCartInstance();
 	}

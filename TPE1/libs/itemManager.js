@@ -166,7 +166,7 @@ function processItem(data) {
 	temp.appendChild(temp2);
 	container.appendChild(temp);
 	
-	temp = document.createElement('h3');
+	temp = document.createElement('a');
 	temp.setAttribute('class', 'product addToCart cartToggle')
 	temp.innerHTML = 'Add to cart';
 	temp.id = 'cartToggle';
