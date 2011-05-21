@@ -1,6 +1,8 @@
 var catalog = new ServerManager('Catalog');
 
 function loadCategories(langId) {
+	var catList = document.getElementById('catList');
+	catList.innerHTML = "<div><img src='images/ajax-loader.gif'></div>"
 	catalog.get(
 		{
 			method: 'GetCategoryList',
