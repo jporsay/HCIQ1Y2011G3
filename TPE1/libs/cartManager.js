@@ -406,7 +406,7 @@ function appendElementToTable(table, items, currency) {
 		var price = document.createElement('td');
 		price.innerHTML = currency + ' ' + item.price;
 		var subtotal = document.createElement('td');
-		subtotal.innerHTML = currency + ' ' + (item.quantity * item.price);
+		subtotal.innerHTML = currency + ' ' + roundDigits(item.quantity * item.price);
 		row.appendChild(product);
 		row.appendChild(quantity);
 		row.appendChild(price);
@@ -485,6 +485,18 @@ function parseItem(string, start, end) {
 
 Cart.prototype.removeAllItems = function() {
 	this.items = [];
+}
+
+Cart.prototype.contains = function(cartItem) {
+	if (!this.items) {
+		return false;
+	}
+	
+	for (var i=0; i < this.items.length; i++) {
+		if (this.items[i].id == cartItem.id) {
+			return true;
+		}
+	}
 }
 
 function roundDigits(number) {
