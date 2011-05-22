@@ -147,6 +147,9 @@ Cart.prototype.update = function() {
 	totalPriceLabel.innerHTML = roundDigits(totalPrice);
 	var totalPriceCurrencyLabel = document.getElementById('cartTotalPriceCurrency');
 	totalPriceCurrencyLabel.innerHTML = this.currency;
+	
+	var translator = new i18n();
+	translator.translatePage();
 }
 
 /** Ocutlta/muestra el carrito*/
@@ -267,7 +270,7 @@ function createItemQuantity(item) {
 		item_quantitySel.setAttribute('class','quantitySelector');
 	var item_quantity = document.createElement('span');
 		item_quantity.setAttribute('class','quantity');
-		item_quantity.innerHTML = 'Quantity: ' + item.quantity		
+		item_quantity.innerHTML = '<span id=\'cartQuantity' + item.id + '\' class=\'i18n\'></span>' + item.quantity
 	var item_increment = document.createElement('input');
 		item_increment.setAttribute('type', 'Image');
 		item_increment.setAttribute('class', 'increment');
@@ -303,7 +306,8 @@ function createCartTitle() {
 	cart_toogler.setAttribute('src', 'images/cart/rightArrow.jpg');
 	cart_toogler.setAttribute('onClick', getActionForToogler(true)); 
 	var cart_span = document.createElement('span');
-	cart_span.innerHTML = 'Cart Items:';
+	cart_span.setAttribute('id', 'cartItemsHeader');
+	cart_span.setAttribute('class', 'i18n');
 
 	cartTitle.appendChild(spacer);
 	cartTitle.appendChild(cart_toogler);
@@ -348,7 +352,8 @@ function createCartFooter() {
 	foter_number_label.setAttribute('id', 'cartTotalPrice');
 	var footer_checkout = document.createElement('a');
 	footer_checkout.setAttribute('href', './checkout.html');
-	footer_checkout.innerHTML = 'Proceed to checkout!';
+	footer_checkout.setAttribute('id', 'cartCheckoutLink');
+	footer_checkout.setAttribute('class', 'i18n');
 	footer.appendChild(foter_label);
 	footer.appendChild(foter_currency_label);
 	footer.appendChild(foter_number_label);
@@ -484,6 +489,7 @@ function loadCartFromCookie() {
 	var index = 0;
 	var start, end;
 	cartInstance.items = [];
+	var i = 0;
 	do {
 		if(cookie[i] == '[') {
 			var end = cookie.indexOf(']', i);

@@ -1,6 +1,15 @@
 var catalog = new ServerManager('Catalog');
 
+function createHolder() {
+	var holder = document.getElementById('refinements');
+	var temp = document.createElement('ul');
+	temp.setAttribute('id', 'catList');
+	holder.appendChild(temp);
+	
+}
+
 function loadCategories(langId) {
+	createHolder();
 	var catList = document.getElementById('catList');
 	catList.innerHTML = "<div><img src='images/ajax-loader.gif'></div>"
 	catalog.get(
@@ -28,7 +37,7 @@ function showCategory(id, name, elDOM) {
 	var temp2 = null;	
 	var new_category = document.createElement('li');
 	temp = document.createElement('a');
-	temp.setAttribute("href","browse.html?catId=" + id);
+	temp.setAttribute("href","browse.html?catId=" + id + '&page=1');
 	temp2 = document.createElement('span');
 	temp2.innerHTML = name;
 	temp.appendChild(temp2);
