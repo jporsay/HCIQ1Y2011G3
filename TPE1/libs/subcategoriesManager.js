@@ -32,7 +32,7 @@ function createSubCategory(subCatId, catId, subCatName, container) {
 	var temp2 = null;
 	temp = document.createElement('li');
 	temp2 = document.createElement('a');
-	temp2.setAttribute('href', 'browse.html?subCatId=' + subCatId + '&catId=' + catId);
+	temp2.setAttribute('href', 'browse.html?subCatId=' + subCatId + '&catId=' + catId + '&page=1');
 	temp2.innerHTML = subCatName;
 	temp.appendChild(temp2);
 	container.appendChild(temp);
