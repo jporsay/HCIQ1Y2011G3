@@ -30,7 +30,6 @@ function searchItems(searchText) {
 	);
 }
 
-//FIXME: CUANDO NO HAY PRODUCTOS EN DATA, DEBERIA MOSTRAR UN CARTEL DICIENDO QUE NO HAY MAS RESULTADOS Y DESHABILITAR EL BOTON NEXT.
 function processItems(data) {
 	$('.items').empty();
 	var container = document.getElementsByClassName('items')[0];
@@ -39,12 +38,14 @@ function processItems(data) {
 	temp.setAttribute('class', 'i18n productTitle');
 	container.appendChild(temp);
 	
+	var added = 0;
 	$(data).find('product').each(
 		function() {
 			createListItem($(this), container);
+			added++;
 		}
 	);
-	addButtons(container);
+	setButtons(container, added);
 	var translator = new i18n();
 	translator.translatePage();
 }
@@ -292,14 +293,28 @@ function genericViewBuilder(container, product, fields) {
 	}
 }
 
+function setButtons(container, itemsAdded) {
+	addButtons(container);
+	if (itemsAdded < ITEMSPERPAGE) {
+		var nextBtn = document.getElementsByClassName('next')[0];
+		nextBtn.setAttribute('disabled', 'disabled');
+	}
+	if (parseInt(urlParam('page')) == 1) {
+		var prevBtn = document.getElementsByClassName('prev')[0];
+		prevBtn.setAttribute('disabled', 'disabled');
+	}
+}
+
 function addButtons(jar) {
 	var prevBtn = document.createElement('button');
-	prevBtn.setAttribute('class', 'navButton');
+	prevBtn.setAttribute('type', 'button');
+	prevBtn.setAttribute('class', 'navButton prev');
 	prevBtn.setAttribute('onClick', 'prevPage()');
 	prevBtn.innerHTML = '« Previous'
 	jar.appendChild(prevBtn);
 	
 	var nextBtn = document.createElement('button');
+	nextBtn.setAttribute('type', 'button');
 	nextBtn.setAttribute('class', 'navButton next');
 	nextBtn.setAttribute('onClick', 'nextPage()');
 	nextBtn.innerHTML = 'Next »'
