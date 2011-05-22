@@ -154,9 +154,16 @@ Cart.prototype.setHidden = function(hide) {
 	if(hide) {
 		document.getElementById(CART_ID).style.display = "none";
 		document.getElementById(CART_ID_HIDDEN).style.display = "";
+		var leftArea = document.getElementById('leftArea');
+		if (!this.leftAreaPrevSize) {
+			this.leftAreaPrevSize = $(leftArea).css('width');
+		}
+		$(leftArea).css('width', '90%');
 	} else {
 		document.getElementById(CART_ID).style.display = "";
 		document.getElementById(CART_ID_HIDDEN).style.display = "none";
+		var leftArea = document.getElementById('leftArea');
+		$(leftArea).css('width', this.leftAreaPrevSize);
 	}
 }
 
