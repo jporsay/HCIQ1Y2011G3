@@ -1,6 +1,15 @@
 var catalog = new ServerManager('Catalog');
 
+function createHolder() {
+	var holder = document.getElementById('refinements');
+	var temp = document.createElement('ul');
+	temp.setAttribute('id', 'catList');
+	holder.appendChild(temp);
+	
+}
+
 function loadCategories(langId) {
+	createHolder();
 	var catList = document.getElementById('catList');
 	catList.innerHTML = "<div><img src='images/ajax-loader.gif'></div>"
 	catalog.get(

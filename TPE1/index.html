@@ -18,7 +18,6 @@
 	<script type="text/javascript" src="libs/jquery.jBreadCrumb.1.1.js"></script>
 	<script type="text/javascript" src="libs/jquery.cookie.js"></script>
 	<script type="text/javascript" src="libs/jquery-ui-1.8.11.custom.min.js"></script>
-	<script type="text/javascript" src="libs/jquery.i18n.properties-min.js"></script>
 	<script type="text/javascript" src="libs/i18n.js"></script>
 	<script type="text/javascript" src="libs/ServerManager.js"></script>
 	<script type="text/javascript" src="libs/categoriesManager.js"></script>
@@ -30,7 +29,7 @@
 
 			$("#breadcrumb").jBreadCrumb();
 		
-			var translator = new i18n('Index');
+			var translator = new i18n();
 			document.getElementById('locale').value = translator.getLang();
 		
 			$(document).keydown(function(e) {
@@ -75,7 +74,7 @@
 
 			$('#loginbutton').click(function() {
 				logIn($('#usernameInput').val(), $('#passwordInput').val());
-			})
+			});
 
 			translator.translatePage();
 		});
@@ -88,12 +87,10 @@
 		<img src="images/cooltext530131064.png" alt="Company Logo" width="276" height="110">
 		<h1 id="header">Happy Business</h1>
 		<div id="localization">
-			<select id="locale">
-			</select>
 		</div>
 		<div id="login">
 			<div class="logintext">
-				<span id="logintext" class="">Login</span>
+				<span id="logintext" class="i18n"></span>
 			</div>
 			<div class="loginform">
 			</div>
@@ -105,7 +102,7 @@
 				</ul>
 			</div>
 			<div id="searchbar">
-				<input id="searchtext" class="i18n" value="Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+				<input id="searchtext" class="i18n" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
 				<button id="searchbutton" class="ui-widget">Go</button>
 			</div>
 		</div>
@@ -115,13 +112,12 @@
 			<div id="categoryNav">
 				<div id="leftNavContainer">
 					<div id="refinements">
-						<h2>Categorias</h2>
-						<ul id='catList'></ul>
+						<h2 id='categoryHeader' class='i18n'></h2>
 					</div>
 				</div>
 			</div>
 			<div id="hotItems">
-				<h1>Today's hot items:</h1>
+				<h1 id='hotItemsHeader' class='i18n'></h1>
 				<div class="itemsContainer">
 					<div class="hotItem">
 						<img src="./images/image1.jpg"></img>

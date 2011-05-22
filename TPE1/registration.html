@@ -19,11 +19,11 @@
 		<script type="text/javascript" src="./libs/jquery.jBreadCrumb.1.1.js"></script>
 		<script type="text/javascript" src="./libs/jquery.cookie.js"></script>
 		<script type="text/javascript" src="./libs/jquery-ui-1.8.11.custom.min.js"></script>
-		<script type="text/javascript" src="./libs/jquery.i18n.properties-min.js"></script>
 		<script type="text/javascript" src="./libs/ServerManager.js"></script>
 		<script type="text/javascript" src="./libs/i18n.js"></script>
 		<script type="text/javascript" src="./libs/validator.js"></script>
 		<script type="text/javascript" src="./libs/userManager.js"></script>
+		<script type="text/javascript" src="libs/login.js"></script>
 		<script type="text/javascript">
 			$(function() {
 				
@@ -122,7 +122,10 @@
 						$('#searchbutton').click();
 					}
 				});
-				
+				loadUserSesion();
+				$('#loginbutton').click(function() {
+					logIn($('#usernameInput').val(), $('#passwordInput').val());
+				});
 				translator.translatePage();
 			});
 		</script>
@@ -134,26 +137,13 @@
 			<img src="images/cooltext530131064.png" alt="Company Logo" width="276" height="110">
 			<h1 id='header'>Happy Business</h1>
 			<div id="localization">
-				<select id='locale'>
-				</select>
 			</div>
 			<div id="login">
 				<div class="logintext">
 					<div id="loginimg"></div>
-					<span id="logintext" class="">Login</span>
+					<span id="logintext" class="i18n"></span>
 				</div>
 				<div class="loginform">
-					<div>
-						<span id='usernametext' class="">Username:</span>
-						<input type="text">
-					</div>
-					<div>
-						<span id='passwordtext' class="">Password</span>
-						<input type="password">
-					</div>
-					<button type="button" id='loginbutton' class=''>Login</button>
-					<a href="registration.html" id="createaccount">Create account</a>
-					<a href="recoverInfo.html" id="forgotdata">Forgot username or password?</a>
 				</div>
 			</div>
 			<div class="navbar">

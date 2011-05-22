@@ -90,6 +90,9 @@ function setLoggedForm(container) {
 	temp.setAttribute('class', '');
 	temp.innerHTML = 'Logout';
 	container.appendChild(temp);
+	
+	var translator = new i18n();
+	translator.translatePage();
 }
 
 /*
@@ -116,7 +119,7 @@ function setGuestForm(container) {
 	temp2 = document.createElement('span');
 	temp2.innerHTML = 'Username:';
 	temp2.setAttribute('id', 'usernameText');
-	temp2.setAttribute('class', '');
+	temp2.setAttribute('class', 'i18n');
 	temp.appendChild(temp2);
 	container.appendChild(temp);
 	temp2 = document.createElement('input');
@@ -129,7 +132,7 @@ function setGuestForm(container) {
 	temp2 = document.createElement('span');
 	temp2.innerHTML = 'Password:';
 	temp2.setAttribute('id', 'passwordText');
-	temp2.setAttribute('class', '');
+	temp2.setAttribute('class', 'i18n');
 	temp.appendChild(temp2);
 	temp2 = document.createElement('input');
 	temp2.setAttribute('id', 'passwordInput');
@@ -158,4 +161,10 @@ function setGuestForm(container) {
 	temp.setAttribute('class', '');
 	temp.innerHTML = 'Forgot username or password?';
 	container.appendChild(temp);
+	
+	var loginText = document.getElementById('logintext');
+	loginText.setAttribute('class', 'i18n');
+	
+	var translator = new i18n();
+	translator.translatePage();
 }
