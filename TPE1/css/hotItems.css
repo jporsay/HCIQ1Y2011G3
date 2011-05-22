@@ -1,7 +1,7 @@
 #hotItems {
 	position: absolute;
 	left: 30%;
-	width: 600px;
+	width: 650px;
 	height: 630px;
 }
 
@@ -12,8 +12,6 @@
 
 #hotItems .itemsContainer {
 	position: relative;
-	border: 1px solid #ffffff;
-	overflow: hidden;
 }
 
 #hotItems .hotItem {
