@@ -222,7 +222,7 @@ function processItem(data) {
 	temp.setAttribute('src', './images/cart/cartItem.png');
 	container.appendChild(temp);
 	
-	temp2 = document.getElementById('browsebc');
+	temp2 = document.getElementById('bcBrowse');
 	temp2.setAttribute('href', 'browse.html?catId=' + product.find('category_id').text() + "&subCatId=" + product.find('subcategory_id').text());
 	
 	if (category == '1') {
