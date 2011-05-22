@@ -30,6 +30,7 @@ function searchItems(searchText) {
 	);
 }
 
+//FIXME: CUANDO NO HAY PRODUCTOS EN DATA, DEBERIA MOSTRAR UN CARTEL DICIENDO QUE NO HAY MAS RESULTADOS Y DESHABILITAR EL BOTON NEXT.
 function processItems(data) {
 	$('.items').empty();
 	var container = document.getElementsByClassName('items')[0];
@@ -43,6 +44,7 @@ function processItems(data) {
 			createListItem($(this), container);
 		}
 	);
+	addButtons(container);
 }
 
 /*
@@ -133,7 +135,6 @@ function getColorForRanking(ranking) {
 	}
 }
 
-
 function displayItem(id) {
 	catalog.get(
 		{
@@ -153,6 +154,7 @@ function _addToCart() {
 	$('#cartToggle').html('Remove from cart');
 	cartInstance.addItem(new CartItem(prod['name'], prod['id'], prod['price'], prod['img']));
 }
+
 function toggleFromCart(element) {
 	$('#cartToggle').toggleClass('removeFromCart');
 	if ($('#cartToggle').is('.removeFromCart')) {
@@ -288,24 +290,39 @@ function genericViewBuilder(container, product, fields) {
 	}
 }
 
+function addButtons(jar) {
+	var prevBtn = document.createElement('button');
+	prevBtn.setAttribute('class', 'navButton');
+	prevBtn.setAttribute('onClick', 'prevPage()');
+	prevBtn.innerHTML = '« Previous'
+	jar.appendChild(prevBtn);
+	
+	var nextBtn = document.createElement('button');
+	nextBtn.setAttribute('class', 'navButton next');
+	nextBtn.setAttribute('onClick', 'nextPage()');
+	nextBtn.innerHTML = 'Next »'
+	jar.appendChild(nextBtn);
+}
+
 function prevPage() {
-	var newPageNumber = 1;
+	var currPage = 1;
 	if (urlParam('page')) {
 		var currPage = parseInt(urlParam('page'));
 		if (currPage <= 1) {
 			return;
 		}
+		currPage--;
 	}
-	toPage(currPage - 1);
+	toPage(currPage);
 }
 
 function nextPage() {
-	var newPageNumber = 1;
+	var currPage = 1;
 	if (urlParam('page')) {
-		var currPage = parseInt(urlParam('page'));
+		currPage = parseInt(urlParam('page'));
 		currPage++;
 	}
-	toPage(newPageNumber);
+	toPage(currPage);
 }
 
 function toPage(pageNumber) {
