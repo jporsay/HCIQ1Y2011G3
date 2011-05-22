@@ -1,5 +1,7 @@
+var ITEMSPERPAGE = 5;
 var catalog = new ServerManager('Catalog');
 var prod = [];
+
 function getItems(categoryId, subcategoryId, langId) {
 	var method = 'GetProductListBySubcategory';
 	if (subcategoryId == "") {
@@ -10,12 +12,23 @@ function getItems(categoryId, subcategoryId, langId) {
 			method: method,
 			language_id: langId,
 			category_id: categoryId,
-			subcategory_id: subcategoryId
+			subcategory_id: subcategoryId,
+			items_per_page: ITEMSPERPAGE,
+			page: urlParam('page')
 		},
 		processItems
 	);
 }
 
+function searchItems(searchText) {
+	catalog.get(
+		{
+			method: 'GetProductListByName',
+			criteria: searchText
+		},
+		processItems
+	);
+}
 
 function processItems(data) {
 	$('.items').empty();
@@ -29,16 +42,6 @@ function processItems(data) {
 		function() {
 			createListItem($(this), container);
 		}
-	);
-}
-
-function searchItems(searchText) {
-	catalog.get(
-		{
-			method: 'GetProductListByName',
-			criteria: searchText
-		},
-		processItems
 	);
 }
 
@@ -283,4 +286,37 @@ function genericViewBuilder(container, product, fields) {
 		temp.appendChild(temp2);
 		container.appendChild(temp);
 	}
+}
+
+function prevPage() {
+	var newPageNumber = 1;
+	if (urlParam('page')) {
+		var currPage = parseInt(urlParam('page'));
+		if (currPage <= 1) {
+			return;
+		}
+	}
+	toPage(currPage - 1);
+}
+
+function nextPage() {
+	var newPageNumber = 1;
+	if (urlParam('page')) {
+		var currPage = parseInt(urlParam('page'));
+		currPage++;
+	}
+	toPage(newPageNumber);
+}
+
+function toPage(pageNumber) {
+	var newParams = '';
+	newParams += 'page=' + pageNumber;
+	if (urlParam('subCatId')) {
+		newParams += '&subCatId=' + urlParam('subCatId');
+	}
+	if (urlParam('catId')) {
+		newParams += '&catId=' + urlParam('catId')
+	}
+	cartInstance.saveState();
+	window.location = 'browse.html?' + newParams;
 }
