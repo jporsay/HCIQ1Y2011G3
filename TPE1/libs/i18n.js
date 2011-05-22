@@ -1,63 +1,55 @@
-var langKeys = [];
-var lang = null;
-function loadLanguageStrings() {
-	if (langKeys.length === 0) {
-		loadSpanish();
-		loadEnglish();
-	}
-}
-
 function loadSpanish() {
-	langKeys['es'] = [];
+	langKeys = [];
 	//Common
-	langKeys['es']['logintext'] = 'Loguearse';
-	langKeys['es']['usernameText'] = 'Usuario:';
-	langKeys['es']['passwordText'] = 'Contrase&ntilde;a:';
-	langKeys['es']['searchtext'] = 'Buscar';
-	langKeys['es']['categoryHeader'] = 'Categor&iacute;as';
+	langKeys['logintext'] = 'Loguearse';
+	langKeys['usernameText'] = 'Usuario:';
+	langKeys['passwordText'] = 'Contrase&ntilde;a:';
+	langKeys['searchtext'] = 'Buscar';
+	langKeys['categoryHeader'] = 'Categor&iacute;as';
 	//Index
-	langKeys['es']['hotItemsHeader'] = 'Art&iacute;culos del dia:';
+	langKeys['hotItemsHeader'] = 'Art&iacute;culos del dia:';
 	//Cart
-	langKeys['es']['cartQuantity'] = 'Cantidad: ';
-	langKeys['es']['cartItemsHeader'] = 'Items del Carrito:';
-	langKeys['es']['cartCheckoutLink'] = 'Realizar el checkout!';
+	langKeys['cartQuantity'] = 'Cantidad: ';
+	langKeys['cartItemsHeader'] = 'Items del Carrito:';
+	langKeys['cartCheckoutLink'] = 'Realizar el checkout!';
 	//Register - User settings
-	langKeys['es']['registerUserName'] = 'Usuario:';
-	langKeys['es']['registerFullName'] = 'Nombre completo:';
-	langKeys['es']['registerPassword'] = 'Contrase&ntilde;a:';
-	langKeys['es']['registerEmail'] = 'Email:';
+	langKeys['registerUserName'] = 'Usuario:';
+	langKeys['registerFullName'] = 'Nombre completo:';
+	langKeys['registerPassword'] = 'Contrase&ntilde;a:';
+	langKeys['registerEmail'] = 'Email:';
 	//Browse
-	langKeys['es']['productsHeader'] = 'Productos:';
+	langKeys['productsHeader'] = 'Productos:';
+	
+	return langKeys;
 }
 
 function loadEnglish() {
-	langKeys['en'] = [];
+	langKeys = [];
 	//Common
-	langKeys['en']['logintext'] = 'Login';
-	langKeys['en']['usernameText'] = 'Username:';
-	langKeys['en']['passwordText'] = 'Password:';
-	langKeys['en']['searchtext'] = 'Search';
-	langKeys['en']['categoryHeader'] = 'Categories';
+	langKeys['logintext'] = 'Login';
+	langKeys['usernameText'] = 'Username:';
+	langKeys['passwordText'] = 'Password:';
+	langKeys['searchtext'] = 'Search';
+	langKeys['categoryHeader'] = 'Categories';
 	//Index
-	langKeys['en']['hotItemsHeader'] = 'Today\'s hot items:'
+	langKeys['hotItemsHeader'] = 'Today\'s hot items:'
 	//Cart
-	langKeys['en']['cartQuantity'] = 'Quantity: ';
-	langKeys['en']['cartItemsHeader'] = 'Cart Items:';
-	langKeys['en']['cartCheckoutLink'] = 'Proceed to checkout!';
+	langKeys['cartQuantity'] = 'Quantity: ';
+	langKeys['cartItemsHeader'] = 'Cart Items:';
+	langKeys['cartCheckoutLink'] = 'Proceed to checkout!';
 	//Register - User settings
-	langKeys['en']['registerUserName'] = 'User:';
-	langKeys['en']['registerFullName'] = 'Full name:';
-	langKeys['en']['registerPassword'] = 'Password:';
-	langKeys['en']['registerEmail'] = 'Email:';
+	langKeys['registerUserName'] = 'User:';
+	langKeys['registerFullName'] = 'Full name:';
+	langKeys['registerPassword'] = 'Password:';
+	langKeys['registerEmail'] = 'Email:';
 	//Browse
-	langKeys['en']['productsHeader'] = 'Products:';
+	langKeys['productsHeader'] = 'Products:';
+	
+	return langKeys;
 }
 
 function processKey(key) {
 	var pkey = key;
-	if (key === 'productsHeader') {
-		alert('asd');
-	}
 	if (key.search('cartQuantity') !== -1) {
 		pkey = 'cartQuantity';
 	}
@@ -67,13 +59,12 @@ function processKey(key) {
 
 function getTranslation(key) {
 	var keyp = processKey(key);
-	return langKeys[lang][keyp];
+	return this.langKeys[keyp];
 }
 
 function i18n() {
-	loadLanguageStrings();
 	lang = $.cookie('hblanguage');
-	if (lang === undefined) {
+	if (lang == null) {
 		lang = 'en';
 	}
 	fetchLanguages();
@@ -118,7 +109,7 @@ function setLanguages(data) {
 }
 
 i18n.prototype.getLang = function() {
-	return lang;
+	return this.lang;
 }
 
 i18n.prototype.getLangId = function() {
@@ -126,9 +117,10 @@ i18n.prototype.getLangId = function() {
 }
 
 i18n.prototype.setLang = function(language) {
-	lang = language;
+	this.lang = language;
+	this.langKeys = this.lang === 'en' ? loadEnglish() : loadSpanish()
 	$.cookie('hblanguage', null);
-	$.cookie('hblanguage', lang, {path: '/'});
+	$.cookie('hblanguage', this.lang, {path: '/'});
 }
 
 i18n.prototype.translatePage = function() {

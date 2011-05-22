@@ -35,8 +35,8 @@ function processItems(data) {
 	$('.items').empty();
 	var container = document.getElementsByClassName('items')[0];
 	var temp = document.createElement('h1');
-	temp.setAttribute('class', 'productTitle i18n');
 	temp.setAttribute('id', 'productsHeader');
+	temp.setAttribute('class', 'i18n productTitle');
 	container.appendChild(temp);
 	
 	$(data).find('product').each(
@@ -45,6 +45,8 @@ function processItems(data) {
 		}
 	);
 	addButtons(container);
+	var translator = new i18n();
+	translator.translatePage();
 }
 
 /*
