@@ -70,14 +70,21 @@
 
 #userSettings {
 	position: inherit;
+	font-size: large;
+	top: 10px;
+	left: 10px;
 }
 
 #orderTracking {
 	position: inherit;
+	font-size: large;
+	top: 40px;
+	left: 10px;
 }
 
 #logoutButton {
 	position: inherit;
+	top: 60px;
 }
 
 .header .loginform input {
