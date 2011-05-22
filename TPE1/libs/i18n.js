@@ -23,6 +23,11 @@ function loadSpanish() {
 	//Browse
 	langKeys['productsHeader'] = 'Productos:';
 	
+	//BreadCrumb
+	langKeys['bcHome'] = 'Inicio';
+	langKeys['bcSettings'] = 'Configuraci&oacute;n';
+	langKeys['bcBrowse'] = 'Productos';
+	langKeys['bcRegister'] = 'Registrarse';
 	return langKeys;
 }
 
@@ -51,6 +56,11 @@ function loadEnglish() {
 	//Browse
 	langKeys['productsHeader'] = 'Products:';
 	
+	//BreadCrumb
+	langKeys['bcHome'] = 'Home';
+	langKeys['bcSettings'] = 'Settings';
+	langKeys['bcBrowse'] = 'Products';
+	langKeys['bcRegister'] = 'Register';
 	return langKeys;
 }
 
