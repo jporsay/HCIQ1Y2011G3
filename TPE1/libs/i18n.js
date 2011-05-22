@@ -13,7 +13,10 @@ function loadSpanish() {
 	langKeys['cartItemsHeader'] = 'Items del Carrito:';
 	langKeys['cartCheckoutLink'] = 'Realizar el checkout!';
 	//Register - User settings
+	langKeys['registerHeader'] = 'Registro';
+	langKeys['registerInfo'] = 'Por favor complete la informaci&oacute;n (todos los campos son obligat&oacute;rios)';
 	langKeys['registerUserName'] = 'Usuario:';
+	langKeys['registerBirthDate'] = 'Fecha de nacimiento:';
 	langKeys['registerFullName'] = 'Nombre completo:';
 	langKeys['registerPassword'] = 'Contrase&ntilde;a:';
 	langKeys['registerEmail'] = 'Email:';
@@ -38,7 +41,10 @@ function loadEnglish() {
 	langKeys['cartItemsHeader'] = 'Cart Items:';
 	langKeys['cartCheckoutLink'] = 'Proceed to checkout!';
 	//Register - User settings
+	langKeys['registerHeader'] = 'Registration';
+	langKeys['registerInfo'] = 'Please enter the required information (all fields are required)';
 	langKeys['registerUserName'] = 'User:';
+	langKeys['registerBirthDate'] = 'Birth Date:';
 	langKeys['registerFullName'] = 'Full name:';
 	langKeys['registerPassword'] = 'Password:';
 	langKeys['registerEmail'] = 'Email:';
