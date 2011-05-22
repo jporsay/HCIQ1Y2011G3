@@ -114,7 +114,7 @@ function createExtraIteminfo(product) {
 	var rank = document.createElement('p');
 		rank.setAttribute('class', 'rank');
 		var rankValue = product.find('sales_rank').text();
-		rank.innerHTML = 'Product ranking: ' + rankValue;
+		rank.innerHTML = '<span class=\'i18n\' id=\'browseRanking\'>Product ranking: </span>' + rankValue;
 		$(rank).css('color', getColorForRanking(rankValue));
 	var price = document.createElement('p');
 		price.setAttribute('class', 'price');
@@ -148,23 +148,26 @@ function displayItem(id) {
 }
 
 function removeFromCart(calledFromCart) {
-	$('#cartToggle').html('Add to cart');
-	$('#cartToggle').removeClass('removeFromCart');
+	$('.cartToggle').attr('id', 'pAddToCart');
+	$('.cartToggle').removeClass('removeFromCart');
 }
 
 function _addToCart() {
-	$('#cartToggle').html('Remove from cart');
+	$('.cartToggle').attr('id', 'pRemoveFromCart');
 	cartInstance.addItem(new CartItem(prod['name'], prod['id'], prod['price'], prod['img']));
 }
 
 function toggleFromCart(element) {
-	$('#cartToggle').toggleClass('removeFromCart');
-	if ($('#cartToggle').is('.removeFromCart')) {
+	$('.cartToggle').toggleClass('removeFromCart');
+	if ($('.cartToggle').is('.removeFromCart')) {
 		_addToCart();
 	} else {
 		cartInstance.removeItem(prod['id']);
 	}
 	cartInstance.update();
+	
+	var translator = new i18n();
+	translator.translatePage();
 }
 
 function processItem(data) {
@@ -201,7 +204,8 @@ function processItem(data) {
 	temp = document.createElement('div');
 	temp.setAttribute('class', 'product price')
 	temp2 = document.createElement('h3');
-	temp2.innerHTML = 'Price:';
+	temp2.setAttribute('class', 'i18n');
+	temp2.setAttribute('id', 'pPrice');
 	temp.appendChild(temp2);
 	temp2 = document.createElement('p');
 	temp2.id = 'price';
@@ -211,10 +215,9 @@ function processItem(data) {
 	prod['price'] = product.find('price').text();
 	
 	temp = document.createElement('a');
-	temp.setAttribute('class', 'product cartToggle')
-	temp.innerHTML = 'Add to cart';
+	temp.setAttribute('class', 'product cartToggle i18n')
 	temp.setAttribute('onClick', "toggleFromCart(this)");
-	temp.id = 'cartToggle';
+	temp.id = 'pAddToCart';
 	container.appendChild(temp);
 	temp = document.createElement('input');
 	temp.setAttribute('type', 'image');
@@ -233,6 +236,9 @@ function processItem(data) {
 	if (cartInstance.inCart(urlParam('id'))) {
 		toggleFromCart();
 	}
+	
+	var translator = new i18n();
+	translator.translatePage();
 	
 }
 
@@ -282,7 +288,13 @@ function genericViewBuilder(container, product, fields) {
 		temp.setAttribute('class', fields[i].cssClass);
 		//field title
 		temp2 = document.createElement('h3');
-		temp2.innerHTML = fields[i].text;
+		var translator = new i18n();
+		if (!translator.hasTranslation(fields[i].key)) {
+			temp2.innerHTML = fields[i].text;
+		} else {
+			temp2.setAttribute('id', fields[i].key);
+			temp2.setAttribute('class', 'i18n');
+		}
 		temp.appendChild(temp2);
 		temp2 = document.createElement('p');
 		temp2.id = fields[i].key;
