@@ -106,16 +106,30 @@ function createExtraIteminfo(product) {
 	
 	var rank = document.createElement('p');
 		rank.setAttribute('class', 'rank');
-		rank.innerHTML = product.find('price').text();
+		var rankValue = product.find('sales_rank').text();
+		rank.innerHTML = 'Product ranking: ' + rankValue;
+		$(rank).css('color', getColorForRanking(rankValue));
 	var price = document.createElement('p');
 		price.setAttribute('class', 'price');
-		//price.innerHTML = Cart.getInstance().currency + ' ' + product.find('price').text();
 		price.innerHTML = '$' + product.find('price').text();
 	
-	extraInfoDiv.appendChild(rank);
 	extraInfoDiv.appendChild(price);
+	extraInfoDiv.appendChild(rank);
 	return extraInfoDiv;
 }
+
+function getColorForRanking(ranking) {
+	return '#ffffff';
+	var value = parseInt(ranking);
+	if (value < 10) {
+		return '#ffffff';
+	} else if (value < 100) {
+		return '#ffaaff';
+	} else {
+		return '#ffaaff';
+	}
+}
+
 
 function displayItem(id) {
 	catalog.get(
