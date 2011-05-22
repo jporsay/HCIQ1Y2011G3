@@ -63,6 +63,23 @@
 	display: none;
 }
 
+.header .loggedUser { 
+	width: 200px;
+	height: 100px;
+}
+
+#userSettings {
+	position: inherit;
+}
+
+#orderTracking {
+	position: inherit;
+}
+
+#logoutButton {
+	position: inherit;
+}
+
 .header .loginform input {
 	width: 10em;
 	position: inherit;

@@ -64,7 +64,7 @@
 				}
 			});
 			// Hack to bubble click event from <a> which were loaded with ajax
-			$('.mainArea').click(function(e) {
+			$('#mainArea').click(function(e) {
 				if ($(e.target).is('a')) {
 					cartInstance.saveState();
 				}
