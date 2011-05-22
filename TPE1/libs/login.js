@@ -64,6 +64,10 @@ function loadUserSesion() {
 </div>
  */
 function setLoggedForm(container) {
+	$(container).addClass('loggedUser');
+	var loginText = document.getElementById('logintext');
+	loginText.innerHTML = userData['userName'];
+	loginText.setAttribute('class', '');
 	container.innerHTML = null;
 	var temp = document.createElement('a');
 	temp.setAttribute('href', 'userSettings.html');
@@ -81,7 +85,7 @@ function setLoggedForm(container) {
 	
 	temp = document.createElement('button');
 	temp.setAttribute('type', 'button');
-	temp.setAttribute('id', 'logoutbutton');
+	temp.setAttribute('id', 'logoutButton');
 	temp.setAttribute('onClick', 'logOut()');
 	temp.setAttribute('class', '');
 	temp.innerHTML = 'Logout';
@@ -104,13 +108,14 @@ function setLoggedForm(container) {
 </div>
 */
 function setGuestForm(container) {
+	$(container).removeClass('loggedUser');
 	var temp = null;
 	var temp2 = null;
 	container.innerHTML = null;
 	temp = document.createElement('div');
 	temp2 = document.createElement('span');
 	temp2.innerHTML = 'Username:';
-	temp2.setAttribute('id', 'usernametext');
+	temp2.setAttribute('id', 'usernameText');
 	temp2.setAttribute('class', '');
 	temp.appendChild(temp2);
 	container.appendChild(temp);
@@ -123,7 +128,7 @@ function setGuestForm(container) {
 	temp = document.createElement('div');
 	temp2 = document.createElement('span');
 	temp2.innerHTML = 'Password:';
-	temp2.setAttribute('id', 'passwordtext');
+	temp2.setAttribute('id', 'passwordText');
 	temp2.setAttribute('class', '');
 	temp.appendChild(temp2);
 	temp2 = document.createElement('input');
