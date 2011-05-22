@@ -21,6 +21,13 @@ function loadSpanish() {
 	langKeys['es']['cartQuantity'] = 'Cantidad: ';
 	langKeys['es']['cartItemsHeader'] = 'Items del Carrito:';
 	langKeys['es']['cartCheckoutLink'] = 'Realizar el checkout!';
+	//Register - User settings
+	langKeys['es']['registerUserName'] = 'Usuario:';
+	langKeys['es']['registerFullName'] = 'Nombre completo:';
+	langKeys['es']['registerPassword'] = 'Contrase&ntilde;a:';
+	langKeys['es']['registerEmail'] = 'Email:';
+	//Browse
+	langKeys['es']['productsHeader'] = 'Productos:';
 }
 
 function loadEnglish() {
@@ -37,11 +44,20 @@ function loadEnglish() {
 	langKeys['en']['cartQuantity'] = 'Quantity: ';
 	langKeys['en']['cartItemsHeader'] = 'Cart Items:';
 	langKeys['en']['cartCheckoutLink'] = 'Proceed to checkout!';
-	
+	//Register - User settings
+	langKeys['en']['registerUserName'] = 'User:';
+	langKeys['en']['registerFullName'] = 'Full name:';
+	langKeys['en']['registerPassword'] = 'Password:';
+	langKeys['en']['registerEmail'] = 'Email:';
+	//Browse
+	langKeys['en']['productsHeader'] = 'Products:';
 }
 
 function processKey(key) {
 	var pkey = key;
+	if (key === 'productsHeader') {
+		alert('asd');
+	}
 	if (key.search('cartQuantity') !== -1) {
 		pkey = 'cartQuantity';
 	}
@@ -129,7 +145,7 @@ i18n.prototype.translateElement = function(node) {
 	var key = node.id;
 	var translated = getTranslation(key);
 	// not using getAttribute since its buggy.
-	if (key === 'searchtext') {
+	if ($(node).is('input')) {
 		//not using setAttribute since its broken in IE and in Opera.
 		node.setAttribute('value', translated);
 	} else {

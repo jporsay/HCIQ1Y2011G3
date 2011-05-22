@@ -21,8 +21,8 @@ function processItems(data) {
 	$('.items').empty();
 	var container = document.getElementsByClassName('items')[0];
 	var temp = document.createElement('h1');
-	temp.innerHTML = 'Products:';
-	temp.setAttribute('class', 'productTitle');
+	temp.setAttribute('class', 'productTitle i18n');
+	temp.setAttribute('id', 'productsHeader');
 	container.appendChild(temp);
 	
 	$(data).find('product').each(
