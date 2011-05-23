@@ -383,7 +383,6 @@ function createCartHidden() {
 	return cart_hidden;
 }
 
-//FIXME: This is deprecated. This shouls be eventually removed.
 Cart.prototype.printToTable = function(elementId) {
 	createTable(elementId, this.items, this.currency);
 }

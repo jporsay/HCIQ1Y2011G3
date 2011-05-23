@@ -1,1 +1,1 @@
-#orderContainer h1 {	border-bottom: 1px solid #000000;	margin-bottom: 10px;	width: 700px;	padding-bottom: 10px;	height: 50px;}#orderContainer {	position: absolute;	margin-right: auto;	margin-left: auto;	width: 750px;	right: 2%;}#orderContainer .order {}
+#orderContainer h1 {	border-bottom: 1px solid #000000;	margin-bottom: 10px;	width: 700px;	padding-bottom: 10px;	height: 50px;}#orderContainer {	position: absolute;	margin-right: auto;	margin-left: auto;	width: 750px;	right: 2%;}#orderContainer .order {	border: 1px solid #ffffff;}
