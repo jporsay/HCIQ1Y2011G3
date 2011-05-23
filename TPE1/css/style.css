@@ -14,10 +14,12 @@ body {
 #leftArea {
 	position: relative;
 	float: left;
+	width: 75%;
 }
 
 #rightArea {
 	position: relative;
 	float: right;
+	width: 25%;
 }
 

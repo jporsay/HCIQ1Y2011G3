@@ -1,15 +1,3 @@
-#mainArea {
-	height: 800px;
-}
-
-#leftArea {
-	width: 75%;
-}
-
-#rightArea {
-	width: 25%;
-}
-
 .productTitle {
 	border-bottom: 1px solid #000000;
 	margin-bottom: 10px;
