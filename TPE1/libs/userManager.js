@@ -2,7 +2,7 @@ var security = new ServerManager('Security');
 
 function createUser(rawData) {
 	var processedData = processData(rawData);
-	var nuXML = buildNewUserXML(processedData);
+	var nuXML = buildUserXML(processedData, true);
 	security.post(
 		{
 		method: 'CreateAccount',
@@ -12,6 +12,72 @@ function createUser(rawData) {
 			successPost(data, 'Account');
 		},
 		errorPost
+	);
+}
+
+function getUserData() {
+	var userData = getLoggedData();
+	if (!userData) {
+		alert('You need to be logged in to do this action');
+		return;
+	}
+	security.get(
+		{
+			method: 'GetAccount',
+			username: userData['userName'],
+			token: userData['token']
+		},
+		fillUserData
+	);
+}
+
+function fillUserData(data) {
+	
+}
+
+function updateUserData(rawData) {
+	var userData = getLoggedData();
+	if (!userData) {
+		alert('You need to be logged in to do this action');
+		return;
+	}
+	var processedData = processData(rawData);
+	var ouXML = buildUserXML(processedData, false);
+	security.post(
+		{
+			method: 'UpdateAccount',
+			username: userdata['userName'],
+			token: userdata['token'],
+			account: ouXML
+		},
+		function(data) {
+			var status = $(data).find('response').attr('status');
+			if (status === 'fail') {
+				alert('Something went apocalyptically wrong')
+			}
+		}
+	);
+}
+
+function changePassword(oldPassword, newPassword) {
+	var userData = getLoggedData();
+	if (!userData) {
+		alert('You need to be logged in to do this action');
+		return;
+	}
+	security.post(
+		{
+			method: 'ChangePassword',
+			password: oldPassword,
+			new_password: newPassword,
+			username: userData['username']
+		},
+		function(data) {
+			var status = $(data).find('response').attr('status');
+			if (status === 'fail') {
+				alert($(data).find('error').attr('message'));x
+			}
+		}
 	);
 }
 
@@ -75,11 +141,13 @@ function buildNewAddressXML(rawData) {
 	return xml;
 }
 
-function buildNewUserXML(rawData) {
+function buildUserXML(rawData, newUser) {
 	var xml = "<account>";
-	xml = xml + "<username>" + rawData.username + "</username>";
+	if (newUser) {
+		xml = xml + "<username>" + rawData.username + "</username>";
+		xml = xml + "<password>" + rawData.password + "</password>";
+	}
 	xml = xml + "<name>" + rawData.name + "</name>";
-	xml = xml + "<password>" + rawData.password + "</password>";
 	xml = xml + "<birth_date>" + rawData.birthDate + "</birth_date>";
 	xml = xml + "<email>" + rawData.email + "</email>";
 	xml = xml + "</account>";
