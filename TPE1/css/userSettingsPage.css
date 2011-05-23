@@ -5,8 +5,13 @@
 	width: 750px;
 	right: 2%;
 }
+
 #settingsPanel fieldset {
 	margin: 25px 0;
+}
+
+#settingsPanel fieldset a {
+	font-weight: bold;
 }
 
 #settingsPanel fieldset  legend {
@@ -33,11 +38,37 @@
 #settingsPanel .fieldRow input {
 	position: absolute;
 	width: 350px;
-	left: 17%;
+	left: 20%;
 }
-#settingsPanel .submit {
-	position: relative;
-	left: 56%;
+
+#settingsPanel button {
 	width: 80px;
 	height: 40px;
+}
+
+#settingsPanel .submit {
+	position: relative;
+	left: 59.5%;
+}
+
+/*-----add address fieldset------*/
+
+#settingsPanel  .addressFieldSet {
+	width: 500px;
+	margin: 0px;
+	margin-left: 50px;
+}
+
+/*------check address----------*/
+
+#settingsPanel  .checkAddress {
+	width: 500px;
+	margin: 0px;
+	margin-left: 50px;
+}
+
+#settingsPanel  #AddressSelect {
+	width: 200px;
+	margin-top: 5px;
+	margin-bottom: 20px;
 }
