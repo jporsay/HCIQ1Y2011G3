@@ -1,6 +1,7 @@
 var security = new ServerManager('Security');
 var userData = [];
 function logIn(username, password) {
+	$('.errorContainer').css('display', 'none');
 	security.post(
 		{
 			method: 'SignIn',
@@ -14,7 +15,7 @@ function logIn(username, password) {
 function logInCallback(data) {
 	var response = $(data).find('response');
 	if (response.attr('status') == 'fail') {
-		alert($(data).find('error').attr('message'))
+		$('.errorContainer').css('display', 'block');
 	} else {
 		userData['token'] = $(data).find('token').text();
 		var user = $(data).find('user');
@@ -37,13 +38,20 @@ function logOut() {
 		function(data) {
 			$.cookie('loggedUser', null);
 			setGuestForm(document.getElementsByClassName('loginform')[0]);
-			alert('Logged out!');
 		}
 	)
 }
 
 function isLogged() {
 	return $.cookie('loggedUser') ? true : false;
+}
+
+function getLoggedData() {
+	if (!isLogged()) {
+		return null;
+	}
+	
+	return userData;
 }
 
 function loadUserSesion() {
@@ -121,7 +129,6 @@ function setGuestForm(container) {
 	container.innerHTML = null;
 	temp = document.createElement('div');
 	temp2 = document.createElement('span');
-	temp2.innerHTML = 'Username:';
 	temp2.setAttribute('id', 'usernameText');
 	temp2.setAttribute('class', 'i18n');
 	temp.appendChild(temp2);
@@ -134,7 +141,6 @@ function setGuestForm(container) {
 	
 	temp = document.createElement('div');
 	temp2 = document.createElement('span');
-	temp2.innerHTML = 'Password:';
 	temp2.setAttribute('id', 'passwordText');
 	temp2.setAttribute('class', 'i18n');
 	temp.appendChild(temp2);
@@ -155,17 +161,14 @@ function setGuestForm(container) {
 	temp = document.createElement('a');
 	temp.setAttribute('href', 'registration.html');
 	temp.setAttribute('id', 'createaccount');
-	temp.setAttribute('class', '');
-	temp.innerHTML = 'Create account';
+	temp.setAttribute('class', 'i18n');
 	container.appendChild(temp);
 	
-	temp = document.createElement('a');
-	temp.setAttribute('href', 'recoverInfo.html');
-	temp.setAttribute('id', 'forgotdata');
-	temp.setAttribute('class', '');
-	temp.innerHTML = 'Forgot username or password?';
+	temp = document.createElement('div');
+	temp.setAttribute('class', 'i18n errorContainer');
+	temp.setAttribute('id', 'errorContainer');
 	container.appendChild(temp);
-	
+
 	var loginText = document.getElementById('logintext');
 	loginText.setAttribute('class', 'i18n');
 	

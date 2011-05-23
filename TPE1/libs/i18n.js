@@ -6,6 +6,8 @@ function loadSpanish() {
 	langKeys['passwordText'] = 'Contrase&ntilde;a:';
 	langKeys['searchtext'] = 'Buscar';
 	langKeys['categoryHeader'] = 'Categor&iacute;as';
+	langKeys['createaccount'] = 'Crear cuenta';
+	langKeys['errorContainer'] = 'Usuario o contrase&ntilde;a inv&aacute;lido';
 	//Index
 	langKeys['hotItemsHeader'] = 'Art&iacute;culos del dia:';
 	//Cart
@@ -60,6 +62,8 @@ function loadEnglish() {
 	langKeys['passwordText'] = 'Password:';
 	langKeys['searchtext'] = 'Search';
 	langKeys['categoryHeader'] = 'Categories';
+	langKeys['createaccount'] = 'Create account';
+	langKeys['errorContainer'] = 'Invalid username or password';
 	//Index
 	langKeys['hotItemsHeader'] = 'Today\'s hot items:'
 	//Cart
