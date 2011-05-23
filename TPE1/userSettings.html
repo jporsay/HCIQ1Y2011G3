@@ -125,19 +125,98 @@
 					<fieldset>
 						<legend>Addressing information</legend>
 						<ul>
-							<li><a>Add Address</a></li>
-							<li><a>Check Addresses</a></li>
+							<li><a href="#">Add Address</a></li>
+							<li><a href="#">Check Addresses</a></li>
 						</ul>
 					</fieldset>
-					<fieldset>
-						<form>
-							<legend>Personal Information</legend>
+					<!--ESTO SERIA AGREGADO CUNADO SE PRESIONA EL BOTON ADD ADDRESS -->
+					<form>
+						<fieldset class='addressFieldSet'>
+							<legend>New Address</legend>
 							<div class='fieldRow'>
-								<span>Nombre completo:</span>
+								<span>Adress 1:</span>
 								<input type='text'></input>
 							</div>
 							<div class='fieldRow'>
-								<span>Contraseña:</span>
+								<span>Adress 2:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>County:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>State:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>City:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Zip Code:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Phone Number:</span>
+								<input type='text'></input>
+							</div>
+							<button type="cancel" class="">Cancel</button>
+						<button type="submit" class="submit">Guardar</button>
+						</fieldset>
+					</form>
+					<!---------------------------------------------------------------->
+					
+					
+					<!--ESTO SERIA AGREGADO CUNADO SE PRESIONA EL BOTON CHECK ADDRESSES -->
+					<fieldset class="checkAddress">
+						<legend>These are your current addresses:</legend>
+						<select id="AddressSelect">
+							<option value="1">item 1</option>
+							<option value="2">item 2</option>
+							<option value="3">item 3</option>
+							<option value="4">item 4</option>
+						</select>
+						<div class='fieldRow'>
+							<span>Adress 1:</span>
+							<input type='text'></input>
+						</div>
+						<div class='fieldRow'>
+							<span>Adress 2:</span>
+							<input type='text'></input>
+						</div>
+						<div class='fieldRow'>
+							<span>County:</span>
+							<input type='text'></input>
+						</div>
+						<div class='fieldRow'>
+							<span>State:</span>
+							<input type='text'></input>
+						</div>
+						<div class='fieldRow'>
+							<span>City:</span>
+							<input type='text'></input>
+						</div>
+						<div class='fieldRow'>
+							<span>Zip Code:</span>
+							<input type='text'></input>
+						</div>
+						<div class='fieldRow'>
+							<span>Phone Number:</span>
+							<input type='text'></input>
+						</div>
+						<button type="cancel" class="">Cancel</button>
+						<button type="submit" class="submit">Guardar</button>
+					</fieldset>
+					<!---------------------------------------------------------------->
+					
+					
+					<form>
+						<fieldset>
+							<tr>
+							<legend>Personal Information</legend>
+							<div class='fieldRow'>
+								<span>Nombre completo:</span>
 								<input type='text'></input>
 							</div>
 							<div class='fieldRow'>
@@ -149,8 +228,23 @@
 								<input type='text'></input>
 							</div>
 						<button type="submit" class="submit">Guardar</button>
-						</form>
-					</fieldset>
+						</fieldset>
+					</form>
+					<form>
+						<fieldset>
+							<tr>
+							<legend>Password Management</legend>
+							<div class='fieldRow'>
+								<span>Old Password:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>New Password:</span>
+								<input type='text'></input>
+							</div>
+						<button type="submit" class="submit">Guardar</button>
+						</fieldset>
+					</form>
 			</div>
 		</div>
 		<div id="rightArea">
