@@ -8,7 +8,6 @@ function getCountries(langId) {
 			language_id: langId
 		},
 		function(data) {
-			var holder = document.getElementById('countryDiv');
 			var innerHolder = document.createElement('select');
 			innerHolder.setAttribute('id', 'countryId');
 			var first = true;
@@ -26,6 +25,7 @@ function getCountries(langId) {
 					innerHolder.appendChild(opt);
 				}
 			);
+			var holder = document.getElementById('countryDiv');
 			holder.appendChild(innerHolder);
 			getStates($(innerHolder).val(), langId);
 			$(innerHolder).change(function() {
