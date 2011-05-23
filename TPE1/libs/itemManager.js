@@ -210,7 +210,7 @@ function processItem(data) {
 	temp.appendChild(temp2);
 	temp2 = document.createElement('p');
 	temp2.id = 'price';
-	temp2.innerHTML = product.find('price').text();
+	temp2.innerHTML = cartInstance.currency + product.find('price').text();
 	temp.appendChild(temp2);
 	container.appendChild(temp);
 	prod['price'] = product.find('price').text();
