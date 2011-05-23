@@ -260,7 +260,8 @@ function createItemDescription(item, currency) {
 
 /*example:
 	<div class="quantitySelector">
-		<span class="quantity">Quantity: 1</span>
+		<span class="i18n" id="cartQuantity28">Quantity: </span>
+		<span class="quantity">17</span>
 		<input type="Image" class="decrement" src="./images/cart/downArrow.jpg"></input>
 		<input type="Image" class="increment" src="./images/cart/upArrow.jpg"></input>
 	</div>
@@ -268,9 +269,13 @@ function createItemDescription(item, currency) {
 function createItemQuantity(item) {
 	var item_quantitySel = document.createElement('div');
 		item_quantitySel.setAttribute('class','quantitySelector');
+	var item_quantity_label = document.createElement('span');
+		item_quantity_label.setAttribute('class','i18n');
+		item_quantity_label.setAttribute('id','cartQuantity' + item.id);
+		//item_quantity_label.innerHTML = 'Quantity: ';
 	var item_quantity = document.createElement('span');
 		item_quantity.setAttribute('class','quantity');
-		item_quantity.innerHTML = '<span id=\'cartQuantity' + item.id + '\' class=\'i18n\'></span>' + item.quantity
+		item_quantity.innerHTML = item.quantity;
 	var item_increment = document.createElement('input');
 		item_increment.setAttribute('type', 'Image');
 		item_increment.setAttribute('class', 'increment');
@@ -281,7 +286,8 @@ function createItemQuantity(item) {
 		item_decrement.setAttribute('class', 'increment');
 		item_decrement.setAttribute('src', './images/cart/downArrow.jpg');
 		item_decrement.setAttribute('onClick', getActionForSelectorDownArrow(item.id));
-			
+	
+	item_quantitySel.appendChild(item_quantity_label);
 	item_quantitySel.appendChild(item_quantity);
 	item_quantitySel.appendChild(item_increment);
 	item_quantitySel.appendChild(item_decrement);
