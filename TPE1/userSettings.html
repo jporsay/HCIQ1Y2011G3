@@ -27,6 +27,7 @@
 	<script type="text/javascript" src="libs/itemManager.js"></script>
 	<script type="text/javascript" src="libs/cartManager.js"></script>
 	<script type="text/javascript" src="libs/login.js"></script>
+	<script type="text/javascript" src="libs/country.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			
@@ -77,6 +78,8 @@
 			$('#loginbutton').click(function() {
 				logIn($('#usernameInput').val(), $('#passwordInput').val());
 			});
+			getCountries($('#locale :selected').attr('id'));
+			
 			translator.translatePage();
 		});
 	</script>
@@ -170,31 +173,29 @@
 							<legend>New Address</legend>
 							<div class='fieldRow'>
 								<span>Adress 1:</span>
-								<input type='text'></input>
+								<input id='addressLineOne' type='text'></input>
 							</div>
 							<div class='fieldRow'>
 								<span>Adress 2:</span>
-								<input type='text'></input>
+								<input id='addressLineTwo' type='text'></input>
 							</div>
-							<div class='fieldRow'>
+							<div class='fieldRow' id='countryDiv'>
 								<span>County:</span>
-								<input type='text'></input>
 							</div>
-							<div class='fieldRow'>
+							<div class='fieldRow' id='stateDiv'>
 								<span>State:</span>
-								<input type='text'></input>
 							</div>
 							<div class='fieldRow'>
 								<span>City:</span>
-								<input type='text'></input>
+								<input id='city' type='text'></input>
 							</div>
 							<div class='fieldRow'>
 								<span>Zip Code:</span>
-								<input type='text'></input>
+								<input id='zipCode' type='text'></input>
 							</div>
 							<div class='fieldRow'>
 								<span>Phone Number:</span>
-								<input type='text'></input>
+								<input id='phoneNumber' type='text'></input>
 							</div>
 							<button type="cancel" class="">Cancel</button>
 						<button type="submit" class="submit">Guardar</button>
@@ -222,11 +223,9 @@
 						</div>
 						<div class='fieldRow'>
 							<span>County:</span>
-							<input type='text'></input>
 						</div>
 						<div class='fieldRow'>
 							<span>State:</span>
-							<input type='text'></input>
 						</div>
 						<div class='fieldRow'>
 							<span>City:</span>
