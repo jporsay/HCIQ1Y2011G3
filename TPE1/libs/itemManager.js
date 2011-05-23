@@ -127,15 +127,12 @@ function createExtraIteminfo(product) {
 }
 
 function getColorForRanking(ranking) {
-	return '#ffffff';
 	var value = parseInt(ranking);
-	if (value < 10) {
-		return '#ffffff';
-	} else if (value < 100) {
-		return '#ffaaff';
-	} else {
-		return '#ffaaff';
-	}
+	if (value < 30) {
+		return '#00ff00';
+	} 
+	
+	return '#ffffff';
 }
 
 function displayItem(id) {
