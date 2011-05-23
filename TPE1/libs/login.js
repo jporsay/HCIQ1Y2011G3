@@ -42,6 +42,10 @@ function logOut() {
 	)
 }
 
+function isLogged() {
+	return $.cookie('loggedUser') ? true : false;
+}
+
 function loadUserSesion() {
 	var cookieData = $.cookie('loggedUser');
 	var container = document.getElementsByClassName('loginform')[0];

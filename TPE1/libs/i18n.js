@@ -14,7 +14,7 @@ function loadSpanish() {
 	langKeys['cartCheckoutLink'] = 'Realizar el checkout!';
 	//Register - User settings
 	langKeys['registerHeader'] = 'Registro';
-	langKeys['registerInfo'] = 'Por favor complete la informaci&oacute;n (todos los campos son obligat&oacute;rios)';
+	langKeys['registerInfo'] = 'Por favor complete la informaci&oacute;n (todos los campos son obligatorios)';
 	langKeys['registerUserName'] = 'Usuario:';
 	langKeys['registerBirthDate'] = 'Fecha de nacimiento:';
 	langKeys['registerFullName'] = 'Nombre completo:';
@@ -22,13 +22,34 @@ function loadSpanish() {
 	langKeys['registerEmail'] = 'Email:';
 	//Browse
 	langKeys['productsHeader'] = 'Productos:';
+	langKeys['browseRanking'] = 'Ranking: ';
 	
 	//BreadCrumb
 	langKeys['bcHome'] = 'Inicio';
 	langKeys['bcSettings'] = 'Configuraci&oacute;n';
 	langKeys['bcBrowse'] = 'Productos';
 	langKeys['bcRegister'] = 'Registrarse';
+	
+	//Product
+	langKeys['pAddToCart'] = 'A&ntilde;adir al carrito';
+	langKeys['pRemoveFromCart'] = 'Quitar del carrito';
+	langKeys['pPrice'] = 'Precio: ';
+	langKeys['format'] = 'Formato: ';
+	langKeys['language'] = 'Idioma: ';
+	langKeys['subtitles'] = 'Subt&iacute;tulos: ';
+	langKeys['region'] = 'Regi&oacute;n: ';
+	langKeys['aspect_ratio'] = 'Aspecto: ';
+	langKeys['number_discs'] = 'Discos: ';
+	langKeys['release_date'] = 'Fecha de publicación: ';
+	langKeys['run_time'] = 'Duraci&oacute;n: ';
+	langKeys['authors'] = 'Autores: ';
+	langKeys['publisher'] = 'Publicador: ';
+	langKeys['published_date'] = 'Fecha de publicaci&oacute;n: ';
 	return langKeys;
+}
+
+i18n.prototype.hasTranslation = function(key) {
+	return this.langKeys[key];
 }
 
 function loadEnglish() {
@@ -55,12 +76,29 @@ function loadEnglish() {
 	langKeys['registerEmail'] = 'Email:';
 	//Browse
 	langKeys['productsHeader'] = 'Products:';
+	langKeys['browseRanking'] = 'Ranking: ';
 	
 	//BreadCrumb
 	langKeys['bcHome'] = 'Home';
 	langKeys['bcSettings'] = 'Settings';
 	langKeys['bcBrowse'] = 'Products';
 	langKeys['bcRegister'] = 'Register';
+	
+	//Product
+	langKeys['pAddToCart'] = 'Add to cart';
+	langKeys['pRemoveFromCart'] = 'Remove from cart';
+	langKeys['pPrice'] = 'Price: ';
+	langKeys['format'] = 'Format: ';
+	langKeys['language'] = 'Language: ';
+	langKeys['subtitles'] = 'Subtitles: ';
+	langKeys['region'] = 'Region: ';
+	langKeys['aspect_ratio'] = 'Aspect Ratio: ';
+	langKeys['number_discs'] = 'Discs: ';
+	langKeys['release_date'] = 'Release date: ';
+	langKeys['run_time'] = 'Run time: ';
+	langKeys['authors'] = 'Authors: ';
+	langKeys['publisher'] = 'Publisher: ';
+	langKeys['published_date'] = 'Published date: ';
 	return langKeys;
 }
 

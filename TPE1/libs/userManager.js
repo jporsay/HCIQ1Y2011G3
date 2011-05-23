@@ -12,6 +12,8 @@ function createUser(rawData) {
 	);
 }
 
+
+
 function successPost(data) {
 	var status = $(data).find('response').attr('status');
 	if (status === 'fail') {
@@ -35,6 +37,20 @@ function processData(rawData) {
 		}
 	)
 	return pData;
+}
+
+function buildNewAddressXML(rawData) {
+	var xml = "<address>";
+	xml = xml + "<address_line_1>" + rawData.addressLineOne + "</address_line_1>";
+	xml = xml + rawData.addressLineTwo == "" ? "<address_line_2/>" : "<address_line_2>" + rawData.addressLineTwo + "</address_line_2>";
+	xml = xml + '<country_id>' + rawData.countryId + '</country_id>';
+	xml = xml + '<state_id>' + rawData.stateId + '</state_id>';
+	xml = xml + '<city>' + rawData.city + '</city>';
+	xml = xml + '<zip_code>' + rawData.zipCode + '</zip_code>';
+	xml = xml + '<phone_number>' + rawData.phoneNumber + '</phone_number>';
+	xml = xml + "</address>";
+	
+	return xml;
 }
 
 function buildNewUserXML(rawData) {
