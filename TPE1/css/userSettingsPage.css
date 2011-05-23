@@ -1,0 +1,43 @@
+#settingsPanel {
+	position: absolute;
+	margin-right: auto;
+	margin-left: auto;
+	width: 750px;
+	right: 2%;
+}
+#settingsPanel fieldset {
+	margin: 25px 0;
+}
+
+#settingsPanel fieldset  legend {
+	font-size: 14px;
+	font-weight: bold; 
+}
+
+#settingsPanel  .title {
+	border-bottom: 1px solid #000000;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+#settingsPanel .fieldRow {
+	position: relative;
+	height: 2.5em;
+	left: 10px;
+}
+
+#settingsPanel .fieldRow span {
+	font-size: 13px;
+}
+
+#settingsPanel .fieldRow input {
+	position: absolute;
+	width: 350px;
+	left: 17%;
+}
+#settingsPanel .submit {
+	position: relative;
+	left: 56%;
+	width: 80px;
+	height: 40px;
+}

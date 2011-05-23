@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="stylesheet" type="text/css" href="css/browsePage.css">
+	<link rel="stylesheet" type="text/css" href="css/userSettingsPage.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/navbar.css">
 	<link rel="stylesheet" type="text/css" href="css/categories.css">
@@ -55,15 +55,9 @@
 			$("#locale").change(function() {
 				translator.setLang($(this).val());
 				loadCategories($('#locale :selected').attr('id'));
-				getItems(urlParam('catId'), urlParam('subCatId'), $('#locale :selected').attr('id'));
 				translator.translatePage();
 			});
-			
-			if (urlParam('searchText')) {
-				searchItems(urlParam('searchText'));
-			} else if (urlParam('catId')) {
-				getItems(urlParam('catId'), urlParam('subCatId'), $('#locale :selected').attr('id'));
-			}
+
 			$('#searchbutton').click(function() {
 				if ($('#searchtext').val() != '') {
 					window.location = 'browse.html?searchText=' + $('#searchtext').val();
@@ -78,13 +72,6 @@
 			
 			loadCartFromCookie();
 			cartInstance.update();
-			
-			// Hack to bubble click event from <a> which were loaded with ajax
-			$('#mainArea').click(function(e) {
-				if ($(e.target).is('a')) {
-					cartInstance.saveState();
-				}
-			});
 			loadCategories($('#locale :selected').attr('id'));
 			loadUserSesion();
 			$('#loginbutton').click(function() {
@@ -113,8 +100,8 @@
 		<div class="navbar">
 			<div id="breadcrumbholder" class="breadCrumbHolder breadCrumbPosition breadCrumb module">
 				<ul id="breadcrumb">
-					<li><a href="index.html" class='i18n' id='bcHome'></a></li>
-					<li class='i18n' id='bcBrowse'></li>
+					<li><a href="index.html" class='i18n' id='bcHome'>Home</a></li>
+					<li class='i18n' id='bcBrowse'>Browse</li>
 				</ul>
 			</div>
 			<div id="searchbar">
@@ -133,14 +120,42 @@
 				 	</div>
 				</div>
 			</div>
-			<div class='items'>
+			<div id='settingsPanel'>
+				<h1 class='title'>Your settings:</h1>
+					<fieldset>
+						<legend>Addressing information</legend>
+						<ul>
+							<li><a>Add Address</a></li>
+							<li><a>Check Addresses</a></li>
+						</ul>
+					</fieldset>
+					<fieldset>
+						<form>
+							<legend>Personal Information</legend>
+							<div class='fieldRow'>
+								<span>Nombre completo:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Contraseña:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Email:</span>
+								<input type='text'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Fecha de nacimiento:</span>
+								<input type='text'></input>
+							</div>
+						<button type="submit" class="submit">Guardar</button>
+						</form>
+					</fieldset>
 			</div>
 		</div>
 		<div id="rightArea">
 			<div class="cartHolder"></div>
 		</div>
 	</div>
-
-
 </body>
 </html>
