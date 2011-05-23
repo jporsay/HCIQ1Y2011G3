@@ -123,7 +123,7 @@ function processData(rawData) {
 				pData[$(this).attr('id')] = $(this).val();
 			}
 		}
-	)
+	);
 	return pData;
 }
 
