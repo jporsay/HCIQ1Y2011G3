@@ -3,28 +3,50 @@ var security = new ServerManager('Security');
 function createUser(rawData) {
 	var processedData = processData(rawData);
 	var nuXML = buildNewUserXML(processedData);
-	security.post({
+	security.post(
+		{
 		method: 'CreateAccount',
 		account: nuXML
-	},
-		successPost,
+		},
+		function(data) {
+			successPost(data, 'Account');
+		},
 		errorPost
 	);
 }
 
+function createAddress(rawData) {
+	var userdata = getLoggedData();
+	if (!userdata) {
+		alert('You need to be logged in to do this action');
+		return;
+	}
+	var processedData = processData(rawData);
+	var naXML = buildNewAddressXML(processedData);
+	security.post(
+		{
+			method: 'CreateAddress',
+			address: naXML,
+			username: userdata['userName'],
+			token: userdata['token']
+		},
+		function(data) {
+			successPost(data, 'Address');
+		}
+	);
+}
 
-
-function successPost(data) {
+function successPost(data, where) {
 	var status = $(data).find('response').attr('status');
 	if (status === 'fail') {
-		alert($(data).find('error').attr('message'));
+		$('.errorContainer').css('display', 'block');
 	} else {
-		alert('Account created successfully');
+		alert(where + 'created successfully');
 	}
 }
 
 function errorPost(data) {
-	alert($(data).find('response').attr('status'));
+	alert('pepe' + $(data).find('response').attr('status'));
 }
 
 function processData(rawData) {
