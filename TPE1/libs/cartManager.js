@@ -131,7 +131,7 @@ Cart.prototype.removeItem = function(id) {
 	}
 }
 
-/** Agrega en el HTML los items guardados en el carrito. Estos son agregados a la tabla con id='cartItemsTable'.*/
+/** Agrega en el HTML los items guardados en el carrito*/
 Cart.prototype.update = function() {
 	if (!this.items) {
 		this.items = [];
@@ -390,7 +390,7 @@ function createCartHidden() {
 }
 
 Cart.prototype.printToTable = function(elementId) {
-	createTable(elementId, this.items, this.currency);
+	createItemsTable(elementId, this.items, this.currency);
 }
 
 Cart.prototype.saveState = function() {

@@ -1,4 +1,4 @@
-function createTable(elementId, items, currency) {
+function createItemsTable(elementId, items, currency) {
 	var element = document.getElementById(elementId);
 	var table = createCartTable();
 	var tbody = document.createElement('tbody');
