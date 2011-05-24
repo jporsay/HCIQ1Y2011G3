@@ -38,6 +38,7 @@ function logOut() {
 		function(data) {
 			$.cookie('loggedUser', null);
 			setGuestForm(document.getElementsByClassName('loginform')[0]);
+			window.location = 'index.html';
 		}
 	)
 }
