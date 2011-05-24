@@ -72,7 +72,7 @@ function changePassword(oldPassword, newPassword) {
 	security.post(
 		{
 			method: 'ChangePassword',
-			username: userData['username'],
+			username: userData['userName'],
 			password: oldPassword,
 			new_password: newPassword
 		},
