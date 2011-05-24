@@ -53,10 +53,9 @@
 				loadCartFromCookie();
 				cartInstance.printToTable('checkoutTable');
 				
-				$("#confirmOrder").click(function() {
-					alert('confirm');
-					loadUserSesion();
-					createNewOrder(userData);
+				$("#billingForm").submit(function(e) {
+					e.preventDefault();
+					createNewOrder();
 				});
 				
 				$('#searchbutton').click(function() {
@@ -75,6 +74,7 @@
 					logIn($('#usernameInput').val(), $('#passwordInput').val());
 				});
 
+				loadUserSesion();
 				translator.translatePage();
 			});
 		</script>
@@ -117,7 +117,7 @@
 				<div id='checkoutTable'></div>
 				
 				<h2>Please enter the required information in order to complete your order</h2>
-				<form>
+				<form id='billingForm'>
 					<div class='billingInformation'>
 						<fieldset>
 							<legend>Billing Information</legend>
@@ -167,7 +167,7 @@
 					</div>
 					<span class="footNote">None of this forms are required</span>
 					<input class='cancelButton' id='cancelOrder' type="button" value='Cancel'></input>
-					<button class='nextButton' id='confirmOrder'>Create Order</button>
+					<input class='nextButton' type='submit' id='confirmOrder' value='Create Order'></input>
 				</div>
 			</form>
 			<div class ="footer">
