@@ -77,9 +77,6 @@
 			cartInstance.update();
 			loadCategories($('#locale :selected').attr('id'));
 			loadUserSesion();
-			$('#loginbutton').click(function() {
-				logIn($('#usernameInput').val(), $('#passwordInput').val());
-			});
 			getCountries($('#locale :selected').attr('id'));
 			
 			$('#addAddressForm').submit(function(e) {
@@ -186,7 +183,7 @@
 							<legend>Password Management</legend>
 							<div class='fieldRow'>
 								<span>Old Password:</span>
-								<input type='password' id='oldPasword'></input>
+								<input type='password' id='oldPassword'></input>
 							</div>
 							<div class='fieldRow'>
 								<span>New Password:</span>

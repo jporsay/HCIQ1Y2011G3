@@ -78,9 +78,6 @@
 			
 			loadCategories($('#locale :selected').attr('id'));
 			loadUserSesion();
-			$('#loginbutton').click(function() {
-				logIn($('#usernameInput').val(), $('#passwordInput').val());
-			});
 			printOrders(userData, 1);
 			translator.translatePage();
 		});

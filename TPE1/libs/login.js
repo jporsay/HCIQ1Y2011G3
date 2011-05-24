@@ -173,5 +173,8 @@ function setGuestForm(container) {
 	loginText.setAttribute('class', 'i18n');
 	
 	var translator = new i18n();
+	$('#loginbutton').click(function() {
+		logIn($('#usernameInput').val(), $('#passwordInput').val());
+	});
 	translator.translatePage();
 }
