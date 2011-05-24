@@ -33,6 +33,11 @@
 	<script type="text/javascript">
 		$(function() {
 			
+			if (!getLoggedData()) {
+				alert('You need to be logged in to access this area');
+				window.location = 'index.html';
+			}
+			
 			$("#breadcrumb").jBreadCrumb();
 			
 			var translator = new i18n();
@@ -189,7 +194,7 @@
 								<span>New Password:</span>
 								<input type='password' id='newPassword'></input>
 							</div>
-						<input type="submit" class="submit" val="Guardar"></input>
+						<input type="submit" class="submit" value="Guardar"></input>
 						</fieldset>
 					</form>
 
