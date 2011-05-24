@@ -29,6 +29,7 @@
 	<script type="text/javascript" src="libs/itemManager.js"></script>
 	<script type="text/javascript" src="libs/cartManager.js"></script>
 	<script type="text/javascript" src="libs/login.js"></script>
+	<script type="text/javascript" src="libs/orderManager.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			
@@ -74,11 +75,13 @@
 			
 			loadCartFromCookie();
 			cartInstance.update();
+			
 			loadCategories($('#locale :selected').attr('id'));
 			loadUserSesion();
 			$('#loginbutton').click(function() {
 				logIn($('#usernameInput').val(), $('#passwordInput').val());
 			});
+			printOrders(userData, 1);
 			translator.translatePage();
 		});
 	</script>
@@ -124,18 +127,17 @@
 			</div>
 			<div id='orderContainer'>
 				<h1>Your orders:</h1>
-				<div class='orderList'>
+				<div id='createdOrders'>
 					<h2>Created Orders:</h2>
-					<div class="order">
-						<span class='address'>Address Name</span>
-						<span class='date'>Fecha de creacion</span>
-						<div id='orderID'>Aqui se crea con la funcion createTable(elementId, items, currency) la tabla con los items que van en esta orden</div>
-						<button class="delete">Delete Order</button>
-						<button class="confirm">Confirm Order</button>
-					</div>
 				</div>
-				<div class='orderList'>
+				<div id='confirmedOrders'>
 					<h2>Confirmed Orders:</h2>
+				</div>
+				<div id='deliveringOrders'>
+					<h2>Shipped Orders:</h2>
+				</div>
+				<div id='deliveredOrders'>
+					<h2>Delevered Orders:</h2>
 				</div>
 			</div>
 		</div>
