@@ -1,8 +1,8 @@
 //DEFINES: 
 var _CREATED = "1";
-var _CONFIRMED = 2;
-var _DELIVERING = 3;
-var _DELIVERED = 4;
+var _CONFIRMED = "2";
+var _DELIVERING = "3";
+var _DELIVERED = "4";
 
 var _userdata;
 
@@ -16,9 +16,7 @@ function printOrders(userdata, langId) {
 			username: userData['userName'],
 			authentication_token: userData['token']
 		},		
-		function(data) {
-			processOrders(data);
-		}
+		processOrders
 	);
 }
 		
@@ -55,27 +53,28 @@ function processOrders(orders) {
 <div class="order" id="orderId">
 	<span class='address'>Address Name</span>
 	<span class='date'>Fecha de creacion</span>
-	<div id='orderId+Items'>Aqui se crea con la funcion createTable(orderId+Items, items, currency) la tabla con los items que van en esta orden</div>
+	<div id='order + orderId' class="itemsTable"></div>
 	<button class="delete">Delete Order</button>
 	<button class="confirm">Confirm Order</button>
 </div>
 */
-//category.attr('id'), category.find('name').text()
 function createOrderDiv(parent, order, orderType) {
 	var newOrder = document.createElement('div');
 		newOrder.setAttribute('class', 'order');
 		newOrder.setAttribute('id', 'order' + order.attr('id'));
-		
+	var clear = document.createElement('div');
+		clear.setAttribute('class', 'clear');
 	var order_address_label = document.createElement('span');
 		order_address_label.setAttribute('class', 'i18n');
 		order_address_label.innerHTML = 'Address: ';
 	var order_address = document.createElement('span');
 		order_address.setAttribute('class', 'address');
-		var addressId = order.find('address_id').text();
+	var addressId = order.find('address_id').text();
 		order_address.innerHTML = addressId ? addressId : 'Undefined Address';		
 	newOrder.appendChild(order_address_label);
 	newOrder.appendChild(order_address);
-
+	newOrder.appendChild(clear);
+	
 	var order_date_label = document.createElement('span');
 		order_date_label.setAttribute('class', 'i18n');
 		order_date_label.innerHTML = 'Date: ';
@@ -85,38 +84,49 @@ function createOrderDiv(parent, order, orderType) {
 	newOrder.appendChild(order_date_label);
 	newOrder.appendChild(order_date);
 
-	//var items = getItemsFor(order.attr('id'));
-	//var itemsTable = createTable(items);
+	var items = getItemsFor(order.attr('id'));
+	var itemsTable = createTable(items, order.attr('id'));
 
 	parent.appendChild(newOrder);
 }
 
-/*
-function getItemsFor(orderId, userName, token) {
+
+function getItemsFor(orderId) {
 	var items = [];
 	orderServer.get(
 		{
 			method: 'GetOrder',
-			username: _username,
-			authentication_token: _token
-			order_id: orderId;
+			username: _userdata['userName'],
+			authentication_token: _userdata['token'],
+			order_id: orderId
 		},
 		function(data) {
-			$(data).find('item').each {
-				var item = $(this);
-				{
-					item.find('product_id').text(), 
-					item.find('count').text(), 
-					item.find('price').text()
+			alert(data);
+			$(data).find('items').each (
+				function() {
+					//function CartItem(name, id, price, imgSrc) 
+					var item = $(this);
+					var item_data = {
+						id: item.find('product_id').text(), 
+						quantity: item.find('count').text(), 
+						price: item.find('price').text()
+					}
+					items.push(item_data);
 				}
-				items = items.concat([item]);
-			}
+			);
 		}
 	);
 	return items;
 }
-*/
-function createTable(items) {
+
+function createTable(items, orderId) {
+	var order_date_label = document.createElement('div');
+		order_date_label.setAttribute('class', 'i18n');
+		order_date_label.setAttribute('class', 'order' + orderId);
 	
+	var table = document.createElement('table');
+	
+	order_date_label.appendChild(table);
+	return order_date_label;
 }
 

@@ -9,7 +9,6 @@ function createNewOrder() {
 		return;
 	}
 	var order = new ServerManager('Order');
-	//http://localhost:8080/service/Order.groovy?method=CreateOrder&username=gcastigl&authentication_token=8f9a94cf3da547a05d261485fc241c
 	order.post(
 		{
 			method: 'CreateOrder',
@@ -31,5 +30,5 @@ function parseResponse(data) {
 		alert('UPS! something gone horribly wrong =(');
 		return;
 	}
-	//window.location = "orderTracking.html";
+	window.location = "orderTracking.html";
 }
