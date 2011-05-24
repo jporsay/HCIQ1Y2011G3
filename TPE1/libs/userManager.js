@@ -24,35 +24,40 @@ function getUserData() {
 		{
 			method: 'GetAccount',
 			username: userData['userName'],
-			token: userData['token']
+			authentication_token: userData['token']
 		},
 		fillUserData
 	);
 }
 
 function fillUserData(data) {
-	
+	$('#nameInput').val($(data).find('name').text());
+	$('#emailInput').val($(data).find('email').text());
+	$('#birthDateInput').val($(data).find('birth_date').text());
 }
 
-function updateUserData(rawData) {
+function updateUserData(fullName, birthDate, email) {
 	var userData = getLoggedData();
 	if (!userData) {
 		alert('You need to be logged in to do this action');
 		return;
 	}
-	var processedData = processData(rawData);
-	var ouXML = buildUserXML(processedData, false);
+	var ouXML = '<account>';
+	ouXML = ouXML + '<name>' + fullName + '</name>';
+	ouXML = ouXML + '<email>' + email + '</email>';
+	ouXML = ouXML + '<birth_date>' + birthDate + '</birth_date>';
+	ouXML = ouXML + '</account>';
 	security.post(
 		{
 			method: 'UpdateAccount',
-			username: userdata['userName'],
-			token: userdata['token'],
+			username: userData['userName'],
+			authentication_token: userData['token'],
 			account: ouXML
 		},
 		function(data) {
 			var status = $(data).find('response').attr('status');
 			if (status === 'fail') {
-				alert('Something went apocalyptically wrong')
+				alert('Something went apocalyptically wrong');
 			}
 		}
 	);
@@ -67,14 +72,14 @@ function changePassword(oldPassword, newPassword) {
 	security.post(
 		{
 			method: 'ChangePassword',
+			username: userData['username'],
 			password: oldPassword,
-			new_password: newPassword,
-			username: userData['username']
+			new_password: newPassword
 		},
 		function(data) {
 			var status = $(data).find('response').attr('status');
 			if (status === 'fail') {
-				alert($(data).find('error').attr('message'));x
+				alert($(data).find('error').attr('message'));
 			}
 		}
 	);
