@@ -26,8 +26,10 @@
 	<script type="text/javascript" src="libs/subcategoriesManager.js"></script>
 	<script type="text/javascript" src="libs/itemManager.js"></script>
 	<script type="text/javascript" src="libs/cartManager.js"></script>
+	<script type="text/javascript" src="libs/userManager.js"></script>
 	<script type="text/javascript" src="libs/login.js"></script>
 	<script type="text/javascript" src="libs/country.js"></script>
+	<script type="text/javascript" src="libs/userSettings.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			
@@ -79,6 +81,15 @@
 				logIn($('#usernameInput').val(), $('#passwordInput').val());
 			});
 			getCountries($('#locale :selected').attr('id'));
+			
+			$('#addAddressForm').submit(function(e) {
+				e.preventDefault();
+				var countryId = $(document.getElementById('countryIdNA')).val();
+				var stateId = $(document.getElementById('stateIdNA')).val();
+				createAddress($('#addAddressForm input'), countryId, stateId);
+			});
+			
+			getAddressList(getAddressListCallback);
 			
 			translator.translatePage();
 		});
@@ -168,12 +179,12 @@
 						</ul>
 					</fieldset>
 					<!--ESTO SERIA AGREGADO CUNADO SE PRESIONA EL BOTON ADD ADDRESS -->
-					<form>
+					<form id='addAddressForm'>
 						<fieldset class='addressFieldSet'>
 							<legend>New Address</legend>
 							<div class='fieldRow'>
 								<span>Name:</span>
-								<input type='text'></input>
+								<input type='text' id='fullName'></input>
 							</div>
 							<div class='fieldRow'>
 								<span>Adress 1:</span>
@@ -183,10 +194,10 @@
 								<span>Adress 2:</span>
 								<input id='addressLineTwo' type='text'></input>
 							</div>
-							<div class='fieldRow' id='countryDiv'>
+							<div class='fieldRow' id='countryDivNA'>
 								<span>County:</span>
 							</div>
-							<div class='fieldRow' id='stateDiv'>
+							<div class='fieldRow' id='stateDivNA'>
 								<span>State:</span>
 							</div>
 							<div class='fieldRow'>
@@ -201,8 +212,8 @@
 								<span>Phone Number:</span>
 								<input id='phoneNumber' type='text'></input>
 							</div>
-						<button type="cancel>Cancel</button>
-						<button type="submit" class="submit">Guardar</button>
+						<button type='cancel'>Cancel</button>
+						<button type="submit" class="submit" id='newAddressSubmit'>Guardar</button>
 						</fieldset>
 					</form>
 					<!---------------------------------------------------------------->
@@ -225,10 +236,10 @@
 							<span>Adress 2:</span>
 							<input type='text'></input>
 						</div>
-						<div class='fieldRow'>
+						<div class='fieldRow' id='countryDivMA'>
 							<span>County:</span>
 						</div>
-						<div class='fieldRow'>
+						<div class='fieldRow' id='stateDivMA'>
 							<span>State:</span>
 						</div>
 						<div class='fieldRow'>

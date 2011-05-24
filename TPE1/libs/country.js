@@ -8,10 +8,9 @@ function getCountries(langId) {
 			language_id: langId
 		},
 		function(data) {
-			var innerHolder = document.createElement('select');
-			innerHolder.setAttribute('id', 'countryId');
 			var first = true;
 			var opt = null;
+			var innerHolder = document.createElement('select');
 			$(data).find('country').each(
 				function() {
 					opt = document.createElement('option');
@@ -25,20 +24,32 @@ function getCountries(langId) {
 					innerHolder.appendChild(opt);
 				}
 			);
-			var holder = document.getElementById('countryDiv');
+			//Countries and States for New Address
+			var holder = document.getElementById('countryDivNA');
+			innerHolder.setAttribute('id', 'countryIdNA');
 			holder.appendChild(innerHolder);
-			getStates($(innerHolder).val(), langId);
-			$(innerHolder).change(function() {
-				getStates($(this).val(), langId);
+			getStates($(innerHolder).val(), langId, 'NA');
+			$('#countryIdNA').change(function() {
+				getStates($(this).val(), langId, 'NA');
 			});
+			//Countries for Modify Address
+			var innerHolder2 = innerHolder.cloneNode(true);
+			holder = document.getElementById('countryDivMA');
+			innerHolder2.setAttribute('id', 'countryIdMA');
+			holder.appendChild(innerHolder2);
+			getStates($(innerHolder2).val(), langId, 'MA');
+			$('#countryIdMA').change(function() {
+				getStates($(this).val(), langId, 'MA');
+			});
+			
 		}
 	);
 }
 
 
-function getStates(countryId, langId) {
-	if (document.getElementById('stateId')) {
-		var holder = document.getElementById('stateDiv');
+function getStates(countryId, langId, location) {
+	if (document.getElementById('stateId' + location)) {
+		var holder = document.getElementById('stateDiv' + location);
 		holder.removeChild(holder.lastChild);
 	}
 	common.get(
@@ -48,9 +59,9 @@ function getStates(countryId, langId) {
 			country_id: countryId
 		},
 		function(data) {
-			var holder = document.getElementById('stateDiv');
+			var holder = document.getElementById('stateDiv' + location);
 			var innerHolder = document.createElement('select');
-			innerHolder.setAttribute('id', 'stateId');
+			innerHolder.setAttribute('id', 'stateId' + location);
 			var first = true;
 			var option = null;
 			$(data).find('state').each(

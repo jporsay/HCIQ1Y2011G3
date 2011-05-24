@@ -1,5 +1,4 @@
 var security = new ServerManager('Security');
-
 function createUser(rawData) {
 	var processedData = processData(rawData);
 	var nuXML = buildUserXML(processedData, true);
@@ -9,7 +8,7 @@ function createUser(rawData) {
 		account: nuXML
 		},
 		function(data) {
-			successPost(data, 'Account');
+			successPost(data);
 		},
 		errorPost
 	);
@@ -81,32 +80,12 @@ function changePassword(oldPassword, newPassword) {
 	);
 }
 
-function createAddress(rawData) {
-	var userdata = getLoggedData();
-	if (!userdata) {
-		alert('You need to be logged in to do this action');
-		return;
-	}
-	var processedData = processData(rawData);
-	var naXML = buildNewAddressXML(processedData);
-	security.post(
-		{
-			method: 'CreateAddress',
-			address: naXML,
-			username: userdata['userName'],
-			token: userdata['token']
-		},
-		function(data) {
-			successPost(data, 'Address');
-		}
-	);
-}
-
-function successPost(data, where) {
+function successPost(data) {
 	var status = $(data).find('response').attr('status');
 	if (status === 'fail') {
 		$('.errorContainer').css('display', 'block');
 	} else {
+		alert($(data).find('address').attr('id'));
 		alert(where + 'created successfully');
 	}
 }
@@ -127,20 +106,6 @@ function processData(rawData) {
 	return pData;
 }
 
-function buildNewAddressXML(rawData) {
-	var xml = "<address>";
-	xml = xml + "<address_line_1>" + rawData.addressLineOne + "</address_line_1>";
-	xml = xml + rawData.addressLineTwo == "" ? "<address_line_2/>" : "<address_line_2>" + rawData.addressLineTwo + "</address_line_2>";
-	xml = xml + '<country_id>' + rawData.countryId + '</country_id>';
-	xml = xml + '<state_id>' + rawData.stateId + '</state_id>';
-	xml = xml + '<city>' + rawData.city + '</city>';
-	xml = xml + '<zip_code>' + rawData.zipCode + '</zip_code>';
-	xml = xml + '<phone_number>' + rawData.phoneNumber + '</phone_number>';
-	xml = xml + "</address>";
-	
-	return xml;
-}
-
 function buildUserXML(rawData, newUser) {
 	var xml = "<account>";
 	if (newUser) {
@@ -151,5 +116,66 @@ function buildUserXML(rawData, newUser) {
 	xml = xml + "<birth_date>" + rawData.birthDate + "</birth_date>";
 	xml = xml + "<email>" + rawData.email + "</email>";
 	xml = xml + "</account>";
+	return xml;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////Address/////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+var order = new ServerManager('Order');
+function createAddress(rawData, countryId, stateId) {
+	var userdata = getLoggedData();
+	if (!userdata) {
+		alert('You need to be logged in to do this action');
+		return;
+	}
+	var processedData = processData(rawData);
+	processedData['countryId'] = countryId;
+	processedData['stateId'] = stateId;
+	var naXML = buildNewAddressXML(processedData);
+	order.post(
+		{
+			method: 'CreateAddress',
+			address: naXML,
+			username: userdata['userName'],
+			authentication_token: userdata['token']
+		},
+		function(data) {
+			successPost(data, 'Address ');
+		}
+	);
+}
+
+function getAddressList(callback) {
+	var userdata = getLoggedData();
+	if (!userdata) {
+		alert('You need to be logged in to do this action');
+		return;
+	}
+	order.get(
+		{
+			method: 'GetAddressList',
+			username: userdata['userName'],
+			authentication_token: userdata['token']
+		},
+		callback
+	);
+}
+
+function buildNewAddressXML(rawData) {
+	var xml = "<address>";
+	xml = xml + "<full_name>" + rawData.fullName + "</full_name>";
+	xml = xml + "<address_line_1>" + rawData.addressLineOne + "</address_line_1>";
+	xml = xml + (rawData.addressLineTwo == "" ? "<address_line_2/>" : "<address_line_2>" + rawData.addressLineTwo + "</address_line_2>");
+	xml = xml + '<country_id>' + rawData.countryId + '</country_id>';
+	xml = xml + '<state_id>' + rawData.stateId + '</state_id>';
+	xml = xml + '<city>' + rawData.city + '</city>';
+	xml = xml + '<zip_code>' + rawData.zipCode + '</zip_code>';
+	xml = xml + '<phone_number>' + rawData.phoneNumber + '</phone_number>';
+	xml = xml + "</address>";
+	
 	return xml;
 }
