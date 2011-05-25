@@ -88,6 +88,11 @@ function updateExistingAddress() {
 		return;
 	}
 	var data = [];
+	var id = $('#AddressSelect').val();
+	if (id === 'null') {
+		showStatusMessage('updateAddressStatus', getTranslation('selectAValidAddress'));
+		return;
+	}
 	data.fullName = $('#' + $('#AddressSelect').val()).html();
 	data.addressLineOne = $('#maAddress1').val();
 	data.addressLineTwo = $('#maAddress2').val();
@@ -96,7 +101,6 @@ function updateExistingAddress() {
 	data.city = $('#maCity').val();
 	data.zipCode = $('#maZipCode').val();
 	data.phoneNumber = $('#maPhoneNumber').val();
-	var id = $('#' + $('#AddressSelect').val()).attr('id');
 	var xml = buildNewAddressXML(data, id);
 	order.post(
 		{

@@ -98,6 +98,7 @@ function loadSpanish() {
 	langKeys['caState'] = 'Estado:*';
 	langKeys['caPhoneNumber'] = 'N&uacute;mero de tel&eacute;fono:*';
 	langKeys['caCountry'] = 'Pa&iacute;s:*';
+	langKeys['selectAValidAddress'] = 'Elija o cree una direcci&oacute;n';
 	
 	return langKeys;
 }
@@ -204,6 +205,7 @@ function loadEnglish() {
 	langKeys['caState'] = 'State:*';
 	langKeys['caPhoneNumber'] = 'Phone number:*';
 	langKeys['caCountry'] = 'Country:*';
+	langKeys['selectAValidAddress'] = 'Choose or create an address';
 	return langKeys;
 }
 
