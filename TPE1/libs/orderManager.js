@@ -50,10 +50,12 @@ function processOrders(orders) {
 }
 
 /*
-<div class="order" id="orderId">
-	<span class='address'>Address Name</span>
-	<span class='date'>Fecha de creacion</span>
-	<div id='order + orderId' class="itemsTable"></div>
+<div class="order" id="order + orderId">
+	<span class='i18n'>Address:</span>
+	<span class='address'>Av Del Libertador 1560</span>
+	<span class='i18n'>Date:</span>
+	<span class='date'>1999-10-10</span>
+	<div class="itemsTable"></div>
 	<button class="delete">Delete Order</button>
 	<button class="confirm">Confirm Order</button>
 </div>
@@ -62,10 +64,12 @@ function createOrderDiv(parent, order, orderType) {
 	var newOrder = document.createElement('div');
 		newOrder.setAttribute('class', 'order');
 		newOrder.setAttribute('id', 'order' + order.attr('id'));
+	
 	var clear = document.createElement('div');
 		clear.setAttribute('class', 'clear');
+		
 	var order_address_label = document.createElement('span');
-		order_address_label.setAttribute('class', 'i18n');
+		order_address_label.setAttribute('class', 'i18n label');
 		order_address_label.innerHTML = 'Address: ';
 	var order_address = document.createElement('span');
 		order_address.setAttribute('class', 'address');
@@ -76,7 +80,7 @@ function createOrderDiv(parent, order, orderType) {
 	newOrder.appendChild(clear);
 	
 	var order_date_label = document.createElement('span');
-		order_date_label.setAttribute('class', 'i18n');
+		order_date_label.setAttribute('class', 'i18n label');
 		order_date_label.innerHTML = 'Date: ';
 	var order_date = document.createElement('span');
 		order_date.setAttribute('class', 'date');
@@ -84,15 +88,23 @@ function createOrderDiv(parent, order, orderType) {
 	newOrder.appendChild(order_date_label);
 	newOrder.appendChild(order_date);
 
-	var items = getItemsFor(order.attr('id'));
-	var itemsTable = createTable(items, order.attr('id'));
-
+	var table_container = createOrderPruductTable(order, '$');
+	newOrder.appendChild(table_container);
 	parent.appendChild(newOrder);
 }
 
+function createOrderPruductTable(order, currency) {
+	var orderId = order.attr('id');
+	var order_table_container = document.createElement('div');
+		order_table_container.setAttribute('class', 'itemsTable');
 
-function getItemsFor(orderId) {
-	var items = [];
+	var items = getProductsFor(orderId);
+	createItemsTableInElement(order_table_container, items, currency);
+	return order_table_container;
+}
+
+function getProductsFor(orderId) {
+	var productsInOrder = [];
 	orderServer.get(
 		{
 			method: 'GetOrder',
@@ -101,32 +113,35 @@ function getItemsFor(orderId) {
 			order_id: orderId
 		},
 		function(data) {
-			alert(data);
-			$(data).find('items').each (
+			$(data).find('item').each (
 				function() {
-					//function CartItem(name, id, price, imgSrc) 
 					var item = $(this);
-					var item_data = {
-						id: item.find('product_id').text(), 
-						quantity: item.find('count').text(), 
-						price: item.find('price').text()
-					}
-					items.push(item_data);
+					var product = getProduct(item.find('product_id').text());
+					product.quantity = item.find('count').text();
+					productsInOrder.push(product);
 				}
 			);
 		}
 	);
-	return items;
+	return productsInOrder;
 }
 
-function createTable(items, orderId) {
-	var order_date_label = document.createElement('div');
-		order_date_label.setAttribute('class', 'i18n');
-		order_date_label.setAttribute('class', 'order' + orderId);
-	
-	var table = document.createElement('table');
-	
-	order_date_label.appendChild(table);
-	return order_date_label;
+function getProduct(productId) {
+	orderServer.get(
+		{
+			method: 'GetProduct',
+			product_id: productId
+		},
+		function(data) {
+			var item = $(data).find('product');
+			var prod = {
+				name: item.find('name').text(), 
+				id: item.attr('id'), 
+				price: item.find('price').text(),
+				imageSrc: ''
+			}
+			return prod;
+		}
+	);
 }
 
