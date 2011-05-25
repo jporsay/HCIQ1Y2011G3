@@ -38,6 +38,7 @@ function fillSelect(data) {
 	for (var i = 0; i < data.length; i++) {
 		opt = document.createElement('option');
 		opt.setAttribute('value', data[i].id);
+		opt.setAttribute('id', data[i].id);
 		$(opt).html(data[i].name);
 		$('#AddressSelect').append(opt);
 	}
@@ -75,4 +76,33 @@ function loadAddress(value) {
 	$('#maCity').val(address.city);
 	$('#maZipCode').val(address.zipCode);
 	$('#maPhoneNumber').val(address.phoneNumber);
+}
+var order = new ServerManager('Order');
+function updateExistingAddress() {
+	var userdata = getLoggedData();
+	if (!userdata) {
+		alert('You need to be logged in to do this action');
+		return;
+	}
+	var data = [];
+	data.fullName = $('#' + $('#AddressSelect').val()).html();
+	data.addressLineOne = $('#maAddress1').val();
+	data.addressLineTwo = $('#maAddress2').val();
+	data.countryId = $('#countryIdMA').val();
+	data.stateId = $('#stateIdMA').val();
+	data.city = $('#maCity').val();
+	data.zipCode = $('#maZipCode').val();
+	data.phoneNumber = $('#maPhoneNumber').val();
+	var id = $('#' + $('#AddressSelect').val()).attr('id');
+	var xml = buildNewAddressXML(data, id);
+	order.post(
+		{
+			method: 'UpdateAddress',
+			username: userdata['userName'],
+			authentication_token: userdata['token'],
+			address: xml
+		},
+		function(data) {
+		}
+	);
 }

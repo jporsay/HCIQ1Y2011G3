@@ -106,6 +106,11 @@
 				updateUserData($('#nameInput').val(), $('#birthDateInput').val(), $('#emailInput').val());
 			});
 			
+			$('#updateAddressForm').submit(function(e) {
+				e.preventDefault();
+				updateExistingAddress();
+			});
+			
 			$('#passwordChangeForm').submit(function(e) {
 				e.preventDefault();
 				var newP = $('#newPassword').val();
@@ -247,43 +252,45 @@
 					
 					
 					<!--ESTO SERIA AGREGADO CUNADO SE PRESIONA EL BOTON CHECK ADDRESSES -->
-					<fieldset class="checkAddress">
-						<legend>These are your current addresses:</legend>
-						<select id="AddressSelect">
-							<option value="1">item 1</option>
-							<option value="2">item 2</option>
-							<option value="3">item 3</option>
-							<option value="4">item 4</option>
-						</select>
-						<div class='fieldRow'>
-							<span>Adress 1:</span>
-							<input type='text' id='maAddress1'></input>
-						</div>
-						<div class='fieldRow'>
-							<span>Adress 2:</span>
-							<input type='text' id='maAddress2'></input>
-						</div>
-						<div class='fieldRow' id='countryDivMA'>
-							<span>County:</span>
-						</div>
-						<div class='fieldRow' id='stateDivMA'>
-							<span>State:</span>
-						</div>
-						<div class='fieldRow'>
-							<span>City:</span>
-							<input type='text' id='maCity'></input>
-						</div>
-						<div class='fieldRow'>
-							<span>Zip Code:</span>
-							<input type='text' id='maZipCode'></input>
-						</div>
-						<div class='fieldRow'>
-							<span>Phone Number:</span>
-							<input type='text' id='maPhoneNumber'></input>
-						</div>
-						<button type="cancel" class="">Cancel</button>
-						<input type="submit" class="submit" value='Guardar'></input>
-					</fieldset>
+					<form id='updateAddressForm'>
+						<fieldset class="checkAddress">
+							<legend>These are your current addresses:</legend>
+							<select id="AddressSelect">
+								<option value="1">item 1</option>
+								<option value="2">item 2</option>
+								<option value="3">item 3</option>
+								<option value="4">item 4</option>
+							</select>
+							<div class='fieldRow'>
+								<span>Adress 1:</span>
+								<input type='text' id='maAddress1'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Adress 2:</span>
+								<input type='text' id='maAddress2'></input>
+							</div>
+							<div class='fieldRow' id='countryDivMA'>
+								<span>County:</span>
+							</div>
+							<div class='fieldRow' id='stateDivMA'>
+								<span>State:</span>
+							</div>
+							<div class='fieldRow'>
+								<span>City:</span>
+								<input type='text' id='maCity'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Zip Code:</span>
+								<input type='text' id='maZipCode'></input>
+							</div>
+							<div class='fieldRow'>
+								<span>Phone Number:</span>
+								<input type='text' id='maPhoneNumber'></input>
+							</div>
+							<button type="cancel" class="">Cancel</button>
+							<input type="submit" class="submit" value='Guardar' id='updateAddress'></input>
+						</fieldset>
+					</form>
 					<!---------------------------------------------------------------->
 			</div>
 		</div>
