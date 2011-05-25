@@ -58,6 +58,7 @@ function createOrderDiv(order, orderType) {
 		case _CREATED :
 			orderType = 'created';
 			parent = ordersContainer[0];
+//			return;//RETURN SCINCE THIS IS NOT USED IN THIS PAGE
 			break;
 		case _CONFIRMED: 
 			orderType = 'confirmed';
