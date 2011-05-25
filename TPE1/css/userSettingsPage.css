@@ -45,12 +45,29 @@
 	width: 80px;
 	height: 40px;
 }
-
 #settingsPanel .submit {
 	position: relative;
 	left: 59.5%;
 }
 
+/* change user information */
+.statusDiv {
+	position: absolute;
+	width: 300px;
+	left: 10%;
+	text-align: center;
+	font-size: large;
+}
+.statusWCancelDiv {
+	position: absolute;
+	width: 300px;
+	left: 18.7%;
+	text-align: center;
+	font-size: large;
+}
+
+#changeSettingsStatusDiv p {
+}
 /*-----add address fieldset------*/
 
 #settingsPanel  .addressFieldSet {
