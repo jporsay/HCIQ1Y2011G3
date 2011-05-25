@@ -89,6 +89,7 @@
 				var countryId = $(document.getElementById('countryIdNA')).val();
 				var stateId = $(document.getElementById('stateIdNA')).val();
 				createAddress($('#addAddressForm input'), countryId, stateId);
+				$(':text').val('');
 			});
 			
 			$('#personalInfoForm').submit(function(e) {
@@ -109,6 +110,7 @@
 			$('#updateAddressForm').submit(function(e) {
 				e.preventDefault();
 				updateExistingAddress();
+				$(':text').val('');
 			});
 			
 			$('#passwordChangeForm').submit(function(e) {
@@ -119,6 +121,7 @@
 					return;
 				}
 				changePassword($('#oldPassword').val(), $('#newPassword').val());
+				$(':password').val('');
 			});
 			
 			getAddressList(getAddressListCallback);
