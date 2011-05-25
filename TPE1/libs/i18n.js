@@ -47,6 +47,21 @@ function loadSpanish() {
 	langKeys['authors'] = 'Autores: ';
 	langKeys['publisher'] = 'Publicador: ';
 	langKeys['published_date'] = 'Fecha de publicaci&oacute;n: ';
+	
+	//Settings
+	langKeys['passwordChangeOk'] = 'Cambio correcto';
+	langKeys['passwordChangeFail'] = 'Contrase&ntilde;a incorrecta';
+	langKeys['settingsChanged'] = 'Se realizaron los cambios';
+	langKeys['addressAdded'] = 'Direcci&oacute;n agregada';
+	langKeys['addressChanged'] = 'Direcci&oacute;n cambiada';
+	langKeys['settingsError'] = 'Campos con * son obligatorios';
+	
+	//Settings - changeUserData
+	langKeys['']
+	//Settings - changePassword
+	//Settings - addAddress
+	//Settings - changeAddress
+	
 	return langKeys;
 }
 
@@ -103,6 +118,14 @@ function loadEnglish() {
 	langKeys['authors'] = 'Authors: ';
 	langKeys['publisher'] = 'Publisher: ';
 	langKeys['published_date'] = 'Published date: ';
+	
+	//Settings
+	langKeys['passwordChangeOk'] = 'Password changed';
+	langKeys['passwordChangeFail'] = 'Incorrect password';
+	langKeys['settingsChanged'] = 'Settings changed';
+	langKeys['addressAdded'] = 'Address added';
+	langKeys['addressChanged'] = 'Address changed';
+	langKeys['settingsError'] = 'Fields with * are obligatory';
 	return langKeys;
 }
 

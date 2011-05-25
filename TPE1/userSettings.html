@@ -110,7 +110,6 @@
 			$('#updateAddressForm').submit(function(e) {
 				e.preventDefault();
 				updateExistingAddress();
-				$(':text').val('');
 			});
 			
 			$('#passwordChangeForm').submit(function(e) {
@@ -125,7 +124,6 @@
 			});
 			
 			getAddressList(getAddressListCallback);
-			getUserData();
 			translator.translatePage();
 		});
 	</script>
@@ -176,19 +174,19 @@
 							<tr>
 							<legend>Personal Information</legend>
 							<div class='fieldRow'>
-								<span>Nombre completo:</span>
+								<span id='ucFullName'>Nombre completo:</span>
 								<input type='text' id='nameInput'></input>
 							</div>
 							<div class='fieldRow'>
-								<span>Email:</span>
+								<span id='ucEmail'>Email:</span>
 								<input type='text' id='emailInput'></input>
 							</div>
 							<div class='fieldRow'>
-								<span>Fecha de nacimiento:</span>
+								<span id='ucBirthDate'>Fecha de nacimiento:</span>
 								<input type='text' id='birthDateInput'></input>
 							</div>
-							<div id='changeSettingsStatusDiv' class='statusDiv'>
-								<p>asdasdasdasd</p>
+							<div id='changeUserStatusDiv' class='statusDiv'>
+								<p id='changeUserStatus'></p>
 							</div>
 							<input type="submit" class="submit" value='Guardar'></input>
 						</fieldset>
@@ -198,15 +196,15 @@
 							<tr>
 							<legend>Password Management</legend>
 							<div class='fieldRow'>
-								<span>Old Password:</span>
+								<span id='cpOldPassword'>Old Password:</span>
 								<input type='password' id='oldPassword'></input>
 							</div>
 							<div class='fieldRow'>
-								<span>New Password:</span>
+								<span id='cpNewPassword'>New Password:</span>
 								<input type='password' id='newPassword'></input>
 							</div>
-							<div id='changeUserStatusDiv' class='statusDiv'>
-								<p id='changeUserStatus'></p>
+							<div id='changePasswordStatusDiv' class='statusDiv'>
+								<p id='changePasswordStatus'></p>
 							</div>
 						<input type="submit" class="submit" value="Guardar"></input>
 						</fieldset>
@@ -224,33 +222,33 @@
 						<fieldset class='addressFieldSet'>
 							<legend>New Address</legend>
 							<div class='fieldRow'>
-								<span>Name:</span>
+								<span id='aaName'>Name:</span>
 								<input type='text' id='fullName'></input>
 							</div>
 							<div class='fieldRow'>
-								<span>Adress 1:</span>
+								<span id='aaAddressOne'>Adress 1:</span>
 								<input id='addressLineOne' type='text'></input>
 							</div>
 							<div class='fieldRow'>
-								<span>Adress 2:</span>
+								<span id='aaAddressTwo'>Adress 2:</span>
 								<input id='addressLineTwo' type='text'></input>
 							</div>
 							<div class='fieldRow' id='countryDivNA'>
-								<span>County:</span>
+								<span id='aaCountry'>County:</span>
 							</div>
 							<div class='fieldRow' id='stateDivNA'>
-								<span>State:</span>
+								<span id='aaState'>State:</span>
 							</div>
 							<div class='fieldRow'>
-								<span>City:</span>
+								<span id='aaCity'>City:</span>
 								<input id='city' type='text'></input>
 							</div>
 							<div class='fieldRow'>
-								<span>Zip Code:</span>
+								<span id='aaZipCode'>Zip Code:</span>
 								<input id='zipCode' type='text'></input>
 							</div>
 							<div class='fieldRow'>
-								<span>Phone Number:</span>
+								<span id='aaPhoneNumber'>Phone Number:</span>
 								<input id='phoneNumber' type='text'></input>
 							</div>
 							<div id='addAddressStatusDiv' class='statusWCancelDiv'>
@@ -269,12 +267,9 @@
 							<legend>These are your current addresses:</legend>
 							<select id="AddressSelect">
 								<option value="1">item 1</option>
-								<option value="2">item 2</option>
-								<option value="3">item 3</option>
-								<option value="4">item 4</option>
 							</select>
 							<div class='fieldRow'>
-								<span>Adress 1:</span>
+								<span id=''>Adress 1:</span>
 								<input type='text' id='maAddress1'></input>
 							</div>
 							<div class='fieldRow'>
