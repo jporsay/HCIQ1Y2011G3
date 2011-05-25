@@ -48,10 +48,6 @@ function getCountries(langId) {
 
 
 function getStates(countryId, langId, location) {
-	if (document.getElementById('stateId' + location)) {
-		var holder = document.getElementById('stateDiv' + location);
-		holder.removeChild(holder.lastChild);
-	}
 	common.get(
 		{
 			method: 'GetStateList',
@@ -59,25 +55,33 @@ function getStates(countryId, langId, location) {
 			country_id: countryId
 		},
 		function(data) {
-			var holder = document.getElementById('stateDiv' + location);
-			var innerHolder = document.createElement('select');
-			innerHolder.setAttribute('id', 'stateId' + location);
-			var first = true;
-			var option = null;
-			$(data).find('state').each(
-				function() {
-					opt = document.createElement('option');
-					opt.setAttribute('id', $(this).attr('id'));
-					opt.setAttribute('value', $(this).attr('id'));
-					$(opt).html($(this).find('name').text());
-					if (first) {
-						opt.setAttribute('selected', 'selected');
-						first = false;
-					}
-					innerHolder.appendChild(opt);
-				}
-			);
-			holder.appendChild(innerHolder);
+			fillStates(data, location);
 		}
 	);
+}
+
+function fillStates(data, location) {
+	if (document.getElementById('stateId' + location)) {
+		var holder = document.getElementById('stateDiv' + location);
+		holder.removeChild(holder.lastChild);
+	}
+	var holder = document.getElementById('stateDiv' + location);
+	var innerHolder = document.createElement('select');
+	innerHolder.setAttribute('id', 'stateId' + location);
+	var first = true;
+	var option = null;
+	$(data).find('state').each(
+		function() {
+			opt = document.createElement('option');
+			opt.setAttribute('id', $(this).attr('id'));
+			opt.setAttribute('value', $(this).attr('id'));
+			$(opt).html($(this).find('name').text());
+			if (first) {
+				opt.setAttribute('selected', 'selected');
+				first = false;
+			}
+			innerHolder.appendChild(opt);
+		}
+	);
+	holder.appendChild(innerHolder);
 }
