@@ -75,18 +75,9 @@ function createOrderDiv(order, orderType) {
 	var newOrder = document.createElement('div');
 		newOrder.setAttribute('class', 'order');
 		newOrder.setAttribute('id', 'order' + order.attr('id'));
+	
 	createLabel(newOrder, 'Order ID: ', order.attr('id'), 'orderId');
-	var addressLabel = '';
-	getAddress(
-		order.find('address_id').text(),
-		function(data) {
-			var address = $(data);
-			addressLabel += address.find('full_name').text();
-			addressLabel += ' - '
-			addressLabel += address.find('address_line_1').text();
-		},
-		true
-	);
+	var addressLabel = getAddressLabel(order);
 	createLabel(newOrder, 'Address: ', addressLabel, 'address');
 	createLabel(newOrder, 'Date: ', order.find(orderType + '_date').text(), 'date');
 
@@ -107,6 +98,26 @@ function createLabel(parent, label, value, valueClass) {
 	parent.appendChild(label_span);
 	parent.appendChild(label_value);
 	parent.appendChild(clear);
+}
+
+function getAddressLabel(order) {
+	var label = '';
+	var id = order.find('address_id').text();
+	if (id) {
+		getAddress(
+			id,
+			function(data) {
+				var address = $(data);
+				label += address.find('full_name').text();
+				label += ' - '
+				label += address.find('address_line_1').text();
+			},
+			true
+		);
+	} else {
+		label = 'No address saved';
+	}
+	return label;
 }
 
 function createOrderPruductTable(order, currency) {

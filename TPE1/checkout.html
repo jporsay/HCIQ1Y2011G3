@@ -25,6 +25,8 @@
 		<script type="text/javascript" src="libs/login.js"></script>
 		<script type="text/javascript" src="libs/cartManager.js"></script>
 		<script type="text/javascript" src="libs/common.js"></script>
+		<script type="text/javascript" src="libs/userSettings.js"></script>
+		<script type="text/javascript" src="libs/userManager.js"></script>
 		<script type="text/javascript" src="libs/orderManager.js"></script>
 		<script type="text/javascript">
 			$(function() {
@@ -69,7 +71,7 @@
 						$('#searchbutton').click();
 					}
 				});
-				
+				getAddressList(getAddressListCallback);
 				loadUserSesion();
 				translator.translatePage();
 			});
@@ -117,6 +119,39 @@
 					<div class='billingInformation'>
 						<fieldset>
 							<legend>Billing Information</legend>
+							<select id="AddressSelect"><option selected="selected" value="null">------</option></select>
+							<div class="fieldRow">
+								<span>Adress 1:</span>
+								<input id="maAddress1" type="text">
+							</div>
+							<div class="fieldRow">
+								<span>Adress 2:</span>
+								<input id="maAddress2" type="text">
+							</div>
+							<div class="fieldRow" id="countryDivMA">
+								<span>County:</span>
+							<select id="countryIdMA"><option selected="selected" value="1" id="1">Argentina</option><option value="2" id="2">United States</option></select></div>
+							<div class="fieldRow" id="stateDivMA">
+								<span>State:</span>
+							<select id="stateIdMA"><option selected="selected" value="1" id="1">Capital Federal</option><option value="21" id="21">Buenos Aires</option></select></div>
+							<div class="fieldRow">
+								<span>City:</span>
+								<input id="maCity" type="text">
+							</div>
+							<div class="fieldRow">
+								<span>Zip Code:</span>
+								<input id="maZipCode" type="text">
+							</div>
+							<div class="fieldRow">
+								<span>Phone Number:</span>
+								<input id="maPhoneNumber" type="text">
+							</div>
+							<div id="updateAddressStatusDiv" class="statusWCancelDiv">
+								<p id="updateAddressStatus"></p>
+							</div>
+							<!--
+							<button type="cancel" class="">Cancel</button>
+							<input class="submit" value="Guardar" id="updateAddress" type="submit"></input>
 							<div class='fieldRow'>
 								<span>First Name:</span>
 								<input type='text'></input>
@@ -140,7 +175,7 @@
 							<div class='fieldRow'>
 								<span>Zip/Postal Code:</span>
 								<input type='text'></input>
-							</div>
+							</div>-->
 						</fieldset>
 					</div>
 					<div class='paymentInformation'>
