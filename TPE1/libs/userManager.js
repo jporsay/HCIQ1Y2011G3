@@ -170,8 +170,9 @@ function getAddressList(callback) {
 	);
 }
 
-function buildNewAddressXML(rawData) {
-	var xml = "<address>";
+function buildNewAddressXML(rawData, id) {
+	var xml;
+	var xml = "<address" + (id ? (' id=\'' + id + '\'') : '') + '>';
 	xml = xml + "<full_name>" + rawData.fullName + "</full_name>";
 	xml = xml + "<address_line_1>" + rawData.addressLineOne + "</address_line_1>";
 	xml = xml + (rawData.addressLineTwo == "" ? "<address_line_2/>" : "<address_line_2>" + rawData.addressLineTwo + "</address_line_2>");
