@@ -45,7 +45,7 @@ function processItems(data) {
 			added++;
 		}
 	);
-	setButtons(container, added);
+	setButtons(container, added, $(data).find('products').attr('size'));
 	var translator = new i18n();
 	translator.translatePage();
 }
@@ -302,9 +302,9 @@ function genericViewBuilder(container, product, fields) {
 	}
 }
 
-function setButtons(container, itemsAdded) {
-	addButtons(container);
-	if (itemsAdded < ITEMSPERPAGE) {
+function setButtons(container, itemsAdded, totalItems) {
+	addButtons(container, totalItems);
+	if (itemsAdded < ITEMSPERPAGE || Math.ceil(totalItems / ITEMSPERPAGE) == urlParam('page')) {
 		var nextBtn = document.getElementsByClassName('next')[0];
 		nextBtn.setAttribute('disabled', 'disabled');
 	}
@@ -314,7 +314,7 @@ function setButtons(container, itemsAdded) {
 	}
 }
 
-function addButtons(jar) {
+function addButtons(jar, totalItems) {
 	var prevBtn = document.createElement('button');
 	prevBtn.setAttribute('type', 'button');
 	prevBtn.setAttribute('class', 'navButton prev');
@@ -322,6 +322,11 @@ function addButtons(jar) {
 	prevBtn.innerHTML = '« Previous'
 	jar.appendChild(prevBtn);
 	
+	var location = document.createElement('div');
+	$(location).html(getTranslation('pagePosition') + urlParam('page') + getTranslation('pagePositionSeparator') + Math.ceil(totalItems / ITEMSPERPAGE));
+	location.setAttribute('class', 'pagePosition');
+	jar.appendChild(location);
+
 	var nextBtn = document.createElement('button');
 	nextBtn.setAttribute('type', 'button');
 	nextBtn.setAttribute('class', 'navButton next');
