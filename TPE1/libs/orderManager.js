@@ -6,7 +6,7 @@ var _DELIVERED = "4";
 
 var _userdata;
 var orderServer = new ServerManager('Order');
-var createdOrdersEl, confirmedOrdersEl, deliveringOrdersEl, deliveredOrdersEl;
+var ordersContainer = new Array();
 
 function printOrders(userdata, langId) {
 	_userdata = userdata;
@@ -15,22 +15,31 @@ function printOrders(userdata, langId) {
 			method: 'GetOrderList',
 			username: userData['userName'],
 			authentication_token: userData['token']
-		},		
+		},
 		processOrders
 	);
 }
 		
-function processOrders(orders) {
-	createdOrdersEl = document.getElementById('createdOrders');
-	confirmedOrdersEl = document.getElementById('confirmedOrders');
-	deliveringOrdersEl = document.getElementById('deliveringOrders');
-	deliveredOrdersEl = document.getElementById('deliveredOrders');
+function processOrders(orders) { 
+	ordersContainer[0] = document.getElementById('createdOrders');
+	ordersContainer[1] = document.getElementById('confirmedOrders');
+	ordersContainer[2] = document.getElementById('deliveringOrders');
+	ordersContainer[3] = document.getElementById('deliveredOrders');
 	$(orders).find('order').each(
 		function() {
 			var order = $(this);
 			createOrderDiv(order);
 		}
 	);
+	
+	for(var i = 0; i < ordersContainer.length; i++) {
+		if ($(ordersContainer[i]).children().size() == 1) {
+			var empty_div_label = document.createElement('h3');
+			empty_div_label.setAttribute('class', 'emptyContainerLabel');
+			empty_div_label.innerHTML = 'You have no orders in this section';
+			ordersContainer[i].appendChild(empty_div_label);
+		}
+	}
 }
 
 /*
@@ -48,26 +57,37 @@ function createOrderDiv(order, orderType) {
 	switch(status) {
 		case _CREATED :
 			orderType = 'created';
-			parent = createdOrdersEl;
+			parent = ordersContainer[0];
 			break;
 		case _CONFIRMED: 
 			orderType = 'confirmed';
-			parent = confirmedOrdersEl;
+			parent = ordersContainer[1];
 			break;
 		case _DELIVERING:
 			orderType = 'shipped';
-			parent = deliveringOrdersEl;
+			parent = ordersContainer[2];
 			break;
 		case _DELIVERED:
 			orderType = 'delivered';
-			parent = deliveredOrdersEl;
+			parent = ordersContainer[3];
 			break;
 	}
 	var newOrder = document.createElement('div');
 		newOrder.setAttribute('class', 'order');
 		newOrder.setAttribute('id', 'order' + order.attr('id'));
-	createLabel(newOrder, 'Order ID: ', order.attr('id'), 'orderId');	
-	createLabel(newOrder, 'Address: ', order.find('address_id').text(), 'address');
+	createLabel(newOrder, 'Order ID: ', order.attr('id'), 'orderId');
+	var addressLabel = '';
+	getAddress(
+		order.find('address_id').text(),
+		function(data) {
+			var address = $(data);
+			addressLabel += address.find('full_name').text();
+			addressLabel += ' - '
+			addressLabel += address.find('address_line_1').text();
+		},
+		true
+	);
+	createLabel(newOrder, 'Address: ', addressLabel, 'address');
 	createLabel(newOrder, 'Date: ', order.find(orderType + '_date').text(), 'date');
 
 	var table_container = createOrderPruductTable(order, '$');
