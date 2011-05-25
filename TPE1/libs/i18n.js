@@ -57,10 +57,30 @@ function loadSpanish() {
 	langKeys['settingsError'] = 'Campos con * son obligatorios';
 	
 	//Settings - changeUserData
-	langKeys['']
+	langKeys['ucFullName'] = 'Nombre completo:*';
+	langKeys['ucEmail'] = 'Email:*';
+	langKeys['ucBirthDate'] = 'Fecha de nacimiento:*';
+	langKeys['ucLegend'] = 'Informaci&oacute;n personal';
 	//Settings - changePassword
+	langKeys['cpOldPassword'] = 'Contrase&ntilde;a actual:*';
+	langKeys['cpNewPassword'] = 'Contrase&ntilde;a nueva:*';
 	//Settings - addAddress
+	langKeys['aaName'] = 'Nombre:*';
+	langKeys['aaAddressOne'] = 'Direcci&oacute;n 1:*';
+	langKeys['aaAddressTwo'] = 'Direcci&oacute;n 2:*';
+	langKeys['aaZipCode'] = 'C&oacute;digo postal:*';
+	langKeys['aaCity'] = 'Ciudad:*';
+	langKeys['aaState'] = 'Estado:*';
+	langKeys['aaPhoneNumber'] = 'N&uacute;mero de tel&eacute;fono:*';
+	langKeys['aaCountry'] = 'Pa&iacute;s:*';
 	//Settings - changeAddress
+	langKeys['caAddressOne'] = 'Direcci&oacute;n 1:*';
+	langKeys['caAddressTwo'] = 'Direcci&oacute;n 2:*';
+	langKeys['caZipCode'] = 'C&oacute;digo postal:*';
+	langKeys['caCity'] = 'Ciudad:*';
+	langKeys['caState'] = 'Estado:*';
+	langKeys['caPhoneNumber'] = 'N&uacute;mero de tel&eacute;fono:*';
+	langKeys['caCountry'] = 'Pa&iacute;s:*';
 	
 	return langKeys;
 }
@@ -126,6 +146,32 @@ function loadEnglish() {
 	langKeys['addressAdded'] = 'Address added';
 	langKeys['addressChanged'] = 'Address changed';
 	langKeys['settingsError'] = 'Fields with * are obligatory';
+	
+	//Settings - changeUserData
+	langKeys['ucFullName'] = 'Full name:*';
+	langKeys['ucEmail'] = 'Email:*';
+	langKeys['ucBirthDate'] = 'Birth Date:*';
+	langKeys['ucLegend'] = 'Personal Information';
+	//Settings - changePassword
+	langKeys['cpOldPassword'] = 'Old password:*';
+	langKeys['cpNewPassword'] = 'New Password:*';
+	//Settings - addAddress
+	langKeys['aaName'] = 'Name:*';
+	langKeys['aaAddressOne'] = 'Address 1:*';
+	langKeys['aaAddressTwo'] = 'Address 2:*';
+	langKeys['aaZipCode'] = 'Postal code:*';
+	langKeys['aaCity'] = 'City:*';
+	langKeys['aaState'] = 'State:*';
+	langKeys['aaPhoneNumber'] = 'Phone number:*';
+	langKeys['aaCountry'] = 'Country:*';
+	//Settings - changeAddress
+	langKeys['caAddressOne'] = 'Address 1:*';
+	langKeys['caAddressTwo'] = 'Address 2:*';
+	langKeys['caZipCode'] = 'Postal code:*';
+	langKeys['caCity'] = 'City:*';
+	langKeys['caState'] = 'State:*';
+	langKeys['caPhoneNumber'] = 'Phone number:*';
+	langKeys['caCountry'] = 'Country:*';
 	return langKeys;
 }
 

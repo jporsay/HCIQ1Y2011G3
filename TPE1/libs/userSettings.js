@@ -45,13 +45,14 @@ function fillSelect(data) {
 		$(opt).html(data[i].name);
 		$('#AddressSelect').append(opt);
 	}
-	
-	$('#AddressSelect').change(function() {
-		var val = $(this).attr('value');
-		if (val !== 'null') {
-			loadAddress($(this).val());
-		}
-	});
+	if (loadAddress) {
+		$('#AddressSelect').change(function() {
+			var val = $(this).attr('value');
+			if (val !== 'null') {
+				loadAddress($(this).val());
+			}
+		});
+	}
 }
 var common = new ServerManager('Common');
 function loadAddress(value) {
