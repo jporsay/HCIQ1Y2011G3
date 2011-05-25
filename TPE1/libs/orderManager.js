@@ -5,8 +5,6 @@ var _DELIVERING = "3";
 var _DELIVERED = "4";
 
 var _userdata;
-var prod;
-
 var orderServer = new ServerManager('Order');
 var createdOrdersEl, confirmedOrdersEl, deliveringOrdersEl, deliveredOrdersEl;
 
@@ -96,16 +94,14 @@ function createOrderPruductTable(order, currency) {
 	var order_table_container = document.createElement('div');
 		order_table_container.setAttribute('class', 'itemsTable');
 
-	getProductsFor(orderId);
-	//Se supone que retorna una lista de productos correspondientes a la orden ordenID
-	//Como no logro conseguir eso, se estan guardando en productsInOrder(que no guarda nada no se porque).
+	var productsInOrder = getProductsFor(orderId);
 	createItemsTableInElement(order_table_container, productsInOrder, currency);
 	return order_table_container;
 }
 
-var productsInOrder = [];
 function getProductsFor(orderId) {
-	orderServer.get(
+	var productsInOrder = [];
+	orderServer.getS (
 		{
 			method: 'GetOrder',
 			username: _userdata['userName'],
@@ -117,37 +113,34 @@ function getProductsFor(orderId) {
 				function() {
 					var item = $(this);
 					var product = getProduct(item.find('product_id').text());
-					//Se supone q devuelve un proucto, pero como se dicidio a no devolver nada,
-					//el producto se etsa guardando en prod y lo copio a esta nuava variable producto para guardarlo
-					var product = {
-						name: prod.name, 
-						id: prod.id,
-						price: prod.price,
-					}
 					product.quantity = item.find('count').text();
 					productsInOrder.push(product);
 				}
 			);
 		}
 	);
+	return productsInOrder;
 }
 
 var prod = null;
 function getProduct(productId) {
 	var catalogServer = new ServerManager('Catalog');
-	var asd;
-	catalogServer.get(
+	var newProduct;
+	catalogServer.getS(
 		{
 			method: 'GetProduct',
 			product_id: productId
 		},
 		function(data) {
-			asd = createItem(data);
-			alert('inner' + asd.name);
+			var item = $(data).find('product');
+			newProduct = {
+				name: item.find('name').text(), 
+				id: item.attr('id'), 
+				price:	 item.find('price').text(),
+			}
 		}
 	);
-	alert('maldito js! ' + asd.name);
-	return asd;
+	return newProduct;
 }
 
 function createItem(data) {
