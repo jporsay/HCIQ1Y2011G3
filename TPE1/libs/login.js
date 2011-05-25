@@ -1,6 +1,6 @@
 var security = new ServerManager('Security');
 var userData = [];
-function logIn(username, password) {
+function logIn(username, password, callback) {
 	$('.errorContainer').css('display', 'none');
 	security.post(
 		{
@@ -8,7 +8,7 @@ function logIn(username, password) {
 			username: username,
 			password: password
 		},
-		logInCallback
+		callback
 	)
 }
 
@@ -175,7 +175,7 @@ function setGuestForm(container) {
 	
 	var translator = new i18n();
 	$('#loginbutton').click(function() {
-		logIn($('#usernameInput').val(), $('#passwordInput').val());
+		logIn($('#usernameInput').val(), $('#passwordInput').val(), logInCallback);
 	});
 	translator.translatePage();
 }
