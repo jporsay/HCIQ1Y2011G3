@@ -42,7 +42,6 @@ function parseResponse(data, userData) {
 	addItemsToOrder(orderId, userData);
 	setOrderAddress(orderId, addressId, userData);
 	confirmOrder(orderId, addressId, userData);
-	window.location = "orderTracking.html";
 }
 
 function setOrderAddress(orderId, addressId, userData) {
@@ -94,6 +93,7 @@ function confirmOrder(orderId, addressId, userData) {
 		address_id: addressId
 	},
 	function(data) {
+		window.location = "orderTracking.html";
 	}
 	);
 }
