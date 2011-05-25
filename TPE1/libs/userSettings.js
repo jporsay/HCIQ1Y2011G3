@@ -2,7 +2,10 @@ var addressList;
 function getAddressListCallback(data) {
 	addressList = createAddressArray(data);
 	fillSelect(addressList[0]);
-	return;
+}
+
+function getAddressListCallbackNoFill(data) {
+	addressList = createAddressArray(data);
 }
 
 function createAddressArray(data) {
@@ -102,10 +105,19 @@ function updateExistingAddress() {
 			address: xml
 		},
 		function(data) {
+			var status = $(data).find('response').attr('status');
+			if (status === 'ok') {
+				showStatusMessage('updateAddressStatus', getTranslation('addressChanged'));
+				getAddressList(getAddressListCallbackNoFill);
+			} else {
+				showStatusMessage('updateAddressStatus', getTranslation('settingsError'));
+			}
 		}
 	);
 }
 
 function showStatusMessage(elementId, message) {
-	$('#' + elementId).html(message).delay(5000).fadeOut(500);
+	var element = '#' + elementId;
+	$(element).html('').show();
+	$(element).html(message).delay(2000).fadeOut(500);
 }
