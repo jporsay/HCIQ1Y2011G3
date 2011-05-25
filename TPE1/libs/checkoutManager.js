@@ -40,14 +40,14 @@ function parseResponse(data, userData) {
 	}
 	*/
 	//var orderId = response.find('order').attr('id');
-	var orderId = 945;
+	var orderId = 962;
+	var addressId = 434;
 	addItemsToOrder(orderId, userData);
-	//TODO: Agregar el address
-	
+	confirmOrder(orderId, addressId, userData);
 	//window.location = "orderTracking.html";
 }
 
-function setOrderAddress(orderId, userData) {
+function setOrderAddress(orderId, addressId, userData) {
 	return;
 	order.post (
 		{
@@ -55,12 +55,11 @@ function setOrderAddress(orderId, userData) {
 			username: userData['userName'],
 			authentication_token: userData['token'],
 			order_id: orderId,
-			address_id: '1'
+			address_id: addressId
 		},
 		function(data) {
 		}
 	);
-	
 }
 
 function addItemsToOrder(orderId, userData) {
@@ -89,3 +88,16 @@ function postItem(item, orderId, userData) {
 	);
 }
 
+function confirmOrder(orderId, addressId, userData) {
+	order.post (
+	{
+		method: 'ConfirmOrder',
+		username: userData['userName'],
+		authentication_token: userData['token'],
+		order_id: orderId,
+		address_id: addressId
+	},
+	function(data) {
+	}
+	);
+}
