@@ -34,7 +34,7 @@ function createAddressArray(data) {
 function fillSelect(data) {
 	$('#AddressSelect').empty();
 	var opt = document.createElement('option');
-	opt.setAttribute('value', 'null');
+	opt.setAttribute('value', '');
 	opt.setAttribute('selected', 'selected');
 	$(opt).html('------');
 	$('#AddressSelect').append(opt);
@@ -89,7 +89,7 @@ function updateExistingAddress() {
 	}
 	var data = [];
 	var id = $('#AddressSelect').val();
-	if (id === 'null') {
+	if (id === '') {
 		showStatusMessage('updateAddressStatus', getTranslation('selectAValidAddress'));
 		return;
 	}
