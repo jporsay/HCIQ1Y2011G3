@@ -1,3 +1,7 @@
+#checkoutTable {
+	margin: 45px;
+}
+
 .fieldsCheckout {
 	position: relative;
 	margin-top: 20px;
@@ -59,6 +63,3 @@ fieldset legend {
 	height: 40px;
 	float: right;
 }
-
-
-

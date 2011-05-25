@@ -7,6 +7,14 @@ function createItemsTable(elementId, items, currency) {
 	element.appendChild(table);
 }
 
+function createItemsTableInElement(element, items, currency) {
+	var table = createCartTable();
+	var tbody = document.createElement('tbody');
+	appendElementToTable(tbody, items, currency);
+	table.appendChild(tbody);
+	element.appendChild(table);
+}
+
 function createCartTable() {
 	var table = document.createElement('table');
 	table.setAttribute('class', 'cart-table');
