@@ -5,6 +5,7 @@ var _DELIVERING = "3";
 var _DELIVERED = "4";
 
 var _userdata;
+var prod;
 
 var orderServer = new ServerManager('Order');
 var createdOrdersEl, confirmedOrdersEl, deliveringOrdersEl, deliveredOrdersEl;
@@ -115,7 +116,7 @@ function getProductsFor(orderId) {
 			$(data).find('item').each (
 				function() {
 					var item = $(this);
-					getProduct(item.find('product_id').text());
+					var product = getProduct(item.find('product_id').text());
 					//Se supone q devuelve un proucto, pero como se dicidio a no devolver nada,
 					//el producto se etsa guardando en prod y lo copio a esta nuava variable producto para guardarlo
 					var product = {
@@ -134,27 +135,28 @@ function getProductsFor(orderId) {
 var prod = null;
 function getProduct(productId) {
 	var catalogServer = new ServerManager('Catalog');
+	var asd;
 	catalogServer.get(
 		{
 			method: 'GetProduct',
 			product_id: productId
 		},
-		function(data)
-		{
-			createItem(data);
-			console.log(prod.name);
+		function(data) {
+			asd = createItem(data);
+			alert('inner' + asd.name);
 		}
 	);
+	alert('maldito js! ' + asd.name);
+	return asd;
 }
 
 function createItem(data) {
 	var item = $(data).find('product');
-	alert('asd');
-	console.error('prod');
-	prod = {
+	var prod_info = {
 		name: item.find('name').text(), 
 		id: item.attr('id'), 
 		price: item.find('price').text(),
 	}
+	return prod_info;
 }
 

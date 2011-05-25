@@ -84,8 +84,7 @@ function postItem(item, orderId, userData) {
 			order_item: orederItem
 		},
 		function(data) {
-			alert(data);
-			console.log(data);
+			
 		}
 	);
 }

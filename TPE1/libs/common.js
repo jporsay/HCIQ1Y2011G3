@@ -44,10 +44,6 @@ function createCartTable() {
 
 function appendElementToTable(table, items, currency) {
 	var totalPrice = 0;
-	if (!items) {
-		console.log('El vector de items esta indefinido');
-		return;
-	}
 	for(var i=0; i < items.length; i++) {
 		var item = items[i];
 		totalPrice += (item.quantity * item.price);
