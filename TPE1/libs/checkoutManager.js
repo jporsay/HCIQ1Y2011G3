@@ -6,15 +6,8 @@ function createNewOrder() {
 		return;
 	}
 	if (!validateFields()) {
-		alert('//TODO: campos invalidos');
 		return;
 	}
-	var response = {
-		status: 'ok',
-		order_id:'945'
-	};
-	parseResponse(response, userData);
-	/*
 	order.post(
 		{
 			method: 'CreateOrder',
@@ -24,10 +17,16 @@ function createNewOrder() {
 		function(data) {
 			parseResponse(data, userData);
 		}
-	);*/
+	);
 }
 
 function validateFields() {
+	var orderId = $('#AddressSelect').val();
+	if (!orderId) {
+		alert('You must select an address to create an order');
+		return false;
+	}
+
 	return true;
 }
 
@@ -39,6 +38,7 @@ function parseResponse(data, userData) {
 	}
 	var orderId = response.find('order').attr('id');
 	var addressId = $('#AddressSelect').val();
+	alert('orderId: ' + orderId + ' addressId' + addressId);
 	addItemsToOrder(orderId, userData);
 	confirmOrder(orderId, addressId, userData);
 	window.location = "orderTracking.html";
@@ -128,5 +128,4 @@ function fillForms(info, inputs) {
 	city.val(info.find('city').text());
 	zip.val(info.find('zip_code').text());
 	phone.val(info.find('phone_number').text());
-	
 }
