@@ -15,6 +15,7 @@
 	border-top: 4px solid #aabcfe;
 	border-bottom: 1px solid #fff;
 	color: #003399;
+	min-width: 50px;
 }
 
 .cart-table td {
