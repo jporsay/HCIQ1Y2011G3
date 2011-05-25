@@ -40,12 +40,12 @@ function parseResponse(data, userData) {
 	var addressId = $('#AddressSelect').val();
 	alert('orderId: ' + orderId + ' addressId' + addressId);
 	addItemsToOrder(orderId, userData);
+	setOrderAddress(orderId, addressId, userData);
 	confirmOrder(orderId, addressId, userData);
 	window.location = "orderTracking.html";
 }
 
 function setOrderAddress(orderId, addressId, userData) {
-	return;
 	order.post (
 		{
 			method: 'ChangeOrderAddress',
@@ -80,7 +80,6 @@ function postItem(item, orderId, userData) {
 			order_item: orederItem
 		},
 		function(data) {
-			
 		}
 	);
 }
