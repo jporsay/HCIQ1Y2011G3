@@ -45,7 +45,7 @@ function fillSelect(data) {
 		$(opt).html(data[i].name);
 		$('#AddressSelect').append(opt);
 	}
-	if (loadAddress) {
+	if (typeof fillStates == 'function') {
 		$('#AddressSelect').change(function() {
 			var val = $(this).attr('value');
 			if (val !== 'null') {
