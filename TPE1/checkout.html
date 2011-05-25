@@ -52,6 +52,7 @@
 					loadCategories($('#locale :selected').attr('id'));
 					translator.translatePage();
 				});
+				loadUserSesion();
 				loadCartFromCookie();
 				cartInstance.printToTable('checkoutTable');
 
@@ -71,8 +72,8 @@
 						$('#searchbutton').click();
 					}
 				});
+				
 				getAddressList(getAddressListCallback);
-				loadUserSesion();
 				translator.translatePage();
 			});
 		</script>
