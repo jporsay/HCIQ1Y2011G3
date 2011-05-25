@@ -53,9 +53,10 @@
 					translator.translatePage();
 				});
 				loadUserSesion();
+				getAddressList(getAddressListCallback);
 				loadCartFromCookie();
 				cartInstance.printToTable('checkoutTable');
-
+				
 				$("#billingForm").submit(function(e) {
 					e.preventDefault();
 					createNewOrder();
@@ -74,9 +75,8 @@
 				});
 				
 				$('#AddressSelect').change(function() {
-					loadAddresInfo('addresInformation', );
+					loadAddresInfo('addresInformation');
 				});
-				getAddressList(getAddressListCallback);
 				translator.translatePage();
 			});
 		</script>

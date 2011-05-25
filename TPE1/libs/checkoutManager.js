@@ -32,20 +32,16 @@ function validateFields() {
 }
 
 function parseResponse(data, userData) {
-	/*
 	var response = $(data).find('response');
 	if (response.attr('status') == 'fail') {
 		alert('UPS! something gone horribly wrong =(');
 		return;
 	}
-	*/
-	//var orderId = response.find('order').attr('id');
-	var orderId = 962;
-	var addressId = 434;
-	$('');
+	var orderId = response.find('order').attr('id');
+	var addressId = $('#AddressSelect').val();
 	addItemsToOrder(orderId, userData);
 	confirmOrder(orderId, addressId, userData);
-	//window.location = "orderTracking.html";
+	window.location = "orderTracking.html";
 }
 
 function setOrderAddress(orderId, addressId, userData) {
