@@ -41,7 +41,6 @@ function parseResponse(data, userData) {
 	alert('orderId: ' + orderId + ' addressId' + addressId);
 	addItemsToOrder(orderId, userData);
 	confirmOrder(orderId, addressId, userData);
-	window.location = "orderTracking.html";
 }
 
 function setOrderAddress(orderId, addressId, userData) {
@@ -95,6 +94,7 @@ function confirmOrder(orderId, addressId, userData) {
 		address_id: addressId
 	},
 	function(data) {
+		window.location = "orderTracking.html";
 	}
 	);
 }
