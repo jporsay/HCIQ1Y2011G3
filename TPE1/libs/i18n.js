@@ -8,12 +8,25 @@ function loadSpanish() {
 	langKeys['categoryHeader'] = 'Categor&iacute;as';
 	langKeys['createaccount'] = 'Crear cuenta';
 	langKeys['errorContainer'] = 'Usuario o contrase&ntilde;a inv&aacute;lido';
+	
+	//Validation Errors
+	//User
+	langKeys['shortPassword'] = 'Letras, digitos, "_" y "-". Min: 8. Max: 15';
+	langKeys['mailFormat'] = 'Formato: great@example.com';
+	langKeys['usernameFormat'] = 'Solo letras y d&iacute;gitos. Max: 15';
+	langKeys['nameFormat'] = 'Solo letras y espacios. Max: 80';
+	langKeys['dateFormat'] = 'Formato: yyyy-mm-dd';
+	
+	//Address
+	
 	//Index
 	langKeys['hotItemsHeader'] = 'Art&iacute;culos del dia:';
+	
 	//Cart
 	langKeys['cartQuantity'] = 'Cantidad: ';
 	langKeys['cartItemsHeader'] = 'Items del Carrito:';
 	langKeys['cartCheckoutLink'] = 'Realizar el checkout!';
+	
 	//Register - User settings
 	langKeys['registerHeader'] = 'Registro';
 	langKeys['registerInfo'] = 'Por favor complete la informaci&oacute;n (todos los campos son obligatorios)';
@@ -22,6 +35,7 @@ function loadSpanish() {
 	langKeys['registerFullName'] = 'Nombre completo:';
 	langKeys['registerPassword'] = 'Contrase&ntilde;a:';
 	langKeys['registerEmail'] = 'Email:';
+	
 	//Browse
 	langKeys['productsHeader'] = 'Productos:';
 	langKeys['browseRanking'] = 'Ranking: ';
@@ -49,11 +63,11 @@ function loadSpanish() {
 	langKeys['published_date'] = 'Fecha de publicaci&oacute;n: ';
 	
 	//Settings
-	langKeys['passwordChangeOk'] = 'Cambio correcto';
+	langKeys['passwordChangeOk'] = 'Contrase&ntilde;a actualizada';
 	langKeys['passwordChangeFail'] = 'Contrase&ntilde;a incorrecta';
-	langKeys['settingsChanged'] = 'Se realizaron los cambios';
+	langKeys['settingsChanged'] = 'Informaci&oacute;n personal actualizada';
 	langKeys['addressAdded'] = 'Direcci&oacute;n agregada';
-	langKeys['addressChanged'] = 'Direcci&oacute;n cambiada';
+	langKeys['addressChanged'] = 'Direcci&oacute;n actualizada';
 	langKeys['settingsError'] = 'Campos con * son obligatorios';
 	
 	//Settings - changeUserData
@@ -61,9 +75,11 @@ function loadSpanish() {
 	langKeys['ucEmail'] = 'Email:*';
 	langKeys['ucBirthDate'] = 'Fecha de nacimiento:*';
 	langKeys['ucLegend'] = 'Informaci&oacute;n personal';
+	
 	//Settings - changePassword
 	langKeys['cpOldPassword'] = 'Contrase&ntilde;a actual:*';
 	langKeys['cpNewPassword'] = 'Contrase&ntilde;a nueva:*';
+	
 	//Settings - addAddress
 	langKeys['aaName'] = 'Nombre:*';
 	langKeys['aaAddressOne'] = 'Direcci&oacute;n 1:*';
@@ -73,6 +89,7 @@ function loadSpanish() {
 	langKeys['aaState'] = 'Estado:*';
 	langKeys['aaPhoneNumber'] = 'N&uacute;mero de tel&eacute;fono:*';
 	langKeys['aaCountry'] = 'Pa&iacute;s:*';
+	
 	//Settings - changeAddress
 	langKeys['caAddressOne'] = 'Direcci&oacute;n 1:*';
 	langKeys['caAddressTwo'] = 'Direcci&oacute;n 2:*';
@@ -99,12 +116,23 @@ function loadEnglish() {
 	langKeys['categoryHeader'] = 'Categories';
 	langKeys['createaccount'] = 'Create account';
 	langKeys['errorContainer'] = 'Invalid username or password';
+	
+	//Validation Errors
+	//User
+	langKeys['passwordFormat'] = 'Characters, digits, "_" and "-". Min: 8. Max: 15';
+	langKeys['mailFormat'] = 'Format: great@example.com';
+	langKeys['usernameFormat'] = 'Only characters and digits. Max: 15';
+	langKeys['nameFormat'] = 'Only letters and spaces. Max: 80';
+	langKeys['dateFormat'] = 'Format: yyyy-mm-dd';
+	
 	//Index
 	langKeys['hotItemsHeader'] = 'Today\'s hot items:'
+	
 	//Cart
 	langKeys['cartQuantity'] = 'Quantity: ';
 	langKeys['cartItemsHeader'] = 'Cart Items:';
 	langKeys['cartCheckoutLink'] = 'Proceed to checkout!';
+	
 	//Register - User settings
 	langKeys['registerHeader'] = 'Registration';
 	langKeys['registerInfo'] = 'Please enter the required information (all fields are required)';
@@ -113,6 +141,7 @@ function loadEnglish() {
 	langKeys['registerFullName'] = 'Full name:';
 	langKeys['registerPassword'] = 'Password:';
 	langKeys['registerEmail'] = 'Email:';
+	
 	//Browse
 	langKeys['productsHeader'] = 'Products:';
 	langKeys['browseRanking'] = 'Ranking: ';
@@ -140,11 +169,11 @@ function loadEnglish() {
 	langKeys['published_date'] = 'Published date: ';
 	
 	//Settings
-	langKeys['passwordChangeOk'] = 'Password changed';
+	langKeys['passwordChangeOk'] = 'Password updated';
 	langKeys['passwordChangeFail'] = 'Incorrect password';
-	langKeys['settingsChanged'] = 'Settings changed';
+	langKeys['settingsChanged'] = 'Personal information updated';
 	langKeys['addressAdded'] = 'Address added';
-	langKeys['addressChanged'] = 'Address changed';
+	langKeys['addressChanged'] = 'Address updated';
 	langKeys['settingsError'] = 'Fields with * are obligatory';
 	
 	//Settings - changeUserData
@@ -152,9 +181,11 @@ function loadEnglish() {
 	langKeys['ucEmail'] = 'Email:*';
 	langKeys['ucBirthDate'] = 'Birth Date:*';
 	langKeys['ucLegend'] = 'Personal Information';
+	
 	//Settings - changePassword
 	langKeys['cpOldPassword'] = 'Old password:*';
 	langKeys['cpNewPassword'] = 'New Password:*';
+	
 	//Settings - addAddress
 	langKeys['aaName'] = 'Name:*';
 	langKeys['aaAddressOne'] = 'Address 1:*';
@@ -164,6 +195,7 @@ function loadEnglish() {
 	langKeys['aaState'] = 'State:*';
 	langKeys['aaPhoneNumber'] = 'Phone number:*';
 	langKeys['aaCountry'] = 'Country:*';
+	
 	//Settings - changeAddress
 	langKeys['caAddressOne'] = 'Address 1:*';
 	langKeys['caAddressTwo'] = 'Address 2:*';

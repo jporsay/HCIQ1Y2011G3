@@ -58,35 +58,35 @@
 							re: /^[\w\d_-]+@[\w\d_-]+\.[\w]+$/,
 							min: 1,
 							max: 180,
-							errorm: "Mail has to be in the format great@example.com"
+							errorm: getTranslation('mailFormat')
 						},
 						{
 							e: '#username',
 							re: /^[\w\d_-]+$/,
 							min: 1,
 							max: 15,
-							errorm: "Username can contain only characters or digits. Max: 15"
+							errorm: getTranslation('usernameFormat')
 						},
 						{
 							e: '#password',
 							re: /^[\w\d_-]+$/,
 							min: 8,
 							max: 15,
-							errorm: "Password can contain only characters or digits. Min: 8. Max: 15"
+							errorm: getTranslation('passwordFormat')
 						},
 						{
 							e: '#name',
 							re: /^[\w ]+$/,
 							min: 1,
 							max: 80,
-							errorm: "Maximum length of name is 80 characters and contain only letters or spaces"
+							errorm: getTranslation('nameFormat')
 						},
 						{
 							e: '#birthDate',
 							re: /^(19|20)\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/,
 							min: 1,
 							max: 11,
-							errorm: "Date format: yyyy-mm-dd"
+							errorm: getTranslation('dateFormat')
 						}
 					];
 					$('form input').each(function() {

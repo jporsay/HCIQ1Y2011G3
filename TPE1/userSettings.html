@@ -98,10 +98,10 @@
 					alert('invalid name');
 					return;
 				} else if (!$('#birthDateInput').val().match(/^(19|20)\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/)) {
-					alert('invalid date');
+					showStatusMessage('changeUserStatus', getTranslation('dateFormat'));
 					return;
 				} else if (!$('#emailInput').val().match(/^[\w\d_-]+@[\w\d_-]+\.[\w]+$/)) {
-					alert('invalid email');
+					showStatusMessage('changeUserStatus', getTranslation('mailFormat'));
 					return;
 				}
 				updateUserData($('#nameInput').val(), $('#birthDateInput').val(), $('#emailInput').val());
@@ -116,7 +116,7 @@
 				e.preventDefault();
 				var newP = $('#newPassword').val();
 				if (newP.length < 8) {
-					alert('Password too short');
+					showStatusMessage('changePasswordStatus', getTranslation('passwordFormat'));
 					return;
 				}
 				changePassword($('#oldPassword').val(), $('#newPassword').val());
@@ -124,6 +124,7 @@
 			});
 			
 			getAddressList(getAddressListCallback);
+			showUserData();
 			translator.translatePage();
 		});
 	</script>

@@ -14,7 +14,7 @@ function createUser(rawData) {
 	);
 }
 
-function getUserData() {
+function showUserData() {
 	var userData = getLoggedData();
 	if (!userData) {
 		alert('You need to be logged in to do this action');
@@ -56,8 +56,10 @@ function updateUserData(fullName, birthDate, email) {
 		},
 		function(data) {
 			var status = $(data).find('response').attr('status');
-			if (status === 'fail') {
-				alert('Something went apocalyptically wrong');
+			if (status === 'ok') {
+				showStatusMessage('changeUserStatus', getTranslation('settingsChanged'));
+			} else {
+				showStatusMessage('changeUserStatus', getTranslation('settingsError'));
 			}
 		}
 	);
@@ -78,8 +80,10 @@ function changePassword(oldPassword, newPassword) {
 		},
 		function(data) {
 			var status = $(data).find('response').attr('status');
-			if (status === 'fail') {
-				alert($(data).find('error').attr('message'));
+			if (status === 'ok') {
+				showStatusMessage('changePasswordStatus', getTranslation('passwordChangeOk'));
+			} else {
+				showStatusMessage('changePasswordStatus', getTranslation('passwordChangeFail'));
 			}
 		}
 	);
@@ -147,7 +151,12 @@ function createAddress(rawData, countryId, stateId) {
 			authentication_token: userdata['token']
 		},
 		function(data) {
-			successPost(data, 'Address ');
+			var status = $(data).find('response').attr('status');
+			if (status === 'ok') {
+				showStatusMessage('addAddressStatus', getTranslation('addressAdded'));
+			} else {
+				showStatusMessage('addAddressStatus', getTranslation('settingsError'));
+			}
 		}
 	);
 }
