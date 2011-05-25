@@ -302,11 +302,13 @@ i18n.prototype.translateElement = function(node) {
 	var key = node.id;
 	var translated = getTranslation(key);
 	// not using getAttribute since its buggy.
-	if ($(node).is('input')) {
-		//not using setAttribute since its broken in IE and in Opera.
-		node.setAttribute('value', translated);
-	} else {
-		node.innerHTML = translated;
+	if (translated !== undefined) {
+		if ($(node).is('input')) {
+			//not using setAttribute since its broken in IE and in Opera.
+			node.setAttribute('value', translated);
+		} else {
+			node.innerHTML = translated;
+		}
 	}
 	
 	return true;
