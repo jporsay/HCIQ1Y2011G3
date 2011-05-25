@@ -71,17 +71,15 @@
 /*-----add address fieldset------*/
 
 #settingsPanel  .addressFieldSet {
-	width: 500px;
+	width: 750px;
 	margin: 0px;
-	margin-left: 50px;
 }
 
 /*------check address----------*/
 
 #settingsPanel  .checkAddress {
-	width: 500px;
+	width: 750px;
 	margin: 0px;
-	margin-left: 50px;
 }
 
 #settingsPanel  #AddressSelect {
