@@ -95,7 +95,6 @@ function createOrderPruductTable(order, currency) {
 		order_table_container.setAttribute('class', 'itemsTable');
 
 	var productsInOrder = getProductsFor(orderId);
-	console.log(productsInOrder);
 	createItemsTableInElement(order_table_container, productsInOrder, currency);
 	return order_table_container;
 }
@@ -110,7 +109,6 @@ function getProductsFor(orderId) {
 			order_id: orderId
 		},
 		function(data) {
-			console.log(data);
 			$(data).find('item').each (
 				function() {
 					var item = $(this);
@@ -124,6 +122,7 @@ function getProductsFor(orderId) {
 	return productsInOrder;
 }
 
+var prod = null;
 function getProduct(productId) {
 	var catalogServer = new ServerManager('Catalog');
 	var newProduct;

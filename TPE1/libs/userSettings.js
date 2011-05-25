@@ -1,7 +1,8 @@
 var addressList;
 function getAddressListCallback(data) {
 	addressList = createAddressArray(data);
-	fillSelect(addressList);
+	fillSelect(addressList[0]);
+	return;
 }
 
 function createAddressArray(data) {
@@ -24,11 +25,10 @@ function createAddressArray(data) {
 		addresses[i] = address;
 		i++;
 	});
-	return addresses;
+	return [addresses, addresses.length];
 }
 
 function fillSelect(data) {
-	console.log(data);
 	$('#AddressSelect').empty();
 	var opt = document.createElement('option');
 	opt.setAttribute('value', 'null');
@@ -52,13 +52,12 @@ function fillSelect(data) {
 }
 var common = new ServerManager('Common');
 function loadAddress(value) {
-	var index;
-	for (index = 0; index < addressList.lenght; index++) {
-		if (addressList[index].id = value) {
+	for (var index = 0; index < addressList[1]; index++) {
+		if (addressList[0][index].id === value) {
 			break;
 		}
 	}
-	var address = addressList[index];
+	var address = addressList[0][index];
 	$('#maAddress1').val(address.addressLineOne);
 	$('#maAddress2').val(address.addressLineTwo);
 	$('#countryIdMA').val(address.countryId);

@@ -90,13 +90,11 @@ function successPost(data) {
 	if (status === 'fail') {
 		$('.errorContainer').css('display', 'block');
 	} else {
-		alert($(data).find('address').attr('id'));
-		alert(where + 'created successfully');
 	}
 }
 
 function errorPost(data) {
-	alert('pepe' + $(data).find('response').attr('status'));
+	alert($(data).find('response').attr('status'));
 }
 
 function processData(rawData) {
@@ -154,6 +152,23 @@ function createAddress(rawData, countryId, stateId) {
 	);
 }
 
+function getAddress(addressId, callback) {
+	var userdata = getLoggedData();
+	if (!userdata) {
+		alert('You need to be logged in to do this action');
+		return;
+	}
+	order.get(
+		{
+			method: 'GetAddress',
+			username: userdata['userName'],
+			authentication_token: userdata['token'],
+			address_id: addressId
+		},
+		callback
+	);
+}
+
 function getAddressList(callback) {
 	var userdata = getLoggedData();
 	if (!userdata) {
@@ -172,7 +187,7 @@ function getAddressList(callback) {
 
 function buildNewAddressXML(rawData, id) {
 	var xml;
-	var xml = "<address" + (id ? (' id=\'' + id + '\'') : '') + '>';
+	xml = "<address" + (id ? (' id=\'' + id + '\'') : '') + '>';
 	xml = xml + "<full_name>" + rawData.fullName + "</full_name>";
 	xml = xml + "<address_line_1>" + rawData.addressLineOne + "</address_line_1>";
 	xml = xml + (rawData.addressLineTwo == "" ? "<address_line_2/>" : "<address_line_2>" + rawData.addressLineTwo + "</address_line_2>");
