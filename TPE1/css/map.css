@@ -1,0 +1,17 @@
+#map_canvas {
+	position: inherit;
+	width: 650px;
+	height: 400px;
+	top: 100px;
+}
+
+#mapTitle {
+	position:absolute;
+}
+
+#mapContainer {
+	position: inherit;
+	left: 30%;
+	top: 30%;
+	top: 20px;
+}

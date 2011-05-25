@@ -11,7 +11,7 @@ function loadSpanish() {
 	
 	//Validation Errors
 	//User
-	langKeys['shortPassword'] = 'Letras, digitos, "_" y "-". Min: 8. Max: 15';
+	langKeys['passwordFormat'] = 'Characters, digits, "_" and "-". Min: 8. Max: 15';
 	langKeys['mailFormat'] = 'Formato: great@example.com';
 	langKeys['usernameFormat'] = 'Solo letras y d&iacute;gitos. Max: 15';
 	langKeys['nameFormat'] = 'Solo letras y espacios. Max: 80';
@@ -45,6 +45,8 @@ function loadSpanish() {
 	langKeys['bcSettings'] = 'Configuraci&oacute;n';
 	langKeys['bcBrowse'] = 'Productos';
 	langKeys['bcRegister'] = 'Registrarse';
+	langKeys['bcOrders'] = '&Oacute;rdenes';
+	langKeys['bcMap'] = 'Mapa';
 	
 	//Product
 	langKeys['pAddToCart'] = 'A&ntilde;adir al carrito';
@@ -152,6 +154,8 @@ function loadEnglish() {
 	langKeys['bcSettings'] = 'Settings';
 	langKeys['bcBrowse'] = 'Products';
 	langKeys['bcRegister'] = 'Register';
+	langKeys['bcOrders'] = 'Orders';
+	langKeys['bcMap'] = 'Map';
 	
 	//Product
 	langKeys['pAddToCart'] = 'Add to cart';
@@ -298,11 +302,13 @@ i18n.prototype.translateElement = function(node) {
 	var key = node.id;
 	var translated = getTranslation(key);
 	// not using getAttribute since its buggy.
-	if ($(node).is('input')) {
-		//not using setAttribute since its broken in IE and in Opera.
-		node.setAttribute('value', translated);
-	} else {
-		node.innerHTML = translated;
+	if (translated !== undefined) {
+		if ($(node).is('input')) {
+			//not using setAttribute since its broken in IE and in Opera.
+			node.setAttribute('value', translated);
+		} else {
+			node.innerHTML = translated;
+		}
 	}
 	
 	return true;

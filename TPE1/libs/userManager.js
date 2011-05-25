@@ -8,7 +8,17 @@ function createUser(rawData) {
 		account: nuXML
 		},
 		function(data) {
-			successPost(data);
+			var status = $(data).find('response').attr('status');
+			if (status === 'ok') {
+				logIn(
+					processedData.username,
+					processedData.password,
+					function(data) {
+						logInCallback(data);
+						window.location = 'index.html';
+					}
+				);
+			}
 		},
 		errorPost
 	);
