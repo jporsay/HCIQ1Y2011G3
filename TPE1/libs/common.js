@@ -63,6 +63,7 @@ function appendElementToTable(table, items, currency) {
 		table.appendChild(row);
 	}
 	var totalPriceRow = document.createElement('tr');
+	totalPriceRow.setAttribute('id', 'lastRow');
 	var emptyCols = document.createElement('td');
 	emptyCols.setAttribute('colspan', '2');
 	var totalLabelCol = document.createElement('td');
@@ -75,4 +76,57 @@ function appendElementToTable(table, items, currency) {
 	totalPriceRow.appendChild(totalLabelCol);
 	totalPriceRow.appendChild(totalValueCol);
 	table.appendChild(totalPriceRow);
+}
+
+//This are some oter methods that let us build the order tracking page in a async way
+
+function createEmptyTable(element, currency) {
+	var table = createCartTable();
+	var tbody = document.createElement('tbody');
+	totalPrice = 0;
+	appendLastRow(tbody);
+	table.appendChild(tbody);
+	element.appendChild(table);
+	return tbody;
+}
+
+function buildRow(item, currency) {
+	var row = document.createElement('tr');
+	var product = document.createElement('td');
+	product.innerHTML = '<a href=\'product.html?id=' + item.id +'\'>' + item.name + '</a>';
+	var quantity = document.createElement('td');
+	quantity.innerHTML = item.quantity;
+	var price = document.createElement('td');
+	price.innerHTML = currency + ' ' + item.price;
+	var subtotal = document.createElement('td');
+	subtotal.innerHTML = currency + ' ' + roundDigits(item.quantity * item.price);
+	row.appendChild(product);
+	row.appendChild(quantity);
+	row.appendChild(price);
+	row.appendChild(subtotal);
+	return row;
+}
+
+function appendLastRow(tbody) {
+	var totalPriceRow = document.createElement('tr');
+	totalPriceRow.setAttribute('id', 'lastRow');
+	var emptyCols = document.createElement('td');
+	emptyCols.setAttribute('colspan', '2');
+	var totalLabelCol = document.createElement('td');
+	totalLabelCol.innerHTML = 'Total Price: ';
+	totalLabelCol.setAttribute('id', 'totalPriceRow');
+	var totalValueCol = document.createElement('td');
+	var totalValueCol_currency = document.createElement('span');
+	totalValueCol_currency.setAttribute('class', 'currency');
+	var totalValueCol_amount = document.createElement('span');
+	totalValueCol_amount.innerHTML = 0;
+	totalValueCol_amount.setAttribute('class', 'amount');
+	totalValueCol.appendChild(totalValueCol_currency);
+	totalValueCol.appendChild(totalValueCol_amount);
+	
+	totalValueCol.setAttribute('id', 'totalPriceRow');
+	totalPriceRow.appendChild(emptyCols);
+	totalPriceRow.appendChild(totalLabelCol);
+	totalPriceRow.appendChild(totalValueCol);
+	tbody.appendChild(totalPriceRow);
 }
