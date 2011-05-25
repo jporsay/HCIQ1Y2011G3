@@ -112,7 +112,6 @@ function getProductsFor(orderId) {
 			order_id: orderId
 		},
 		function(data) {
-			console.log(data);
 			$(data).find('item').each (
 				function() {
 					var item = $(this);
@@ -126,13 +125,13 @@ function getProductsFor(orderId) {
 					}
 					product.quantity = item.find('count').text();
 					productsInOrder.push(product);
-					console.log('nuevo item ' + product.name);
 				}
 			);
 		}
 	);
 }
 
+var prod = null;
 function getProduct(productId) {
 	var catalogServer = new ServerManager('Catalog');
 	catalogServer.get(
@@ -140,13 +139,18 @@ function getProduct(productId) {
 			method: 'GetProduct',
 			product_id: productId
 		},
-		createItem
+		function(data)
+		{
+			createItem(data);
+			console.log(prod.name);
+		}
 	);
 }
 
-var prod;
 function createItem(data) {
 	var item = $(data).find('product');
+	alert('asd');
+	console.error('prod');
 	prod = {
 		name: item.find('name').text(), 
 		id: item.attr('id'), 
