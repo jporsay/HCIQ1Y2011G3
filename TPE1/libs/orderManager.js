@@ -6,6 +6,7 @@ var _DELIVERED = "4";
 
 var _userdata;
 var orderServer = new ServerManager('Order');
+var catalogServer = new ServerManager('Catalog');
 var ordersContainer = new Array();
 
 function printOrders(userdata, langId) {
@@ -20,7 +21,7 @@ function printOrders(userdata, langId) {
 	);
 }
 		
-function processOrders(orders) { 
+function processOrders(orders) {
 	ordersContainer[0] = document.getElementById('createdOrders');
 	ordersContainer[1] = document.getElementById('confirmedOrders');
 	ordersContainer[2] = document.getElementById('deliveringOrders');
@@ -81,7 +82,7 @@ function createOrderDiv(order, orderType) {
 	var addressLabel = getAddressLabel(order);
 	createLabel(newOrder, 'Address: ', addressLabel, 'address');
 	createLabel(newOrder, 'Date: ', order.find(orderType + '_date').text(), 'date');
-
+	
 	var table_container = createOrderPruductTable(order, '$');
 	newOrder.appendChild(table_container);
 	parent.appendChild(newOrder);
@@ -126,14 +127,14 @@ function createOrderPruductTable(order, currency) {
 	var order_table_container = document.createElement('div');
 		order_table_container.setAttribute('class', 'itemsTable');
 
-	var productsInOrder = getProductsFor(orderId);
-	createItemsTableInElement(order_table_container, productsInOrder, currency);
+	var tbody = createEmptyTable(order_table_container, currency);
+	appendProducts(orderId, tbody, currency);
+	
 	return order_table_container;
 }
 
-function getProductsFor(orderId) {
-	var productsInOrder = [];
-	orderServer.getS (
+function appendProducts(orderId, tbody, currency) {
+	orderServer.get (
 		{
 			method: 'GetOrder',
 			username: _userdata['userName'],
@@ -144,44 +145,40 @@ function getProductsFor(orderId) {
 			$(data).find('item').each (
 				function() {
 					var item = $(this);
-					var product = getProduct(item.find('product_id').text());
-					product.quantity = item.find('count').text();
-					productsInOrder.push(product);
+					var product = {
+						quantity: item.find('count').text(),
+						id: item.find('product_id').text()
+					}
+					getProduct(product, tbody, currency);
 				}
 			);
 		}
 	);
-	return productsInOrder;
 }
 
-var prod = null;
-function getProduct(productId) {
-	var catalogServer = new ServerManager('Catalog');
-	var newProduct;
-	catalogServer.getS(
+function getProduct(product, tbody, currency) {
+	catalogServer.get (
 		{
 			method: 'GetProduct',
-			product_id: productId
+			product_id: product.id
 		},
 		function(data) {
 			var item = $(data).find('product');
-			newProduct = {
-				name: item.find('name').text(), 
-				id: item.attr('id'), 
-				price:	 item.find('price').text(),
-			}
+			
+			product.name = item.find('name').text();
+			product.id = item.attr('id');
+			product.price = item.find('price').text();
+			
+			var itemRow = buildRow(product, currency);
+			var lastRow = $(tbody).find('#lastRow');
+			$(lastRow).before(itemRow);
+			var totalPriceLabel = $(lastRow).find('#totalPriceRow');
+			
+			var currencySpan = totalPriceLabel.find('.currency');
+			currencySpan[0].innerHTML = currency;
+			
+			var totalAmountSpan = totalPriceLabel.find('.amount');
+			totalAmountSpan[0].innerHTML = roundDigits(parseInt(totalAmountSpan[0].innerHTML) + roundDigits(product.quantity * product.price));
 		}
 	);
-	return newProduct;
 }
-
-function createItem(data) {
-	var item = $(data).find('product');
-	var prod_info = {
-		name: item.find('name').text(), 
-		id: item.attr('id'), 
-		price: item.find('price').text(),
-	}
-	return prod_info;
-}
-
