@@ -152,6 +152,23 @@ function createAddress(rawData, countryId, stateId) {
 	);
 }
 
+function getAddress(addressId, callback) {
+	var userdata = getLoggedData();
+	if (!userdata) {
+		alert('You need to be logged in to do this action');
+		return;
+	}
+	order.get(
+		{
+			method: 'GetAddress',
+			username: userdata['userName'],
+			authentication_token: userdata['token'],
+			address_id: addressId
+		},
+		callback
+	);
+}
+
 function getAddressList(callback) {
 	var userdata = getLoggedData();
 	if (!userdata) {
