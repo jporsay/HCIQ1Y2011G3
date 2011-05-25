@@ -90,9 +90,6 @@
 			displayItem(urlParam('id'));
 			loadCategories($('#locale :selected').attr('id'));
 			loadUserSesion();
-			$('#loginbutton').click(function() {
-				logIn($('#usernameInput').val(), $('#passwordInput').val());
-			});
 			translator.translatePage();
 		
 		});

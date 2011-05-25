@@ -38,6 +38,7 @@ function logOut() {
 		function(data) {
 			$.cookie('loggedUser', null);
 			setGuestForm(document.getElementsByClassName('loginform')[0]);
+			window.location = 'index.html';
 		}
 	)
 }
@@ -173,5 +174,8 @@ function setGuestForm(container) {
 	loginText.setAttribute('class', 'i18n');
 	
 	var translator = new i18n();
+	$('#loginbutton').click(function() {
+		logIn($('#usernameInput').val(), $('#passwordInput').val());
+	});
 	translator.translatePage();
 }
