@@ -45,6 +45,8 @@ function loadSpanish() {
 	langKeys['bcSettings'] = 'Configuraci&oacute;n';
 	langKeys['bcBrowse'] = 'Productos';
 	langKeys['bcRegister'] = 'Registrarse';
+	langKeys['bcOrders'] = '&Oacute;rdenes';
+	langKeys['bcMap'] = 'Mapa';
 	
 	//Product
 	langKeys['pAddToCart'] = 'A&ntilde;adir al carrito';
@@ -152,6 +154,8 @@ function loadEnglish() {
 	langKeys['bcSettings'] = 'Settings';
 	langKeys['bcBrowse'] = 'Products';
 	langKeys['bcRegister'] = 'Register';
+	langKeys['bcOrders'] = 'Orders';
+	langKeys['bcMap'] = 'Map';
 	
 	//Product
 	langKeys['pAddToCart'] = 'Add to cart';
