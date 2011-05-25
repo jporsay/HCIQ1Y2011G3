@@ -42,6 +42,7 @@ function parseResponse(data, userData) {
 	//var orderId = response.find('order').attr('id');
 	var orderId = 962;
 	var addressId = 434;
+	$('');
 	addItemsToOrder(orderId, userData);
 	confirmOrder(orderId, addressId, userData);
 	//window.location = "orderTracking.html";
@@ -100,4 +101,36 @@ function confirmOrder(orderId, addressId, userData) {
 	function(data) {
 	}
 	);
+}
+
+function loadAddresInfo(elementId) {
+	var inputs = document.getElementById(elementId);
+	var addressId = $('#AddressSelect').val();
+	getAddress(
+		addressId, 
+		function(data){
+			var info = $(data);
+			fillForms(info, inputs);
+		}, 
+		true
+	);
+}
+
+function fillForms(info, inputs) {
+	var addres1 = $('#address1Input');
+	var addres2 = $('#address2Input');
+	var country = $('#countryInput');
+	var state = $('#stateInput');
+	var city = $('#cityInput');
+	var zip = $('#zipInput');
+	var phone = $('#phoneInput');
+	
+	addres1.val(info.find('address_line_1').text());
+	addres2.val(info.find('address_line_2').text());
+	country.val(info.find('country_id').text());
+	state.val(info.find('state_id').text());
+	city.val(info.find('city').text());
+	zip.val(info.find('zip_code').text());
+	phone.val(info.find('phone_number').text());
+	
 }

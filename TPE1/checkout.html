@@ -73,6 +73,9 @@
 					}
 				});
 				
+				$('#AddressSelect').change(function() {
+					loadAddresInfo('addresInformation', );
+				});
 				getAddressList(getAddressListCallback);
 				translator.translatePage();
 			});
@@ -120,63 +123,41 @@
 					<div class='billingInformation'>
 						<fieldset>
 							<legend>Billing Information</legend>
-							<select id="AddressSelect"><option selected="selected" value="null">------</option></select>
-							<div class="fieldRow">
-								<span>Adress 1:</span>
-								<input id="maAddress1" type="text">
+							<span>Select the locaction where the order should be delivered:</span>
+							<select id="AddressSelect">
+								<option selected="selected" value="null">------</option>
+							</select>
+							<a href="userSettings.html">Create new shipping address</a>
+							<div id="addresInformation">
+								<div class='fieldRow'>
+									<span>Addres 1:</span>
+									<input id="address1Input" type='text' readonly></input>
+								</div>
+								<div class='fieldRow'>
+									<span>Addres 2:</span>
+									<input id="address2Input" type='text' readonly></input>
+								</div>
+								<div class='fieldRow'>
+									<span>Country:</span>
+									<input id="countryInput" type='text' readonly></input>
+								</div>
+								<div class='fieldRow'>
+									<span>State:</span>
+									<input id="stateInput" type='text' readonly></input>
+								</div>							
+								<div class='fieldRow'>
+									<span>City:</span>
+									<input id="cityInput" type='text' readonly></input>
+								</div>
+								<div class='fieldRow'>
+									<span>Zip Code:</span>
+									<input id="zipInput" type='text' readonly></input>
+								</div>
+								<div class='fieldRow'>
+									<span>Phone Number:</span>
+									<input id="phoneInput" type='text' readonly></input>
+								</div>
 							</div>
-							<div class="fieldRow">
-								<span>Adress 2:</span>
-								<input id="maAddress2" type="text">
-							</div>
-							<div class="fieldRow" id="countryDivMA">
-								<span>County:</span>
-							<select id="countryIdMA"><option selected="selected" value="1" id="1">Argentina</option><option value="2" id="2">United States</option></select></div>
-							<div class="fieldRow" id="stateDivMA">
-								<span>State:</span>
-							<select id="stateIdMA"><option selected="selected" value="1" id="1">Capital Federal</option><option value="21" id="21">Buenos Aires</option></select></div>
-							<div class="fieldRow">
-								<span>City:</span>
-								<input id="maCity" type="text">
-							</div>
-							<div class="fieldRow">
-								<span>Zip Code:</span>
-								<input id="maZipCode" type="text">
-							</div>
-							<div class="fieldRow">
-								<span>Phone Number:</span>
-								<input id="maPhoneNumber" type="text">
-							</div>
-							<div id="updateAddressStatusDiv" class="statusWCancelDiv">
-								<p id="updateAddressStatus"></p>
-							</div>
-							<!--
-							<button type="cancel" class="">Cancel</button>
-							<input class="submit" value="Guardar" id="updateAddress" type="submit"></input>
-							<div class='fieldRow'>
-								<span>First Name:</span>
-								<input type='text'></input>
-							</div>
-							<div class='fieldRow'>
-								<span>Last Name:</span>
-								<input type='text'></input>
-							</div>
-							<div class='fieldRow'>
-								<span>Address:</span>
-								<input type='text'></input>
-							</div>
-							<div class='fieldRow'>
-								<span>City:</span>
-								<input type='text'></input>
-							</div>							
-							<div class='fieldRow'>
-								<span>State/Province:</span>
-								<input type='text'></input>
-							</div>
-							<div class='fieldRow'>
-								<span>Zip/Postal Code:</span>
-								<input type='text'></input>
-							</div>-->
 						</fieldset>
 					</div>
 					<div class='paymentInformation'>
