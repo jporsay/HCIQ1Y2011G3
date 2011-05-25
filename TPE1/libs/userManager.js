@@ -152,13 +152,14 @@ function createAddress(rawData, countryId, stateId) {
 	);
 }
 
-function getAddress(addressId, callback) {
+function getAddress(addressId, callback, synch) {
 	var userdata = getLoggedData();
 	if (!userdata) {
 		alert('You need to be logged in to do this action');
 		return;
 	}
-	order.get(
+	if (synch) {
+		order.getS(
 		{
 			method: 'GetAddress',
 			username: userdata['userName'],
@@ -167,6 +168,17 @@ function getAddress(addressId, callback) {
 		},
 		callback
 	);
+	} else {
+		order.get(
+			{
+				method: 'GetAddress',
+				username: userdata['userName'],
+				authentication_token: userdata['token'],
+				address_id: addressId
+			},
+			callback
+		);
+	}
 }
 
 function getAddressList(callback) {

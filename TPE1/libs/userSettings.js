@@ -105,3 +105,7 @@ function updateExistingAddress() {
 		}
 	);
 }
+
+function showStatusMessage(elementId, message) {
+	$('#' + elementId).html(message).delay(5000).fadeOut(500);
+}
