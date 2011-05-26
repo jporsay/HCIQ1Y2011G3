@@ -63,3 +63,8 @@ fieldset legend {
 	height: 40px;
 	float: right;
 }
+
+.newShippinAddressLink {
+	color: #0044ff;
+	font-weight: bold;
+}

@@ -35,6 +35,7 @@
 	font-size: 13px;
 }
 
+#settingsPanel .fieldRow select,
 #settingsPanel .fieldRow input {
 	position: absolute;
 	width: 350px;
