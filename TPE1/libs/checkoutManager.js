@@ -1,10 +1,6 @@
 var order = new ServerManager('Order');
 function createNewOrder() {
 	var userData = getLoggedData();
-	if (!userData) {
-		alert('You need to be logged in to do this action');
-		return;
-	}
 	if (!validateFields()) {
 		return;
 	}
