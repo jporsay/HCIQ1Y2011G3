@@ -22,6 +22,7 @@
 	background-position:center center;
 	background-color:#111111;
 }
+
 .header h1 {
 	color: #90A0A0;
 	position: absolute;
@@ -31,12 +32,14 @@
 	font-style: oblique;
 	font-family: Helvetica, Verdana, sans-serif;
 }
+
 .header #localization {
 	position: inherit;
 	width: auto;
 	right: 1em;
 	bottom: 5px;
 }
+
 .header #localization p {
 	color: #90A0A0;
 	float: left;
@@ -45,7 +48,6 @@
 .header #localization select {
 	margin-top: 1em;
 }
-
 
 .header #login {
 	color: #ffffff;
