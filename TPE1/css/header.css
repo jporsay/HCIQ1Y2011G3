@@ -1,3 +1,13 @@
+#companyLogo {
+	display: block;
+	position: relative;
+	width: 200px;
+	height: 110px;
+	background-image: url('../images/logo.png');
+	font-size: 0;
+	z-index: 100;
+}
+
 .header {
 	position: absolute;
 	width: 100%;
