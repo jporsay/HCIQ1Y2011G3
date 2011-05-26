@@ -137,9 +137,6 @@ Cart.prototype.update = function() {
 	if (!this.items) {
 		this.items = [];
 	}
-	if (this.isHidden) {
-		return;
-	}
 	cleanHTML(CART_ITEMS_LIST);
 	var cart_items = document.getElementById(CART_ITEMS_LIST);
 	var totalPrice = 0;
@@ -171,6 +168,7 @@ Cart.prototype.setHidden = function(hide) {
 		document.getElementById(CART_ID_HIDDEN).style.display = "none";
 		var leftArea = document.getElementById('leftArea');
 		$(leftArea).css('width', this.leftAreaPrevSize);
+		this.update();
 	}
 	this.isHidden = hide;
 }
@@ -399,6 +397,7 @@ Cart.prototype.printToTable = function(elementId) {
 }
 
 Cart.prototype.saveState = function() {
+	alert('guardado');
 	var value = '{';
 	for(var i=0; i < this.items.length; i++) {
 		value += toJSonFormat(this.items[i]) + ',';

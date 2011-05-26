@@ -38,9 +38,7 @@ function showCategory(id, name, elDOM) {
 	var new_category = document.createElement('li');
 	temp = document.createElement('a');
 	temp.setAttribute("href","browse.html?catId=" + id + '&page=1');
-	temp2 = document.createElement('span');
-	temp2.innerHTML = name;
-	temp.appendChild(temp2);
+	temp.innerHTML = name;
 	new_category.appendChild(temp);
 	elDOM.appendChild(new_category);
 	
