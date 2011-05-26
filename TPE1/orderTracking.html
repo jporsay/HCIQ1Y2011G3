@@ -31,54 +31,10 @@
 	<script type="text/javascript" src="libs/login.js"></script>
 	<script type="text/javascript" src="libs/userManager.js"></script>
 	<script type="text/javascript" src="libs/orderManager.js"></script>
+	<script type="text/javascript" src="libs/eCartCategories.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			
-			$("#breadcrumb").jBreadCrumb();
-			
-			var translator = new i18n();
-			document.getElementById('locale').value = translator.getLang();
-			
-			$(document).keydown(function(e) {
-				if (e.keyCode == 27) {
-					if ($('.loginform').is(':visible') === true) {
-						$('.loginform').hide();
-					}
-				}
-			});
-			
-			$('.logintext').click(function() {
-				if ($('.loginform').is(':visible') === false) {
-					$('#loginimg').css("background-position", "0 -16px");
-				} else {
-					$('#loginimg').css("background-position", "-64px -16px");
-				}
-				$('.loginform').slideToggle();
-			});
-			
-			$("#locale").change(function() {
-				translator.setLang($(this).val());
-				loadCategories($('#locale :selected').attr('id'));
-				translator.translatePage();
-			});
-
-			$('#searchbutton').click(function() {
-				if ($('#searchtext').val() != '') {
-					window.location = 'browse.html?searchText=' + $('#searchtext').val();
-				}
-			});
-			
-			$('#searchtext').keydown(function(e) {
-				if (e.keyCode === 13) {
-					$('#searchbutton').click();
-				}
-			});
-			
-			loadCartFromCookie();
-			cartInstance.update();
-			
-			loadCategories($('#locale :selected').attr('id'));
-			loadUserSesion();
+			loadCartAndCategories(false);
 			printOrders(userData, 1);
 			translator.translatePage();
 		});

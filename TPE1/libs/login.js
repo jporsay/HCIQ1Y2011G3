@@ -12,6 +12,13 @@ function logIn(username, password, callback) {
 	)
 }
 
+function checkIfLoggedOrExit() {
+	if (!getLoggedData()) {
+		alert('You need to be logged in to access this area');
+		window.location = 'index.html';
+	}
+}
+
 function logInCallback(data) {
 	var response = $(data).find('response');
 	if (response.attr('status') == 'fail') {

@@ -29,69 +29,12 @@
 	<script type="text/javascript" src="libs/cartManager.js"></script>
 	<script type="text/javascript" src="libs/i18n.js"></script>
 	<script type="text/javascript" src="libs/login.js"></script>
+	<script type="text/javascript" src="libs/eCommon.js"></script>
+	<script type="text/javascript" src="libs/eCartCategories.js"></script>
+	<script type="text/javascript" src="libs/eProduct.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			
-			$("#breadcrumb").jBreadCrumb();
-		
-			var translator = new i18n('Index');
-			document.getElementById('locale').value = translator.getLang();
-		
-			$(document).keydown(function(e) {
-				if (e.keyCode == 27) {
-					if ($('.loginform').is(':visible') === true) {
-						$('.loginform').hide();
-					}
-				}
-			});
-			
-			$('.logintext').click(function() {
-				if ($('.loginform').is(':visible') === false) {
-					$('#loginimg').css("background-position", "0 -16px");
-				} else {
-					$('#loginimg').css("background-position", "-64px -16px");
-				}
-				$('.loginform').slideToggle();
-			});
-		
-			$("#locale").change(function() {
-				translator.setLang($(this).val());
-				loadCategories($('#locale :selected').attr('id'));
-				translator.translatePage();
-			});
-			
-			$('#searchbutton').click(function() {
-				if ($('#searchtext').val() != '') {
-					window.location = 'browse.html?searchText=' + $('#searchtext').val();
-				}
-			});
-			
-			$('#searchtext').keydown(function(e) {
-				if (e.keyCode === 13) {
-					$('#searchbutton').click();
-				}
-			});
-			
-			loadCartFromCookie()
-			cartInstance.update();
-			
-			// Hack to bubble click event from <a> which were loaded with ajax
-			$('#mainArea').click(function(e) {
-				if ($(e.target).is('a')) {
-					cartInstance.saveState();
-				}
-			});
-			
-			
-			$('#toggleFromCartInput').click(function() {
-				toggleFromCart();
-			});
-			
-			displayItem(urlParam('id'));
-			loadCategories($('#locale :selected').attr('id'));
-			loadUserSesion();
-			translator.translatePage();
-		
+			loadProduct();
 		});
 	</script>
 	

@@ -26,57 +26,13 @@
 	<script type="text/javascript" src="libs/cartManager.js"></script>
 	<script type="text/javascript" src="libs/login.js"></script>
 	<script type="text/javascript" src="libs/map.js"></script>
+	<script type="text/javascript" src="libs/eCommon.js"></script>
+	<script type="text/javascript" src="libs/eCartCategories.js"></script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-
 	<script type="text/javascript">
 		$(function() {
-
-			$("#breadcrumb").jBreadCrumb();
-		
-			var translator = new i18n();
-			document.getElementById('locale').value = translator.getLang();
-		
-			$(document).keydown(function(e) {
-				if (e.keyCode == 27) {
-					if ($('.loginform').is(':visible') === true) {
-						$('.loginform').hide();
-					}
-				}
-			});
-			$('.logintext').click(function() {
-				$('.loginform').slideToggle();
-			});
-			
-			$("#locale").change(function() {
-				translator.setLang($(this).val());
-				loadCategories($('#locale :selected').attr('id'));
-				translator.translatePage();
-			});
-			loadCartFromCookie();
-			cartInstance.update();
-			
-			$('#searchbutton').click(function() {
-				if ($('#searchtext').val() != '') {
-					window.location = 'browse.html?searchText=' + $('#searchtext').val();
-				}
-			});
-			
-			$('#searchtext').keydown(function(e) {
-				if (e.keyCode === 13) {
-					$('#searchbutton').click();
-				}
-			});
-			// Hack to bubble click event from <a> which were loaded with ajax
-			$('#mainArea').click(function(e) {
-				if ($(e.target).is('a')) {
-					cartInstance.saveState();
-				}
-			});
-			
-			loadCategories($('#locale :selected').attr('id'));
-			loadUserSesion();
+			loadCartAndCategories();
 			initialize();
-			translator.translatePage();
 		});
 	</script>
 	
