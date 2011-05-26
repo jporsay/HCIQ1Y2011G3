@@ -1,5 +1,10 @@
 function checkoutLoad() {
 	loadCommon();
+	
+	var temp = document.createElement('select');
+	temp.setAttribute('id', 'AddressSelect');
+	$('#addressSelectContainer').append(temp);
+	
 	getAddressList(getAddressListCallback);
 	loadCartFromCookie();
 	cartInstance.printToTable('checkoutTable');
