@@ -323,7 +323,8 @@ function addButtons(jar, totalItems) {
 	jar.appendChild(prevBtn);
 	
 	var location = document.createElement('div');
-	$(location).html(getTranslation('pagePosition') + urlParam('page') + getTranslation('pagePositionSeparator') + Math.ceil(totalItems / ITEMSPERPAGE));
+	var totalPages = Math.ceil(totalItems / ITEMSPERPAGE) == 0 ? 1 : Math.ceil(totalItems / ITEMSPERPAGE);
+	$(location).html(getTranslation('pagePosition') + urlParam('page') + getTranslation('pagePositionSeparator') + totalPages);
 	location.setAttribute('class', 'pagePosition');
 	jar.appendChild(location);
 
