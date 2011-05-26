@@ -40,8 +40,9 @@
 }
 
 .errorText {
-	position: relative;
-	left: 430px;
+	position: absolute;
+	left: 482px;
+	top: 3px;
 }
 
 form {
