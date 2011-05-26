@@ -22,7 +22,7 @@ function printOrders(userdata, langId) {
 }
 		
 function processOrders(orders) {
-	ordersContainer[0] = document.getElementById('createdOrders');
+	//ordersContainer[0] = document.getElementById('createdOrders');
 	ordersContainer[1] = document.getElementById('confirmedOrders');
 	ordersContainer[2] = document.getElementById('deliveringOrders');
 	ordersContainer[3] = document.getElementById('deliveredOrders');
@@ -33,7 +33,7 @@ function processOrders(orders) {
 		}
 	);
 	
-	for(var i = 0; i < ordersContainer.length; i++) {
+	for(var i = 1; i < ordersContainer.length; i++) {
 		if ($(ordersContainer[i]).children().size() == 1) {
 			var empty_div_label = document.createElement('h3');
 			empty_div_label.setAttribute('class', 'emptyContainerLabel');
@@ -59,7 +59,7 @@ function createOrderDiv(order, orderType) {
 		case _CREATED :
 			orderType = 'created';
 			parent = ordersContainer[0];
-//			return;//RETURN SCINCE THIS IS NOT USED IN THIS PAGE
+			return;//RETURN SCINCE THIS IS NOT USED IN THIS PAGE
 			break;
 		case _CONFIRMED: 
 			orderType = 'confirmed';
@@ -198,3 +198,4 @@ function getProduct(product, tbody, currency) {
 		}
 	);
 }
+
