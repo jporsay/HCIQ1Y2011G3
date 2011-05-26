@@ -90,3 +90,9 @@
 	font-size: medium;
 }
 
+.pagePosition {
+	position: absolute;
+	left: 44%;
+	bottom: 10px;
+	width: 100px;
+}

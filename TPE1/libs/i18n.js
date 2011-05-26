@@ -16,7 +16,6 @@ function loadSpanish() {
 	langKeys['usernameFormat'] = 'Solo letras y d&iacute;gitos. Max: 15';
 	langKeys['nameFormat'] = 'Solo letras y espacios. Max: 80';
 	langKeys['dateFormat'] = 'Formato: yyyy-mm-dd';
-	
 	//Address
 	
 	//Index
@@ -39,6 +38,8 @@ function loadSpanish() {
 	//Browse
 	langKeys['productsHeader'] = 'Productos:';
 	langKeys['browseRanking'] = 'Ranking: ';
+	langKeys['pagePosition'] = 'P&aacute;gina '
+	langKeys['pagePositionSeparator'] = ' de ';
 	
 	//BreadCrumb
 	langKeys['bcHome'] = 'Inicio';
@@ -148,6 +149,8 @@ function loadEnglish() {
 	//Browse
 	langKeys['productsHeader'] = 'Products:';
 	langKeys['browseRanking'] = 'Ranking: ';
+	langKeys['pagePosition'] = 'Page '
+	langKeys['pagePositionSeparator'] = ' of ';
 	
 	//BreadCrumb
 	langKeys['bcHome'] = 'Home';
