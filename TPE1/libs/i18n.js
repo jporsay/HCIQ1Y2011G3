@@ -8,6 +8,7 @@ function loadSpanish() {
 	langKeys['categoryHeader'] = 'Categor&iacute;as';
 	langKeys['createaccount'] = 'Crear cuenta';
 	langKeys['errorContainer'] = 'Usuario o contrase&ntilde;a inv&aacute;lido';
+	langKeys['registerLink'] = 'Registrarse';
 	
 	//Validation Errors
 	//User
@@ -120,6 +121,7 @@ function loadEnglish() {
 	langKeys['categoryHeader'] = 'Categories';
 	langKeys['createaccount'] = 'Create account';
 	langKeys['errorContainer'] = 'Invalid username or password';
+	langKeys['registerLink'] = 'Register';
 	
 	//Validation Errors
 	//User
@@ -238,18 +240,22 @@ function i18n() {
 	fetchLanguages();
 	this.setLang(lang);
 }
-
+var langData;
 function fetchLanguages() {
 	var common = new ServerManager('Common');
-	common.getS({
-		method: 'GetLanguageList'
-	},
-		setLanguages
-	);
+	if (langData == null) {
+		common.getS({
+			method: 'GetLanguageList'
+		},
+			setLanguages
+		);
+	} else {
+		setLanguages(langData);
+	}
 }
 
 function setLanguages(data) {
-	
+	langData = data;
 	var optionHolder;
 	if (document.getElementById('locale') === null) {
 		optionHolder = document.createElement('select');

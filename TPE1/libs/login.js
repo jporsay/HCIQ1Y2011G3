@@ -12,6 +12,13 @@ function logIn(username, password, callback) {
 	)
 }
 
+function checkIfLoggedOrExit() {
+	if (!getLoggedData()) {
+		alert('You need to be logged in to access this area');
+		window.location = 'index.html';
+	}
+}
+
 function logInCallback(data) {
 	var response = $(data).find('response');
 	if (response.attr('status') == 'fail') {
@@ -25,6 +32,7 @@ function logInCallback(data) {
 		$.cookie('loggedUser', null);
 		$.cookie('loggedUser', userData['name'] + ':' + userData['userName'] + ':' + userData['token']);
 		setLoggedForm(document.getElementsByClassName('loginform')[0]);
+		$('#registerLink').hide();
 	}
 }
 
@@ -64,9 +72,11 @@ function loadUserSesion() {
 		userData['name'] = data[0];
 		userData['userName'] = data[1];
 		userData['token'] = data[2];
+		$('#registerLink').hide();
 		setLoggedForm(container);
 	} else {
 		setGuestForm(container);
+		$('#registerLink').show();
 	}
 }
 /*

@@ -118,3 +118,10 @@
 .header .logintext {
 	cursor: pointer;
 }
+
+#registerLink {
+	position: absolute;
+	right: 110px;
+	font-size: 1.4em;
+	top: 82px;
+}

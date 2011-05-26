@@ -27,67 +27,13 @@
 	<script type="text/javascript" src="libs/itemManager.js"></script>
 	<script type="text/javascript" src="libs/cartManager.js"></script>
 	<script type="text/javascript" src="libs/login.js"></script>
+	<script type="text/javascript" src="libs/eCommon.js"></script>
+	<script type="text/javascript" src="libs/eCartCategories.js"></script>
+	<script type="text/javascript" src="libs/eBrowse.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			
-			$("#breadcrumb").jBreadCrumb();
-			
-			var translator = new i18n();
-			document.getElementById('locale').value = translator.getLang();
-			
-			$(document).keydown(function(e) {
-				if (e.keyCode == 27) {
-					if ($('.loginform').is(':visible') === true) {
-						$('.loginform').hide();
-					}
-				}
-			});
-			
-			$('.logintext').click(function() {
-				if ($('.loginform').is(':visible') === false) {
-					$('#loginimg').css("background-position", "0 -16px");
-				} else {
-					$('#loginimg').css("background-position", "-64px -16px");
-				}
-				$('.loginform').slideToggle();
-			});
-			
-			$("#locale").change(function() {
-				translator.setLang($(this).val());
-				loadCategories($('#locale :selected').attr('id'));
-				getItems(urlParam('catId'), urlParam('subCatId'), $('#locale :selected').attr('id'));
-				translator.translatePage();
-			});
-			
-			if (urlParam('searchText')) {
-				searchItems(urlParam('searchText'));
-			} else if (urlParam('catId')) {
-				getItems(urlParam('catId'), urlParam('subCatId'), $('#locale :selected').attr('id'));
-			}
-			$('#searchbutton').click(function() {
-				if ($('#searchtext').val() != '') {
-					window.location = 'browse.html?searchText=' + $('#searchtext').val();
-				}
-			});
-			
-			$('#searchtext').keydown(function(e) {
-				if (e.keyCode === 13) {
-					$('#searchbutton').click();
-				}
-			});
-			
-			loadCartFromCookie();
-			cartInstance.update();
-			
-			// Hack to bubble click event from <a> which were loaded with ajax
-			$('#mainArea').click(function(e) {
-				if ($(e.target).is('a')) {
-					cartInstance.saveState();
-				}
-			});
-			loadCategories($('#locale :selected').attr('id'));
-			loadUserSesion();
-			translator.translatePage();
+			loadCartAndCategories();
+			browseParams();
 		});
 	</script>
 	
@@ -98,6 +44,7 @@
 		<img src="images/cooltext530131064.png" alt="Company Logo" width="276" height="110">
 		<h1 id='header'>Happy Business</h1>
 		<div id="localization">
+		<a id='registerLink' href='registration.html' class='i18n'></a>
 		</div>
 		<div id="login">
 			<div class="logintext">

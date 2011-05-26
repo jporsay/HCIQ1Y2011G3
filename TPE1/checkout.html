@@ -28,56 +28,11 @@
 		<script type="text/javascript" src="libs/userSettings.js"></script>
 		<script type="text/javascript" src="libs/userManager.js"></script>
 		<script type="text/javascript" src="libs/orderManager.js"></script>
+		<script type="text/javascript" src="libs/eCommon.js"></script>
+		<script type="text/javascript" src="libs/eCheckout.js"></script>
 		<script type="text/javascript">
 			$(function() {
-				
-				$("#breadcrumb").jBreadCrumb();
-			
-				var translator = new i18n();
-				document.getElementById('locale').value = translator.getLang();
-			
-				$(document).keydown(function(e) {
-					if (e.keyCode == 27) {
-						if ($('.loginform').is(':visible') === true) {
-							$('.loginform').hide();
-						}
-					}
-				});
-				$('.logintext').click(function() {
-					$('.loginform').slideToggle();
-				});
-				
-				$("#locale").change(function() {
-					translator.setLang($(this).val());
-					loadCategories($('#locale :selected').attr('id'));
-					translator.translatePage();
-				});
-				loadUserSesion();
-				getAddressList(getAddressListCallback);
-				loadCartFromCookie();
-				cartInstance.printToTable('checkoutTable');
-				
-				$("#billingForm").submit(function(e) {
-					e.preventDefault();
-					createNewOrder();
-				});
-				
-				$('#searchbutton').click(function() {
-					if ($('#searchtext').val() != '') {
-						window.location = 'browse.html?searchText=' + $('#searchtext').val();
-					}
-				});
-			
-				$('#searchtext').keydown(function(e) {
-					if (e.keyCode === 13) {
-						$('#searchbutton').click();
-					}
-				});
-				
-				$('#AddressSelect').change(function() {
-					loadAddresInfo('addresInformation');
-				});
-				translator.translatePage();
+				checkoutLoad();
 			});
 		</script>
 		
@@ -88,6 +43,7 @@
 			<img src="images/cooltext530131064.png" alt="Company Logo" width="276" height="110">
 			<h1 id='header'>Happy Business</h1>
 			<div id="localization">
+			<a id='registerLink' href='registration.html' class='i18n'></a>
 			</div>
 			<div id="login">
 				<div class="logintext">
