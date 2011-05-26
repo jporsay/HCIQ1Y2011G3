@@ -164,11 +164,14 @@ Cart.prototype.setHidden = function(hide) {
 		}
 		$(leftArea).css('width', '90%');
 	} else {
-		document.getElementById(CART_ID).style.display = "";
-		document.getElementById(CART_ID_HIDDEN).style.display = "none";
-		var leftArea = document.getElementById('leftArea');
-		$(leftArea).css('width', this.leftAreaPrevSize);
-		this.update();
+		var cart = document.getElementById(CART_ID);
+		if(cart) {
+			cart.style.display = ""
+			document.getElementById(CART_ID_HIDDEN).style.display = "none";
+			var leftArea = document.getElementById('leftArea');
+			$(leftArea).css('width', this.leftAreaPrevSize);
+			this.update();
+		}
 	}
 	this.isHidden = hide;
 }
@@ -397,7 +400,6 @@ Cart.prototype.printToTable = function(elementId) {
 }
 
 Cart.prototype.saveState = function() {
-	alert('guardado');
 	var value = '{';
 	for(var i=0; i < this.items.length; i++) {
 		value += toJSonFormat(this.items[i]) + ',';

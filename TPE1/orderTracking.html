@@ -34,6 +34,7 @@
 	<script type="text/javascript" src="libs/eCommon.js"></script>
 	<script type="text/javascript" src="libs/eCartCategories.js"></script>
 	<script type="text/javascript">
+		checkIfLoggedOrExit();
 		$(function() {
 			loadCartAndCategories(false);
 			printOrders(userData, 1);
