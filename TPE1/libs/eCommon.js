@@ -1,5 +1,6 @@
 var translator;
 function loadCommon() {
+	//$('#javascriptIndicator').hide();
 	translator = new i18n();
 	$("#breadcrumb").jBreadCrumb();
 	
