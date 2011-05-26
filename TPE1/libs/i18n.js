@@ -240,18 +240,22 @@ function i18n() {
 	fetchLanguages();
 	this.setLang(lang);
 }
-
+var langData;
 function fetchLanguages() {
 	var common = new ServerManager('Common');
-	common.getS({
-		method: 'GetLanguageList'
-	},
-		setLanguages
-	);
+	if (langData == null) {
+		common.getS({
+			method: 'GetLanguageList'
+		},
+			setLanguages
+		);
+	} else {
+		setLanguages(langData);
+	}
 }
 
 function setLanguages(data) {
-	
+	langData = data;
 	var optionHolder;
 	if (document.getElementById('locale') === null) {
 		optionHolder = document.createElement('select');
