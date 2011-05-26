@@ -82,44 +82,42 @@
 			</div>
 			<div id='settingsPanel'>
 				<h1 class='title'>Your settings:</h1>
-					<form id='personalInfoForm'>
+					<form id='personalInfoForm' action='#'>
 						<fieldset>
-							<tr>
 							<legend id='ucLegend'>Personal Information</legend>
 							<div class='fieldRow'>
 								<span id='ucFullName' class='i18n'>Nombre completo:</span>
-								<input type='text' id='nameInput'></input>
+								<input type='text' id='nameInput'>
 							</div>
 							<div class='fieldRow'>
 								<span id='ucEmail' class='i18n'>Email:</span>
-								<input type='text' id='emailInput'></input>
+								<input type='text' id='emailInput'>
 							</div>
 							<div class='fieldRow'>
 								<span id='ucBirthDate' class='i18n'>Fecha de nacimiento:</span>
-								<input type='text' id='birthDateInput'></input>
+								<input type='text' id='birthDateInput'>
 							</div>
 							<div id='changeUserStatusDiv' class='statusDiv'>
 								<p id='changeUserStatus'></p>
 							</div>
-							<input type="submit" class="submit" value='Guardar'></input>
+							<input type="submit" class="submit" value='Guardar'>
 						</fieldset>
 					</form>
-					<form id='passwordChangeForm'>
+					<form id='passwordChangeForm' action='#'>
 						<fieldset>
-							<tr>
 							<legend>Password Management</legend>
 							<div class='fieldRow'>
 								<span id='cpOldPassword' class='i18n'>Old Password:</span>
-								<input type='password' id='oldPassword'></input>
+								<input type='password' id='oldPassword'>
 							</div>
 							<div class='fieldRow'>
 								<span id='cpNewPassword' class='i18n'>New Password:</span>
-								<input type='password' id='newPassword'></input>
+								<input type='password' id='newPassword'>
 							</div>
 							<div id='changePasswordStatusDiv' class='statusDiv'>
 								<p id='changePasswordStatus'></p>
 							</div>
-						<input type="submit" class="submit" value="Guardar"></input>
+						<input type="submit" class="submit" value="Guardar">
 						</fieldset>
 					</form>
 
@@ -131,20 +129,20 @@
 						</ul>
 					</fieldset>
 					<!--ESTO SERIA AGREGADO CUNADO SE PRESIONA EL BOTON ADD ADDRESS -->
-					<form id='addAddressForm'>
+					<form id='addAddressForm' action='#'>
 						<fieldset class='addressFieldSet'>
 							<legend>New Address</legend>
 							<div class='fieldRow'>
 								<span id='aaName' class='i18n'>Name:</span>
-								<input type='text' id='fullName'></input>
+								<input type='text' id='fullName'>
 							</div>
 							<div class='fieldRow'>
 								<span id='aaAddressOne' class='i18n'>Adress 1:</span>
-								<input id='addressLineOne' type='text'></input>
+								<input id='addressLineOne' type='text'>
 							</div>
 							<div class='fieldRow'>
 								<span id='aaAddressTwo' class='i18n'>Adress 2:</span>
-								<input id='addressLineTwo' type='text'></input>
+								<input id='addressLineTwo' type='text'>
 							</div>
 							<div class='fieldRow' id='countryDivNA'>
 								<span id='aaCountry' class='i18n'>County:</span>
@@ -154,20 +152,20 @@
 							</div>
 							<div class='fieldRow'>
 								<span id='aaCity' class='i18n'>City:</span>
-								<input id='city' type='text'></input>
+								<input id='city' type='text'>
 							</div>
 							<div class='fieldRow'>
 								<span id='aaZipCode' class='i18n'>Zip Code:</span>
-								<input id='zipCode' type='text'></input>
+								<input id='zipCode' type='text'>
 							</div>
 							<div class='fieldRow'>
 								<span id='aaPhoneNumber' class='i18n'>Phone Number:</span>
-								<input id='phoneNumber' type='text'></input>
+								<input id='phoneNumber' type='text'>
 							</div>
 							<div id='addAddressStatusDiv' class='statusWCancelDiv'>
 								<p id='addAddressStatus'></p>
 							</div>
-						<button type='cancel'>Cancel</button>
+						<button type='button'>Cancel</button>
 						<button type="submit" class="submit" id='newAddressSubmit'>Guardar</button>
 						</fieldset>
 					</form>
@@ -175,7 +173,7 @@
 					
 					
 					<!--ESTO SERIA AGREGADO CUNADO SE PRESIONA EL BOTON CHECK ADDRESSES -->
-					<form id='updateAddressForm'>
+					<form id='updateAddressForm' action='#'>
 						<fieldset class="checkAddress">
 							<legend>These are your current addresses:</legend>
 							<select id="AddressSelect">
@@ -183,11 +181,11 @@
 							</select>
 							<div class='fieldRow'>
 								<span id='caAddressOne' class='i18n'>Adress 1:</span>
-								<input type='text' id='maAddress1'></input>
+								<input type='text' id='maAddress1'>
 							</div>
 							<div class='fieldRow'>
 								<span id='caAddressTwo' class='i18n'>Adress 2:</span>
-								<input type='text' id='maAddress2'></input>
+								<input type='text' id='maAddress2'>
 							</div>
 							<div class='fieldRow' id='countryDivMA'>
 								<span id='caCountry' class='i18n'>County:</span>
@@ -197,21 +195,21 @@
 							</div>
 							<div class='fieldRow'>
 								<span id='caCity' class='i18n'>City:</span>
-								<input type='text' id='maCity'></input>
+								<input type='text' id='maCity'>
 							</div>
 							<div class='fieldRow'>
 								<span id='caZipCode' class='i18n'>Zip Code:</span>
-								<input type='text' id='maZipCode'></input>
+								<input type='text' id='maZipCode'>
 							</div>
 							<div class='fieldRow'>
 								<span id='caPhoneNumber' class='i18n'>Phone Number:</span>
-								<input type='text' id='maPhoneNumber'></input>
+								<input type='text' id='maPhoneNumber'>
 							</div>
 							<div id='updateAddressStatusDiv' class='statusWCancelDiv'>
 								<p id='updateAddressStatus'></p>
 							</div>
-							<button type="cancel" class="">Cancel</button>
-							<input type="submit" class="submit" value='Guardar' id='updateAddress'></input>
+							<button type="button" class="">Cancel</button>
+							<input type="submit" class="submit" value='Guardar' id='updateAddress'>
 						</fieldset>
 					</form>
 					<!---------------------------------------------------------------->

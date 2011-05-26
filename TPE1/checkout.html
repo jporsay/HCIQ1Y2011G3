@@ -76,43 +76,42 @@
 				<div id='checkoutTable'></div>
 				
 				<h2>Please enter the required information in order to complete your order</h2>
-				<form id='billingForm'>
+				<form id='billingForm' action='#'>
 					<div class='billingInformation'>
 						<fieldset>
 							<legend>Billing Information</legend>
 							<span>Select the locaction where the order should be delivered:</span>
-							<select id="AddressSelect">
-								<!--<option selected="selected" value="null">------</option>-->
-							</select>
+							<div id='addressSelectContainer'>
+							</div>
 							<a href="userSettings.html">Create new shipping address</a>
 							<div id="addresInformation">
 								<div class='fieldRow'>
 									<span>Addres 1:</span>
-									<input id="address1Input" type='text' readonly></input>
+									<input id="address1Input" type='text' readonly='readonly'>
 								</div>
 								<div class='fieldRow'>
 									<span>Addres 2:</span>
-									<input id="address2Input" type='text' readonly></input>
+									<input id="address2Input" type='text' readonly='readonly'>
 								</div>
 								<div class='fieldRow'>
 									<span>Country:</span>
-									<input id="countryInput" type='text' readonly></input>
+									<input id="countryInput" type='text' readonly='readonly'>
 								</div>
 								<div class='fieldRow'>
 									<span>State:</span>
-									<input id="stateInput" type='text' readonly></input>
+									<input id="stateInput" type='text' readonly='readonly'>
 								</div>							
 								<div class='fieldRow'>
 									<span>City:</span>
-									<input id="cityInput" type='text' readonly></input>
+									<input id="cityInput" type='text' readonly='readonly'>
 								</div>
 								<div class='fieldRow'>
 									<span>Zip Code:</span>
-									<input id="zipInput" type='text' readonly></input>
+									<input id="zipInput" type='text' readonly='readonly'>
 								</div>
 								<div class='fieldRow'>
 									<span>Phone Number:</span>
-									<input id="phoneInput" type='text' readonly></input>
+									<input id="phoneInput" type='text' readonly='readonly'>
 								</div>
 							</div>
 						</fieldset>
@@ -120,26 +119,26 @@
 					<div class='paymentInformation'>
 						<fieldset>
 							<legend>Payment Information</legend>
-							<input class='cardImges' type='Image' src='./images/checkout/cards.jpg'></input>
+							<input class='cardImges' type='Image' src='./images/checkout/cards.jpg'>
 							<div class='fieldRow'>
 								<span>Card Number:</span>
-								<input type='text'></input>
+								<input type='text'>
 							</div>
 							<div class='fieldRow'>
 								<span>Expiration Date:</span>
-								<input type='text'></input>
+								<input type='text'>
 							</div>
 							<div class='fieldRow'>
 								<span>Card Code:</span>
-								<input type='text'></input>
+								<input type='text'>
 							</div>
 						</fieldset>
 					</div>
 					<span class="footNote">None of this forms are required</span>
-					<input class='cancelButton' id='cancelOrder' type="button" value='Cancel'></input>
-					<input class='nextButton' type='submit' id='confirmOrder' value='Create Order'></input>
-				</div>
-			</form>
+					<input class='cancelButton' id='cancelOrder' type="button" value='Cancel'>
+					<input class='nextButton' type='submit' id='confirmOrder' value='Create Order'>
+				</form>
+			</div>
 			<div class ="footer">
 				<a id="usLabel" class="i18n" href="#"></a> | <a id="contactLabel" class="i18n" href="#"></a>
 			</div>
