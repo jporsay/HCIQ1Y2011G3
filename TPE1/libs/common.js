@@ -130,3 +130,4 @@ function appendLastRow(tbody) {
 	totalPriceRow.appendChild(totalValueCol);
 	tbody.appendChild(totalPriceRow);
 }
+
