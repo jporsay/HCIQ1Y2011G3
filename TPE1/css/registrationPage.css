@@ -2,7 +2,7 @@
 	margin-top: 20px;
 	margin-right: auto;
 	margin-left: auto;
-	width: 650px;
+	width: 750px;
 	
 	color: #ffffff;
 }
@@ -41,7 +41,7 @@
 
 .errorText {
 	position: absolute;
-	left: 482px;
+	left: 500px;
 	top: 3px;
 }
 
