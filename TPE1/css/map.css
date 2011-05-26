@@ -7,11 +7,11 @@
 
 #mapTitle {
 	position:absolute;
+	width: 500px;
 }
 
 #mapContainer {
-	position: inherit;
+	position: absolute;
 	left: 30%;
-	top: 30%;
 	top: 20px;
 }
