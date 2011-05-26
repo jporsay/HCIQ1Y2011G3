@@ -15,7 +15,7 @@ function loadCommon() {
 	setSearchAutoCompleteItems('a');
 	$('#searchbutton').click(function() {
 		if ($('#searchtext').val() != '') {
-			window.location = 'browse.html?searchText=' + $('#searchtext').val();
+			window.location = 'browse.html?page=1&searchText=' + $('#searchtext').val();
 		}
 	});
 	
