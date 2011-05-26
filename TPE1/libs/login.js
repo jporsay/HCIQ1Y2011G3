@@ -25,6 +25,7 @@ function logInCallback(data) {
 		$.cookie('loggedUser', null);
 		$.cookie('loggedUser', userData['name'] + ':' + userData['userName'] + ':' + userData['token']);
 		setLoggedForm(document.getElementsByClassName('loginform')[0]);
+		$('#registerLink').hide();
 	}
 }
 
