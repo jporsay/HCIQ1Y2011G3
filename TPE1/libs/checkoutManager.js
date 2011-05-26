@@ -38,7 +38,6 @@ function parseResponse(data, userData) {
 	}
 	var orderId = response.find('order').attr('id');
 	var addressId = $('#AddressSelect').val();
-	alert('orderId: ' + orderId + ' addressId' + addressId);
 	addItemsToOrder(orderId, userData);
 	setOrderAddress(orderId, addressId, userData);
 	confirmOrder(orderId, addressId, userData);

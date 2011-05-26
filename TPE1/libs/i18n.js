@@ -8,6 +8,7 @@ function loadSpanish() {
 	langKeys['categoryHeader'] = 'Categor&iacute;as';
 	langKeys['createaccount'] = 'Crear cuenta';
 	langKeys['errorContainer'] = 'Usuario o contrase&ntilde;a inv&aacute;lido';
+	langKeys['registerLink'] = 'Registrarse';
 	
 	//Validation Errors
 	//User
@@ -120,6 +121,7 @@ function loadEnglish() {
 	langKeys['categoryHeader'] = 'Categories';
 	langKeys['createaccount'] = 'Create account';
 	langKeys['errorContainer'] = 'Invalid username or password';
+	langKeys['registerLink'] = 'Register';
 	
 	//Validation Errors
 	//User

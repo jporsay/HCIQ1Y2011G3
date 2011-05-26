@@ -64,9 +64,11 @@ function loadUserSesion() {
 		userData['name'] = data[0];
 		userData['userName'] = data[1];
 		userData['token'] = data[2];
+		$('#registerLink').hide();
 		setLoggedForm(container);
 	} else {
 		setGuestForm(container);
+		$('#registerLink').show();
 	}
 }
 /*
