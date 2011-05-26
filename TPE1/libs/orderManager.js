@@ -83,6 +83,22 @@ function createOrderDiv(order, orderType) {
 	createLabel(newOrder, 'Address: ', addressLabel, 'address');
 	createLabel(newOrder, 'Date: ', order.find(orderType + '_date').text(), 'date');
 	
+	if (status == _DELIVERING) {
+		var label_span = document.createElement('span');
+			label_span.setAttribute('class', 'i18n label');
+			label_span.innerHTML = 'See the location of you order: ';
+		var link_to_map = document.createElement('a');
+			link_to_map.setAttribute('class', 'i18n');
+		var latitude = order.find('latitude').text();
+		var longitude = order.find('longitude').text();
+			link_to_map.setAttribute('href', 'orderOnMap.html?lat=' + latitude + '&long=' + longitude);
+			link_to_map.innerHTML = 'click here!'
+		var clear = document.createElement('div');
+			clear.setAttribute('class', 'clear');
+		newOrder.appendChild(label_span);
+		newOrder.appendChild(link_to_map);
+		newOrder.appendChild(clear);
+	}
 	var table_container = createOrderPruductTable(order, '$');
 	newOrder.appendChild(table_container);
 	parent.appendChild(newOrder);
@@ -90,7 +106,7 @@ function createOrderDiv(order, orderType) {
 
 function createLabel(parent, label, value, valueClass) {
 	var clear = document.createElement('div');
-	clear.setAttribute('class', 'clear');
+		clear.setAttribute('class', 'clear');
 	var label_span = document.createElement('span');
 		label_span.setAttribute('class', 'i18n label');
 		label_span.innerHTML = label;
