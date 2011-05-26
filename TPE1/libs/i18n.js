@@ -12,7 +12,7 @@ function loadSpanish() {
 	
 	//Validation Errors
 	//User
-	langKeys['passwordFormat'] = 'Characters, digits, "_" and "-". Min: 8. Max: 15';
+	langKeys['passwordFormat'] = 'Length. Min: 8. Max: 15';
 	langKeys['mailFormat'] = 'Formato: great@example.com';
 	langKeys['usernameFormat'] = 'Solo letras y d&iacute;gitos. Max: 15';
 	langKeys['nameFormat'] = 'Solo letras y espacios. Max: 80';
