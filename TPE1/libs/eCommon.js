@@ -12,10 +12,10 @@ function loadCommon() {
 	});
 	
 	loadUserSesion();
-	
+	setSearchAutoCompleteItems('a');
 	$('#searchbutton').click(function() {
 		if ($('#searchtext').val() != '') {
-			window.location = 'browse.html?searchText=' + $('#searchtext').val();
+			window.location = 'browse.html?page=1&searchText=' + $('#searchtext').val();
 		}
 	});
 	
@@ -37,3 +37,28 @@ function loadCommon() {
 		}
 	});
 }
+
+function setSearchAutoCompleteItems(text) {
+	var catalog = new ServerManager('Catalog');
+	catalog.get(
+		{
+			method: 'GetProductListByName',
+			criteria: text
+		},
+		filterResponse
+	);
+}
+
+function filterResponse(data) {
+	var data = $('product', data).map(function() {
+		return {
+			value: $('name', this).text(),
+			id: $(this).attr('id')
+		};
+	}).get();
+	$('#searchtext').autocomplete({
+		source: data,
+		minLength: 1
+	});
+}
+
