@@ -70,6 +70,7 @@ Cart.prototype.addItems = function(newItems) {
 			this.items = this.items.concat([newItems[i]]);
 		}
 	}
+	this.saveState();
 }
 
 Cart.prototype.inCart = function(id) {
