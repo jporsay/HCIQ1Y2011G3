@@ -22,17 +22,25 @@ function createCartTable() {
 	var headerRow = document.createElement('tr');
 
 	var product = document.createElement('th');
-	product.setAttribute('scope', 'col');
+	product.setAttribute('class', 'col i18n');
+	product.setAttribute('id', 'tProduct');
+	
 	product.innerHTML = getTranslation('tProduct');
 	var quantity = document.createElement('th');
-	quantity.setAttribute('scope', 'col');
+	quantity.setAttribute('class', 'col i18n');
+	quantity.setAttribute('id', 'tQuantity');
+	
 	quantity.innerHTML = getTranslation('tQuantity');
 	var price = document.createElement('th');
-	price.setAttribute('scope', 'col');
+	price.setAttribute('class', 'col i18n');
+	price.setAttribute('id', 'tPrice');
+	
 	price.innerHTML = getTranslation('tPrice');
 	var total = document.createElement('th');
-	total.setAttribute('scope', 'col');
+	total.setAttribute('class', 'col i18n');
+	total.setAttribute('id', 'tTotal');
 	total.innerHTML = getTranslation('tSubTotal');
+	
 	headerRow.appendChild(product);
 	headerRow.appendChild(quantity);
 	headerRow.appendChild(price);
