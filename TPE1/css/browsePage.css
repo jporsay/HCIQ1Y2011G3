@@ -91,3 +91,11 @@
 	color: #222222;
 	font-weight: bold;
 }
+
+#noResultsLabel {
+	position: absolute;
+	margin-top: 50px;
+	font-size: 35px;
+	left: 25%;
+	display:none;
+}
