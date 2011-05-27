@@ -1,7 +1,7 @@
 .productContainer {
 	border: 2px solid #000000;
 	text-align: center;
-	height: 600px;
+	height: 700px;
 }
 
 .productContainer .title {
@@ -22,8 +22,7 @@
 
 .productContainer .price {
 	position: absolute;
-	width: 200px;
-	height: 50px;
+	width: 160px;
 	left: 60%;
 	top: 30%;
 	font-size: large;
@@ -34,7 +33,8 @@
 }
 
 .productContainer h2 {
-	margin-bottom: 40px;
+	display: block;
+	height: 30px;
 }
 .productContainer p {
 	display: inline;
@@ -52,7 +52,7 @@
 	position: absolute;
 	z-index: 1000;
 	top: 52.5%;
-	left: 75%;
+	left: 70%;
 	color: #11ee11;
 	font-weight: bold;
 	font-size: medium;
@@ -61,7 +61,7 @@
 .productContainer input {
 	position: absolute;
 	top: 52.5%;
-	left: 70%;
+	left: 65%;
 	width: 25px;
 	height: 25px;
 }
