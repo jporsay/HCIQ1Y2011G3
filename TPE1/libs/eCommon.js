@@ -22,7 +22,9 @@ function loadCommon() {
 	
 	$("#locale").change(function() {
 		translator.setLang($(this).val());
-		loadCategories($('#locale :selected').attr('id'));
+		if (typeof loadCategories == 'function') {
+	 		loadCategories($('#locale :selected').attr('id'));
+		}
 		translator.translatePage();
 	});
 	
