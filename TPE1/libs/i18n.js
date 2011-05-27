@@ -104,6 +104,26 @@ function loadSpanish() {
 	langKeys['caCountry'] = 'Pa&iacute;s:*';
 	langKeys['selectAValidAddress'] = 'Elija o cree una direcci&oacute;n';
 	
+	//Map
+	langKeys['mapTitle'] = 'Posici&oacute;n de la orden:';
+	
+	//Order tracking
+	langKeys['confirmedOrdersHeader'] = 'Ordenes confirmadas:';
+	langKeys['shippedOrdersHeader'] = 'Ordenes enviadas:';
+	langKeys['deliveredOrdersHeader'] = 'Ordenes recibidas:';
+	
+	//Table Strings
+	langKeys['tSubTotal'] = 'Subtotal';
+	langKeys['tProduct'] = 'Producto';
+	langKeys['tPrice'] = 'Precio';
+	langKeys['tQuantity'] = 'Cantidad';
+	langKeys['tTotal'] = 'Total:';
+	
+	//Checkout
+	langKeys['checkoutRequiredInformation'] = 'Ingrese los datos requeridos para completar su orden';
+	langKeys['checkoutLocationDelivery'] = 'Elija la dirección a la cual quiere que se entregue su orden:';
+	langKeys['checkoutCreateAddress'] = 'Crear nueva dirección de envio';
+	
 	return langKeys;
 }
 
@@ -215,6 +235,21 @@ function loadEnglish() {
 	langKeys['caPhoneNumber'] = 'Phone number:*';
 	langKeys['caCountry'] = 'Country:*';
 	langKeys['selectAValidAddress'] = 'Choose or create an address';
+	
+	//Map
+	langKeys['mapTitle'] = 'Order location:';
+	
+	//Order tracking
+	langKeys['confirmedOrdersHeader'] = 'Confirmed orders:';
+	langKeys['shippedOrdersHeader'] = 'Shipped orders:';
+	langKeys['deliveredOrdersHeader'] = 'Delivered orders:';
+	
+	//Table Strings
+	langKeys['tSubTotal'] = 'Subtotal';
+	langKeys['tProduct'] = 'Product';
+	langKeys['tPrice'] = 'Price';
+	langKeys['tQuantity'] = 'Quantity';
+	langKeys['tTotal'] = 'Total:';
 	return langKeys;
 }
 

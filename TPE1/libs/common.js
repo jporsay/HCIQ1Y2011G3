@@ -23,16 +23,16 @@ function createCartTable() {
 
 	var product = document.createElement('th');
 	product.setAttribute('scope', 'col');
-	product.innerHTML = 'Product';
+	product.innerHTML = getTranslation('tProduct');
 	var quantity = document.createElement('th');
 	quantity.setAttribute('scope', 'col');
-	quantity.innerHTML = 'Quantity';
+	quantity.innerHTML = getTranslation('tQuantity');
 	var price = document.createElement('th');
 	price.setAttribute('scope', 'col');
-	price.innerHTML = 'Price';
+	price.innerHTML = getTranslation('tPrice');
 	var total = document.createElement('th');
 	total.setAttribute('scope', 'col');
-	total.innerHTML = 'Subtotal Price';
+	total.innerHTML = getTranslation('tSubTotal');
 	headerRow.appendChild(product);
 	headerRow.appendChild(quantity);
 	headerRow.appendChild(price);
@@ -67,7 +67,7 @@ function appendElementToTable(table, items, currency) {
 	var emptyCols = document.createElement('td');
 	emptyCols.setAttribute('colspan', '2');
 	var totalLabelCol = document.createElement('td');
-	totalLabelCol.innerHTML = 'Total Price: ';
+	totalLabelCol.innerHTML = getTranslation('tTotal');
 	totalLabelCol.setAttribute('id', 'totalPriceRow');
 	var totalValueCol = document.createElement('td');
 	totalValueCol.innerHTML = currency + ' ' + roundDigits(totalPrice);

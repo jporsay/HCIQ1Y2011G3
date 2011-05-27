@@ -75,42 +75,42 @@
 				<h2>Your final order:</h2>
 				<div id='checkoutTable'></div>
 				
-				<h2>Please enter the required information in order to complete your order</h2>
+				<h2 id='checkoutRequiredInformation'>Please enter the required information in order to complete your order</h2>
 				<form id='billingForm' action='#'>
 					<div class='billingInformation'>
 						<fieldset>
 							<legend>Billing Information</legend>
-							<span class="selectLocationLabel i18n">Select the locaction where the order should be delivered:</span>
+							<span id='checkoutLocationDelivery' class="i18n selectLocationLabel">Select the locaction where the order should be delivered:</span>
 							<div id='addressSelectContainer'>
 							</div>
-							<a href="userSettings.html" class="newShippinAddressLink">Create new shipping address</a>
+							<a href="userSettings.html" class="i18n newShippinAddressLink" id='checkoutCreateAddress'>Create new shipping address</a>
 							<div id="addresInformation">
 								<div class='fieldRow'>
-									<span>Addres 1:</span>
+									<span class='i18n' id='caAddressOne'>Addres 1:</span>
 									<input id="address1Input" type='text' readonly='readonly'>
 								</div>
 								<div class='fieldRow'>
-									<span>Addres 2:</span>
+									<span class='i18n' id='caAddressTwo'>Addres 2:</span>
 									<input id="address2Input" type='text' readonly='readonly'>
 								</div>
 								<div class='fieldRow'>
-									<span>Country:</span>
+									<span class='i18n' id='caCountry'>Country:</span>
 									<input id="countryInput" type='text' readonly='readonly'>
 								</div>
 								<div class='fieldRow'>
-									<span>State:</span>
+									<span class='i18n' id='caState'>State:</span>
 									<input id="stateInput" type='text' readonly='readonly'>
 								</div>							
 								<div class='fieldRow'>
-									<span>City:</span>
+									<span class='i18n' id='caCity'>City:</span>
 									<input id="cityInput" type='text' readonly='readonly'>
 								</div>
 								<div class='fieldRow'>
-									<span>Zip Code:</span>
+									<span class='i18n' id='caZipCode'>Zip Code:</span>
 									<input id="zipInput" type='text' readonly='readonly'>
 								</div>
 								<div class='fieldRow'>
-									<span>Phone Number:</span>
+									<span class='i18n' id='caPhoneNumber'>Phone Number:</span>
 									<input id="phoneInput" type='text' readonly='readonly'>
 								</div>
 							</div>
