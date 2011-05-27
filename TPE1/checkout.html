@@ -70,16 +70,16 @@
 		
 		<div id="mainArea">
 			<div class="fieldsCheckout">
-				<h1>Cart Checkout:</h1>
+				<h1 id='checkoutCartTitle' class='i18n'>Cart Checkout:</h1>
 				
-				<h2>Your final order:</h2>
+				<h2 id='checkoutSubTitle' class='i18n'>Your final order:</h2>
 				<div id='checkoutTable'></div>
 				
-				<h2 id='checkoutRequiredInformation'>Please enter the required information in order to complete your order</h2>
+				<h2 id='checkoutRequiredInformation' class='i18n'>Please enter the required information in order to complete your order</h2>
 				<form id='billingForm' action='#'>
 					<div class='billingInformation'>
 						<fieldset>
-							<legend>Billing Information</legend>
+							<legend id='lBillingInformation' class='i18n'>Billing Information</legend>
 							<span id='checkoutLocationDelivery' class="i18n selectLocationLabel">Select the locaction where the order should be delivered:</span>
 							<div id='addressSelectContainer'>
 							</div>
@@ -118,7 +118,7 @@
 					</div>
 					<div class='paymentInformation'>
 						<fieldset>
-							<legend>Payment Information</legend>
+							<legend id='lPaymentInformation' class='i18n'>Payment Information</legend>
 							<input class='cardImges' type='Image' src='./images/checkout/cards.jpg'>
 							<div class='fieldRow'>
 								<span>Card Number:</span>
@@ -134,9 +134,9 @@
 							</div>
 						</fieldset>
 					</div>
-					<span class="footNote">Payment Information FORM IS NOT REQUIRED IN THE VERSION</span>
-					<input class='cancelButton' id='cancelOrder' type="button" value='Cancel'>
-					<input class='nextButton' type='submit' id='confirmOrder' value='Create Order'>
+					<span class="i18n footNote" id='paymentFootNote'>Payment Information FORM IS NOT REQUIRED IN THE VERSION</span>
+					<input class='i18n cancelButton' id='cancelOrder' type="button" value='Cancel'>
+					<input class='i18n nextButton' type='submit' id='confirmOrder' value='Order'>
 					<span id="orderCreatedLabel">Your Order has been created!</span>
 					<div id="processingOrder"></div>
 				</form>

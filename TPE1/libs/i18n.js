@@ -124,6 +124,16 @@ function loadSpanish() {
 	langKeys['checkoutLocationDelivery'] = 'Elija la dirección a la cual quiere que se entregue su orden:';
 	langKeys['checkoutCreateAddress'] = 'Crear nueva dirección de envio';
 	
+	//Checkout
+	langKeys['lBillingInformation'] = 'Información de envio';
+	langKeys['lPaymentInformation'] = 'Información de pago';
+	langKeys['paymentFootNote'] = 'Informaci&oacute;n de pago no es requerida';
+	langKeys['checkoutCartTitle'] = 'Confirmar orden:';
+	langKeys['checkoutSubTitle'] = 'Su orden final:';
+	langKeys['checkoutRequiredInformation'] = 'Ingrese la información requerida';
+	langKeys['cancelOrder'] = 'Cancelar';
+	langKeys['confirmOrder'] = 'Confirmar';
+	
 	return langKeys;
 }
 
@@ -250,6 +260,16 @@ function loadEnglish() {
 	langKeys['tPrice'] = 'Price';
 	langKeys['tQuantity'] = 'Quantity';
 	langKeys['tTotal'] = 'Total:';
+	
+	//Checkout
+	langKeys['lBillingInformation'] = 'Delivery Information';
+	langKeys['lPaymentInformation'] = 'Payment Information';
+	langKeys['paymentFootNote'] = 'Payment information is not required';
+	langKeys['checkoutCartTitle'] = 'Confirm order:';
+	langKeys['checkoutSubTitle'] = 'Your final order:';
+	langKeys['checkoutRequiredInformation'] = 'Enter the required information';
+	langKeys['cancelOrder'] = 'Cancel';
+	langKeys['confirmOrder'] = 'Confirm';
 	return langKeys;
 }
 
@@ -345,11 +365,11 @@ i18n.prototype.translatePage = function() {
 i18n.prototype.translateElement = function(node) {
 	var key = node.id;
 	var translated = getTranslation(key);
-	// not using getAttribute since its buggy.
 	if (translated !== undefined) {
 		if ($(node).is('input')) {
-			//not using setAttribute since its broken in IE and in Opera.
 			node.setAttribute('value', translated);
+		} else if ($(node).is('legend')) {
+			$(node).text(translated);
 		} else {
 			node.innerHTML = translated;
 		}
