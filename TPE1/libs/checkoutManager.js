@@ -1,9 +1,13 @@
 var order = new ServerManager('Order');
+
 function createNewOrder() {
 	var userData = getLoggedData();
 	if (!validateFields()) {
 		return;
 	}
+	var catList = document.getElementById('processingOrder');
+	catList.innerHTML = "<img src='images/ajax-loader.gif'>"
+	
 	order.post(
 		{
 			method: 'CreateOrder',

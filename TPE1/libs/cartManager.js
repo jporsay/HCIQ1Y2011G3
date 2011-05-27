@@ -5,6 +5,7 @@ var CART_ID_HIDDEN = 'hiddenCart';
 var CART_COOKIE = 'cartItems';
 var CART_COOKIE2 = 'cartItems2';
 var CART_ITEMS_LIST = 'cartItemsList';
+var CURRENCY = '$';
 
 var cartInstance;
 
@@ -84,15 +85,6 @@ Cart.prototype.inCart = function(id) {
 	return false;
 }
 
-/** Cambia el tipo de moneda del carrito por el indicado en el parametro.
- Para ver los cambios, la funcion update() debe ser llamada*/
-Cart.prototype.setCurrency = function(currency, conversion) {
-	this.currency = currency;
-	for (var i=0; i < this.items.length; i++) {
-		this.items[i].price *= conversion;
-	}
-}
-
 /** Incrementa en 1 la cantidad de items del carrito cuyo id es el mismo que el del parametro.
  El cambio se vera reflejado una vez llamada la funcion update().
  */
@@ -143,13 +135,13 @@ Cart.prototype.update = function() {
 	var cart_items = document.getElementById(CART_ITEMS_LIST);
 	var totalPrice = 0;
 	for (var i=0; i < this.items.length; i++) {
-		addToCart(this.items[i], this.currency, cart_items);
+		addToCart(this.items[i], CURRENCY, cart_items);
 		totalPrice += this.items[i].price * this.items[i].quantity;
 	}
 	var totalPriceLabel = document.getElementById('cartTotalPrice');
 	totalPriceLabel.innerHTML = roundDigits(totalPrice);
 	var totalPriceCurrencyLabel = document.getElementById('cartTotalPriceCurrency');
-	totalPriceCurrencyLabel.innerHTML = this.currency;
+	totalPriceCurrencyLabel.innerHTML = CURRENCY;
 	
 	var translator = new i18n();
 	translator.translatePage();
@@ -270,7 +262,7 @@ function createItemDescription(item, currency) {
 		item_name.innerHTML = item.name;
 	var item_price = document.createElement('span');
 		item_price.setAttribute('class', 'price');
-		item_price.innerHTML = currency + ' ' + item.price;
+		item_price.innerHTML = CURRENCY + ' ' + item.price;
 	var item_quantity = createItemQuantity(item);
 	item_desc.appendChild(item_name);
 	item_desc.appendChild(item_price);
@@ -410,7 +402,7 @@ function createCartHidden() {
 }
 
 Cart.prototype.printToTable = function(elementId) {
-	createItemsTable(elementId, this.items, this.currency);
+	createItemsTable(elementId, this.items,  CURRENCY);
 }
 
 Cart.prototype.saveState = function() {
@@ -418,7 +410,7 @@ Cart.prototype.saveState = function() {
 	for(var i=0; i < this.items.length; i++) {
 		value += toJSonFormat(this.items[i]) + ',';
 	}
-	value += 'currency:' + this.currency;
+	value += 'currency:' + CURRENCY;
 	value += '}';
 	$.cookie(CART_COOKIE, null);
 	$.cookie(CART_COOKIE, value, {path: '/'});

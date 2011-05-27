@@ -86,3 +86,7 @@ fieldset legend {
 	font-weight: bold;
 	display: none;
 }
+
+#processingOrder {
+	float: right;
+}
