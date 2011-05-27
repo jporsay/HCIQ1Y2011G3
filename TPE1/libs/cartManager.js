@@ -156,18 +156,21 @@ Cart.prototype.update = function() {
 /** Ocutlta/muestra el carrito*/
 Cart.prototype.setHidden = function(hide) {
 	if(hide) {
-		document.getElementById(CART_ID).style.display = "none";
-		document.getElementById(CART_ID_HIDDEN).style.display = "";
-		var leftArea = document.getElementById('leftArea');
-		var rightArea = document.getElementById('rightArea');
-		if (!this.leftAreaPrevSize) {
-			this.leftAreaPrevSize = $(leftArea).css('width');
+		var cart = document.getElementById(CART_ID);
+		if (cart) {
+			cart.style.display = "none";
+			document.getElementById(CART_ID_HIDDEN).style.display = "";
+			var leftArea = document.getElementById('leftArea');
+			var rightArea = document.getElementById('rightArea');
+			if (!this.leftAreaPrevSize) {
+				this.leftAreaPrevSize = $(leftArea).css('width');
+			}
+			if (!this.rightAreaPrevSize) {
+				this.rightAreaPrevSize = $(rightArea).css('width');
+			}
+			$(leftArea).css('width', '90%');
+			$(rightArea).css('width', '5%');
 		}
-		if (!this.rightAreaPrevSize) {
-			this.rightAreaPrevSize = $(rightArea).css('width');
-		}
-		$(leftArea).css('width', '90%');
-		$(rightArea).css('width', '5%');
 	} else {
 		var cart = document.getElementById(CART_ID);
 		if(cart) {
