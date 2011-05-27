@@ -1,3 +1,7 @@
+#mapContainer {
+	position: relative;
+}
+
 #map_canvas {
 	position: inherit;
 	width: 650px;
@@ -8,10 +12,4 @@
 #mapTitle {
 	position:absolute;
 	width: 500px;
-}
-
-#mapContainer {
-	position: absolute;
-	left: 30%;
-	top: 20px;
 }

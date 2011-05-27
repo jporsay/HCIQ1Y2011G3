@@ -1,13 +1,7 @@
 .productContainer {
-	position: absolute;
-	margin-top: 20px;
-	margin-right: auto;
-	margin-left: auto;
-	width: 750px;
-	right: 2%;
-	height: 600px;
 	border: 2px solid #000000;
 	text-align: center;
+	height: 600px;
 }
 
 .productContainer .title {

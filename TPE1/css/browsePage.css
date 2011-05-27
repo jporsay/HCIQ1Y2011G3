@@ -1,17 +1,10 @@
+.items {
+}
+
 .productTitle {
 	border-bottom: 1px solid #000000;
 	margin-bottom: 10px;
-	width: 700px;
-	padding-bottom: 10px;
-	height: 50px;
-}
-
-.items {
-	position: absolute;
-	margin-right: auto;
-	margin-left: auto;
-	width: 750px;
-	right: 2%;
+	height: 60px;
 }
 
 .items .navButton {
@@ -22,13 +15,12 @@
 
 .items .next {
 	float: right;
-	margin-right: 50px;
+	margin-right: 10px;
 }
 
 .item {
 	position: relative;
 	margin-top: 20px;
-	width: 700px;
 	height: 165px;
 	border-bottom: #222222 solid 1px;
 }
@@ -56,7 +48,7 @@
 
 .item .extraItemInfo {
 	position: absolute;
-	width: 160px;
+	width: 100px;
 	top: 60px;
 	left: 450px;
 }

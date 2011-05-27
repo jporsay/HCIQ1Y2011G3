@@ -23,6 +23,14 @@ body {
 	width: 25%;
 }
 
+#centralArea {
+	position: relative;
+	float: right;
+	margin-top: 20px;
+	width: 70%;
+	right: 20px;
+}
+
 #javascriptIndicator {
 	position: absolute;
 	width: 100%;
