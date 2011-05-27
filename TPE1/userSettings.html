@@ -101,7 +101,7 @@
 								<div id='changeUserStatusDiv' class='statusDiv'>
 									<p id='changeUserStatus'></p>
 								</div>
-								<input type="submit" class="submit" value='Guardar'>
+								<input type="submit" id='ucSave' class="i18n submit" value='Guardar'>
 							</fieldset>
 						</form>
 						<form id='passwordChangeForm' action='#'>
@@ -118,7 +118,7 @@
 								<div id='changePasswordStatusDiv' class='statusDiv'>
 									<p id='changePasswordStatus'></p>
 								</div>
-							<input type="submit" class="submit" value="Guardar">
+							<input type="submit" id='cpSave' class="i18n submit" value="Guardar">
 							</fieldset>
 						</form>
 						<fieldset>
@@ -165,8 +165,8 @@
 								<div id='addAddressStatusDiv' class='statusWCancelDiv'>
 									<p id='addAddressStatus'></p>
 								</div>
-							<button type='button' class="cancel" onClick="$(this.form).css('display', 'none')">Cancel</button>
-							<button type="submit" class="submit" id='newAddressSubmit'>Guardar</button>
+							<button id='aaCancel' type='button' class="i18n cancel" onClick="$(this.form).css('display', 'none')">Cancel</button>
+							<button type="submit" class="i18n submit" id='newAddressSubmit'>Guardar</button>
 							</fieldset>
 						</form>
 						<!---------------------------------------------------------------->
@@ -207,8 +207,8 @@
 								<div id='updateAddressStatusDiv' class='statusWCancelDiv'>
 									<p id='updateAddressStatus'></p>
 								</div>
-								<button type="button" class="cancel" onClick="$(this.form).css('display', 'none')">Cancel</button>
-								<input type="submit" class="submit" value='Guardar' id='updateAddress'>
+								<button id='caCancel' type="button" class="i18n cancel" onClick="$(this.form).css('display', 'none')">Cancel</button>
+								<input type="submit" class="i18n submit" value='Guardar' id='updateAddress'>
 							</fieldset>
 						</form>
 						<!---------------------------------------------------------------->

@@ -77,6 +77,7 @@ function loadSpanish() {
 	langKeys['settingsError'] = 'Campos con * son obligatorios';
 	
 	//Settings - changeUserData
+	langKeys['ucSave'] = 'Guardar';
 	langKeys['ucLegend'] = 'Información personal';
 	langKeys['ucFullName'] = 'Nombre completo:*';
 	langKeys['ucEmail'] = 'Email:*';
@@ -85,6 +86,7 @@ function loadSpanish() {
 	
 	//Settings - changePassword
 	langKeys['cpTitle'] = 'Contraseña'
+	langKeys['cpSave'] = 'Guardar';
 	langKeys['cpOldPassword'] = 'Contrase&ntilde;a actual:*';
 	langKeys['cpNewPassword'] = 'Contrase&ntilde;a nueva:*';
 	
@@ -94,7 +96,8 @@ function loadSpanish() {
 	
 	//Settings - addAddress
 	langKeys['aaLegend'] = 'Agregar dirección';
-	langKeys['caLegend'] = 'Ver o cambiar dirección';
+	langKeys['aaCancel'] = 'Cancelar';
+	langKeys['newAddressSubmit'] = 'Crear';
 	langKeys['aaName'] = 'Nombre:*';
 	langKeys['aaAddressOne'] = 'Direcci&oacute;n 1:*';
 	langKeys['aaAddressTwo'] = 'Direcci&oacute;n 2:*';
@@ -105,6 +108,9 @@ function loadSpanish() {
 	langKeys['aaCountry'] = 'Pa&iacute;s:*';
 	
 	//Settings - changeAddress
+	langKeys['caCancel'] = 'Cancelar';
+	langKeys['updateAddress'] = 'Guardar';
+	langKeys['caLegend'] = 'Ver o cambiar dirección';
 	langKeys['caAddressOne'] = 'Direcci&oacute;n 1:*';
 	langKeys['caAddressTwo'] = 'Direcci&oacute;n 2:*';
 	langKeys['caZipCode'] = 'C&oacute;digo postal:*';
@@ -229,6 +235,7 @@ function loadEnglish() {
 	langKeys['settingsError'] = 'Fields with * are obligatory';
 	
 	//Settings - changeUserData
+	langKeys['ucSave'] = 'Save';
 	langKeys['ucLegend'] = 'Personal information';
 	langKeys['ucFullName'] = 'Full name:*';
 	langKeys['ucEmail'] = 'Email:*';
@@ -236,6 +243,7 @@ function loadEnglish() {
 	langKeys['ucLegend'] = 'Personal Information';
 	
 	//Settings - changePassword
+	langKeys['cpSave'] = 'Save';
 	langKeys['cpOldPassword'] = 'Old password:*';
 	langKeys['cpNewPassword'] = 'New Password:*';
 	
@@ -245,7 +253,8 @@ function loadEnglish() {
 	
 	//Settings - addAddress
 	langKeys['aaLegend'] = 'Add address';
-	langKeys['caLegend'] = 'View or change address';
+	langKeys['aaCancel'] = 'Cancel';
+	langKeys['newAddressSubmit'] = 'Create';
 	langKeys['aaName'] = 'Name:*';
 	langKeys['aaAddressOne'] = 'Address 1:*';
 	langKeys['aaAddressTwo'] = 'Address 2:*';
@@ -256,6 +265,9 @@ function loadEnglish() {
 	langKeys['aaCountry'] = 'Country:*';
 	
 	//Settings - changeAddress
+	langKeys['caCancel'] = 'Cancel';
+	langKeys['updateAddress'] = 'Save';
+	langKeys['caLegend'] = 'View or change address';
 	langKeys['caAddressOne'] = 'Address 1:*';
 	langKeys['caAddressTwo'] = 'Address 2:*';
 	langKeys['caZipCode'] = 'Postal code:*';
