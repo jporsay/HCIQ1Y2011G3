@@ -67,6 +67,8 @@ function loadSpanish() {
 	langKeys['published_date'] = 'Fecha de publicaci&oacute;n: ';
 	
 	//Settings
+	langKeys['sTitle'] = 'Configuraciones:';
+	langKeys['ucAddressInformation'] = 'Información sobre direcciones';
 	langKeys['passwordChangeOk'] = 'Contrase&ntilde;a actualizada';
 	langKeys['passwordChangeFail'] = 'Contrase&ntilde;a incorrecta';
 	langKeys['settingsChanged'] = 'Informaci&oacute;n personal actualizada';
@@ -75,16 +77,24 @@ function loadSpanish() {
 	langKeys['settingsError'] = 'Campos con * son obligatorios';
 	
 	//Settings - changeUserData
+	langKeys['ucLegend'] = 'Información personal';
 	langKeys['ucFullName'] = 'Nombre completo:*';
 	langKeys['ucEmail'] = 'Email:*';
 	langKeys['ucBirthDate'] = 'Fecha de nacimiento:*';
 	langKeys['ucLegend'] = 'Informaci&oacute;n personal';
 	
 	//Settings - changePassword
+	langKeys['cpTitle'] = 'Contraseña'
 	langKeys['cpOldPassword'] = 'Contrase&ntilde;a actual:*';
 	langKeys['cpNewPassword'] = 'Contrase&ntilde;a nueva:*';
 	
+	//Settings - address
+	langKeys['checkAddressLink'] = 'Ver o cambiar direcciones';
+	langKeys['addAddressLink'] = 'Agregar direcci&oacute;n';
+	
 	//Settings - addAddress
+	langKeys['aaLegend'] = 'Agregar dirección';
+	langKeys['caLegend'] = 'Ver o cambiar dirección';
 	langKeys['aaName'] = 'Nombre:*';
 	langKeys['aaAddressOne'] = 'Direcci&oacute;n 1:*';
 	langKeys['aaAddressTwo'] = 'Direcci&oacute;n 2:*';
@@ -209,6 +219,8 @@ function loadEnglish() {
 	langKeys['published_date'] = 'Published date: ';
 	
 	//Settings
+	langKeys['sTitle'] = 'Settings:';
+	langKeys['ucAddressInformation'] = 'Address information';
 	langKeys['passwordChangeOk'] = 'Password updated';
 	langKeys['passwordChangeFail'] = 'Incorrect password';
 	langKeys['settingsChanged'] = 'Personal information updated';
@@ -217,6 +229,7 @@ function loadEnglish() {
 	langKeys['settingsError'] = 'Fields with * are obligatory';
 	
 	//Settings - changeUserData
+	langKeys['ucLegend'] = 'Personal information';
 	langKeys['ucFullName'] = 'Full name:*';
 	langKeys['ucEmail'] = 'Email:*';
 	langKeys['ucBirthDate'] = 'Birth Date:*';
@@ -226,7 +239,13 @@ function loadEnglish() {
 	langKeys['cpOldPassword'] = 'Old password:*';
 	langKeys['cpNewPassword'] = 'New Password:*';
 	
+	//Settings - address
+	langKeys['checkAddressLink'] = 'Check or change addresses';
+	langKeys['addAddressLink'] = 'Add address';
+	
 	//Settings - addAddress
+	langKeys['aaLegend'] = 'Add address';
+	langKeys['caLegend'] = 'View or change address';
 	langKeys['aaName'] = 'Name:*';
 	langKeys['aaAddressOne'] = 'Address 1:*';
 	langKeys['aaAddressTwo'] = 'Address 2:*';

@@ -41,6 +41,21 @@ function loadUserSettings() {
 		$(':password').val('');
 	});
 	
+	$('#centralArea').click(function(e) {
+		if ($(e.target).is('a')) {
+			var eId = $(e.target).attr('id');
+			if (eId == 'addAddressLink' ) {
+				$('#addAddressForm').css('display', 'inline');
+				$('#updateAddressForm').css('display', 'none');
+			} else if ( eId == 'checkAddressLink' ) {
+				$('#updateAddressForm').css('display', 'inline');
+				$('#addAddressForm').css('display', 'none');
+			}
+			e.preventDefault();
+			return;
+		}
+	});
+	
 	getAddressList(getAddressListCallback);
 	showUserData();
 	translator.translatePage();
