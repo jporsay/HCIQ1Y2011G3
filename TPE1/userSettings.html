@@ -37,6 +37,21 @@
 		checkIfLoggedOrExit();
 		$(function() {
 			loadUserSettings();
+			
+		$('#centralArea').click(function(e) {
+			if ($(e.target).is('a')) {
+				var eClass = $(e.target).attr('class');
+				if (eClass == 'addAddressLink' ) {
+					var elem = $('#addAddressForm');
+					elem.css('display', 'inline');
+				} else if ( eClass == 'checkAddressLink' ) {
+					var elem = $('#updateAddressForm');
+					elem.css('display', 'inline');
+				}
+				e.preventDefault();
+				return;
+			}
+		});
 		});
 	</script>
 	<title>Carritus Co.</title>
@@ -121,12 +136,11 @@
 							<input type="submit" class="submit" value="Guardar">
 							</fieldset>
 						</form>
-
 						<fieldset>
 							<legend>Addressing information</legend>
 							<ul>
-								<li><a href="#">Add Address</a></li>
-								<li><a href="#">Check Addresses</a></li>
+								<li><a href="#" class="addAddressLink">Add Address</a></li>
+								<li><a href="#" class="checkAddressLink">Check Addresses</a></li>
 							</ul>
 						</fieldset>
 						<!--ESTO SERIA AGREGADO CUNADO SE PRESIONA EL BOTON ADD ADDRESS -->
@@ -166,15 +180,14 @@
 								<div id='addAddressStatusDiv' class='statusWCancelDiv'>
 									<p id='addAddressStatus'></p>
 								</div>
-							<button type='button'>Cancel</button>
+							<button type='button' class="cancel" onClick="$(this.form).css('display', 'none')">Cancel</button>
 							<button type="submit" class="submit" id='newAddressSubmit'>Guardar</button>
 							</fieldset>
 						</form>
 						<!---------------------------------------------------------------->
-						
-						
+			
 						<!--ESTO SERIA AGREGADO CUNADO SE PRESIONA EL BOTON CHECK ADDRESSES -->
-						<form id='updateAddressForm' action='#'>
+						<form id='updateAddressForm' action='#' >
 							<fieldset class="checkAddress">
 								<legend>These are your current addresses:</legend>
 								<select id="AddressSelect">
@@ -209,7 +222,7 @@
 								<div id='updateAddressStatusDiv' class='statusWCancelDiv'>
 									<p id='updateAddressStatus'></p>
 								</div>
-								<button type="button" class="">Cancel</button>
+								<button type="button" class="cancel" onClick="$(this.form).css('display', 'none')">Cancel</button>
 								<input type="submit" class="submit" value='Guardar' id='updateAddress'>
 							</fieldset>
 						</form>

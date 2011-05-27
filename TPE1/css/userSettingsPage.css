@@ -8,6 +8,8 @@
 
 #settingsPanel fieldset a {
 	font-weight: bold;
+	color: #0E44FF;
+	font-size: bold;
 }
 
 #settingsPanel fieldset  legend {
@@ -39,12 +41,13 @@
 }
 
 #settingsPanel button {
-	width: 80px;
-	height: 40px;
+	width: 70px;
+	height: 25px;
 }
 #settingsPanel .submit {
 	position: relative;
-	left: 59.5%;
+	right: 50px;
+	float:right;
 }
 
 /* change user information */
@@ -63,24 +66,16 @@
 	font-size: large;
 }
 
-#changeSettingsStatusDiv p {
-}
-/*-----add address fieldset------*/
-
-#settingsPanel  .addressFieldSet {
-	width: 750px;
-	margin: 0px;
-}
-
-/*------check address----------*/
-
-#settingsPanel  .checkAddress {
-	width: 750px;
-	margin: 0px;
-}
-
 #settingsPanel  #AddressSelect {
 	width: 200px;
 	margin-top: 5px;
 	margin-bottom: 20px;
+}
+
+#addAddressForm {
+	display: none;
+}
+
+#updateAddressForm {
+	display: none;
 }
