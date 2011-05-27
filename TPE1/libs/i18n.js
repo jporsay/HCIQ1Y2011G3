@@ -26,6 +26,8 @@ function loadSpanish() {
 	langKeys['cartQuantity'] = 'Cantidad: ';
 	langKeys['cartItemsHeader'] = 'Items del Carrito:';
 	langKeys['cartCheckoutLink'] = 'Realizar el checkout!';
+	langKeys['loginNeeded'] = 'Necesita estar logeado para acceder a esta pagina';
+	langKeys['emtyCheckout'] = 'No puede realizar una compra vacia';
 	
 	//Register - User settings
 	langKeys['registerHeader'] = 'Registro';
@@ -73,12 +75,18 @@ function loadSpanish() {
 	langKeys['addressAdded'] = 'Direcci&oacute;n agregada';
 	langKeys['addressChanged'] = 'Direcci&oacute;n actualizada';
 	langKeys['settingsError'] = 'Campos con * son obligatorios';
-	
+	langKeys['pswLegend'] = 'Cambio de contrase&ntilde;a';
+	langKeys['addAdrsLegend'] = 'Nueva direccion';
+	langKeys['currAdrsLegend'] = 'Direcciones ya existentes';
+	langKeys['ucChkAdrs'] = 'Ver direcciones actuales';
+		
 	//Settings - changeUserData
 	langKeys['ucFullName'] = 'Nombre completo:*';
 	langKeys['ucEmail'] = 'Email:*';
 	langKeys['ucBirthDate'] = 'Fecha de nacimiento:*';
 	langKeys['ucLegend'] = 'Informaci&oacute;n personal';
+	langKeys['adrsLegend'] = 'Direcciones';
+	langKeys['ucAddAdrs'] = 'Agregar direccion';
 	
 	//Settings - changePassword
 	langKeys['cpOldPassword'] = 'Contrase&ntilde;a actual:*';
@@ -158,6 +166,8 @@ function loadEnglish() {
 	langKeys['cartQuantity'] = 'Quantity: ';
 	langKeys['cartItemsHeader'] = 'Cart Items:';
 	langKeys['cartCheckoutLink'] = 'Proceed to checkout!';
+	langKeys['loginNeeded'] = 'You need to be logged in to access this page';
+	langKeys['emtyCheckout'] = 'You can\'t checkout an empty cart!';
 	
 	//Register - User settings
 	langKeys['registerHeader'] = 'Registration';
@@ -167,6 +177,10 @@ function loadEnglish() {
 	langKeys['registerFullName'] = 'Full name:';
 	langKeys['registerPassword'] = 'Password:';
 	langKeys['registerEmail'] = 'Email:';
+	langKeys['pswLegend'] = 'Password Management';
+	langKeys['currAdrsLegend'] = 'These are your current addresses';
+	langKeys['ucAddAdrs'] = 'Add address';
+	langKeys['ucChkAdrs'] = 'Check addresses';
 	
 	//Browse
 	langKeys['productsHeader'] = 'Products:';
@@ -205,6 +219,8 @@ function loadEnglish() {
 	langKeys['addressAdded'] = 'Address added';
 	langKeys['addressChanged'] = 'Address updated';
 	langKeys['settingsError'] = 'Fields with * are obligatory';
+	langKeys['addAdrsLegend'] = 'Add address';
+	langKeys['chkAdrsLegend'] = 'check address';
 	
 	//Settings - changeUserData
 	langKeys['ucFullName'] = 'Full name:*';

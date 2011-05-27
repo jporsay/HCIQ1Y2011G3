@@ -41,10 +41,10 @@
 		$('#centralArea').click(function(e) {
 			if ($(e.target).is('a')) {
 				var eClass = $(e.target).attr('class');
-				if (eClass == 'addAddressLink' ) {
+				if (eClass == 'addAddressLink i18n' ) {
 					var elem = $('#addAddressForm');
 					elem.css('display', 'inline');
-				} else if ( eClass == 'checkAddressLink' ) {
+				} else if ( eClass == 'checkAddressLink i18n' ) {
 					var elem = $('#updateAddressForm');
 					elem.css('display', 'inline');
 				}
@@ -100,7 +100,7 @@
 					<h1 class='title'>Your settings:</h1>
 						<form id='personalInfoForm' action='#'>
 							<fieldset>
-								<legend id='ucLegend'>Personal Information</legend>
+								<legend id='ucLegend' class='i18n'>Personal Information</legend>
 								<div class='fieldRow'>
 									<span id='ucFullName' class='i18n'>Nombre completo:</span>
 									<input type='text' id='nameInput'>
@@ -121,7 +121,7 @@
 						</form>
 						<form id='passwordChangeForm' action='#'>
 							<fieldset>
-								<legend>Password Management</legend>
+								<legend class='i18n' id="pswLegend">Password Management</legend>
 								<div class='fieldRow'>
 									<span id='cpOldPassword' class='i18n'>Old Password:</span>
 									<input type='password' id='oldPassword'>
@@ -137,16 +137,16 @@
 							</fieldset>
 						</form>
 						<fieldset>
-							<legend>Addressing information</legend>
+							<legend class="i18n" id="adrsLegend">Addressing information</legend>
 							<ul>
-								<li><a href="#" class="addAddressLink">Add Address</a></li>
-								<li><a href="#" class="checkAddressLink">Check Addresses</a></li>
+								<li><a href="#" class="addAddressLink i18n" id="ucAddAdrs">Add Address</a></li>
+								<li><a href="#" class="checkAddressLink i18n" id="ucChkAdrs">Check Addresses</a></li>
 							</ul>
 						</fieldset>
 						<!--ESTO SERIA AGREGADO CUNADO SE PRESIONA EL BOTON ADD ADDRESS -->
 						<form id='addAddressForm' action='#'>
 							<fieldset class='addressFieldSet'>
-								<legend>New Address</legend>
+								<legend class="i18n" id="addAdrsLegend">New Address</legend>
 								<div class='fieldRow'>
 									<span id='aaName' class='i18n'>Name:</span>
 									<input type='text' id='fullName'>
@@ -189,7 +189,7 @@
 						<!--ESTO SERIA AGREGADO CUNADO SE PRESIONA EL BOTON CHECK ADDRESSES -->
 						<form id='updateAddressForm' action='#' >
 							<fieldset class="checkAddress">
-								<legend>These are your current addresses:</legend>
+								<legend class="i18n" id="currAdrsLegend">These are your current addresses:</legend>
 								<select id="AddressSelect">
 									<option value="1">item 1</option>
 								</select>
