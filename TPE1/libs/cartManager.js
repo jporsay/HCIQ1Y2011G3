@@ -138,6 +138,7 @@ Cart.prototype.update = function() {
 	if (!this.items) {
 		this.items = [];
 	}
+	
 	cleanHTML(CART_ITEMS_LIST);
 	var cart_items = document.getElementById(CART_ITEMS_LIST);
 	var totalPrice = 0;
@@ -462,8 +463,8 @@ function loadCartFromCookie() {
 	} while(i < cookie.length);
 	start = cookie.lastIndexOf(':');
 	end = cookie.lastIndexOf('}');
-	cartInstance.currency = cookie.substring(start + 1, end);
-	
+	var currency = cookie.substring(start + 1, end);
+	cartInstance.currency = (currency)? currency : '$';
 	var cookie2 = $.cookie(CART_COOKIE2);
 	cartInstance.isHidden = (cookie2 == 1) ? true : false;
 	cartInstance.setHidden(cartInstance.isHidden);

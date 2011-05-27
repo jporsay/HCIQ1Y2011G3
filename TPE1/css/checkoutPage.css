@@ -78,3 +78,11 @@ fieldset legend {
 	font-weight: bold;
 	font-size: 13px;
 }
+
+#orderCreatedLabel {
+	font-size: 17px;
+	float: right;
+	color: #11ff11;
+	font-weight: bold;
+	display: none;
+}

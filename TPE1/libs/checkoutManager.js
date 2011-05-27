@@ -88,6 +88,8 @@ function confirmOrder(orderId, addressId, userData) {
 		address_id: addressId
 	},
 	function(data) {
+		var response = $(data);
+		$('#orderCreatedLabel').css('display', 'inline');
 		window.location = "orderTracking.html";
 	}
 	);
