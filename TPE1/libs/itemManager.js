@@ -46,6 +46,12 @@ function processItems(data) {
 		}
 	);
 	setButtons(container, added, $(data).find('products').attr('size'));
+	var noFoundElement = $('#noResultsLabel');
+	if (added == 0) {
+		noFoundElement.css('display', 'inline');
+	} else {
+		noFoundElement.css('display', 'none');
+	}
 	var translator = new i18n();
 	translator.translatePage();
 }
@@ -369,3 +375,4 @@ function toPage(pageNumber) {
 	cartInstance.saveState();
 	window.location = 'browse.html?' + newParams;
 }
+
