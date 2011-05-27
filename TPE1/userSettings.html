@@ -37,21 +37,6 @@
 		checkIfLoggedOrExit();
 		$(function() {
 			loadUserSettings();
-			
-		$('#centralArea').click(function(e) {
-			if ($(e.target).is('a')) {
-				var eClass = $(e.target).attr('class');
-				if (eClass == 'addAddressLink i18n' ) {
-					var elem = $('#addAddressForm');
-					elem.css('display', 'inline');
-				} else if ( eClass == 'checkAddressLink i18n' ) {
-					var elem = $('#updateAddressForm');
-					elem.css('display', 'inline');
-				}
-				e.preventDefault();
-				return;
-			}
-		});
 		});
 	</script>
 	<title>Zen Faktor</title>
@@ -97,7 +82,7 @@
 			</div>
 			<div id="centralArea">
 				<div id='settingsPanel'>
-					<h1 class='title'>Your settings:</h1>
+					<h1 class='i18n title' id='sTitle'>Your settings:</h1>
 						<form id='personalInfoForm' action='#'>
 							<fieldset>
 								<legend id='ucLegend' class='i18n'>Personal Information</legend>
@@ -116,7 +101,7 @@
 								<div id='changeUserStatusDiv' class='statusDiv'>
 									<p id='changeUserStatus'></p>
 								</div>
-								<input type="submit" class="submit" value='Guardar'>
+								<input type="submit" id='ucSave' class="i18n submit" value='Guardar'>
 							</fieldset>
 						</form>
 						<form id='passwordChangeForm' action='#'>
@@ -133,20 +118,20 @@
 								<div id='changePasswordStatusDiv' class='statusDiv'>
 									<p id='changePasswordStatus'></p>
 								</div>
-							<input type="submit" class="submit" value="Guardar">
+							<input type="submit" id='cpSave' class="i18n submit" value="Guardar">
 							</fieldset>
 						</form>
 						<fieldset>
-							<legend class="i18n" id="adrsLegend">Addressing information</legend>
+							<legend id='ucAddressInformation' class='i18n'>Addressing information</legend>
 							<ul>
-								<li><a href="#" class="addAddressLink i18n" id="ucAddAdrs">Add Address</a></li>
-								<li><a href="#" class="checkAddressLink i18n" id="ucChkAdrs">Check Addresses</a></li>
+								<li><a href="#" class="i18n addAddressLink" id='addAddressLink'>Add Address</a></li>
+								<li><a href="#" class="i18n checkAddressLink" id='checkAddressLink'>Check Addresses</a></li>
 							</ul>
 						</fieldset>
 						<!--ESTO SERIA AGREGADO CUNADO SE PRESIONA EL BOTON ADD ADDRESS -->
 						<form id='addAddressForm' action='#'>
 							<fieldset class='addressFieldSet'>
-								<legend class="i18n" id="addAdrsLegend">New Address</legend>
+								<legend id='aaLegend' class='i18n'>New Address</legend>
 								<div class='fieldRow'>
 									<span id='aaName' class='i18n'>Name:</span>
 									<input type='text' id='fullName'>
@@ -180,8 +165,8 @@
 								<div id='addAddressStatusDiv' class='statusWCancelDiv'>
 									<p id='addAddressStatus'></p>
 								</div>
-							<button type='button' class="cancel" onClick="$(this.form).css('display', 'none')">Cancel</button>
-							<button type="submit" class="submit" id='newAddressSubmit'>Guardar</button>
+							<button id='aaCancel' type='button' class="i18n cancel" onClick="$(this.form).css('display', 'none')">Cancel</button>
+							<button type="submit" class="i18n submit" id='newAddressSubmit'>Guardar</button>
 							</fieldset>
 						</form>
 						<!---------------------------------------------------------------->
@@ -189,7 +174,7 @@
 						<!--ESTO SERIA AGREGADO CUNADO SE PRESIONA EL BOTON CHECK ADDRESSES -->
 						<form id='updateAddressForm' action='#' >
 							<fieldset class="checkAddress">
-								<legend class="i18n" id="currAdrsLegend">These are your current addresses:</legend>
+								<legend class='i18n' id='caLegend'>These are your current addresses:</legend>
 								<select id="AddressSelect">
 									<option value="1">item 1</option>
 								</select>
@@ -222,8 +207,8 @@
 								<div id='updateAddressStatusDiv' class='statusWCancelDiv'>
 									<p id='updateAddressStatus'></p>
 								</div>
-								<button type="button" class="cancel" onClick="$(this.form).css('display', 'none')">Cancel</button>
-								<input type="submit" class="submit" value='Guardar' id='updateAddress'>
+								<button id='caCancel' type="button" class="i18n cancel" onClick="$(this.form).css('display', 'none')">Cancel</button>
+								<input type="submit" class="i18n submit" value='Guardar' id='updateAddress'>
 							</fieldset>
 						</form>
 						<!---------------------------------------------------------------->

@@ -69,6 +69,8 @@ function loadSpanish() {
 	langKeys['published_date'] = 'Fecha de publicaci&oacute;n: ';
 	
 	//Settings
+	langKeys['sTitle'] = 'Configuraciones:';
+	langKeys['ucAddressInformation'] = 'Información sobre direcciones';
 	langKeys['passwordChangeOk'] = 'Contrase&ntilde;a actualizada';
 	langKeys['passwordChangeFail'] = 'Contrase&ntilde;a incorrecta';
 	langKeys['settingsChanged'] = 'Informaci&oacute;n personal actualizada';
@@ -81,6 +83,8 @@ function loadSpanish() {
 	langKeys['ucChkAdrs'] = 'Ver direcciones actuales';
 		
 	//Settings - changeUserData
+	langKeys['ucSave'] = 'Guardar';
+	langKeys['ucLegend'] = 'Información personal';
 	langKeys['ucFullName'] = 'Nombre completo:*';
 	langKeys['ucEmail'] = 'Email:*';
 	langKeys['ucBirthDate'] = 'Fecha de nacimiento:*';
@@ -89,10 +93,19 @@ function loadSpanish() {
 	langKeys['ucAddAdrs'] = 'Agregar direccion';
 	
 	//Settings - changePassword
+	langKeys['cpTitle'] = 'Contraseña'
+	langKeys['cpSave'] = 'Guardar';
 	langKeys['cpOldPassword'] = 'Contrase&ntilde;a actual:*';
 	langKeys['cpNewPassword'] = 'Contrase&ntilde;a nueva:*';
 	
+	//Settings - address
+	langKeys['checkAddressLink'] = 'Ver o cambiar direcciones';
+	langKeys['addAddressLink'] = 'Agregar direcci&oacute;n';
+	
 	//Settings - addAddress
+	langKeys['aaLegend'] = 'Agregar dirección';
+	langKeys['aaCancel'] = 'Cancelar';
+	langKeys['newAddressSubmit'] = 'Crear';
 	langKeys['aaName'] = 'Nombre:*';
 	langKeys['aaAddressOne'] = 'Direcci&oacute;n 1:*';
 	langKeys['aaAddressTwo'] = 'Direcci&oacute;n 2:*';
@@ -103,6 +116,9 @@ function loadSpanish() {
 	langKeys['aaCountry'] = 'Pa&iacute;s:*';
 	
 	//Settings - changeAddress
+	langKeys['caCancel'] = 'Cancelar';
+	langKeys['updateAddress'] = 'Guardar';
+	langKeys['caLegend'] = 'Ver o cambiar dirección';
 	langKeys['caAddressOne'] = 'Direcci&oacute;n 1:*';
 	langKeys['caAddressTwo'] = 'Direcci&oacute;n 2:*';
 	langKeys['caZipCode'] = 'C&oacute;digo postal:*';
@@ -131,6 +147,16 @@ function loadSpanish() {
 	langKeys['checkoutRequiredInformation'] = 'Ingrese los datos requeridos para completar su orden';
 	langKeys['checkoutLocationDelivery'] = 'Elija la dirección a la cual quiere que se entregue su orden:';
 	langKeys['checkoutCreateAddress'] = 'Crear nueva dirección de envio';
+	
+	//Checkout
+	langKeys['lBillingInformation'] = 'Información de envio';
+	langKeys['lPaymentInformation'] = 'Información de pago';
+	langKeys['paymentFootNote'] = 'Informaci&oacute;n de pago no es requerida';
+	langKeys['checkoutCartTitle'] = 'Confirmar orden:';
+	langKeys['checkoutSubTitle'] = 'Su orden final:';
+	langKeys['checkoutRequiredInformation'] = 'Ingrese la información requerida';
+	langKeys['cancelOrder'] = 'Cancelar';
+	langKeys['confirmOrder'] = 'Confirmar';
 	
 	return langKeys;
 }
@@ -213,6 +239,8 @@ function loadEnglish() {
 	langKeys['published_date'] = 'Published date: ';
 	
 	//Settings
+	langKeys['sTitle'] = 'Settings:';
+	langKeys['ucAddressInformation'] = 'Address information';
 	langKeys['passwordChangeOk'] = 'Password updated';
 	langKeys['passwordChangeFail'] = 'Incorrect password';
 	langKeys['settingsChanged'] = 'Personal information updated';
@@ -223,16 +251,26 @@ function loadEnglish() {
 	langKeys['chkAdrsLegend'] = 'check address';
 	
 	//Settings - changeUserData
+	langKeys['ucSave'] = 'Save';
+	langKeys['ucLegend'] = 'Personal information';
 	langKeys['ucFullName'] = 'Full name:*';
 	langKeys['ucEmail'] = 'Email:*';
 	langKeys['ucBirthDate'] = 'Birth Date:*';
 	langKeys['ucLegend'] = 'Personal Information';
 	
 	//Settings - changePassword
+	langKeys['cpSave'] = 'Save';
 	langKeys['cpOldPassword'] = 'Old password:*';
 	langKeys['cpNewPassword'] = 'New Password:*';
 	
+	//Settings - address
+	langKeys['checkAddressLink'] = 'Check or change addresses';
+	langKeys['addAddressLink'] = 'Add address';
+	
 	//Settings - addAddress
+	langKeys['aaLegend'] = 'Add address';
+	langKeys['aaCancel'] = 'Cancel';
+	langKeys['newAddressSubmit'] = 'Create';
 	langKeys['aaName'] = 'Name:*';
 	langKeys['aaAddressOne'] = 'Address 1:*';
 	langKeys['aaAddressTwo'] = 'Address 2:*';
@@ -243,6 +281,9 @@ function loadEnglish() {
 	langKeys['aaCountry'] = 'Country:*';
 	
 	//Settings - changeAddress
+	langKeys['caCancel'] = 'Cancel';
+	langKeys['updateAddress'] = 'Save';
+	langKeys['caLegend'] = 'View or change address';
 	langKeys['caAddressOne'] = 'Address 1:*';
 	langKeys['caAddressTwo'] = 'Address 2:*';
 	langKeys['caZipCode'] = 'Postal code:*';
@@ -266,6 +307,16 @@ function loadEnglish() {
 	langKeys['tPrice'] = 'Price';
 	langKeys['tQuantity'] = 'Quantity';
 	langKeys['tTotal'] = 'Total:';
+	
+	//Checkout
+	langKeys['lBillingInformation'] = 'Delivery Information';
+	langKeys['lPaymentInformation'] = 'Payment Information';
+	langKeys['paymentFootNote'] = 'Payment information is not required';
+	langKeys['checkoutCartTitle'] = 'Confirm order:';
+	langKeys['checkoutSubTitle'] = 'Your final order:';
+	langKeys['checkoutRequiredInformation'] = 'Enter the required information';
+	langKeys['cancelOrder'] = 'Cancel';
+	langKeys['confirmOrder'] = 'Confirm';
 	return langKeys;
 }
 
@@ -361,11 +412,11 @@ i18n.prototype.translatePage = function() {
 i18n.prototype.translateElement = function(node) {
 	var key = node.id;
 	var translated = getTranslation(key);
-	// not using getAttribute since its buggy.
 	if (translated !== undefined) {
 		if ($(node).is('input')) {
-			//not using setAttribute since its broken in IE and in Opera.
 			node.setAttribute('value', translated);
+		} else if ($(node).is('legend')) {
+			$(node).text(translated);
 		} else {
 			node.innerHTML = translated;
 		}
